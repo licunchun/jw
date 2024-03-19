@@ -1,6 +1,6 @@
 登录/注册功能：
 
-![](file:///D:/Projects/jw/demand_analysis/picures/1.png)
+![loading-ag-102](./picures/1.png)
 
 前端创建UserService对象us
 
@@ -47,7 +47,3 @@ StudentService/TeacherService/AdministratorService
 一个存储函数
 
 传递User能够将其数据存储起来，返回值标志存储成功/失败
-
-
-
-
