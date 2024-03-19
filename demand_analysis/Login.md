@@ -1,6 +1,6 @@
 登录/注册功能：
 
-![3dc16560-f4da-4b21-a50a-5edd0c0fdffd](file:///D:/ylcc/Pictures/Typedown/3dc16560-f4da-4b21-a50a-5edd0c0fdffd.png)
+![](file:///D:/Projects/jw/demand_analysis/picures/1.png)
 
 前端创建UserService对象us
 
@@ -47,8 +47,6 @@ StudentService/TeacherService/AdministratorService
 一个存储函数
 
 传递User能够将其数据存储起来，返回值标志存储成功/失败
-
-
 
 
 
