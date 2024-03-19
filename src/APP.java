@@ -7,6 +7,7 @@ public class APP {
         System.out.println(dataBase.keyOfTeacher("00001"));
         System.out.println(dataBase.keyOfManager("1"));
         dataBase.close();
+
     }
 
 }
