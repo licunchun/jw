@@ -6,4 +6,7 @@ public class Student {
     String key;
     String classes;
     String money;
+    public Student(String info) {
+
+    }
 }
