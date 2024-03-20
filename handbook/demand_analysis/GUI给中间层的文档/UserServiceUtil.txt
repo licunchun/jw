@@ -3,7 +3,7 @@
 数据部分，不同的userType需要使用的数据不同
 Student:			userType,grade,school,gender,name,ID,password
 Teacher:			userType,school,gender,name,ID,password
-Administrator:	userType,name,ID,password
+Admin:          	userType,name,ID,password
 
 
 主体如下：
