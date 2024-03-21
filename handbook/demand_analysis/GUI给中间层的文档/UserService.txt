@@ -1,4 +1,4 @@
-简介：UserService即在User注册部分提供的服务
+简介：UserService即在User部分提供的服务
 
 数据部分，不同的userType需要使用的数据不同
 Student:			userType,grade,school,gender,name,ID,password
@@ -18,7 +18,7 @@ Admin:          	userType,name,ID,password
 ————————————————————————————
 + 所有属性对应的get函数
 ————————————————————————————
-+ 除了ID之外其他属性对应的set函数
++ 除了,UserType,ID,Gender之外其他属性对应的set函数
 ————————————————————————————
 + Regist(void);
 参数:
