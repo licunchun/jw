@@ -34,42 +34,15 @@ public class DataBase {
         }
     }
     public String keyOfStudent(String account){
-        try {
-            resultSet = statement.executeQuery("select key from students where account = '" + account + "'");
-            resultSet.next();
-            String key = resultSet.getString(1);
-            resultSet.close();
-            return key;
-        }
-        catch (SQLException e) {
-            return "";
-        }
+        return key(account,1);
     }
     public String keyOfTeacher(String account) {
-        try {
-            resultSet = statement.executeQuery("select key from teachers where account = '" + account + "'");
-            resultSet.next();
-                String key = resultSet.getString(1);
-                resultSet.close();
-                return key;
-        }
-        catch (SQLException e) {
-            return "";
-        }
+        return key(account,2);
     }
     public String keyOfManager(String account) {
-        try {
-            resultSet = statement.executeQuery("select key from managers where account = '" + account + "'");
-            resultSet.next();
-            String key = resultSet.getString(1);
-            resultSet.close();
-            return key;
-            }
-        catch (SQLException e) {
-            return "";
-        }
+        return key(account,3);
     }
-    boolean changeKey(String account, String key, int type) {
+    public boolean changeKey(String account, String key, int type) {
         String table = switch (type) {
             case STUDENT -> "students";
             case TEACHER -> "teachers";
@@ -85,6 +58,15 @@ public class DataBase {
             e.printStackTrace();
             return false;
         }
+    }
+    public void changeKeyOfStudent(String account,String key){//记得interface.md改一下
+        changeKey(account, key, 1);
+    }
+    public void changeKeyOfTeacher(String account,String key){
+        changeKey(account, key, 2);
+    }
+    public void changeKeyOfManager(String account,String key){
+        changeKey(account, key, 3);
     }
     public void close() throws SQLException {
         statement.close();
