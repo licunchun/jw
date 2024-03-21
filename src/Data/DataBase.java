@@ -70,9 +70,21 @@ public class DataBase {
         }
     }
     boolean changeKey(String account, String key, int type) {
+        String table = switch (type) {
+            case STUDENT -> "students";
+            case TEACHER -> "teachers";
+            case MANAGER -> "managers";
+            default -> "";
+        };
 
-//        statement.execute("")
-        return true;
+        String updateQuery = "UPDATE " + table + " SET key = '" + key + "' WHERE account = '" + account + "'";
+        try {
+            int rowsAffected = statement.executeUpdate(updateQuery);
+            return rowsAffected > 0; // 返回操作是否成功
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
     public void close() throws SQLException {
         statement.close();

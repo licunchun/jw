@@ -5,16 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Resources/background_600_400.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/controller/RegistController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/window/regist.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jw.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx-sdk-21.0.2/legal/javafx.graphics/mesa3d.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/javafx-sdk-21.0.2/legal/javafx.graphics/mesa3d.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/window/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/window/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Data/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataBase.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +119,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+        <option value="jdk-21.0.2-temurin-21.0.2-4caba194b151-7da56cdf" />
       </set>
     </attachedChunks>
   </component>
