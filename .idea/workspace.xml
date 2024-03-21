@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改">
-      <change afterPath="$PROJECT_DIR$/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Sevice/UserService2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/Resources/background_600_400.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/controller/RegistController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GUI/window/regist.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sevice/Teacher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/Teacher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Sevice/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jw.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/javafx-sdk-21.0.2/legal/javafx.graphics/mesa3d.md" beforeDir="false" afterPath="$PROJECT_DIR$/lib/javafx-sdk-21.0.2/legal/javafx.graphics/mesa3d.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/window/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/window/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +26,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -37,11 +40,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
+    &quot;lastFilter&quot;: {
     &quot;state&quot;: &quot;OPEN&quot;,
     &quot;assignee&quot;: &quot;fengluoqiuwu&quot;
-  }
-}</component>
+    }
+    }</component>
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
@@ -54,9 +57,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 3
-}</component>
+    &quot;customColor&quot;: &quot;&quot;,
+    &quot;associatedIndex&quot;: 3
+    }</component>
   <component name="ProjectId" id="2dySjvN0sJq9GlELDTkcyDh59jQ" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -64,19 +67,18 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/lcc/Desktop/lessons&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/86133/Downloads/jw-main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;库&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;模块&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
@@ -86,11 +88,20 @@
     &quot;应用程序.未命名.executor&quot;: &quot;Run&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\86133\Desktop\JavaFX\jw\src\GUI\Resources" />
+      <recent name="C:\Users\86133\Desktop\JavaFX\jw\src\Main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="MainPackage.Main" />
       <module name="jw" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;$PROJECT_DIR$/lib/javafx-sdk-21.0.2/lib&quot; --add-modules=javafx.controls,javafx.fxml,javafx.base,javafx.graphics,javafx.media,javafx.swing,javafx.web" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$MODULE_DIR$\lib\javafx-sdk-21.0.2\lib&quot; --add-modules=javafx.controls,javafx.fxml,javafx.base,javafx.graphics,javafx.media,javafx.swing,javafx.web" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -108,11 +119,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.test" />
+    </list>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-temurin-21.0.2-4caba194b151-7da56cdf" />
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
       </set>
     </attachedChunks>
   </component>
@@ -130,6 +145,9 @@
       <workItem from="1710982445008" duration="507000" />
       <workItem from="1710983351310" duration="27000" />
       <workItem from="1710985193254" duration="8500000" />
+      <workItem from="1711001306200" duration="102000" />
+      <workItem from="1711001621929" duration="443000" />
+      <workItem from="1711007889463" duration="8438000" />
     </task>
     <task id="LOCAL-00001" summary="更改">
       <option name="closed" value="true" />
@@ -163,7 +181,39 @@
       <option name="project" value="LOCAL" />
       <updated>1710994159362</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="更改">
+      <option name="closed" value="true" />
+      <created>1711001393777</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1711001393777</updated>
+    </task>
+    <task id="LOCAL-00006" summary="更改">
+      <option name="closed" value="true" />
+      <created>1711010760517</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1711010760517</updated>
+    </task>
+    <task id="LOCAL-00007" summary="更改">
+      <option name="closed" value="true" />
+      <created>1711010876838</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1711010876838</updated>
+    </task>
+    <task id="LOCAL-00008" summary="更改">
+      <option name="closed" value="true" />
+      <created>1711012210248</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1711012210248</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
