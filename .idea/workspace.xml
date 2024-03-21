@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/APP.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/APP.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Data/DataBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Data/DataBase.java" afterDir="false" />
-    </list>
+    <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -60,13 +56,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.APP.executor": "Run",
     "Application.Main.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/86133/Downloads/jw-main",
+    "last_opened_file_path": "C:/Users/23323/jw",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -83,6 +80,9 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\23323\jw" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\86133\Desktop\JavaFX\jw\src\GUI\Resources" />
       <recent name="C:\Users\86133\Desktop\JavaFX\jw\src\Main" />
@@ -91,7 +91,14 @@
       <recent name="" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.APP">
+    <configuration name="APP" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="APP" />
+      <module name="jw" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainPackage.Main" />
       <module name="jw" />
@@ -115,13 +122,19 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.APP" />
       <item itemvalue="Application.test" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.APP" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="jdk-21.0.2-temurin-21.0.2-4caba194b151-7da56cdf" />
+        <option value="jdk-21.0.1-openjdk-21.0.1-4caba194b151-23eed401" />
       </set>
     </attachedChunks>
   </component>
