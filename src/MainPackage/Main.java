@@ -1,3 +1,5 @@
+package MainPackage;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,7 +21,7 @@ public class Main extends Application{
         Main.stage=stage;
         stage.setResizable(false);
         stage.setTitle("Class choosing system");
-        changeViews("GUI/window/login.fxml");
+        changeViews("/GUI/window/login.fxml");
         stage.show();
     }
 

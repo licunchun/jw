@@ -2,6 +2,7 @@ package GUI.controller;
 
 import Data.Enum.UserType;
 import GUI.util.StringUtil;
+import MainPackage.Main;
 import Sevice.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -63,6 +64,7 @@ public class LoginController {
          */
 
         if (new UserService(UserType.Admin,"",ID,password).checkIDAndPassword()){
+            Main.changeViews("/GUI/window/regist.fxml");
             System.out.println("Login successfully!");
             System.out.println("id:"+ID);
             System.out.println("password:"+password);
