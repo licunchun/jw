@@ -25,6 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
+        <option value="Class" />
         <option value="Enum" />
         <option value="FxmlFile" />
         <option value="Class" />
@@ -61,6 +63,9 @@
     &quot;associatedIndex&quot;: 3
     }</component>
   <component name="ProjectId" id="2dySjvN0sJq9GlELDTkcyDh59jQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
