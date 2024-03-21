@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jw.iml" beforeDir="false" afterPath="$PROJECT_DIR$/jw.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/javafx-sdk-21.0.2/lib/lib.iml" beforeDir="false" afterPath="$PROJECT_DIR$/lib/javafx-sdk-21.0.2/lib/lib.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,7 +83,8 @@
       <workItem from="1710978966016" duration="1838000" />
       <workItem from="1710981834359" duration="35000" />
       <workItem from="1710981905264" duration="525000" />
-      <workItem from="1710982445008" duration="87000" />
+      <workItem from="1710982445008" duration="507000" />
+      <workItem from="1710983351310" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="更改">
       <option name="closed" value="true" />
@@ -95,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710980463042</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="更改">
+      <option name="closed" value="true" />
+      <created>1710982601049</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710982601049</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
