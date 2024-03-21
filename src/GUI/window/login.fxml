@@ -13,7 +13,7 @@
    <children>
       <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Resources/background_600_400.jpg" />
+            <Image url="@../Resources/background_600_400.png" />
          </image>
       </ImageView>
       <Label layoutX="147.0" layoutY="152.0" prefHeight="38.0" prefWidth="66.0" text="ID">
@@ -32,7 +32,7 @@
             <Font size="21.0" />
          </font>
       </Button>
-      <Button fx:id="ButtonRegist" layoutX="316.0" layoutY="273.0" mnemonicParsing="false" text="注册">
+      <Button fx:id="ButtonRegist" layoutX="316.0" layoutY="273.0" mnemonicParsing="false" onAction="#doRegist" text="注册">
          <font>
             <Font size="21.0" />
          </font>

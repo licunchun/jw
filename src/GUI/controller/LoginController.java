@@ -64,7 +64,7 @@ public class LoginController {
          */
 
         if (new UserService(UserType.Admin,"",ID,password).checkIDAndPassword()){
-            Main.changeViews("/GUI/window/regist.fxml");
+            //Main.changeViews("/GUI/window/regist.fxml");
             System.out.println("Login successfully!");
             System.out.println("id:"+ID);
             System.out.println("password:"+password);
@@ -73,5 +73,10 @@ public class LoginController {
             LoginFail.setVisible(true);
             return;
         }
+    }
+
+    @FXML
+    public void doRegist(){
+        Main.changeViews("/GUI/window/regist.fxml");
     }
 }
