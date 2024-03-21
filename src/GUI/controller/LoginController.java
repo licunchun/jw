@@ -1,6 +1,8 @@
 package GUI.controller;
 
+import Data.Enum.UserType;
 import GUI.util.StringUtil;
+import Sevice.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,14 +10,6 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
-
-    /*
-     * Some test function
-     */
-    private boolean test_Login(String ID,String account){
-        return ID.equals("user")&&account.equals("666");
-    }
-
     /*
      * Major function
      */
@@ -43,6 +37,7 @@ public class LoginController {
     public void doLogin(){
         String ID=UserID.getText();
         String password=UserPassword.getText();
+        UserService us=new UserService();
 
         /*
          * Empty Tips
@@ -67,7 +62,7 @@ public class LoginController {
          * Login
          */
 
-        if (test_Login(ID,password)){
+        if (new UserService(UserType.Admin,"",ID,password).checkIDAndPassword()){
             System.out.println("Login successfully!");
             System.out.println("id:"+ID);
             System.out.println("password:"+password);
@@ -76,10 +71,5 @@ public class LoginController {
             LoginFail.setVisible(true);
             return;
         }
-
-        /*
-         * Regist
-         */
-
     }
 }
