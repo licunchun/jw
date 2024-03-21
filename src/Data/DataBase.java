@@ -1,6 +1,7 @@
 package Data;
 
 import java.sql.*;
+import java.util.concurrent.TimeUnit;
 
 public class DataBase {
     public static final int STUDENT = 1;
@@ -23,7 +24,8 @@ public class DataBase {
             default -> "";
         };
         try {
-            resultSet = statement.executeQuery("select key from " + table + " where account = '" + account + "'");
+            String sql = "select key from " + table + " where account = '" + account + "'";
+            resultSet = statement.executeQuery(sql);
             resultSet.next();
             String key = resultSet.getString(1);
             resultSet.close();
@@ -33,46 +35,80 @@ public class DataBase {
             return "";
         }
     }
-    public String keyOfStudent(String account){
+    public boolean changeKey(String account, String key, int type) {
+        String table = switch (type) {
+            case STUDENT -> "students";
+            case TEACHER -> "teachers";
+            case MANAGER -> "managers";
+            default -> "";
+        };
+
+        String sql = "update " + table + " set key = '" + key + "' where account = '" + account + "'";
         try {
-            resultSet = statement.executeQuery("select key from students where account = '" + account + "'");
-            resultSet.next();
-            String key = resultSet.getString(1);
-            resultSet.close();
-            return key;
-        }
-        catch (SQLException e) {
-            return "";
+            int rowsAffected = statement.executeUpdate(sql);
+            return rowsAffected > 0; // 返回操作是否成功
+        } catch (SQLException e) {
+            return false;
         }
     }
+//    public Student infoOfStudent(String account) {
+//        String sql = "select * from students where account = '" + account + "'";
+//        try {
+//            resultSet = statement.executeQuery(sql);
+//            resultSet.next();
+//
+//        } catch (SQLException e) {
+//            return null;
+//        }
+//    }
+    public boolean addStudent(String name, String account, String key, String gender, String major) {
+        String sql = "insert into students (name, account, key, gender, major) " +
+                "values ( '" + name + "', '" + account + "', '" + key + "', '" + gender + "', '" + major + "')";
+        System.out.println(sql);
+        try {
+            statement.execute(sql);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    public boolean addTeacher(String name, String account, String key, String major) {
+        String sql = "insert into teachers (name, account, key, major) " +
+                "values ( '" + name + "', '" + account + "', '" + key + "', '" + major + "')";
+        System.out.println(sql);
+        try {
+            statement.execute(sql);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    public boolean addManager(String name, String account, String key) {
+        String sql = "insert into managers (name, account, key) " +
+                "values ( '" + name + "', '" + account + "', '" + key + "')";
+        System.out.println(sql);
+        try {
+            statement.execute(sql);
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    public String keyOfStudent(String account) { return key(account, STUDENT); }
     public String keyOfTeacher(String account) {
-        try {
-            resultSet = statement.executeQuery("select key from teachers where account = '" + account + "'");
-            resultSet.next();
-                String key = resultSet.getString(1);
-                resultSet.close();
-                return key;
-        }
-        catch (SQLException e) {
-            return "";
-        }
+        return key(account, TEACHER);
     }
     public String keyOfManager(String account) {
-        try {
-            resultSet = statement.executeQuery("select key from managers where account = '" + account + "'");
-            resultSet.next();
-            String key = resultSet.getString(1);
-            resultSet.close();
-            return key;
-            }
-        catch (SQLException e) {
-            return "";
-        }
+        return key(account, MANAGER);
     }
-    boolean changeKey(String account, String key, int type) {
-
-//        statement.execute("")
-        return true;
+    public boolean changeKeyOfStudent(String account,String key){
+        return changeKey(account, key, STUDENT);
+    }
+    public boolean changeKeyOfTeacher(String account,String key){
+        return changeKey(account, key, TEACHER);
+    }
+    public boolean changeKeyOfManager(String account,String key){
+        return changeKey(account, key, MANAGER);
     }
     public void close() throws SQLException {
         statement.close();

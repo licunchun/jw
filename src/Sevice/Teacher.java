@@ -1,4 +1,7 @@
 package Sevice;
 
-public class Teacher {
+import Data.DataBase;
+
+public class Teacher extends User{
+
 }
