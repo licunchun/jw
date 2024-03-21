@@ -1,4 +1,4 @@
-enum类大致如下（就靠你了）
+num类大致如下（就靠你了）
 （实在不想记0，1，2，3；对了如果可以，注释文档写一下需要import什么以及如何调用，或者群里说一下）
 单独开一个enum包放吧
 
@@ -82,5 +82,6 @@ enum Gender
 	Male,Female;
 
 	public String toString();	//生成中文字符串
+	public boolean getSign();   //返回标签
 }
 注：以上enum类单独创建属性包放置，在选课时也会调用

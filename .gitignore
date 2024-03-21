@@ -26,3 +26,4 @@ out/
 
 ### Mac OS ###
 .DS_Store
+/src/Data/Enum/test.java

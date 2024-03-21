@@ -76,5 +76,10 @@ public class LoginController {
             LoginFail.setVisible(true);
             return;
         }
+
+        /*
+         * Regist
+         */
+
     }
 }
