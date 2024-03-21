@@ -5,8 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改">
+      <change afterPath="$PROJECT_DIR$/src/Data/Enum/PasswordState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/IGetData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/IStoreData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/IUserSevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sevice/Password.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test/Test1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/handbook/demand_analysis/GUI给中间层的文档/UserService.txt" beforeDir="false" afterPath="$PROJECT_DIR$/handbook/demand_analysis/GUI给中间层的文档/UserService.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/ManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/System.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/System.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/Teacher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/TeacherService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Sevice/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/UserService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,8 +31,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -53,6 +67,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2dySjvN0sJq9GlELDTkcyDh59jQ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -80,7 +97,12 @@
     &quot;应用程序.未命名.executor&quot;: &quot;Run&quot;
   }
 }</component>
-  <component name="RunManager" selected="应用程序.Main">
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="Interface" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="jw" />
@@ -103,14 +125,9 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="应用程序.Main" />
-      <item itemvalue="应用程序.test" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.test" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="应用程序.test" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
