@@ -3,66 +3,70 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controller.RegistController">
    <children>
-      <BorderPane prefHeight="200.0" prefWidth="250.0">
-         <top>
-            <Label text="注册页面" BorderPane.alignment="CENTER">
-               <font>
-                  <Font size="36.0" />
-               </font>
-            </Label>
-         </top>
-         <center>
-            <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <ImageView fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Resources/background200x250.png" />
+         </image>
+      </ImageView>
+      <VBox prefHeight="200.0" prefWidth="250.0">
+         <children>
+            <AnchorPane>
                <children>
-                  <AnchorPane prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="1.0" text="年级">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="StudentGradeChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="1.0" text="院校">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="StudentSchoolChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="1.0" text="性别">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Label>
-                        <ChoiceBox fx:id="StudentGenderChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane prefWidth="200.0">
-                     <children>
-                        <Button fx:id="StudentConfirmButton" layoutX="92.0" mnemonicParsing="false" text="确认" onAction="#doStudentConfirm">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
-                     </children>
-                  </AnchorPane>
+                  <Label layoutX="53.0" text="注册页面">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Label>
                </children>
-            </VBox>
-         </center>
-      </BorderPane>
+            </AnchorPane>
+            <AnchorPane prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="1.0" text="年级">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="StudentGradeChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="1.0" text="院校">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="StudentSchoolChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="200.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="1.0" text="性别">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="StudentGenderChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="200.0">
+               <children>
+                  <Button fx:id="StudentConfirmButton" layoutX="92.0" mnemonicParsing="false" onAction="#doStudentConfirm" text="确认">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
    </children>
 </AnchorPane>
