@@ -5,6 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ae01d299-7a6a-48de-995e-798d9ed334f7" name="更改" comment="更改">
+<<<<<<< HEAD
+      <change afterPath="$PROJECT_DIR$/src/Data/Enum/PasswordState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/IGetData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/IStoreData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Interface/IUserSevice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Sevice/Password.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Test/Test1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/Manager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/ManagerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/Student.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/StudentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/System.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/System.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/Teacher.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/TeacherService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Sevice/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Sevice/UserService.java" afterDir="false" />
+=======
       <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/GUI/Resources/background_600_400.jpg" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/GUI/controller/RegistController.java" afterDir="false" />
@@ -15,6 +33,7 @@
       <change beforePath="$PROJECT_DIR$/src/GUI/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/controller/LoginController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/window/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/window/login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainPackage/Main.java" afterDir="false" />
+>>>>>>> 90cf993 (更改)
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +44,12 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+<<<<<<< HEAD
         <option value="Interface" />
+=======
+        <option value="Enum" />
+        <option value="FxmlFile" />
+>>>>>>> 90cf993 (更改)
         <option value="Class" />
         <option value="Enum" />
         <option value="FxmlFile" />
@@ -70,6 +94,7 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -103,6 +128,41 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main">
+=======
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/86133/Downloads/jw-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "模块",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true",
+    "应用程序.Main.executor": "Run",
+    "应用程序.test.executor": "Run",
+    "应用程序.未命名.executor": "Run"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\86133\Desktop\JavaFX\jw\src\GUI\Resources" />
+      <recent name="C:\Users\86133\Desktop\JavaFX\jw\src\Main" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager" selected="应用程序.Main">
+>>>>>>> 90cf993 (更改)
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="MainPackage.Main" />
       <module name="jw" />
