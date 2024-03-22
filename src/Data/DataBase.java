@@ -59,10 +59,9 @@ public class DataBase {
         try {
             resultSet = statement.executeQuery(sql);
             resultSet.next();
-            Student student = new Student("");
+            Student student = new Student();
             student.name = resultSet.getString("name");
             student.account = resultSet.getString("account");
-            student.key = resultSet.getString("key");
             student.gender = resultSet.getString("gender");
             student.major = resultSet.getString("major");
             student.classes = resultSet.getString("classes");
@@ -105,6 +104,15 @@ public class DataBase {
             return false;
         }
     }
+    public boolean setMoney(String account, int money) {
+        String sql = "update students set money = " + money + " where account = '" + account + "'";
+        try {
+            statement.executeUpdate(sql);
+            return true; // 返回操作是否成功
+        } catch (SQLException e) {
+            return false;
+        }
+    }
     public String keyOfStudent(String account) { return key(account, STUDENT); }
     public String keyOfTeacher(String account) {
         return key(account, TEACHER);
@@ -125,29 +133,37 @@ public class DataBase {
         statement.close();
         connection.close();
     }
-    public boolean setMoney(String account, int money) {
-        String table = "students";
-        String sql = "update " + table + " set money = '" + money + "' where account = '" + account + "'";
-        try {
-            int rowsAffected = statement.executeUpdate(sql);
-            return rowsAffected > 0; // 返回操作是否成功
-        } catch (SQLException e) {
-            return false;
-        }
-    }
-    public Set<String> check() {//查看总课程
-        String sql = "select * from classes ";
-        Set<String> resultSetData = new HashSet<>();
+
+    public ClassInfoSet check() { // 查看总课程
+        ClassInfoSet classInfoSet = new ClassInfoSet();
+        String sql = "select * from classes";
         try{
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
-                String classData = resultSet.getString("classes");
-                resultSetData.add(classData);
+                ClassInfo classInfo = new ClassInfo();
+                classInfo.code = resultSet.getString("code");
+                classInfo.name = resultSet.getString("name");
+                classInfo.period = resultSet.getInt("period");
+                classInfo.credits = resultSet.getDouble("credits");
+                classInfo.time = resultSet.getString("time");
+                classInfo.stdCount = resultSet.getInt("stdCount");
+                classInfo.limitCount = resultSet.getInt("limitCount");
+                classInfo.courseType = resultSet.getString("courseType");
+                classInfo.department = resultSet.getString("department");
+                classInfo.campus = resultSet.getString("campus");
+                classInfo.examMode = resultSet.getString("examMode");
+                classInfo.Language = resultSet.getString("Language");
+                classInfo.education = resultSet.getString("education");
+                classInfo.classType = resultSet.getString("classType");
+                classInfo.teachers = resultSet.getString("teachers");
+                classInfo.admin = resultSet.getString("admin");
+                classInfoSet.classInfos.add(classInfo);
             }
-        } catch (SQLException e) {
+            return classInfoSet;
+        }
+        catch (SQLException e) {
             return null;
         }
-        return resultSetData;
     }
     public boolean addClassOfStudent(String account, String code) {
         String sql = "select classes from students where account = '" + account + "'";
@@ -156,46 +172,43 @@ public class DataBase {
             resultSet.next();
             // 从数据库中获取当前 account 对应的 classes 集合
             String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
-            String[] newclassArray = Arrays.copyOf(classArray, classArray.length + 1);
-            newclassArray[newclassArray.length - 1] = code;
-            String classesString = String.join(",", newclassArray);
+            String[] newClassArray = Arrays.copyOf(classArray, classArray.length + 1);
+            newClassArray[newClassArray.length - 1] = code;
+            String classesString = String.join(",", newClassArray);
             sql = "update " + "students" + " set classes = '" + classesString + "' where account = '" + account + "'";
             // 执行更新操作
             int rowsAffected = statement.executeUpdate(sql);
-            // 关闭连接
-            statement.close();
-            connection.close();
             return rowsAffected > 0; // 如果有行受影响，更新成功返回 true，否则返回 false
         } catch (SQLException e) {
             return false;
         }
     }
-    public boolean cancelClass(String account, String code) {
-        String sql = "select classes from students where account = '" + account + "'";
-        try {
-            resultSet = statement.executeQuery(sql);
-            resultSet.next();
-            String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
-            String[] newclassArray = new String[classArray.length];
-            int count = 0;
-            for(int i = 0; i< classArray.length; i++) {
-                if(code.equals(classArray[i])) {
-                    continue;
-                }
-                newclassArray[count] = classArray[i];
-                count++;
-            }
-            String classesString = String.join(",", newclassArray);
-            sql = "update students set classes = '" + classesString + "' where account = '" + account + "'";
-            // 执行更新操作
-            int rowsAffected = statement.executeUpdate(sql);
-            // 关闭连接
-            statement.close();
-            connection.close();
-            return rowsAffected > 0; // 如果有行受影响，更新成功返回 true，否则返回 false
-
-        } catch (SQLException e) {
-            return false;
-        }
-    }
+//    public boolean cancelClass(String account, String code) {
+//        String sql = "select classes from students where account = '" + account + "'";
+//        try {
+//            resultSet = statement.executeQuery(sql);
+//            resultSet.next();
+//            try {
+//                String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
+//                String[] newClassArray = new String[classArray.length];
+//            }
+//
+//            int count = 0;
+//            for(int i = 0; i< classArray.length; i++) {
+//                if(code.equals(classArray[i])) {
+//                    continue;
+//                }
+//                newClassArray[count] = classArray[i];
+//                count++;
+//            }
+//            String classesString = String.join(",", newClassArray);
+//            sql = "update students set classes = '" + classesString + "' where account = '" + account + "'";
+//            // 执行更新操作
+//            int rowsAffected = statement.executeUpdate(sql);
+//            return rowsAffected > 0; // 如果有行受影响，更新成功返回 true，否则返回 false
+//
+//        } catch (SQLException e) {
+//            return false;
+//        }
+//    }
 }
