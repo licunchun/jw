@@ -51,19 +51,27 @@ public class DataBase {
             return false;
         }
     }
-//    public Student infoOfStudent(String account) {
-//        String sql = "select * from students where account = '" + account + "'";
-//        try {
-//            resultSet = statement.executeQuery(sql);
-//            resultSet.next();
-//
-//        } catch (SQLException e) {
-//            return null;
-//        }
-//    }
+    public Student infoOfStudent(String account) {
+        String sql = "select * from students where account = '" + account + "'";
+        try {
+            resultSet = statement.executeQuery(sql);
+            resultSet.next();
+            Student student = new Student("");
+            student.name = resultSet.getString("name");
+            student.account = resultSet.getString("account");
+            student.key = resultSet.getString("key");
+            student.gender = resultSet.getString("gender");
+            student.major = resultSet.getString("major");
+            student.classes = resultSet.getString("classes");
+            student.money = resultSet.getString("money");
+            return student;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
     public boolean addStudent(String name, String account, String key, String gender, String major) {
-        String sql = "insert into students (name, account, key, gender, major) " +
-                "values ( '" + name + "', '" + account + "', '" + key + "', '" + gender + "', '" + major + "')";
+        String sql = "insert into students (name, account, key, gender, major, classes) " +
+                "values ( '" + name + "', '" + account + "', '" + key + "', '" + gender + "', '" + major + "', 0)";
         System.out.println(sql);
         try {
             statement.execute(sql);

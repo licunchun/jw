@@ -1,13 +1,13 @@
 package Data;
 
 public class Student {
-    String name;
-    String account;
-    String key;
-    String gender;
-    String major;
-    String classes;
-    String money;
+    public String name;
+    public String account;
+    public String key;
+    public String gender;
+    public String major;
+    public String classes;
+    public String money;
     public Student(String info) {
 
     }
