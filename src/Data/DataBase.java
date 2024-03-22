@@ -122,4 +122,14 @@ public class DataBase {
         statement.close();
         connection.close();
     }
+    public boolean setMoney(String account, int money) {
+        String table = "students";
+        String sql = "update " + table + " set money = '" + money + "' where account = '" + account + "'";
+        try {
+            int rowsAffected = statement.executeUpdate(sql);
+            return rowsAffected > 0; // 返回操作是否成功
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 }
