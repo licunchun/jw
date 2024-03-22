@@ -1,21 +1,25 @@
 package Sevice;
 
-import Data.DataBase;
 import Data.Enum.*;
 import Interface.IGetData;
 import Interface.IStoreData;
 import Interface.IUserSevice;
+import Utils.Get;
+import Utils.IDUtil;
+import Utils.NameUtil;
+import Utils.PasswordUtil;
 
-public class UserService implements IUserSevice, IStoreData, IGetData {
+public class UserService{
     /*
      * 属性
      */
-    final static int MAX_NUM_PASSWORD = 10;
-    private User user;
+    private UserType userType;
+    private String name;
+    private String ID;
+    private String password;
     private Grade grade;
     private School school;
     private Gender gender;
-    private String password_temp;
     /*
      * 构造
      */
@@ -23,27 +27,41 @@ public class UserService implements IUserSevice, IStoreData, IGetData {
     //空参构造
     public UserService() {
     }
+
     //学生构造
+
     public UserService(UserType userType, String name, String ID, String password, Grade grade, School school, Gender gender) {
-        this.user = new User(userType,name,ID,password);
+        this.userType = userType;
+        this.name = name;
+        this.ID = ID;
+        this.password = password;
         this.grade = grade;
         this.school = school;
         this.gender = gender;
     }
+
     //教师构造
-    public UserService(UserType userType, School school, Gender gender, String name, String ID, String password) {
-        this.user = new User(userType,name,ID,password);
+
+    public UserService(UserType userType, String name, String ID, String password, School school, Gender gender) {
+        this.userType = userType;
+        this.name = name;
+        this.ID = ID;
+        this.password = password;
         this.school = school;
         this.gender = gender;
     }
+
     //管理员构造
+
     public UserService(UserType userType, String name, String ID, String password) {
-        this.user = new User(userType,name,ID,password);
+        this.userType = userType;
+        this.name = name;
+        this.ID = ID;
+        this.password = password;
     }
     /*
      * Getter&Setter
      */
-
     public UserType getUserType() {
         return this.user.getUserType();
     }
@@ -60,36 +78,20 @@ public class UserService implements IUserSevice, IStoreData, IGetData {
         return this.user.getID();
     }
 
-    public String getPassword() {
-        return this.user.getPassword();
-    }
-    public void setPassword(String password) {
-        this.user.setPassword(password);
-    }
-    public Grade getGrade() {
-        return grade;
-    }
-    public void setGrade(Grade grade) {
-        this.grade = grade;
-    }
-    public School getSchool() {
-        return school;
-    }
-    public void setSchool(School school) {
-        this.school = school;
-    }
-    public Gender getGender() {
-        return gender;
-    }
-    public void setGender(Gender gender) {
-        this.gender = gender;
-    }
-    public String getPassword_temp() {
-        return password_temp;
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
-    public void setPassword_temp(String password_temp) {
-        this.password_temp = password_temp;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getID() {
+        return ID;
     }
     /*
      * 功能主体
@@ -112,62 +114,89 @@ public class UserService implements IUserSevice, IStoreData, IGetData {
     @Override
     public boolean isNameValid(){
 
-        return true;
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public String getPassword() {
+        return password;
     }
     @Override
     public boolean isPasswordValid(){
 
-            return true;
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
     /*
 
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    /*
+     * 功能主体
      */
 
-    @Override
-    public boolean checkIDAndPassword(){return true;}
-    @Override
+    public void Regist(){
+        setID(Get.getAvailableID(this.userType));
+        switch (getUserType()) {
+            case None -> {exit();
+            }
+            case Student -> {
+            }
+            case Teacher -> {
+            }
+            case Admin -> {
+            }
+        };
+    }
+
+    public boolean isNameValid(){
+        if (NameUtil.checkValid(name)==StringState.RIGHT)
+            return true;
+        else
+            return false;
+    }
+
+    public boolean isPasswordValid(){
+        if(PasswordUtil.checkValid(password)== StringState.RIGHT)
+            return true;
+        else
+            return false;
+    }
+    public boolean checkIDAndPassword(){
+        int index = IDUtil.isIDExist(ID);
+        if(index == -1)
+            return false;
+        else if(password.compareTo(Get.getPassword(this.userType,index))==0)
+            return true;
+        else
+            return false;
+    }
+
+
     public boolean exit(){return true;}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @Override
-    public boolean storeUser(UserType userType, String name, String ID, String password, Grade grade, School school, Gender gender) {
-        return false;
-    }
-
-    @Override
-    public boolean storeUser(UserType userType, String name, String ID, String password, School school,Gender gender) {
-        return false;
-    }
-
-    @Override
-    public boolean storeUser(UserType userType, String name, String ID, String password) {
-        return false;
-    }
-
-    @Override
-    public String getAvailableID(UserType userType) {
-        return null;
-    }
 
 
 }
