@@ -1,8 +1,8 @@
 
 
 +Store(UserType userType, String name, String ID, String password, Grade grade, School school, Gender gender)
-+Store(UserType userType, String name, String ID, String password, Grade grade, School school, Gender gender)
-+Store(UserType userType, String name, String ID, String password, Grade grade, School school, Gender gender)
++Store(UserType userType, String name, String ID, String password, School school, Gender gender)
++Store(UserType userType, String name, String ID, String password)
 
 
 

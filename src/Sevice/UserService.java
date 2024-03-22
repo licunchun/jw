@@ -2,7 +2,7 @@ package Sevice;
 
 import Data.Enum.*;
 
-import Utils.Get;
+import Utils.GetUtil;
 import Utils.IDUtil;
 import Utils.NameUtil;
 import Utils.PasswordUtil;
@@ -123,7 +123,7 @@ public class UserService{
      */
 
     public void Regist(){
-        setID(Get.getAvailableID(this.userType));
+        setID(GetUtil.getAvailableID(this.userType));
         switch (getUserType()) {
             case None -> {exit();
             }
@@ -153,7 +153,7 @@ public class UserService{
         int index = IDUtil.isIDExist(ID);
         if(index == -1)
             return false;
-        else if(password.compareTo(Get.getPassword(this.userType,index))==0)
+        else if(password.compareTo(GetUtil.getPassword(this.userType,index))==0)
             return true;
         else
             return false;
