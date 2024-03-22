@@ -153,12 +153,13 @@ public class DataBase {
         String sql = "select classes from students where account = '" + account + "'";
         try {
             resultSet = statement.executeQuery(sql);
+            resultSet.next();
             // 从数据库中获取当前 account 对应的 classes 集合
             String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
             String[] newclassArray = Arrays.copyOf(classArray, classArray.length + 1);
             newclassArray[newclassArray.length - 1] = code;
             String classesString = String.join(",", newclassArray);
-            sql = "update managers set classes = '" + classesString + "' where account = '" + account + "'";
+            sql = "update " + "students" + " set classes = '" + classesString + "' where account = '" + account + "'";
             // 执行更新操作
             int rowsAffected = statement.executeUpdate(sql);
             // 关闭连接
@@ -166,7 +167,34 @@ public class DataBase {
             connection.close();
             return rowsAffected > 0; // 如果有行受影响，更新成功返回 true，否则返回 false
         } catch (SQLException e) {
-            e.printStackTrace(); // 处理 SQL 异常
+            return false;
+        }
+    }
+    public boolean cancelClass(String account, String code) {
+        String sql = "select classes from students where account = '" + account + "'";
+        try {
+            resultSet = statement.executeQuery(sql);
+            resultSet.next();
+            String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
+            String[] newclassArray = new String[classArray.length];
+            int count = 0;
+            for(int i = 0; i< classArray.length; i++) {
+                if(code.equals(classArray[i])) {
+                    continue;
+                }
+                newclassArray[count] = classArray[i];
+                count++;
+            }
+            String classesString = String.join(",", newclassArray);
+            sql = "update students set classes = '" + classesString + "' where account = '" + account + "'";
+            // 执行更新操作
+            int rowsAffected = statement.executeUpdate(sql);
+            // 关闭连接
+            statement.close();
+            connection.close();
+            return rowsAffected > 0; // 如果有行受影响，更新成功返回 true，否则返回 false
+
+        } catch (SQLException e) {
             return false;
         }
     }
