@@ -1,6 +1,9 @@
 package Data;
 
 import java.sql.*;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 public class DataBase {
@@ -121,5 +124,50 @@ public class DataBase {
     public void close() throws SQLException {
         statement.close();
         connection.close();
+    }
+    public boolean setMoney(String account, int money) {
+        String table = "students";
+        String sql = "update " + table + " set money = '" + money + "' where account = '" + account + "'";
+        try {
+            int rowsAffected = statement.executeUpdate(sql);
+            return rowsAffected > 0; // 返回操作是否成功
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+    public Set<String> check() {//查看总课程
+        String sql = "select * from classes ";
+        Set<String> resultSetData = new HashSet<>();
+        try{
+            resultSet = statement.executeQuery(sql);
+            while(resultSet.next()){
+                String classData = resultSet.getString("classes");
+                resultSetData.add(classData);
+            }
+        } catch (SQLException e) {
+            return null;
+        }
+        return resultSetData;
+    }
+    public boolean addClassOfStudent(String account, String code) {
+        String sql = "select classes from students where account = '" + account + "'";
+        try {
+            resultSet = statement.executeQuery(sql);
+            // 从数据库中获取当前 account 对应的 classes 集合
+            String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
+            String[] newclassArray = Arrays.copyOf(classArray, classArray.length + 1);
+            newclassArray[newclassArray.length - 1] = code;
+            String classesString = String.join(",", newclassArray);
+            sql = "update managers set classes = '" + classesString + "' where account = '" + account + "'";
+            // 执行更新操作
+            int rowsAffected = statement.executeUpdate(sql);
+            // 关闭连接
+            statement.close();
+            connection.close();
+            return rowsAffected > 0; // 如果有行受影响，更新成功返回 true，否则返回 false
+        } catch (SQLException e) {
+            e.printStackTrace(); // 处理 SQL 异常
+            return false;
+        }
     }
 }
