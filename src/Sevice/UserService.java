@@ -2,10 +2,7 @@ package Sevice;
 
 import Data.Enum.*;
 
-import Utils.GetUtil;
-import Utils.IDUtil;
-import Utils.NameUtil;
-import Utils.PasswordUtil;
+import Utils.*;
 
 public class UserService{
     /*
@@ -128,10 +125,13 @@ public class UserService{
             case None -> {exit();
             }
             case Student -> {
+                StoreUtil.storeStudent(userType,name,ID,password,grade,school,gender);
             }
             case Teacher -> {
+                StoreUtil.storeTeacher(userType,name,ID,password,school,gender);
             }
             case Admin -> {
+                StoreUtil.storeAdmin(userType,name,ID,password);
             }
         };
     }
