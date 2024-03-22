@@ -29,9 +29,8 @@ public class Main extends Application{
     }
 
     public static void changeViews(String fxml){
-        Parent root= null;
         try {
-            root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxml)));
+            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxml)));
             stage.setScene(new Scene(root));
             StageUtil.setCenter(stage);
         } catch (IOException e) {
