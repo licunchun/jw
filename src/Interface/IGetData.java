@@ -1,6 +1,6 @@
 package Interface;
 
-import Data.Enum.UserType;
+import Data.Enum.User.UserType;
 
 public interface IGetData {
     String getAvailableID(UserType userType);

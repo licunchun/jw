@@ -1,6 +1,6 @@
 package Utils;
 
-import Data.Enum.UserType;
+import Data.Enum.User.UserType;
 
 import java.util.ArrayList;
 import java.util.List;

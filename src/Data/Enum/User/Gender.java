@@ -1,4 +1,4 @@
-package Data.Enum;
+package Data.Enum.User;
 
 public enum Gender {
     Male("男",true),Female("女",false);
