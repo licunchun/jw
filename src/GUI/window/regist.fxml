@@ -71,7 +71,7 @@
                   </AnchorPane>
                   <AnchorPane prefWidth="200.0">
                      <children>
-                        <Button fx:id="Confirm" layoutX="122.0" mnemonicParsing="false" opacity="0.8" text="确认">
+                        <Button fx:id="Confirm" layoutX="122.0" mnemonicParsing="false" opacity="0.8" text="确认" onAction="#doRegistConfirm">
                            <font>
                               <Font size="20.0" />
                            </font>

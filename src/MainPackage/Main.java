@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class Main extends Application{
 
@@ -28,7 +29,7 @@ public class Main extends Application{
     public static void changeViews(String fxml){
         Parent root= null;
         try {
-            root = FXMLLoader.load(Main.class.getResource(fxml));
+            root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxml)));
             stage.setScene(new Scene(root));
         } catch (IOException e) {
             throw new RuntimeException(e);
