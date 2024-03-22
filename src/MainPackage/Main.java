@@ -1,5 +1,6 @@
 package MainPackage;
 
+import GUI.util.StageUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -24,6 +25,7 @@ public class Main extends Application{
         stage.setTitle("Class choosing system");
         changeViews("/GUI/window/login.fxml");
         stage.show();
+        StageUtil.setCenter(stage);
     }
 
     public static void changeViews(String fxml){
@@ -31,6 +33,7 @@ public class Main extends Application{
         try {
             root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxml)));
             stage.setScene(new Scene(root));
+            StageUtil.setCenter(stage);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
