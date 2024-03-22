@@ -1,6 +1,6 @@
 package GUI.controller;
 
-import Data.Enum.UserType;
+import Data.Enum.User.UserType;
 import GUI.util.StringUtil;
 import MainPackage.Main;
 import Sevice.UserService;
@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
 
 public class LoginController {
     /*

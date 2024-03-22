@@ -1,4 +1,6 @@
-package Data.Enum;
+package Data.Enum.User;
+
+import Data.Enum.School;
 
 public enum StudentSchool {
     GiftedYoung("少年班学院"),

@@ -1,7 +1,8 @@
 package Sevice;
 
-import Data.Enum.*;
-
+import Data.Enum.School;
+import Data.Enum.Tools.StringState;
+import Data.Enum.User.*;
 import Utils.*;
 
 public class UserService{
@@ -137,7 +138,7 @@ public class UserService{
     }
 
     public boolean isNameValid(){
-        if (NameUtil.checkValid(name)==StringState.RIGHT)
+        if (NameUtil.checkValid(name)== StringState.RIGHT)
             return true;
         else
             return false;

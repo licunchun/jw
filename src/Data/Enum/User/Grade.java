@@ -1,4 +1,4 @@
-package Data.Enum;
+package Data.Enum.User;
 
 public enum Grade {
     Grade1("大一",1),

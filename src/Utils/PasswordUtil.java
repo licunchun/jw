@@ -1,6 +1,6 @@
 package Utils;
 
-import Data.Enum.StringState;
+import Data.Enum.Tools.StringState;
 
 public class PasswordUtil extends StrUtil {
 

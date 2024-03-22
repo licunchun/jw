@@ -1,7 +1,5 @@
 package Utils;
 
-import Data.Enum.StringState;
-
 public abstract class StrUtil {
     public static boolean lengthCheck(String str){
         int MAX_LENGTH = 10;

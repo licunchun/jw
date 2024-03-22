@@ -1,7 +1,7 @@
 package GUI.controller;
 
-import Data.Enum.*;
-import Data.Student;
+import Data.Enum.School;
+import Data.Enum.User.*;
 import GUI.util.StringUtil;
 import MainPackage.Main;
 import Sevice.UserService;
