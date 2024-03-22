@@ -26,13 +26,13 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <TextField fx:id="UserID" layoutX="232.0" layoutY="159.0" prefHeight="23.0" prefWidth="221.0" promptText="请输入账户ID" />
-      <Button fx:id="ButtonLogin" layoutX="215.0" layoutY="273.0" mnemonicParsing="false" onAction="#doLogin" text="登录">
+      <TextField fx:id="UserID" layoutX="232.0" layoutY="159.0" opacity="0.8" prefHeight="23.0" prefWidth="221.0" promptText="请输入账户ID" />
+      <Button fx:id="ButtonLogin" layoutX="215.0" layoutY="273.0" mnemonicParsing="false" onAction="#doLogin" opacity="0.8" text="登录">
          <font>
             <Font size="21.0" />
          </font>
       </Button>
-      <Button fx:id="ButtonRegist" layoutX="316.0" layoutY="273.0" mnemonicParsing="false" onAction="#doRegist" text="注册">
+      <Button fx:id="ButtonRegist" layoutX="316.0" layoutY="273.0" mnemonicParsing="false" onAction="#doRegist" opacity="0.8" text="注册">
          <font>
             <Font size="21.0" />
          </font>
@@ -42,7 +42,7 @@
             <Font size="41.0" />
          </font>
       </Label>
-      <PasswordField fx:id="UserPassword" layoutX="232.0" layoutY="219.0" prefHeight="23.0" prefWidth="221.0" promptText="请输入密码" />
+      <PasswordField fx:id="UserPassword" layoutX="232.0" layoutY="219.0" opacity="0.8" prefHeight="23.0" prefWidth="221.0" promptText="请输入密码" />
       <Label fx:id="IDEmptyTip" layoutX="468.0" layoutY="164.0" text="ID不能为空！" textFill="RED" visible="false" />
       <Label fx:id="PasswordEmptyTip" layoutX="468.0" layoutY="223.0" text="密码不能为空！" textFill="RED" visible="false" />
       <Label fx:id="LoginFail" layoutX="204.0" layoutY="327.0" text="账户错误或密码错误，请重新输入！" textFill="RED" visible="false" />

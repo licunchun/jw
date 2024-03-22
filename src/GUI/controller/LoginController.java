@@ -15,19 +15,17 @@ public class LoginController {
      * Major function
      */
     @FXML
-    public Button ButtonRegist;
+    private Button ButtonRegist;
     @FXML
-    public Button ButtonLogin;
+    private Button ButtonLogin;
     @FXML
-    public Label IDEmptyTip;
+    private Label IDEmptyTip;
     @FXML
-    public Label PasswordEmptyTip;
+    private Label PasswordEmptyTip;
     @FXML
-    public Label LoginFail;
-
+    private Label LoginFail;
     @FXML
     private TextField UserID;
-
     @FXML
     private PasswordField UserPassword;
 
@@ -38,7 +36,6 @@ public class LoginController {
     public void doLogin(){
         String ID=UserID.getText();
         String password=UserPassword.getText();
-        UserService us=new UserService();
 
         /*
          * Empty Tips
