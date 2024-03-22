@@ -1,6 +1,9 @@
 package GUI.controller;
 
+import Data.Enum.UserType;
 import GUI.util.StringUtil;
+import MainPackage.Main;
+import Sevice.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -8,31 +11,21 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class LoginController {
-
-    /*
-     * Some test function
-     */
-    private boolean test_Login(String ID,String account){
-        return ID.equals("user")&&account.equals("666");
-    }
-
     /*
      * Major function
      */
     @FXML
-    public Button ButtonRegist;
+    private Button ButtonRegist;
     @FXML
-    public Button ButtonLogin;
+    private Button ButtonLogin;
     @FXML
-    public Label IDEmptyTip;
+    private Label IDEmptyTip;
     @FXML
-    public Label PasswordEmptyTip;
+    private Label PasswordEmptyTip;
     @FXML
-    public Label LoginFail;
-
+    private Label LoginFail;
     @FXML
     private TextField UserID;
-
     @FXML
     private PasswordField UserPassword;
 
@@ -67,7 +60,8 @@ public class LoginController {
          * Login
          */
 
-        if (test_Login(ID,password)){
+        if (new UserService(UserType.Admin,"",ID,password).checkIDAndPassword()){
+            //Main.changeViews("/GUI/window/regist.fxml");
             System.out.println("Login successfully!");
             System.out.println("id:"+ID);
             System.out.println("password:"+password);
@@ -76,10 +70,10 @@ public class LoginController {
             LoginFail.setVisible(true);
             return;
         }
+    }
 
-        /*
-         * Regist
-         */
-
+    @FXML
+    public void doRegist(){
+        Main.changeViews("/GUI/window/regist.fxml");
     }
 }
