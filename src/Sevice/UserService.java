@@ -1,9 +1,7 @@
 package Sevice;
 
 import Data.Enum.*;
-import Interface.IGetData;
-import Interface.IStoreData;
-import Interface.IUserSevice;
+
 import Utils.Get;
 import Utils.IDUtil;
 import Utils.NameUtil;
@@ -40,6 +38,7 @@ public class UserService{
         this.gender = gender;
     }
 
+
     //教师构造
 
     public UserService(UserType userType, String name, String ID, String password, School school, Gender gender) {
@@ -59,23 +58,12 @@ public class UserService{
         this.ID = ID;
         this.password = password;
     }
+
     /*
      * Getter&Setter
      */
     public UserType getUserType() {
-        return this.user.getUserType();
-    }
-    public void setUserType(UserType userType) {
-        this.user.setUserType(userType);
-    }
-    public String getName() {
-        return this.user.getName();
-    }
-    public void setName(String name) {
-        this.user.setName(name);
-    }
-    public String getID() {
-        return this.user.getID();
+        return userType;
     }
 
     public void setUserType(UserType userType) {
@@ -93,26 +81,6 @@ public class UserService{
     public String getID() {
         return ID;
     }
-    /*
-     * 功能主体
-     */
-    @Override
-    public void Regist(){
-        user.setID(getAvailableID(user.getUserType()));
-        switch (user.getUserType()) {
-            case None -> {
-                System.out.println("用户不存在");
-            }
-            case Student -> {storeUser(user.getUserType(), user.getName(), user.getID(), user.getPassword(),grade,school,gender);
-            }
-            case Teacher -> {storeUser(user.getUserType(), user.getName(), user.getID(), user.getPassword(),school,gender);
-            }
-            case Admin -> {storeUser(user.getUserType(), user.getName(), user.getID(), user.getPassword());
-            }
-        };
-    }
-    @Override
-    public boolean isNameValid(){
 
     public void setID(String ID) {
         this.ID = ID;
@@ -121,8 +89,6 @@ public class UserService{
     public String getPassword() {
         return password;
     }
-    @Override
-    public boolean isPasswordValid(){
 
     public void setPassword(String password) {
         this.password = password;
@@ -135,7 +101,6 @@ public class UserService{
     public void setGrade(Grade grade) {
         this.grade = grade;
     }
-    /*
 
     public School getSchool() {
         return school;
