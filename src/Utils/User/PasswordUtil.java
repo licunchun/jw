@@ -1,5 +1,6 @@
 package Utils.User;
 
+import Data.Enum.Error.Regist;
 import Data.Enum.Tools.StringState;
 
 public class PasswordUtil extends StrUtil {
@@ -15,14 +16,14 @@ public class PasswordUtil extends StrUtil {
         }
         return true;
     }
-    public static StringState checkValid(String str){
+    public static Regist checkValid(String str) {
         if (str.isEmpty())
-            return StringState.EMPTY;
+            return Regist.PasswordEmpty;
         else if (!lengthCheck(str))
-            return StringState.OVERLENGTH;
-        else if(!charCheck(str))
-            return StringState.INVALIDCHAR;
+            return Regist.PasswordOverLength;
+        else if (!charCheck(str))
+            return Regist.PasswordInvalidChar;
         else
-            return StringState.RIGHT;
+            return Regist.Pass;
     }
 }

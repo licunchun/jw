@@ -1,6 +1,7 @@
 package Utils.DataBase;
 
 import Data.Enum.User.UserType;
+import JavaBean.User;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,8 +20,13 @@ public class GetUtil {
 
 
 
-
-
+    /*
+    获得User用户类型的数据
+     */
+    public static User getUser(String ID){
+        User user = new User();
+        return user;
+    }
 
     /*
     通过用户类型，以及该用户对应索引来获得数据，后续可能都靠这样来获取数据
