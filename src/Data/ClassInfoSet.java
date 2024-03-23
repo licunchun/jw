@@ -1,10 +1,11 @@
 package Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ClassInfoSet {
-    List<ClassInfo> classInfos;
-    public ClassInfoSet(String info) {
-
+    ArrayList<ClassInfo> classInfos;
+    public ClassInfoSet() {
+        classInfos = new ArrayList<>();
     }
 }
