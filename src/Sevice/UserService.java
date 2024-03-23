@@ -121,6 +121,7 @@ public class UserService{
      */
 
     public void Regist(){
+
         setID(GetUtil.getAvailableID(this.userType));
         switch (getUserType()) {
             case None -> {exit();
