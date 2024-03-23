@@ -1,5 +1,6 @@
 package GUI.controller;
 
+import Data.Enum.Error.Login;
 import Data.Enum.User.UserType;
 import GUI.util.StringUtil;
 import MainPackage.Main;
@@ -9,6 +10,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.security.KeyStore;
 
 
 public class LoginController {
@@ -20,11 +23,7 @@ public class LoginController {
     @FXML
     private Button ButtonLogin;
     @FXML
-    private Label IDEmptyTip;
-    @FXML
-    private Label PasswordEmptyTip;
-    @FXML
-    private Label LoginFail;
+    private Label Tips;
     @FXML
     private TextField UserID;
     @FXML
@@ -35,41 +34,19 @@ public class LoginController {
 
     @FXML
     public void doLogin(){
-        String ID=UserID.getText();
-        String password=UserPassword.getText();
-
-        /*
-         * Empty Tips
-         */
-        if (StringUtil.isEmpty(ID)){
-            IDEmptyTip.setVisible(true);
-            return;
-        }
-        else{
-            IDEmptyTip.setVisible(false);
-        }
-
-        if (StringUtil.isEmpty(password)){
-            PasswordEmptyTip.setVisible(true);
-            return;
-        }
-        else{
-            PasswordEmptyTip.setVisible(false);
-        }
-
-        /*
-         * Login
-         */
-
-        if (new UserService(UserType.Admin,"",ID,password).checkIDAndPassword()){
-            //Main.changeViews("/GUI/window/regist.fxml");
-            System.out.println("Login successfully!");
-            System.out.println("id:"+ID);
-            System.out.println("password:"+password);
-        }
-        else{
-            LoginFail.setVisible(true);
-            return;
+        switch(new UserService().checkIDAndPassword(UserID.getText(),UserPassword.getText())){
+            case Login.IDEmpty:
+                Tips.setText("ID不能为空");
+                Tips.setVisible(true);
+                return;
+            case Login.PasswordEmpty:
+                Tips.setText("密码不能为空");
+                Tips.setVisible(true);
+                return;
+            case Login.NotPass:
+                Tips.setText("ID密码不匹配");
+                Tips.setVisible(true);
+                return;
         }
     }
 

@@ -1,5 +1,6 @@
 package GUI.controller;
 
+import Data.Enum.Error.Regist;
 import Data.Enum.School;
 import Data.Enum.User.*;
 import GUI.util.StringUtil;
@@ -49,9 +50,11 @@ public class RegistController {
     private ChoiceBox<Gender> TeacherGenderChooser;
     @FXML
     private Button TeacherConfirmButton;
+    private static boolean isRegist=true;//是否在第一页面
+    private static boolean isStudent=true;//是否在学生页面
 
-    private static final UserService us=new UserService();
-    private static boolean isService=true;
+    private static UserService us=new UserService();
+    private static String ID= "";
     /*
      * ChoiceBlock properties
      */
@@ -74,11 +77,11 @@ public class RegistController {
          * ChoiceBlock init
          */
         listInitialize();
-        if(isService){
+        if(isRegist){
             registInitialize();
             return;
         }//regist
-        if(us.getUserType()==UserType.Student){
+        if(isStudent){
             studentInitialize();
         }//student
         else{
@@ -90,60 +93,51 @@ public class RegistController {
     }
     @FXML
     public void doRegistConfirm(){
-        String name=UserName.getText();
-        String password=Password.getText();
-        String confirmPassword=ConfirmPassword.getText();
-        UserType usertype=AccountType.getValue();
-        /*
-         * Empty Tips
-         */
-        if(StringUtil.isEmpty(name)){
-            Tips.setText("用户名不能为空!");
-            Tips.setVisible(true);
-            return;
+        switch(us.regist(AccountType.getValue(),UserName.getText(),Password.getText(),ConfirmPassword.getText())){
+            case Regist.NameEmpty:
+                Tips.setText("用户名不可为空，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.NameOverLength:
+                Tips.setText("用户名过长，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.NameInvalidChar:
+                Tips.setText("用户名不合法，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.PasswordEmpty:
+                Tips.setText("密码不可为空，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.PasswordOverLength:
+                Tips.setText("密码过长，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.PasswordInvalidChar:
+                Tips.setText("密码不合法，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.PasswordNotMatch:
+                Tips.setText("密码不匹配，请重新输入!");
+                Tips.setVisible(true);
+                return;
+            case Regist.Pass:
+                break;
         }
-        if(StringUtil.isEmpty(password)){
-            Tips.setText("密码不能为空!");
-            Tips.setVisible(true);
-            return;
-        }
-        if(StringUtil.isEmpty(confirmPassword)){
-            Tips.setText("确认密码不能为空!");
-            Tips.setVisible(true);
-            return;
-        }
-        if(!password.equals(confirmPassword)){
-            Tips.setText("两次输入的密码不一致!");
-            return;
-        }
-        /*
-         * ValidTips
-         */
-        us.setName(name);
-        us.setPassword(password);
-        us.setUserType(usertype);
-        if(!us.isNameValid()){
-            Tips.setText("用户名不合法，请重新输入!");
-            Tips.setVisible(true);
-            return;
-        }
-        if(!us.isPasswordValid()){
-            Tips.setText("密码不合法，请重新输入!");
-            Tips.setVisible(true);
-            return;
-        }
-
-        switch(usertype){
+        switch(AccountType.getValue()){
             case UserType.Student:
-                isService=false;
+                isRegist=false;
+                isStudent=true;
                 Main.changeViews("/GUI/window/registStudent.fxml");
                 return;
             case UserType.Teacher:
-                isService=false;
+                isRegist=false;
+                isStudent=false;
                 Main.changeViews("/GUI/window/registTeacher.fxml");
                 return;
             case UserType.Admin:
-                us.Regist();
+                ID=us.storeUser(null,null,null);
                 showIDPage();
                 break;
             default:
@@ -152,19 +146,12 @@ public class RegistController {
     }
     @FXML
     public void doStudentConfirm(){
-        us.setGrade(StudentGradeChooser.getValue());
-        us.setSchool(StudentSchoolChooser.getValue().toSchool());
-        us.setGender(StudentGenderChooser.getValue());
-
-        us.Regist();
+        ID=us.storeUser(StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
         showIDPage();
     }
     @FXML
     public void doTeacherConfirm(){
-        us.setSchool(TeacherSchoolChooser.getValue());
-        us.setGender(TeacherGenderChooser.getValue());
-
-        us.Regist();
+        ID=us.storeUser(StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
         showIDPage();
     }
 
@@ -173,7 +160,7 @@ public class RegistController {
     }
 
     public static String getID(){
-        return us.getID();
+        return ID;
     }
     /*
      * Init
