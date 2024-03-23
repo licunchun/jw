@@ -1,4 +1,4 @@
-package Utils;
+package Utils.DataBase;
 
 import Data.Enum.User.Gender;
 import Data.Enum.User.Grade;

@@ -1,18 +1,11 @@
-package Utils;
+package Utils.User;
 
 import Data.Enum.Tools.StringState;
 
-public class PasswordUtil extends StrUtil {
+public class NameUtil extends StrUtil {
 
     public static boolean charCheck(String str) {
-        int num = str.length();
-        for (int i = 0; i < num; i++) {
-            char ch = str.charAt(i);
-            if(ch>='a'&&ch<='z'||ch>='A'&&ch<='Z'||ch>='0'&&ch<='9')
-                continue;
-            else
-                return false;
-        }
+
         return true;
     }
     public static StringState checkValid(String str){

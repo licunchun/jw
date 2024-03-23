@@ -1,4 +1,4 @@
-package Utils;
+package Utils.DataBase;
 
 import Data.Enum.User.UserType;
 
