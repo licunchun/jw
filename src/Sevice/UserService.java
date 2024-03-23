@@ -1,8 +1,11 @@
 package Sevice;
 
+import Data.Enum.Error.Login;
+import Data.Enum.Error.Regist;
 import Data.Enum.School;
 import Data.Enum.Tools.StringState;
 import Data.Enum.User.*;
+import JavaBean.User;
 import Utils.DataBase.GetUtil;
 import Utils.DataBase.StoreUtil;
 import Utils.User.IDUtil;
@@ -13,10 +16,7 @@ public class UserService{
     /*
      * 属性
      */
-    private UserType userType;
-    private String name;
-    private String ID;
-    private String password;
+    User user;
     private Grade grade;
     private School school;
     private Gender gender;
@@ -26,81 +26,60 @@ public class UserService{
 
     //空参构造
     public UserService() {
+        user = new User();
     }
 
     //学生构造
 
-    public UserService(UserType userType, String name, String ID, String password, Grade grade, School school, Gender gender) {
-        this.userType = userType;
-        this.name = name;
-        this.ID = ID;
-        this.password = password;
-        this.grade = grade;
-        this.school = school;
-        this.gender = gender;
-    }
+
 
 
     //教师构造
 
-    public UserService(UserType userType, String name, String ID, String password, School school, Gender gender) {
-        this.userType = userType;
-        this.name = name;
-        this.ID = ID;
-        this.password = password;
-        this.school = school;
-        this.gender = gender;
-    }
+
 
     //管理员构造
-
-    public UserService(UserType userType, String name, String ID, String password) {
-        this.userType = userType;
-        this.name = name;
-        this.ID = ID;
-        this.password = password;
-    }
 
     /*
      * Getter&Setter
      */
     public UserType getUserType() {
-        return userType;
+        return user.getUserType();
     }
 
-    public void setUserType(UserType userType) {
-        this.userType = userType;
+    private void setUserType(UserType userType) {
+        user.setUserType(userType);
     }
 
     public String getName() {
-        return name;
+        return user.getName();
     }
 
-    public void setName(String name) {
-        this.name = name;
+    private void setName(String name) {
+        user.setName(name);
     }
 
     public String getID() {
-        return ID;
+        return user.getID();
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    private void setID(String ID) {
+        user.setID(ID);
     }
 
     public String getPassword() {
-        return password;
+        return user.getPassword();
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    private void setPassword(String password) {
+        user.setPassword(password);
     }
 
     public Grade getGrade() {
         return grade;
     }
 
-    public void setGrade(Grade grade) {
+    private void setGrade(Grade grade) {
         this.grade = grade;
     }
 
@@ -108,7 +87,7 @@ public class UserService{
         return school;
     }
 
-    public void setSchool(School school) {
+    private void setSchool(School school) {
         this.school = school;
     }
 
@@ -116,53 +95,82 @@ public class UserService{
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    private void setGender(Gender gender) {
         this.gender = gender;
     }
 
     /*
      * 功能主体
      */
+    public Regist regist(UserType userType,String name,String password,String password_confirm)
+    {
+        Regist r = NameUtil.checkValid(name);
+        if(r != Regist.Pass)
+            return r;
+        r = PasswordUtil.checkValid(password);
+        if(r != Regist.Pass)
+            return r;
+        if(password.compareTo(password_confirm)==0)
+        {
+            user.setUserType(userType);
+            user.setName(name);
+            user.setPassword(password);
+            return Regist.Pass;
+        }
+        else
+            return Regist.PasswordNotMatch;
+    }
 
-    public void Regist(){
-
-        setID(GetUtil.getAvailableID(this.userType));
+    public String storeUser(Gender gender,School school,Grade grade)
+    {
+        String ID = GetUtil.getAvailableID(user.getUserType());
+        user.setID(ID);
         switch (getUserType()) {
-            case None -> {exit();
+            case UserType.Student->{
+                StoreUtil.storeStudent(user.getUserType(), user.getName(), user.getID(), user.getPassword(),school,gender,grade);
             }
-            case Student -> {
-                StoreUtil.storeStudent(userType,name,ID,password,grade,school,gender);
+            case UserType.Teacher->{
+                StoreUtil.storeTeacher(user.getUserType(), user.getName(), user.getID(), user.getPassword(),school,gender);
             }
-            case Teacher -> {
-                StoreUtil.storeTeacher(userType,name,ID,password,school,gender);
+            case UserType.Admin->{
+                StoreUtil.storeAdmin(user.getUserType(), user.getName(), user.getID(), user.getPassword());
             }
-            case Admin -> {
-                StoreUtil.storeAdmin(userType,name,ID,password);
+            default -> {
+                throw new RuntimeException("UserService.java(line ) StoreUser have no userType");
             }
-        };
+        }
+        return ID;
     }
 
-    public boolean isNameValid(){
-        if (NameUtil.checkValid(name)== StringState.RIGHT)
-            return true;
-        else
-            return false;
-    }
 
-    public boolean isPasswordValid(){
-        if(PasswordUtil.checkValid(password)== StringState.RIGHT)
-            return true;
-        else
-            return false;
-    }
-    public boolean checkIDAndPassword(){
+    public Login checkIDAndPassword(String ID,String password){
+        if(ID.isEmpty())
+            return Login.IDEmpty;
+        if(password.isEmpty())
+            return Login.PasswordEmpty;
         int index = IDUtil.isIDExist(ID);
         if(index == -1)
-            return false;
-        else if(password.compareTo(GetUtil.getPassword(this.userType,index))==0)
-            return true;
+            return Login.NotPass;
+        user = GetUtil.getUser(ID);
+        if(password.compareTo(user.getPassword())==0)
+        {
+            switch (user.getUserType()){
+                case Student -> {
+                    return Login.Student;
+                }
+                case Teacher -> {
+                    return Login.Teacher;
+                }
+                case Admin -> {
+                    return Login.Admin;
+                }
+                default -> {
+                    throw new RuntimeException("UserService.java(line ) StoreUser have no userType");
+                }
+            }
+        }
         else
-            return false;
+            return Login.NotPass;
     }
 
 
