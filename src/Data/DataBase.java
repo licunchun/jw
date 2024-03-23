@@ -2,9 +2,6 @@ package Data;
 
 import java.sql.*;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 public class DataBase {
     public static final int STUDENT = 1;

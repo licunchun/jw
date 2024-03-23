@@ -5,6 +5,7 @@ import Data.Enum.Tools.StringState;
 public class NameUtil extends StrUtil {
 
     public static boolean charCheck(String str) {
+
         return true;
     }
     public static StringState checkValid(String str){
