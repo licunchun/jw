@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.controller.RegistController">
+<AnchorPane prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Login.RegistController">
     <children>
       <ImageView fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../Resources/background200x250.png" />
+            <Image url="@../../Resources/background200x250.png" />
          </image>
       </ImageView>
           <VBox prefHeight="200.0" prefWidth="250.0">

@@ -1,9 +1,8 @@
-package GUI.controller;
+package GUI.Controller.Login;
 
 import Data.Enum.Error.Regist;
 import Data.Enum.School;
 import Data.Enum.User.*;
-import GUI.util.StringUtil;
 import MainPackage.Main;
 import Sevice.UserService;
 import javafx.collections.FXCollections;
@@ -129,12 +128,12 @@ public class RegistController {
             case UserType.Student:
                 isRegist=false;
                 isStudent=true;
-                Main.changeViews("/GUI/window/registStudent.fxml");
+                Main.changeViews("/GUI/Window/Login/registStudent.fxml");
                 return;
             case UserType.Teacher:
                 isRegist=false;
                 isStudent=false;
-                Main.changeViews("/GUI/window/registTeacher.fxml");
+                Main.changeViews("/GUI/Window/Login/registTeacher.fxml");
                 return;
             case UserType.Admin:
                 ID=us.storeUser(null,null,null);
@@ -156,7 +155,7 @@ public class RegistController {
     }
 
     public void showIDPage(){
-        Main.changeViews("/GUI/window/IDPage.fxml");
+        Main.changeViews("/GUI/Window/Login/IDPage.fxml");
     }
 
     public static String getID(){

@@ -1,4 +1,4 @@
-package GUI.util;
+package GUI.GUIUtil;
 
 import javafx.stage.Stage;
 

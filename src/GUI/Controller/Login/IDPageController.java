@@ -1,4 +1,4 @@
-package GUI.controller;
+package GUI.Controller.Login;
 
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -16,6 +16,6 @@ public class IDPageController {
     }
     @FXML
     public void doClick(){
-        Main.changeViews("/GUI/window/login.fxml");
+        Main.changeViews("/GUI/Window/Login/login.fxml");
     }
 }

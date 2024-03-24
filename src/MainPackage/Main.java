@@ -1,6 +1,6 @@
 package MainPackage;
 
-import GUI.util.StageUtil;
+import GUI.GUIUtil.StageUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,8 +22,8 @@ public class Main extends Application{
     public void start(Stage stage) throws Exception {
         Main.stage=stage;
         stage.setResizable(false);
-        stage.setTitle("Class choosing system");
-        changeViews("/GUI/window/login.fxml");
+        stage.setTitle("登入页面");
+        changeViews("/GUI/Window/Login/login.fxml");
         stage.show();
         StageUtil.setCenter(stage);
     }

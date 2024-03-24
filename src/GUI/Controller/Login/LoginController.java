@@ -1,8 +1,6 @@
-package GUI.controller;
+package GUI.Controller.Login;
 
 import Data.Enum.Error.Login;
-import Data.Enum.User.UserType;
-import GUI.util.StringUtil;
 import MainPackage.Main;
 import Sevice.UserService;
 import javafx.fxml.FXML;
@@ -10,8 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-
-import java.security.KeyStore;
 
 
 public class LoginController {
@@ -52,6 +48,6 @@ public class LoginController {
 
     @FXML
     public void doRegist(){
-        Main.changeViews("/GUI/window/regist.fxml");
+        Main.changeViews("/GUI/Window/Login/regist.fxml");
     }
 }
