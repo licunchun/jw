@@ -5,6 +5,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
+import static GUI.GUIUtil.StageUtil.changeViews;
+
 public class IDPageController {
     @FXML
     public Label IDShowLabel;
@@ -16,6 +18,6 @@ public class IDPageController {
     }
     @FXML
     public void doClick(){
-        Main.changeViews("/GUI/Window/Login/login.fxml");
+        changeViews("/GUI/Window/Login/login.fxml");
     }
 }

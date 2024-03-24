@@ -9,6 +9,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+import static GUI.GUIUtil.StageUtil.changeViews;
+
 
 public class LoginController {
     /*
@@ -48,6 +50,6 @@ public class LoginController {
 
     @FXML
     public void doRegist(){
-        Main.changeViews("/GUI/Window/Login/regist.fxml");
+        changeViews("/GUI/Window/Login/regist.fxml");
     }
 }

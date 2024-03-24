@@ -13,6 +13,8 @@ import javafx.util.StringConverter;
 
 import java.util.Arrays;
 
+import static GUI.GUIUtil.StageUtil.changeViews;
+
 public class RegistController {
     /*
      * Major subassembly
@@ -128,12 +130,12 @@ public class RegistController {
             case UserType.Student:
                 isRegist=false;
                 isStudent=true;
-                Main.changeViews("/GUI/Window/Login/registStudent.fxml");
+                changeViews("/GUI/Window/Login/registStudent.fxml");
                 return;
             case UserType.Teacher:
                 isRegist=false;
                 isStudent=false;
-                Main.changeViews("/GUI/Window/Login/registTeacher.fxml");
+                changeViews("/GUI/Window/Login/registTeacher.fxml");
                 return;
             case UserType.Admin:
                 ID=us.storeUser(null,null,null);
@@ -155,7 +157,7 @@ public class RegistController {
     }
 
     public void showIDPage(){
-        Main.changeViews("/GUI/Window/Login/IDPage.fxml");
+        changeViews("/GUI/Window/Login/IDPage.fxml");
     }
 
     public static String getID(){

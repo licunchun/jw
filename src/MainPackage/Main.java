@@ -1,5 +1,6 @@
 package MainPackage;
 
+import GUI.Controller.Main.test.testMain;
 import GUI.GUIUtil.StageUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -12,7 +13,7 @@ import java.util.Objects;
 
 public class Main extends Application{
 
-    private static  Stage stage;
+    private static Stage stage;
 
     public static void main(String[] args) {
         launch(args);
@@ -20,21 +21,21 @@ public class Main extends Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        Main.stage=stage;
+        Main.stage =stage;
         stage.setResizable(false);
-        stage.setTitle("登入页面");
-        changeViews("/GUI/Window/Login/login.fxml");
+        stage.setTitle("学生选课系统");
+        //GUI.GUIUtil.StageUtil.changeViews("/GUI/Window/Login/Login.fxml");
+        GUI.GUIUtil.StageUtil.changeViews("/GUI/Window/Main/Student/StudentMainMenu.fxml");
         stage.show();
         StageUtil.setCenter(stage);
     }
 
-    public static void changeViews(String fxml){
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource(fxml)));
-            stage.setScene(new Scene(root));
-            StageUtil.setCenter(stage);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    public Stage getStage(){
+        return stage;
+    }
+
+    public static void setScene(Parent root){
+        stage.setScene(new Scene(root));
+        StageUtil.setCenter(stage);
     }
 }
