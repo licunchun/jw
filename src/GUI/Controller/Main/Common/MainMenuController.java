@@ -22,12 +22,16 @@ public class MainMenuController {
      * Page attributes and their getter&setter
      */
     private static UserType userType;
-    public static void setUserType(UserType userType) {
-        MainMenuController.userType = userType;
+    public void setUserType(UserType userType){
+        MainMenuController.userType=userType;
     }
 
     @FXML
-    public void initialize(){
+    public void initialize(){}
+
+    @FXML
+    public void showInformationPage(){
 
     }
+
 }

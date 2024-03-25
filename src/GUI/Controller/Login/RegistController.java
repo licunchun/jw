@@ -9,6 +9,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import java.util.Arrays;
 import static GUI.GUIUtil.StageUtil.changeViews;
 
 public class RegistController {
+    private static final Stage stage=Main.getStage();
     /*
      * Major subassembly
      */
@@ -130,12 +132,12 @@ public class RegistController {
             case UserType.Student:
                 isRegist=false;
                 isStudent=true;
-                changeViews("/GUI/Window/Login/registStudent.fxml");
+                changeViews(stage,"/GUI/Window/Login/registStudent.fxml");
                 return;
             case UserType.Teacher:
                 isRegist=false;
                 isStudent=false;
-                changeViews("/GUI/Window/Login/registTeacher.fxml");
+                changeViews(stage,"/GUI/Window/Login/registTeacher.fxml");
                 return;
             case UserType.Admin:
                 ID=us.storeUser(null,null,null);
@@ -157,7 +159,7 @@ public class RegistController {
     }
 
     public void showIDPage(){
-        changeViews("/GUI/Window/Login/IDPage.fxml");
+        changeViews(stage,"/GUI/Window/Login/IDPage.fxml");
     }
 
     public static String getID(){

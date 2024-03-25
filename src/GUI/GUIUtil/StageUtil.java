@@ -1,9 +1,9 @@
 package GUI.GUIUtil;
 
-import GUI.Controller.Main.test.testMain;
 import MainPackage.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.awt.*;
@@ -19,10 +19,15 @@ public class StageUtil {
         stage.setX(x);
         stage.setY(y);
     }
-    public static void changeViews(String fxml){
+
+    public static void setScene(Stage stage,Parent root){
+        stage.setScene(new Scene(root));
+        StageUtil.setCenter(stage);
+    }
+    public static void changeViews(Stage stage,String fxml){
         try {
             Parent root = FXMLLoader.load(Objects.requireNonNull(StageUtil.class.getResource(fxml)));
-            Main.setScene(root);
+            setScene(stage,root);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

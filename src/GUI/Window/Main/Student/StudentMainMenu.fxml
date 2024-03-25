@@ -6,10 +6,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import Data.Enum.User.UserType?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="GUI.Controller.Main.Student.StudentMainMenuController"
             prefHeight="720.0" prefWidth="1280.0">
-    <fx:include source="/GUI/Window/Main/Common/MainMenu.fxml"/>
+    <fx:include source="/GUI/Window/Main/Common/MainMenu.fxml" fx:id="mainMenu"/>
 
 </AnchorPane>
