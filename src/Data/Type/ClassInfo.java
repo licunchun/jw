@@ -16,7 +16,6 @@ public class ClassInfo {
     public String education;
     public String classType;
     public String teachers;
-    public String admin;
     public ClassInfo() {
 
     }

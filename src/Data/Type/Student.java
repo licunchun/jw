@@ -9,6 +9,7 @@ public class Student {
     public String major;
     public String classes;
     public String money;
+    public String key;
     public Student() {
 
     }

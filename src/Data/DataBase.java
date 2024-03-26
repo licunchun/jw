@@ -184,7 +184,6 @@ public class DataBase {
                 classInfo.education = resultSet.getString("education");
                 classInfo.classType = resultSet.getString("classType");
                 classInfo.teachers = resultSet.getString("teachers");
-                classInfo.admin = resultSet.getString("admin");
                 classInfoSet.classInfos.add(classInfo);
             }
             return classInfoSet;

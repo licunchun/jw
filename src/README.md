@@ -124,4 +124,84 @@ Database:
 
 # 中间层
 
+？？
 
+# 数据
+
++ Students
+
+public String name;
+
+public String account;
+
+public String gender;
+
+public String major;
+
+public String classes;
+
+public String money;
+
+public String key;
+
++ Teacher
+
+public String name;
+
+public String account;
+
+public String classes;
+
+public String key;
+
++ manager
+
+?
+
++ ClassInfo //课程信息
+
+public String code;
+
+public String name;
+
+public int period;
+
+public double credits;
+
+public String time;
+
+public int stdCount;
+
+public int limitCount;
+
+public String courseType;
+
+public String department;
+
+public String campus;
+
+public String examMode;
+
+public String Language;
+
+public String education;
+
+public String classType;
+
+public String teachers;
+
++ Point //给分,教师查看选课等等
+
+String code;
+
+String course;
+
+String account;
+
+String name;
+
+String point;
+
+# Enum
+
+前端专用（
