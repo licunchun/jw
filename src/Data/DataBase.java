@@ -72,14 +72,12 @@ public class DataBase {
         try {
             resultSet = statement.executeQuery(sql);
             resultSet.next();
-            Student student = new Student();
-            student.name = resultSet.getString("name");
-            student.account = resultSet.getString("account");
-            student.gender = resultSet.getString("gender");
-            student.major = resultSet.getString("major");
-            student.classes = resultSet.getString("classes");
-            student.money = resultSet.getString("money");
-            return student;
+            String [] info = new String[7];
+            for (int i = 0; i < 7; i++) {
+                info[i] = resultSet.getString(i + 1);
+            }
+
+            return new Student(info);
         } catch (SQLException e) {
             return null;
         }
@@ -157,9 +155,14 @@ public class DataBase {
     public boolean changeKeyOfManager(String account,String key){
         return changeKey(account, key, MANAGER);
     }
-    public void close() throws SQLException {
-        statement.close();
-        connection.close();
+    public void close() {
+        try {
+            statement.close();
+            connection.close();
+        }
+        catch (SQLException e) {
+            System.out.println("Fail to Close DataBase");
+        }
     }
 
     public ClassInfoSet check() { // 查看总课程

@@ -3,7 +3,6 @@ package Sevice;
 import Data.Enum.Error.Login;
 import Data.Enum.Error.Regist;
 import Data.Enum.School;
-import Data.Enum.Tools.StringState;
 import Data.Enum.User.*;
 import JavaBean.User;
 import Utils.DataBase.GetUtil;
