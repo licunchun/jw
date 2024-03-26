@@ -88,4 +88,33 @@ set函数禁用，需要修改什么加函数传形参
 
 # APP
 
+---
+
+# 后端：
+
+Database:
+
+public String key(String account, int type) //传入账户及其类型，返回密码
+
+public String keyOfStudent(String account) 
+public String keyOfTeacher(String account) 
+public String keyOfManager(String account) //传入账户，返回密码（key也可以用，看哪个合适方便 自取)
+
+public boolean changeKey(String account, String key, int type) //传入账户类型密码，返回是否change成功
+
+public boolean changeKeyOfStudent(String account,String key)
+public boolean changeKeyOfTeacher(String account,String key)
+public boolean changeKeyOfManager(String account,String key)//同上
+
+public Student infoOfStudent(String account) //查询Student信息
+
+public Student infoOfTeacher(String account) //查询Teacher信息
+
+public boolean addStudent(String name, String account, String key, String gender, String major)
+
+public boolean addTeacher(String name, String account, String key, String major)
+
+public boolean addManager(String name, String account, String key) //加入新学生，老师，管理员
+
+public boolean setMoney(String account, int money) //充值
 

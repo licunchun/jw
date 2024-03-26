@@ -3,6 +3,7 @@ package Data;
 import Data.Type.ClassInfo;
 import Data.Type.ClassInfoSet;
 import Data.Type.Student;
+import Data.Type.Teacher;
 
 import java.sql.*;
 import java.util.Arrays;
@@ -83,6 +84,19 @@ public class DataBase {
             return null;
         }
     }
+    public Teacher infoOfTeacher(String account) {
+        String sql = "select * from teachers where account = '" + account + "'";
+        try {
+            resultSet = statement.executeQuery(sql);
+            resultSet.next();
+            Teacher teacher = new Teacher();
+            teacher.name = resultSet.getString("name");
+            teacher.classes = resultSet.getString("classes");
+            return teacher;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
     public boolean addStudent(String name, String account, String key, String gender, String major) {
         String sql = "insert into students (name, account, key, gender, major, classes) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "', '" + gender + "', '" + major + "', 0)";
@@ -95,7 +109,7 @@ public class DataBase {
         }
     }
     public boolean addTeacher(String name, String account, String key, String major) {
-        String sql = "insert into teachers (name, account, key, major) " +
+        String sql = "insert into teachers (name, account, key, major, classes) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "', '" + major + "')";
         System.out.println(sql);
         try {
@@ -125,7 +139,9 @@ public class DataBase {
             return false;
         }
     }
-    public String keyOfStudent(String account) { return key(account, STUDENT); }
+    public String keyOfStudent(String account) {
+        return key(account, STUDENT);
+    }
     public String keyOfTeacher(String account) {
         return key(account, TEACHER);
     }
