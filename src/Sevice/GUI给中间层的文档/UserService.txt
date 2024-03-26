@@ -8,10 +8,10 @@ Admin:          	userType,name,ID,password
 
 主体如下：
 - userType(UserType)	// enum中的用户种类
-- grade(Grade)		// enum中的年级，当且仅当用户为学生时使用
+- grade(Grade)		    // enum中的年级，当且仅当用户为学生时使用
 - school(School)		// enum中的学院，学生或者教师（注：学生可选范围更小）；
 - gender(Gender)		// enum中的性别
-- name(String)		// 姓名
+- name(String)		    // 姓名
 - ID(String)			// ID号
 - password(String)		// 密码
 

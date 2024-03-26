@@ -24,10 +24,12 @@ public class StageUtil {
         stage.setScene(new Scene(root));
         StageUtil.setCenter(stage);
     }
-    public static void changeViews(Stage stage,String fxml){
+    public static <T> T changeViews(Stage stage,String fxml){
         try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(StageUtil.class.getResource(fxml)));
+            FXMLLoader loader=new FXMLLoader(Objects.requireNonNull(StageUtil.class.getResource(fxml)));
+            Parent root = loader.load();
             setScene(stage,root);
+            return loader.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
