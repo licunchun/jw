@@ -7,4 +7,7 @@ public class ClassInfoSet {
     public ClassInfoSet() {
         classInfos = new ArrayList<>();
     }
+    public ClassInfo index(int i) {
+        return classInfos.get(i);
+    }
 }
