@@ -31,12 +31,13 @@ public class StudentInformationController {
             isEditGradePageShow=true;
             editGradePageStage=new Stage();
 
-            changeViews(editGradePageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+            changeViews(editGradePageStage,"/GUI/Window/Components/UserInformationEditor/GradeEditor.fxml");
 
             editGradePageStage.setOnCloseRequest(e->{
                 isEditGradePageShow=false;
                 editGradePageStage.close();
             });
+            editGradePageStage.setResizable(false);
             editGradePageStage.show();
             resetLocation(editGradePageStage);
         }
@@ -50,12 +51,13 @@ public class StudentInformationController {
             isEditSchoolPageShow=true;
             editSchoolPageStage=new Stage();
 
-            changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+            changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/StudentSchoolEditor.fxml");
 
             editSchoolPageStage.setOnCloseRequest(e->{
                 isEditSchoolPageShow=false;
                 editSchoolPageStage.close();
             });
+            editSchoolPageStage.setResizable(false);
             editSchoolPageStage.show();
             resetLocation(editSchoolPageStage);
         }
@@ -69,12 +71,13 @@ public class StudentInformationController {
             isRechargePageShow=true;
             rechargePageStage=new Stage();
 
-            changeViews(rechargePageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+            changeViews(rechargePageStage,"/GUI/Window/Components/UserInformationEditor/Recharger.fxml");
 
             rechargePageStage.setOnCloseRequest(e->{
                 isRechargePageShow=false;
                 rechargePageStage.close();
             });
+            rechargePageStage.setResizable(false);
             rechargePageStage.show();
             resetLocation(rechargePageStage);
         }

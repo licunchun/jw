@@ -23,12 +23,13 @@ public class TeacherInformationController {
             isEditSchoolPageShow=true;
             editSchoolPageStage=new Stage();
 
-            changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+            changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
 
             editSchoolPageStage.setOnCloseRequest(e->{
                 isEditSchoolPageShow=false;
                 editSchoolPageStage.close();
             });
+            editSchoolPageStage.setResizable(false);
             editSchoolPageStage.show();
             resetLocation(editSchoolPageStage);
         }

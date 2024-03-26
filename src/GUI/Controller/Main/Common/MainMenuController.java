@@ -37,7 +37,7 @@ public class MainMenuController {
     public void initialize(){}
 
     @FXML
-    public void showInformationPage() throws IOException {
+    public void showInformationPage() {
         if(!isInformationPageShow){
             isInformationPageShow=true;
             informationPageStage = new Stage();
@@ -56,6 +56,7 @@ public class MainMenuController {
                 isInformationPageShow=false;
                 informationPageStage.close();
             });
+            informationPageStage.setResizable(false);
             informationPageStage.show();
             resetLocation(informationPageStage);
         }

@@ -5,15 +5,13 @@ import Data.Enum.School;
 import Data.Enum.User.*;
 import MainPackage.Main;
 import Sevice.UserService;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import java.util.Arrays;
 
+import static Data.Enum.User.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 
 public class RegistController {
@@ -59,19 +57,6 @@ public class RegistController {
     private static UserService us=new UserService();
     private static String ID= "";
     /*
-     * ChoiceBlock properties
-     */
-    private final ObservableList<UserType> UserTypeList=
-            FXCollections.observableArrayList();
-    private final ObservableList<Grade> GradeList=
-            FXCollections.observableArrayList();
-    private final ObservableList<StudentSchool> StudentSchoolList=
-            FXCollections.observableArrayList();
-    private final ObservableList<School> SchoolList=
-            FXCollections.observableArrayList();
-    private final ObservableList<Gender> GenderList=
-            FXCollections.observableArrayList();
-    /*
      * Major function
      */
     @FXML
@@ -79,7 +64,6 @@ public class RegistController {
         /*
          * ChoiceBlock init
          */
-        listInitialize();
         if(isRegist){
             registInitialize();
             return;
@@ -168,29 +152,11 @@ public class RegistController {
     /*
      * Init
      */
-    private void listInitialize(){
-        GradeList.clear();
-        GradeList.addAll(Arrays.asList(Grade.values()));
-
-        StudentSchoolList.clear();
-        StudentSchoolList.addAll(Arrays.asList(StudentSchool.values()));
-
-        SchoolList.clear();
-        SchoolList.addAll(Arrays.asList(School.values()));
-
-        GenderList.clear();
-        GenderList.addAll(Arrays.asList(Gender.values()));
-
-        UserTypeList.clear();
-        UserTypeList.add(UserType.Student);
-        UserTypeList.add(UserType.Teacher);
-        UserTypeList.add(UserType.Admin);
-    }
     private void registInitialize(){
         {
             AccountType.setValue(UserType.Student);
 
-            AccountType.setConverter(new StringConverter<UserType>() {
+            AccountType.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(UserType userType) {
                     return userType.toString();
@@ -209,7 +175,7 @@ public class RegistController {
         {
             StudentGradeChooser.setValue(Grade.Grade1);
 
-            StudentGradeChooser.setConverter(new StringConverter<Grade>() {
+            StudentGradeChooser.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(Grade grade) {
                     return grade.toString();
@@ -226,7 +192,7 @@ public class RegistController {
         {
             StudentSchoolChooser.setValue(StudentSchool.GiftedYoung);
 
-            StudentSchoolChooser.setConverter(new StringConverter<StudentSchool>() {
+            StudentSchoolChooser.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(StudentSchool studentSchool) {
                     return studentSchool.toString();
@@ -242,7 +208,7 @@ public class RegistController {
         }//StudentSchoolChooser
         {
             StudentGenderChooser.setValue(Gender.Male);
-            StudentGenderChooser.setConverter(new StringConverter<Gender>() {
+            StudentGenderChooser.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(Gender gender) {
                     return gender.toString();
@@ -260,7 +226,7 @@ public class RegistController {
         {
             TeacherSchoolChooser.setValue(School.GiftedYoung);
 
-            TeacherSchoolChooser.setConverter(new StringConverter<School>() {
+            TeacherSchoolChooser.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(School school) {
                     return school.toString();
@@ -276,7 +242,7 @@ public class RegistController {
         }//TeacherSchoolChooser
         {
             TeacherGenderChooser.setValue(Gender.Male);
-            TeacherGenderChooser.setConverter(new StringConverter<Gender>() {
+            TeacherGenderChooser.setConverter(new StringConverter<>() {
                 @Override
                 public String toString(Gender gender) {
                     return gender.toString();

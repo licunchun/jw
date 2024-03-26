@@ -9,6 +9,6 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="GUI.Controller.Components.UserInformationEditor.RechargerController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefWidth="250.0">
 
 </AnchorPane>

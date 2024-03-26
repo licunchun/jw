@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="GUI.Controller.Components.UserInformationEditor.NameEditorController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Components.UserInformationEditor.NameEditorController">
+   <children>
+      <VBox prefWidth="250.0">
+         <children>
+            <AnchorPane prefWidth="250.0">
+               <children>
+                  <Label layoutX="61.0" text="修改名称">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="250.0">
+               <children>
+                  <Label text="名称">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="ChangedName" layoutX="50.0" layoutY="2.0" prefHeight="23.0" prefWidth="180.0" promptText="请输入修改后的名称" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="250.0">
+               <children>
+                  <Label fx:id="tips" prefHeight="15.0" prefWidth="200.0" textAlignment="CENTER" textFill="RED" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="250.0">
+               <children>
+                  <Button fx:id="Confirm" layoutX="92.0" layoutY="-6.0" mnemonicParsing="false" text="确认" onAction="#doConfirm">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

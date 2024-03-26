@@ -34,6 +34,7 @@ public class UserInformationPageController {
                 editPasswordPageStage.close();
             });
             editPasswordPageStage.show();
+            editPasswordPageStage.setResizable(false);
             resetLocation(editPasswordPageStage);
         }
         else{
@@ -53,6 +54,7 @@ public class UserInformationPageController {
                 editNamePageStage.close();
             });
             editNamePageStage.show();
+            editNamePageStage.setResizable(false);
             resetLocation(editNamePageStage);
         }
         else{

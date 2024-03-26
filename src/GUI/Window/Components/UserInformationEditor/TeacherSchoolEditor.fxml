@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Components.UserInformationEditor.TeacherSchoolEditorController">
+    <children>
+        <VBox prefWidth="250.0">
+            <children>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Label layoutX="61.0" text="修改院校">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Label layoutX="14.0" layoutY="1.0" text="年级">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <ChoiceBox fx:id="TeacherSchoolChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Button fx:id="Confirm" layoutX="92.0" mnemonicParsing="false" text="确认" onAction="#doConfirm">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Button>
+                    </children></AnchorPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
