@@ -1,27 +1,30 @@
 package GUI.Controller.Main.Common;
 
 import Data.Enum.User.UserType;
+import MainPackage.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 
+import static GUI.Controller.Main.Util.MainPage.openMainPage;
 import static GUI.GUIUtil.StageUtil.*;
 
 public class MainMenuController {
+    private final Stage stage= Main.getStage();
 
     @FXML
-    public MenuBar MainMenuBar;
+    private MenuBar MainMenuBar;
     @FXML
-    public Button personalInformation;
+    private Button personalInformation;
     @FXML
-    public AnchorPane MainModule;
+    private AnchorPane MainModule;
     @FXML
-    public javafx.scene.control.TabPane TabPane;
+    private javafx.scene.control.TabPane TabPane;
     private UserType userType=UserType.None;
+    private String ID="";
     private boolean isInformationPageShow =false;
     private UserInformationPageController userInformationPageController;
     private Stage informationPageStage;
@@ -32,15 +35,19 @@ public class MainMenuController {
     public void setUserType(UserType userType){
         this.userType=userType;
     }
+    public void setID(String ID){
+        this.ID=ID;
+    }
 
     @FXML
     public void initialize(){}
 
     @FXML
-    public void showInformationPage() {
+    private void showInformationPage() {
         if(!isInformationPageShow){
             isInformationPageShow=true;
             informationPageStage = new Stage();
+
 
             userInformationPageController=changeViews(informationPageStage,"/GUI/Window/Main/Common/UserInformationPage.fxml");
 

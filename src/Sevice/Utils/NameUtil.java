@@ -1,13 +1,10 @@
-package Utils.User;
+package Sevice.Utils;
 
 import Data.Enum.Error.Regist;
-import Data.Enum.Tools.StringState;
 
 public class NameUtil extends StrUtil {
-
     public static boolean charCheck(String str) {
-
-        return true;
+        return str.matches("^[\u4e00-\u9fa5]+$");
     }
     public static Regist checkValid(String str){
         if (str.isEmpty())
