@@ -1,5 +1,9 @@
 package Data;
 
+import Data.Type.ClassInfo;
+import Data.Type.ClassInfoSet;
+import Data.Type.Student;
+
 import java.sql.*;
 import java.util.Arrays;
 

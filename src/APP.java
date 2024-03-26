@@ -1,4 +1,4 @@
-import Data.ClassInfoSet;
+import Data.Type.ClassInfoSet;
 import Data.DataBase;
 
 public class APP {

@@ -1,9 +1,9 @@
-package Data;
+package Data.Type;
 
 import java.util.ArrayList;
 
 public class ClassInfoSet {
-    ArrayList<ClassInfo> classInfos;
+    public ArrayList<ClassInfo> classInfos;
     public ClassInfoSet() {
         classInfos = new ArrayList<>();
     }
