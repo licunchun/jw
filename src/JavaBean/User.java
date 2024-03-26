@@ -1,9 +1,6 @@
 package JavaBean;
 
-import Data.Enum.Error.Regist;
 import Data.Enum.User.UserType;
-import Utils.User.NameUtil;
-import Utils.User.PasswordUtil;
 
 public class User {
     private UserType userType;
