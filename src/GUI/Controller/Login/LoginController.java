@@ -1,6 +1,7 @@
 package GUI.Controller.Login;
 
 import Data.Enum.Error.Login;
+import Data.Enum.User.UserType;
 import MainPackage.Main;
 import Sevice.UserService;
 import javafx.fxml.FXML;
@@ -10,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import static GUI.Controller.Main.Util.MainPage.openMainPage;
 import static GUI.GUIUtil.StageUtil.changeViews;
 
 
@@ -47,6 +49,15 @@ public class LoginController {
                 Tips.setText("ID密码不匹配");
                 Tips.setVisible(true);
                 return;
+            case Login.Student:
+                openMainPage(stage,UserType.Student,UserID.getText());
+                return;
+            case Login.Teacher:
+                openMainPage(stage,UserType.Teacher,UserID.getText());
+                return;
+            case Login.Admin:
+                openMainPage(stage,UserType.Admin,UserID.getText());
+                return;
         }
     }
 
@@ -54,4 +65,5 @@ public class LoginController {
     public void doRegist(){
         changeViews(stage,"/GUI/Window/Login/regist.fxml");
     }
-}
+
+    }

@@ -1,15 +1,15 @@
 package Sevice;
 
+import Data.DataBase;
 import Data.Enum.Error.Login;
 import Data.Enum.Error.Regist;
 import Data.Enum.School;
 import Data.Enum.User.*;
 import JavaBean.User;
-import Utils.DataBase.GetUtil;
-import Utils.DataBase.StoreUtil;
-import Utils.User.IDUtil;
-import Utils.User.NameUtil;
-import Utils.User.PasswordUtil;
+import Sevice.Utils.GetUtil;
+import Sevice.Utils.StoreUtil;
+import Sevice.Utils.NameUtil;
+import Sevice.Utils.PasswordUtil;
 
 public class UserService{
     /*
@@ -19,6 +19,7 @@ public class UserService{
     private Grade grade;
     private School school;
     private Gender gender;
+    private DataBase db = new DataBase();
     /*
      * 构造
      */
@@ -27,18 +28,6 @@ public class UserService{
     public UserService() {
         user = new User();
     }
-
-    //学生构造
-
-
-
-
-    //教师构造
-
-
-
-    //管理员构造
-
     /*
      * Getter&Setter
      */
@@ -126,7 +115,7 @@ public class UserService{
         user.setID(ID);
         switch (getUserType()) {
             case UserType.Student->{
-                StoreUtil.storeStudent(user.getUserType(), user.getName(), user.getID(), user.getPassword(),school,gender,grade);
+                StoreUtil.storeStudent(user.getUserType(),user.getName(), user.getID(), user.getPassword(),school,gender,grade);
             }
             case UserType.Teacher->{
                 StoreUtil.storeTeacher(user.getUserType(), user.getName(), user.getID(), user.getPassword(),school,gender);
@@ -147,7 +136,7 @@ public class UserService{
             return Login.IDEmpty;
         if(password.isEmpty())
             return Login.PasswordEmpty;
-        int index = IDUtil.isIDExist(ID);
+        int index = 0;
         if(index == -1)
             return Login.NotPass;
         user = GetUtil.getUser(ID);

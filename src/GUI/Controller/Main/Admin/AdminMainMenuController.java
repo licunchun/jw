@@ -15,4 +15,7 @@ public class AdminMainMenuController {
     public void initialize(){
         mainMenuController.setUserType(UserType.Admin);
     }
+    public void setID(String ID){
+        mainMenuController.setID(ID);
+    }
 }

@@ -1,4 +1,4 @@
-package Utils.User;
+package Sevice.Utils;
 
 public abstract class StrUtil {
     public static boolean lengthCheck(String str){

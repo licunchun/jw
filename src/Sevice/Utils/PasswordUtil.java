@@ -1,7 +1,6 @@
-package Utils.User;
+package Sevice.Utils;
 
 import Data.Enum.Error.Regist;
-import Data.Enum.Tools.StringState;
 
 public class PasswordUtil extends StrUtil {
 
