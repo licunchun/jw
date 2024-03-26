@@ -11,7 +11,9 @@ public class TeacherMainMenuController {
     private MainMenuController mainMenuController;
 
 
-
+    public void setID(String ID){
+        mainMenuController.setID(ID);
+    }
     public void initialize(){
         mainMenuController.setUserType(UserType.Teacher);
     }

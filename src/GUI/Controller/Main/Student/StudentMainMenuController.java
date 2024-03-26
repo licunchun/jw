@@ -30,4 +30,7 @@ public class StudentMainMenuController {
         //mainMenuController赋值
         mainMenuController.setUserType(UserType.Student);
     }
+    public void setID(String ID){
+        mainMenuController.setID(ID);
+    }
 }
