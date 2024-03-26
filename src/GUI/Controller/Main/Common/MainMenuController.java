@@ -2,17 +2,14 @@ package GUI.Controller.Main.Common;
 
 import Data.Enum.User.UserType;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.TabPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import javax.swing.plaf.nimbus.State;
 import java.io.IOException;
+
+import static GUI.GUIUtil.StageUtil.*;
 
 public class MainMenuController {
 
@@ -44,28 +41,26 @@ public class MainMenuController {
         if(!isInformationPageShow){
             isInformationPageShow=true;
             informationPageStage = new Stage();
-            FXMLLoader loader=new FXMLLoader(getClass().getResource("/GUI/Window/Main/Common/UserInformationPage.fxml"));
-            Parent root = loader.load();
 
-            userInformationPageController=loader.getController();
+            userInformationPageController=changeViews(informationPageStage,"/GUI/Window/Main/Common/UserInformationPage.fxml");
+
             userInformationPageController.setUserType(userType);
             if(userType==UserType.Student){
-                FXMLLoader studentLoader=new FXMLLoader(getClass().getResource("/GUI/Window/Main/Student/StudentInformation.fxml"));
-                Parent studentRoot=studentLoader.load();
-                userInformationPageController.getChooseAnchorPane().getChildren().add(studentRoot);
+                userInformationPageController.getChooseAnchorPane().getChildren().add(loadScene("/GUI/Window/Main/Student/StudentInformation.fxml"));
             }
             if(userType==UserType.Teacher){
-                FXMLLoader teacherLoader=new FXMLLoader(getClass().getResource("/GUI/Window/Main/Teacher/TeacherInformation.fxml"));
-                Parent teacherRoot=teacherLoader.load();
-                userInformationPageController.getChooseAnchorPane().getChildren().add(teacherRoot);
+                userInformationPageController.getChooseAnchorPane().getChildren().add(loadScene("/GUI/Window/Main/Teacher/TeacherInformation.fxml"));
             }
 
-            informationPageStage.setScene(new Scene(root));
             informationPageStage.setOnCloseRequest(e->{
                 isInformationPageShow=false;
                 informationPageStage.close();
             });
             informationPageStage.show();
+            resetLocation(informationPageStage);
+        }
+        else{
+            resetLocation(informationPageStage);
         }
     }
 

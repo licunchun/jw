@@ -40,7 +40,7 @@
                 </AnchorPane>
                 <AnchorPane prefWidth="200.0">
                     <children>
-                        <Hyperlink fx:id="EditSchool" layoutX="72.0" layoutY="-3.0" text="修改院校" />
+                        <Hyperlink fx:id="EditSchool" layoutX="72.0" layoutY="-3.0" text="修改院校" onAction="#doEditSchool"/>
                     </children>
                 </AnchorPane>
             </children>

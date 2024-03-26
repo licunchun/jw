@@ -16,9 +16,7 @@ public class StudentMainMenuController {
     private MainMenuController mainMenuController;
     @FXML
     private AnchorPane subPane;
-
-
-
+    @FXML
     public void initialize(){
         //子区域加载，mainMenuController赋值
         try {

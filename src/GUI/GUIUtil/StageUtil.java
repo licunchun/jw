@@ -19,10 +19,14 @@ public class StageUtil {
         stage.setX(x);
         stage.setY(y);
     }
-
+    public static void resetLocation(Stage stage){
+        stage.setIconified(false);
+        stage.toFront();
+        setCenter(stage);
+    }
     public static void setScene(Stage stage,Parent root){
         stage.setScene(new Scene(root));
-        StageUtil.setCenter(stage);
+        resetLocation(stage);
     }
     public static <T> T changeViews(Stage stage,String fxml){
         try {
@@ -33,5 +37,16 @@ public class StageUtil {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static Parent loadScene(String fxml) {
+        FXMLLoader loader=new FXMLLoader(StageUtil.class.getResource(fxml));
+        Parent root=null;
+        try{
+            root=loader.load();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return root;
     }
 }
