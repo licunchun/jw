@@ -10,11 +10,22 @@ public class DataBase {
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
-    public DataBase() throws Exception {
-        Class.forName("org.sqlite.JDBC");
-        connection = DriverManager.getConnection("jdbc:sqlite:database.db");
-        statement = connection.createStatement();
-        System.out.println("Opened DataBase Successfully");
+    public DataBase() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            System.out.println("Success to Opened DataBase");
+        }
+        catch (ClassNotFoundException e) {
+            System.out.println("Fail to Opened DataBase");
+        }
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:database.db");
+            statement = connection.createStatement();
+            System.out.println("Success to Connect DataBase");
+        }
+        catch (SQLException e) {
+            System.out.println("Fail to Connect DataBase");
+        }
     }
     public String key(String account, int type) {
         String table = switch (type) {
@@ -133,7 +144,7 @@ public class DataBase {
 
     public ClassInfoSet check() { // 查看总课程
         ClassInfoSet classInfoSet = new ClassInfoSet();
-        String sql = "select * from classes";
+        String sql = "select * from courses";
         try{
             resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
@@ -168,7 +179,11 @@ public class DataBase {
             resultSet = statement.executeQuery(sql);
             resultSet.next();
             // 从数据库中获取当前 account 对应的 classes 集合
-            String[] classArray = resultSet.getString("classes").split(",");//按逗号分隔
+            String string = resultSet.getString("classes");
+            String[] classArray = null;
+            if (!string.isEmpty()) {
+                classArray = resultSet.getString("classes").split(",");//按逗号分隔
+            }
             String[] newClassArray = Arrays.copyOf(classArray, classArray.length + 1);
             newClassArray[newClassArray.length - 1] = code;
             String classesString = String.join(",", newClassArray);
