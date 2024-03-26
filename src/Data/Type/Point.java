@@ -1,4 +1,4 @@
-package Data;
+package Data.Type;
 
 public class Point {
     String code;
