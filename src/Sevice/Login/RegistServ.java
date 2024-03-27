@@ -1,7 +1,7 @@
-package Sevice;
+package Sevice.Login;
 
 import Data.DataBase;
-import Data.Enum.Error.Regist;
+import Data.Enum.Error.Login.Regist;
 import Data.Enum.School;
 import Data.Enum.User.Gender;
 import Data.Enum.User.Grade;

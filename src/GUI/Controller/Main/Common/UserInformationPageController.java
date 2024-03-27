@@ -27,7 +27,7 @@ public class UserInformationPageController {
             isEditPasswordPageShow=true;
             editPasswordPageStage=new Stage();
 
-            changeViews(editPasswordPageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+            changeViews(editPasswordPageStage, "/GUI/Window/Components/UserInformationEditor/PasswordChanger.fxml");
 
             editPasswordPageStage.setOnCloseRequest(e->{
                 isEditPasswordPageShow=false;

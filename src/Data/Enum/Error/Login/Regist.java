@@ -1,4 +1,4 @@
-package Data.Enum.Error;
+package Data.Enum.Error.Login;
 
 public enum Regist {
     NameEmpty,//名字为空

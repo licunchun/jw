@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class PasswordEditorController {
+public class PasswordChangerController {
     @FXML
     private Button Confirm;
     @FXML

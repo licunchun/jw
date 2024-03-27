@@ -1,6 +1,6 @@
 package GUI.Controller.Login;
 
-import Data.Enum.Error.Login;
+import Data.Enum.Error.Login.Login;
 import Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import static GUI.Controller.Main.Util.MainPage.openMainPage;
 import static GUI.GUIUtil.StageUtil.changeViews;
-import static Sevice.LoginServ.checkIDAndPassword;
+import static Sevice.Login.LoginServ.checkIDAndPassword;
 
 
 public class LoginController {

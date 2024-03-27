@@ -1,6 +1,6 @@
 package GUI.Controller.Login;
 
-import Data.Enum.Error.Regist;
+import Data.Enum.Error.Login.Regist;
 import Data.Enum.School;
 import Data.Enum.User.*;
 import MainPackage.Main;
@@ -12,8 +12,8 @@ import javafx.util.StringConverter;
 
 import static Data.Enum.User.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
-import static Sevice.RegistServ.regist;
-import static Sevice.RegistServ.store;
+import static Sevice.Login.RegistServ.regist;
+import static Sevice.Login.RegistServ.store;
 
 public class RegistController {
     private static final Stage stage=Main.getStage();
