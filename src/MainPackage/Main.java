@@ -25,8 +25,8 @@ public class Main extends Application{
         });
         stage.setResizable(false);
         stage.setTitle("学生选课系统");
-        //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Login/Login.fxml");
-        GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Student/StudentMainMenu.fxml");
+        GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Login/Login.fxml");
+        //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Student/StudentMainMenu.fxml");
         stage.show();
         resetLocation(stage);
     }

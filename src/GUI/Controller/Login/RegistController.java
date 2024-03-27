@@ -4,7 +4,6 @@ import Data.Enum.Error.Regist;
 import Data.Enum.School;
 import Data.Enum.User.*;
 import MainPackage.Main;
-import Sevice.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
@@ -13,6 +12,8 @@ import javafx.util.StringConverter;
 
 import static Data.Enum.User.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
+import static Sevice.RegistServ.regist;
+import static Sevice.RegistServ.store;
 
 public class RegistController {
     private static final Stage stage=Main.getStage();
@@ -53,9 +54,14 @@ public class RegistController {
     private Button TeacherConfirmButton;
     private static boolean isRegist=true;//是否在第一页面
     private static boolean isStudent=true;//是否在学生页面
-
-    private static UserService us=new UserService();
-    private static String ID= "";
+    private static String ID= "1";
+    /*
+     * User Information
+     */
+    private static UserType userType;
+    private static String name;
+    private static String password;
+    private static String confirmPassword;
     /*
      * Major function
      */
@@ -80,7 +86,11 @@ public class RegistController {
     }
     @FXML
     public void doRegistConfirm(){
-        switch(us.regist(AccountType.getValue(),UserName.getText(),Password.getText(),ConfirmPassword.getText())){
+        userType=AccountType.getValue();
+        name=UserName.getText();
+        password=Password.getText();
+        confirmPassword=ConfirmPassword.getText();
+        switch(regist(userType,name,password,confirmPassword)){
             case Regist.NameEmpty:
                 Tips.setText("用户名不可为空，请重新输入!");
                 Tips.setVisible(true);
@@ -112,7 +122,7 @@ public class RegistController {
             case Regist.Pass:
                 break;
         }
-        switch(AccountType.getValue()){
+        switch(userType){
             case UserType.Student:
                 isRegist=false;
                 isStudent=true;
@@ -124,7 +134,7 @@ public class RegistController {
                 changeViews(stage,"/GUI/Window/Login/registTeacher.fxml");
                 return;
             case UserType.Admin:
-                ID=us.storeUser(null,null,null);
+                ID=store(userType,name,password,confirmPassword,null,null,null);
                 showIDPage();
                 break;
             default:
@@ -133,12 +143,12 @@ public class RegistController {
     }
     @FXML
     public void doStudentConfirm(){
-        ID=us.storeUser(StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
+        ID=store(userType,name,password,confirmPassword,StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
         showIDPage();
     }
     @FXML
     public void doTeacherConfirm(){
-        ID=us.storeUser(StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
+        ID=store(userType,name,password,confirmPassword,StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
         showIDPage();
     }
 

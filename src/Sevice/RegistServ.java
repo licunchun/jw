@@ -11,7 +11,7 @@ import Sevice.Utils.PasswordUtil;
 import Sevice.Utils.UserTypeUtil;
 
 public class RegistServ{
-    public static Regist regist(UserType userType, String name, String password, String password_confirm,Gender gender, School school, Grade grade)
+    public static Regist regist(UserType userType, String name, String password, String password_confirm)
     {
         Regist r;
         //名字合法性检查

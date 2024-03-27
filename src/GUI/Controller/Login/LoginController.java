@@ -3,7 +3,6 @@ package GUI.Controller.Login;
 import Data.Enum.Error.Login;
 import Data.Enum.User.UserType;
 import MainPackage.Main;
-import Sevice.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,6 +12,7 @@ import javafx.stage.Stage;
 
 import static GUI.Controller.Main.Util.MainPage.openMainPage;
 import static GUI.GUIUtil.StageUtil.changeViews;
+import static Sevice.LoginServ.checkIDAndPassword;
 
 
 public class LoginController {
@@ -36,7 +36,7 @@ public class LoginController {
 
     @FXML
     public void doLogin(){
-        switch(new UserService().checkIDAndPassword(UserID.getText(),UserPassword.getText())){
+        switch(checkIDAndPassword(UserID.getText(),UserPassword.getText())){
             case Login.IDEmpty:
                 Tips.setText("ID不能为空");
                 Tips.setVisible(true);
