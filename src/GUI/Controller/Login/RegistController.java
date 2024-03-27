@@ -66,25 +66,6 @@ public class RegistController {
      * Major function
      */
     @FXML
-    public void initialize(){
-        /*
-         * ChoiceBlock init
-         */
-        if(isRegist){
-            registInitialize();
-            return;
-        }//regist
-        if(isStudent){
-            studentInitialize();
-        }//student
-        else{
-            teacherInitialize();
-        }//teacher
-
-
-
-    }
-    @FXML
     public void doRegistConfirm(){
         userType=AccountType.getValue();
         name=UserName.getText();
@@ -151,17 +132,34 @@ public class RegistController {
         ID=store(userType,name,password,confirmPassword,StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
         showIDPage();
     }
-
     public void showIDPage(){
         changeViews(stage,"/GUI/Window/Login/IDPage.fxml");
     }
-
     public static String getID(){
         return ID;
     }
     /*
      * Init
      */
+    @FXML
+    public void initialize(){
+        /*
+         * ChoiceBlock init
+         */
+        if(isRegist){
+            registInitialize();
+            return;
+        }//regist
+        if(isStudent){
+            studentInitialize();
+        }//student
+        else{
+            teacherInitialize();
+        }//teacher
+
+
+
+    }
     private void registInitialize(){
         {
             AccountType.setValue(UserType.Student);

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 
-public class MainPage {
+public class MainPageUtil {
     public static void openMainPage(Stage stage, UserType userType, String ID){
         switch (userType){
             case UserType.Student:

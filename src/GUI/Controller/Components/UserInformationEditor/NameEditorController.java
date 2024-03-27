@@ -9,10 +9,14 @@ public class NameEditorController {
     private TextField ChangedName;
     @FXML
     private Button Confirm;
+    private String ID;
     @FXML
     public void initialize(){
 
     }
     @FXML
     private void doConfirm(){}
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }

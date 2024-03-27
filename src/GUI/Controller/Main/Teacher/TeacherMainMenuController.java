@@ -9,10 +9,11 @@ public class TeacherMainMenuController {
     private static final Stage stage= Main.getStage();
 
     private MainMenuController mainMenuController;
+    private String ID;
 
 
     public void setID(String ID){
-        mainMenuController.setID(ID);
+        this.ID=ID;
     }
     public void initialize(){
         mainMenuController.setUserType(UserType.Teacher);

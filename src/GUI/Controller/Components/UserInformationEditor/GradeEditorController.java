@@ -13,6 +13,7 @@ public class GradeEditorController {
     private ChoiceBox<Grade> GradeChooser;
     @FXML
     private Button Confirm;
+    private String ID;
     @FXML
     public void initialize(){
         GradeChooser.setValue(Grade.Grade1);
@@ -32,4 +33,8 @@ public class GradeEditorController {
     }
     @FXML
     private void doConfirm(){}
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }

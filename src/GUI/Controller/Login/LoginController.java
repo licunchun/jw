@@ -10,7 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static GUI.Controller.Main.Util.MainPage.openMainPage;
+import static GUI.Controller.Main.Util.MainPageUtil.openMainPage;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static Sevice.Login.LoginServ.checkIDAndPassword;
 
@@ -30,7 +30,9 @@ public class LoginController {
     private TextField UserID;
     @FXML
     private PasswordField UserPassword;
-
+    /*
+     * Function
+     */
     @FXML
     public void initialize(){}
 

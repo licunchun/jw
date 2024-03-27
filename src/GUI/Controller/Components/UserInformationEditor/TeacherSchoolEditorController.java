@@ -13,6 +13,7 @@ public class TeacherSchoolEditorController{
     private ChoiceBox<School> TeacherSchoolChooser;
     @FXML
     private Button Confirm;
+    private String ID;
     @FXML
     public void initialize(){
         TeacherSchoolChooser.setValue(School.GiftedYoung);
@@ -32,4 +33,7 @@ public class TeacherSchoolEditorController{
     }
     @FXML
     private void doConfirm(){}
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }

@@ -1,5 +1,8 @@
 package GUI.Controller.Main.Student;
 
+import GUI.Controller.Components.UserInformationEditor.GradeEditorController;
+import GUI.Controller.Components.UserInformationEditor.RechargerController;
+import GUI.Controller.Components.UserInformationEditor.StudentSchoolEditorController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -23,6 +26,25 @@ public class StudentInformationController {
     private Hyperlink EditSchool;
     @FXML
     private Hyperlink Recharge;
+    private String ID;
+    /*
+     * Children Page
+     */
+    //Grade editor
+    private boolean isEditGradePageShow=false;
+    private Stage editGradePageStage=null;
+    private GradeEditorController gradeEditorController;
+    //School editor
+    private boolean isEditSchoolPageShow=false;
+    private Stage editSchoolPageStage=null;
+    private StudentSchoolEditorController studentSchoolEditorController;
+    //Recharger
+    private boolean isRechargePageShow=false;
+    private Stage rechargePageStage=null;
+    private RechargerController rechargerController;
+    /*
+     * Function
+     */
     @FXML
     private void initialize(){}
     @FXML
@@ -31,7 +53,8 @@ public class StudentInformationController {
             isEditGradePageShow=true;
             editGradePageStage=new Stage();
 
-            changeViews(editGradePageStage,"/GUI/Window/Components/UserInformationEditor/GradeEditor.fxml");
+            gradeEditorController=changeViews(editGradePageStage,"/GUI/Window/Components/UserInformationEditor/GradeEditor.fxml");
+            gradeEditorController.setID(ID);
 
             editGradePageStage.setOnCloseRequest(e->{
                 isEditGradePageShow=false;
@@ -51,7 +74,8 @@ public class StudentInformationController {
             isEditSchoolPageShow=true;
             editSchoolPageStage=new Stage();
 
-            changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/StudentSchoolEditor.fxml");
+            studentSchoolEditorController=changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/StudentSchoolEditor.fxml");
+            studentSchoolEditorController.setID(ID);
 
             editSchoolPageStage.setOnCloseRequest(e->{
                 isEditSchoolPageShow=false;
@@ -71,7 +95,8 @@ public class StudentInformationController {
             isRechargePageShow=true;
             rechargePageStage=new Stage();
 
-            changeViews(rechargePageStage,"/GUI/Window/Components/UserInformationEditor/Recharger.fxml");
+            rechargerController=changeViews(rechargePageStage,"/GUI/Window/Components/UserInformationEditor/Recharger.fxml");
+            rechargerController.setID(ID);
 
             rechargePageStage.setOnCloseRequest(e->{
                 isRechargePageShow=false;
@@ -85,11 +110,18 @@ public class StudentInformationController {
             resetLocation(rechargePageStage);
         }
     }
-
-    private boolean isEditGradePageShow=false;
-    private Stage editGradePageStage=null;
-    private boolean isEditSchoolPageShow=false;
-    private Stage editSchoolPageStage=null;
-    private boolean isRechargePageShow=false;
-    private Stage rechargePageStage=null;
+    public void closeAllChildren(){
+        if(isEditGradePageShow){
+            editGradePageStage.close();
+        }
+        if(isEditSchoolPageShow){
+            editSchoolPageStage.close();
+        }
+        if(isRechargePageShow){
+            rechargePageStage.close();
+        }
+    }
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }

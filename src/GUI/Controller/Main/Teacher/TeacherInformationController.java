@@ -1,5 +1,6 @@
 package GUI.Controller.Main.Teacher;
 
+import GUI.Controller.Components.UserInformationEditor.TeacherSchoolEditorController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
@@ -15,6 +16,16 @@ public class TeacherInformationController {
     private Label Gender;
     @FXML
     private Hyperlink EditSchool;
+    private String ID;
+    /*
+     * Children Page
+     */
+    private boolean isEditSchoolPageShow=false;
+    private Stage editSchoolPageStage=null;
+    private TeacherSchoolEditorController teacherSchoolEditorController;
+    /*
+     * Function
+     */
     @FXML
     private void initialize(){}
     @FXML
@@ -23,7 +34,8 @@ public class TeacherInformationController {
             isEditSchoolPageShow=true;
             editSchoolPageStage=new Stage();
 
-            changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
+            teacherSchoolEditorController=changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
+            teacherSchoolEditorController.setID(ID);
 
             editSchoolPageStage.setOnCloseRequest(e->{
                 isEditSchoolPageShow=false;
@@ -37,7 +49,13 @@ public class TeacherInformationController {
             resetLocation(editSchoolPageStage);
         }
     }
+    public void closeAllChildren(){
+        if(isEditSchoolPageShow){
+            editSchoolPageStage.close();
+        }
+    }
 
-    private boolean isEditSchoolPageShow=false;
-    private Stage editSchoolPageStage=null;
+    public void setID(String ID) {
+        this.ID = ID;
+    }
 }
