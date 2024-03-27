@@ -1,7 +1,6 @@
 package GUI.Data.Enum.Classes;
 
 public enum Education {
-    None(""),
     Preparatory("预科"),
     Undergraduate("本科"),
     Graduate("研究生");

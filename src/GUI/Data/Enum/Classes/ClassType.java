@@ -1,7 +1,6 @@
 package GUI.Data.Enum.Classes;
 
 public enum ClassType {
-    None(""),
     Theory("理论课"),
     Experiment("实验课"),
     Practice("实践课"),

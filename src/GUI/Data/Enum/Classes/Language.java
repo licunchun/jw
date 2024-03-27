@@ -1,7 +1,6 @@
 package GUI.Data.Enum.Classes;
 
 public enum Language {
-    None(""),
     Chinese("中文"),
     English("英文"),
     Double("双语"),

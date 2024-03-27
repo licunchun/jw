@@ -1,4 +1,4 @@
-package GUI.Data.Enum.Error.UserServ;
+package GUI.Data.Enum.Error.Main.Components.UserServ;
 
 public enum EditError {
     Success,//编译成功

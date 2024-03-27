@@ -9,7 +9,6 @@
     
     Regist:注册（检验）函数/Service/Login/RegistServ.regist
     的返回值类
-## UserServ
-
-    EditError:UserServ中所有覆盖性编译（edit开头的）函数的返回值类
-    ChangePasswordError:UserServ中changePassword
+## Main
+简介：对应Service文件夹里面的函数
+注：对应包内部有进一步的说明文档

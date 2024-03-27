@@ -1,7 +1,6 @@
 package GUI.Data.Enum.Classes;
 
 public enum Campus {
-    None(""),
     West("东区"),
     East("西区"),
     Middle("中区"),
@@ -13,7 +12,6 @@ public enum Campus {
     Campus(String name) {
         this.name = name;
     }
-
     public String toString(){
         return this.name;
     }

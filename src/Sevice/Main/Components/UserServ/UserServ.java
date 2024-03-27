@@ -1,7 +1,7 @@
-package Sevice.Main.Component;
+package Sevice.Main.Components.UserServ;
 
-import GUI.Data.Enum.Error.UserServ.ChangePasswordError;
-import GUI.Data.Enum.Error.UserServ.EditError;
+import GUI.Data.Enum.Error.Main.Components.UserServ.ChangePasswordError;
+import GUI.Data.Enum.Error.Main.Components.UserServ.EditError;
 import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Grade;
 

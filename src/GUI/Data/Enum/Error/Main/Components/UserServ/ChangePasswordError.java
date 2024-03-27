@@ -1,4 +1,4 @@
-package GUI.Data.Enum.Error.UserServ;
+package GUI.Data.Enum.Error.Main.Components.UserServ;
 
 public enum ChangePasswordError {
     Success,//修改成功

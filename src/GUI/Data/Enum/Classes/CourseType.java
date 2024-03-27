@@ -1,7 +1,6 @@
 package GUI.Data.Enum.Classes;
 
 public enum CourseType {
-    None(""),
     General("通识"),
     Else("其他"),
     BasicPE("基础体育"),

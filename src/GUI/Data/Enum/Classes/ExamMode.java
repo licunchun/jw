@@ -1,7 +1,6 @@
 package GUI.Data.Enum.Classes;
 
 public enum ExamMode {
-    None(""),
     PE("体育测试"),
     WrittenOpen("笔试(开卷)"),
     WrittenHalf("笔试(半开卷)"),

@@ -19,4 +19,5 @@ public class Classes {
     private Language language;         //教学语言
     private Education education;       //本科/研究生
     private IDSet teacher;             //教师ID的
+    private Full full;            //课堂是否满了
 }

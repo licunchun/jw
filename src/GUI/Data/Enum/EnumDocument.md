@@ -10,6 +10,7 @@
     CourseType:课程种类
     Education:本科/研究生
     ExamMode:考试方式
+    Full:课堂是否是满的
     Language:教学语言
     Week:星期一 ~ 星期日
 ## Error
