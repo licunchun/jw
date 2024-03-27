@@ -1,4 +1,4 @@
 package Sevice.Main.Admin;
 
-public class AdminService {
+public class AdminServ {
 }

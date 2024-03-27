@@ -18,6 +18,7 @@ public class LoginServ {
         //从数据库获得用户密码
         DataBase db = new DataBase();
         String key = db.key(ID,type);
+        db.close();
         if(key.isEmpty())
             return Login.NotPass;
         //密码判断
