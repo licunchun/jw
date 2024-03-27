@@ -1,6 +1,6 @@
 package GUI.Controller.Main.Common;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -9,7 +9,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
-import static GUI.Controller.Main.Util.MainPage.openMainPage;
 import static GUI.GUIUtil.StageUtil.*;
 
 public class MainMenuController {

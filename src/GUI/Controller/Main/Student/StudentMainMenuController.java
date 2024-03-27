@@ -1,6 +1,6 @@
 package GUI.Controller.Main.Student;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 import GUI.Controller.Main.Common.MainMenuController;
 import MainPackage.Main;
 import javafx.fxml.FXML;

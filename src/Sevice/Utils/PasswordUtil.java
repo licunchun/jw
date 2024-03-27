@@ -1,6 +1,6 @@
 package Sevice.Utils;
 
-import Data.Enum.Error.Login.Regist;
+import GUI.Data.Enum.Error.Login.Regist;
 
 public class PasswordUtil extends StrUtil {
 

@@ -1,6 +1,6 @@
 package GUI.Controller.Main.Common;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.AnchorPane;

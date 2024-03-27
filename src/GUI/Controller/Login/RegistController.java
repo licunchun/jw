@@ -1,8 +1,8 @@
 package GUI.Controller.Login;
 
-import Data.Enum.Error.Login.Regist;
-import Data.Enum.School;
-import Data.Enum.User.*;
+import GUI.Data.Enum.Error.Login.Regist;
+import GUI.Data.Enum.School;
+import GUI.Data.Enum.User.*;
 import MainPackage.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 
-import static Data.Enum.User.UserObservableList.*;
+import static GUI.Data.Enum.ObservableList.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static Sevice.Login.RegistServ.regist;
 import static Sevice.Login.RegistServ.store;

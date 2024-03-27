@@ -1,7 +1,7 @@
 package Sevice.Login;
 
 import Data.DataBase;
-import Data.Enum.Error.Login.Login;
+import GUI.Data.Enum.Error.Login.Login;
 import Sevice.Utils.UserTypeUtil;
 
 public class LoginServ {

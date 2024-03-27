@@ -1,7 +1,7 @@
 package GUI.Controller.Login;
 
-import Data.Enum.Error.Login.Login;
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.Error.Login.Login;
+import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;

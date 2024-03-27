@@ -1,7 +1,7 @@
 package Sevice.Utils;
 
 import Data.DataBase;
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 
 public class UserTypeUtil {
     final private static int STUDENT_ACCOUNT_LENGTH = 10;

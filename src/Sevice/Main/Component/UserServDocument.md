@@ -4,7 +4,7 @@
 注意！！所有Edit开头的都是覆盖，而ChangePassword是要检验原密码的
 
 
-## +EditName(String ID，String name)
+## +editName(String ID，String name)
 参数:
 
     ID(String):用户的ID
@@ -19,7 +19,7 @@
     用户姓名的覆盖器,需要检查用户名是否合法并返回结果
     如果ID=null请报错
     Throw Exeption要包含函数名，函数位置，报错原因
-## +EditPassword(String ID，String password)
+## +editPassword(String ID，String password)
 参数:
 
     ID(String):用户的ID
@@ -35,7 +35,7 @@
     用户密码的覆盖器,需要检查用户名是否合法并返回结果
     如果ID=null请报错
     Throw Exeption要包含函数名，函数位置，报错原因
-## +EditMoney(String ID，double money)
+## +editMoney(String ID，double money)
 参数:
 
     ID(String):用户的ID
@@ -51,7 +51,7 @@
     Throw Exeption
     如果用户类型没有money请报错，如果ID=null也请报错
     Throw Exeption要包含函数名，函数位置，报错原因
-## +EditAddMoney(String ID，double addMoney)
+## +editAddMoney(String ID，double addMoney)
 参数:
 
     ID(String):用户的ID
@@ -66,7 +66,7 @@
     Throw Exeption
     如果用户类型没有money请报错，如果ID=null也请报错
     Throw Exeption要包含函数名，函数位置，报错原因
-## +EditGrade(String ID，Grade grade)
+## +editGrade(String ID，Grade grade)
 参数:
 
     ID(String):用户的ID
@@ -81,7 +81,7 @@
     Throw Exeption
     如果用户类型没有年级请报错，如果ID=null也请报错
     Throw Exeption要包含函数名，函数位置，报错原因
-## +EditSchool(String ID，School school)
+## +editSchool(String ID，School school)
 参数:
 
     ID(String):用户的ID
@@ -97,7 +97,7 @@
     Throw Exeption
     如果用户类型没有院校请报错，如果ID=null也请报错
     Throw Exeption要包含函数名，函数位置，报错原因
-## +ChangePassword(String ID,String originPassword,String newPassword,String newConfirmPassword)
+## +changePassword(String ID,String originPassword,String newPassword,String newConfirmPassword)
 参数：
 
     ID(String):用户的ID

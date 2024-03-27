@@ -1,11 +1,11 @@
 package Sevice.Login;
 
 import Data.DataBase;
-import Data.Enum.Error.Login.Regist;
-import Data.Enum.School;
-import Data.Enum.User.Gender;
-import Data.Enum.User.Grade;
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.Error.Login.Regist;
+import GUI.Data.Enum.School;
+import GUI.Data.Enum.User.Gender;
+import GUI.Data.Enum.User.Grade;
+import GUI.Data.Enum.User.UserType;
 import Sevice.Utils.NameUtil;
 import Sevice.Utils.PasswordUtil;
 import Sevice.Utils.UserTypeUtil;

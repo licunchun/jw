@@ -26,7 +26,7 @@ out/
 
 ### Mac OS ###
 .DS_Store
-/src/Data/Enum/User/User/test.java
+/src/GUI/Data/Enum/User/User/test.java
 /src/GUI/test/
 /src/GUI/Stage/MainTest.java
 /src/GUI/GUIUtil/SceneUtil.java

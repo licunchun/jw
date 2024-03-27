@@ -1,12 +1,12 @@
 package GUI.Controller.Components.UserInformationEditor;
 
-import Data.Enum.School;
+import GUI.Data.Enum.School;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.util.StringConverter;
 
-import static Data.Enum.User.UserObservableList.SchoolList;
+import static GUI.Data.Enum.ObservableList.UserObservableList.SchoolList;
 
 public class TeacherSchoolEditorController{
     @FXML

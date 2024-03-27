@@ -1,6 +1,6 @@
 package GUI.Controller.Main.Util;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 import GUI.Controller.Main.Admin.AdminMainMenuController;
 import GUI.Controller.Main.Student.StudentMainMenuController;
 import GUI.Controller.Main.Teacher.TeacherMainMenuController;

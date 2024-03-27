@@ -1,6 +1,6 @@
 package JavaBean;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 
 public class User {
     private UserType userType;
