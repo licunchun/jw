@@ -32,6 +32,7 @@ public class RegistServ{
         //转成数据库用户类型
         int type = UserTypeUtil.EnumToDataBase(userType);
         //String ID = db.getAvailableAccount(type);
+        db.close();
         String ID = new String();
         if(ID.isEmpty())
             throw new RuntimeException("RegistServ.java(line )");
@@ -49,7 +50,7 @@ public class RegistServ{
                 throw new RuntimeException("RegistServ.java(line )");
             }
         }
-        //db.close();
+        db.close();
         return ID;
     }
 }
