@@ -26,7 +26,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Name" layoutX="60.0">
+                  <Label fx:id="ShowName" layoutX="60.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -40,7 +40,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="ID" layoutX="60.0">
+                  <Label fx:id="ShowID" layoutX="60.0">
                      <font>
                         <Font size="20.0" />
                      </font>

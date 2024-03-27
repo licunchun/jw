@@ -5,6 +5,7 @@ import GUI.Controller.Components.UserInformationEditor.PasswordChangerController
 import GUI.Data.Enum.User.UserType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -12,6 +13,10 @@ import javafx.stage.Stage;
 import static GUI.GUIUtil.StageUtil.*;
 
 public class UserInformationPageController {
+    @FXML
+    private Label ShowName;
+    @FXML
+    private Label ShowID;
     @FXML
     private AnchorPane chooseAnchorPane;
     @FXML
