@@ -136,4 +136,8 @@ public class MainMenuController {
             teacherInformationController.flush();
         }
     }
+
+    public MenuBar getMenuBar(){
+        return MainMenuBar;
+    }
 }

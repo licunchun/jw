@@ -5,6 +5,7 @@ import GUI.Controller.Main.Common.MainMenuController;
 import MainPackage.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.MenuBar;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,10 @@ public class StudentMainMenuController {
             AnchorPane subContent=loader.load();
             mainMenuController=loader.getController();
             subPane.getChildren().add(subContent);
+            {
+                MenuBar menuBar=mainMenuController.getMenuBar();
+
+            }//MenuBar配置
         } catch (IOException e){
             e.printStackTrace();
         }
