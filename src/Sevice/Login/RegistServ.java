@@ -41,7 +41,7 @@ public class RegistServ{
                 //db.addStudent(name,ID,password,school.toString(),gender.toString(),grade.toString());
             }
             case UserType.Teacher->{
-                db.addTeacher(name,ID,password,school.toString());
+                db.addTeacher(name,ID,password);
             }
             case UserType.Admin->{
                 db.addManager(name,ID,password);
