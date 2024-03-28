@@ -140,4 +140,9 @@ public class MainMenuController {
     public MenuBar getMenuBar(){
         return MainMenuBar;
     }
+    public void closeInformationPage(){
+        if(isInformationPageShow){
+            informationPageStage.close();
+        }
+    }
 }
