@@ -31,5 +31,13 @@
     Grade:年级
     StudentSchool:学生的院校枚举类（注：学生给到中间层的是School，这个只是GUI内部使用）
     UserType:账号类型
+
+## WhichMainPageIsShow
+简介：主页面中的Tab容器下界面展示的是哪个界面
+
+    Student:学生的主界面
+    Teacher:老师的主界面
+    Admin:管理员的主界面
+
 ## School
 简介：全部院校，字面意思
