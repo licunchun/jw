@@ -37,16 +37,6 @@
                           <ChoiceBox fx:id="TeacherSchoolChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
                       </children>
                   </AnchorPane>
-                  <AnchorPane prefWidth="200.0">
-                      <children>
-                          <Label layoutX="14.0" layoutY="1.0" text="性别">
-                              <font>
-                                  <Font size="20.0" />
-                              </font>
-                          </Label>
-                          <ChoiceBox fx:id="TeacherGenderChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
-                      </children>
-                  </AnchorPane>
                   <AnchorPane prefHeight="100.0" prefWidth="250.0">
                       <children>
                           <Button fx:id="TeacherConfirmButton" layoutX="92.0" layoutY="29.0" mnemonicParsing="false" onAction="#doTeacherConfirm" text="确认">

@@ -1,6 +1,6 @@
 package GUI.Controller.Main.Admin;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 import GUI.Controller.Main.Common.MainMenuController;
 import MainPackage.Main;
 import javafx.stage.Stage;
@@ -9,6 +9,7 @@ public class AdminMainMenuController {
     private static final Stage stage= Main.getStage();
 
     private MainMenuController mainMenuController;
+    private String ID;
 
 
 
@@ -16,6 +17,6 @@ public class AdminMainMenuController {
         mainMenuController.setUserType(UserType.Admin);
     }
     public void setID(String ID){
-        mainMenuController.setID(ID);
+        this.ID=ID;
     }
 }

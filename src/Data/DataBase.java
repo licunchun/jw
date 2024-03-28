@@ -213,12 +213,13 @@ public class DataBase {
             return false;
         }
     }
-    public String availableAccount(Grade grade) { // 获取可行学生账号
+    public String availableAccount(String grade) { // 获取可行学生账号
         String account = switch (grade) {
-            case Grade1 -> "PB23";
-            case Grade2 -> "PB22";
-            case Grade3 -> "PB21";
-            case Grade4 -> "PB20";
+            case "大一" -> "PB23";
+            case "大二" -> "PB22";
+            case "大三" -> "PB21";
+            case "大四" -> "PB20";
+            default -> "";
         };
         String sql = "select * from students where account = '";
         try {

@@ -1,6 +1,6 @@
 package GUI.Controller.Main.Student;
 
-import Data.Enum.User.UserType;
+import GUI.Data.Enum.User.UserType;
 import GUI.Controller.Main.Common.MainMenuController;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -16,6 +16,7 @@ public class StudentMainMenuController {
     private MainMenuController mainMenuController;
     @FXML
     private AnchorPane subPane;
+    private String ID;
     @FXML
     public void initialize(){
         //子区域加载，mainMenuController赋值
@@ -29,8 +30,10 @@ public class StudentMainMenuController {
         }
         //mainMenuController赋值
         mainMenuController.setUserType(UserType.Student);
+        mainMenuController.setID(ID);
     }
     public void setID(String ID){
+        this.ID=ID;
         mainMenuController.setID(ID);
     }
 }

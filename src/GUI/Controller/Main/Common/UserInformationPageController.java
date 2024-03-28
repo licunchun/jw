@@ -1,44 +1,75 @@
 package GUI.Controller.Main.Common;
 
-import Data.Enum.User.UserType;
+import GUI.Controller.Components.UserInformationEditor.NameEditorController;
+import GUI.Controller.Components.UserInformationEditor.PasswordChangerController;
+import GUI.Data.Enum.User.UserType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.*;
+import static Sevice.Main.Components.UserServ.UserServ.getName;
 
 public class UserInformationPageController {
+    @FXML
+    private Label ShowName;
+    @FXML
+    private Label ShowID;
     @FXML
     private AnchorPane chooseAnchorPane;
     @FXML
     private VBox UserInformationBox;
     @FXML
-    private Hyperlink EditPassword;
+    private Hyperlink ChangePassword;
     @FXML
     private Hyperlink EditName;
+    private Stage stage;
+    private String ID;
+    /*
+     * Children Page
+     */
+
+    //Edit name page
+    private boolean isEditNamePageShow=false;
+    private Stage editNamePageStage=null;
+    private NameEditorController nameEditorController;
+
+    //Edit password Page
+    private boolean isChangePasswordPageShow=false;
+    private Stage changePasswordPageStage=null;
+    private PasswordChangerController passwordChangerController;
+    /*
+     * Function
+     */
+
     @FXML
     public void initialize(){
+        flush();
     }
     @FXML
-    private void doEditPassword(){
-        if(!isEditPasswordPageShow){
-            isEditPasswordPageShow=true;
-            editPasswordPageStage=new Stage();
+    private void doChangePassword(){
+        if(!isChangePasswordPageShow){
+            isChangePasswordPageShow=true;
+            changePasswordPageStage=new Stage();
 
-            changeViews(editPasswordPageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+            passwordChangerController=changeViews(changePasswordPageStage, "/GUI/Window/Components/UserInformationEditor/PasswordChanger.fxml");
+            passwordChangerController.setID(ID);
+            passwordChangerController.setStage(changePasswordPageStage);
 
-            editPasswordPageStage.setOnCloseRequest(e->{
-                isEditPasswordPageShow=false;
-                editPasswordPageStage.close();
+            changePasswordPageStage.setOnHiding(e->{
+                isChangePasswordPageShow=false;
+                changePasswordPageStage.close();
+                flush();
             });
-            editPasswordPageStage.show();
-            editPasswordPageStage.setResizable(false);
-            resetLocation(editPasswordPageStage);
+            changePasswordPageStage.show();
+            changePasswordPageStage.setResizable(false);
+            resetLocation(changePasswordPageStage);
         }
         else{
-            resetLocation(editPasswordPageStage);
+            resetLocation(changePasswordPageStage);
         }
     }
     @FXML
@@ -47,11 +78,14 @@ public class UserInformationPageController {
             isEditNamePageShow=true;
             editNamePageStage=new Stage();
 
-            changeViews(editNamePageStage,"/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
+            nameEditorController=changeViews(editNamePageStage,"/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
+            nameEditorController.setID(ID);
+            nameEditorController.setStage(editNamePageStage);
 
-            editNamePageStage.setOnCloseRequest(e->{
+            editNamePageStage.setOnHiding(e->{
                 isEditNamePageShow=false;
                 editNamePageStage.close();
+                flush();
             });
             editNamePageStage.show();
             editNamePageStage.setResizable(false);
@@ -62,21 +96,29 @@ public class UserInformationPageController {
         }
     }
 
-    private boolean isEditNamePageShow=false;
-    private Stage editNamePageStage=null;
-    private boolean isEditPasswordPageShow=false;
-    private Stage editPasswordPageStage=null;
-
-    private UserType userType = UserType.None;
-
-    private MainMenuController mainMenuController;
-
-    public void setUserType(UserType userType){
-        this.userType=userType;
-
-    }
-
     public AnchorPane getChooseAnchorPane() {
         return chooseAnchorPane;
+    }
+
+    public void closeAllChildren(){
+        if(isEditNamePageShow){
+            editNamePageStage.close();
+        }
+        if(isChangePasswordPageShow){
+            changePasswordPageStage.close();
+        }
+    }
+
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
+    public void flush(){
+        ShowID.setText(ID);
+        ShowName.setText(getName(ID));
     }
 }

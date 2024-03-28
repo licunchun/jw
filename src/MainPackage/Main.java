@@ -20,7 +20,7 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws Exception {
         Main.stage =stage;
-        stage.setOnCloseRequest(e->{
+        stage.setOnHiding(e->{
             exit(0);
         });
         stage.setResizable(false);

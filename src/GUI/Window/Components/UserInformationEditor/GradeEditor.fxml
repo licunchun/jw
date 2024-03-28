@@ -32,7 +32,12 @@
             </AnchorPane>
             <AnchorPane prefWidth="250.0">
                <children>
-                  <Button fx:id="Confirm" layoutX="92.0" mnemonicParsing="false" text="确认" onAction="#doConfirm">
+                  <Label fx:id="tips" textFill="RED" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefWidth="250.0">
+               <children>
+                  <Button fx:id="Confirm" layoutX="92.0" mnemonicParsing="false" onAction="#doConfirm" text="确认">
                      <font>
                         <Font size="20.0" />
                      </font>

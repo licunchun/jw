@@ -1,18 +1,19 @@
 package GUI.Controller.Login;
 
-import Data.Enum.Error.Regist;
-import Data.Enum.School;
-import Data.Enum.User.*;
+import GUI.Data.Enum.Error.Login.Regist;
+import GUI.Data.Enum.School;
+import GUI.Data.Enum.User.*;
 import MainPackage.Main;
-import Sevice.UserService;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 
-import static Data.Enum.User.UserObservableList.*;
+import static GUI.Data.Enum.ObservableList.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
+import static Sevice.Login.RegistServ.regist;
+import static Sevice.Login.RegistServ.store;
 
 public class RegistController {
     private static final Stage stage=Main.getStage();
@@ -48,39 +49,27 @@ public class RegistController {
     @FXML
     private ChoiceBox<School> TeacherSchoolChooser;
     @FXML
-    private ChoiceBox<Gender> TeacherGenderChooser;
-    @FXML
     private Button TeacherConfirmButton;
     private static boolean isRegist=true;//是否在第一页面
     private static boolean isStudent=true;//是否在学生页面
-
-    private static UserService us=new UserService();
-    private static String ID= "";
+    private static String ID= "1";
+    /*
+     * User Information
+     */
+    private static UserType userType;
+    private static String name;
+    private static String password;
+    private static String confirmPassword;
     /*
      * Major function
      */
     @FXML
-    public void initialize(){
-        /*
-         * ChoiceBlock init
-         */
-        if(isRegist){
-            registInitialize();
-            return;
-        }//regist
-        if(isStudent){
-            studentInitialize();
-        }//student
-        else{
-            teacherInitialize();
-        }//teacher
-
-
-
-    }
-    @FXML
     public void doRegistConfirm(){
-        switch(us.regist(AccountType.getValue(),UserName.getText(),Password.getText(),ConfirmPassword.getText())){
+        userType=AccountType.getValue();
+        name=UserName.getText();
+        password=Password.getText();
+        confirmPassword=ConfirmPassword.getText();
+        switch(regist(userType,name,password,confirmPassword)){
             case Regist.NameEmpty:
                 Tips.setText("用户名不可为空，请重新输入!");
                 Tips.setVisible(true);
@@ -112,7 +101,7 @@ public class RegistController {
             case Regist.Pass:
                 break;
         }
-        switch(AccountType.getValue()){
+        switch(userType){
             case UserType.Student:
                 isRegist=false;
                 isStudent=true;
@@ -124,7 +113,7 @@ public class RegistController {
                 changeViews(stage,"/GUI/Window/Login/registTeacher.fxml");
                 return;
             case UserType.Admin:
-                ID=us.storeUser(null,null,null);
+                ID=store(userType,name,password,confirmPassword,null,null,null);
                 showIDPage();
                 break;
             default:
@@ -133,25 +122,42 @@ public class RegistController {
     }
     @FXML
     public void doStudentConfirm(){
-        ID=us.storeUser(StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
+        ID=store(userType,name,password,confirmPassword,StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
         showIDPage();
     }
     @FXML
     public void doTeacherConfirm(){
-        ID=us.storeUser(StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
+        ID=store(userType,name,password,confirmPassword,null,TeacherSchoolChooser.getValue(),null);
         showIDPage();
     }
-
     public void showIDPage(){
         changeViews(stage,"/GUI/Window/Login/IDPage.fxml");
     }
-
     public static String getID(){
         return ID;
     }
     /*
      * Init
      */
+    @FXML
+    public void initialize(){
+        /*
+         * ChoiceBlock init
+         */
+        if(isRegist){
+            registInitialize();
+            return;
+        }//regist
+        if(isStudent){
+            studentInitialize();
+        }//student
+        else{
+            teacherInitialize();
+        }//teacher
+
+
+
+    }
     private void registInitialize(){
         {
             AccountType.setValue(UserType.Student);
@@ -240,20 +246,5 @@ public class RegistController {
 
             TeacherSchoolChooser.setItems(SchoolList);
         }//TeacherSchoolChooser
-        {
-            TeacherGenderChooser.setValue(Gender.Male);
-            TeacherGenderChooser.setConverter(new StringConverter<>() {
-                @Override
-                public String toString(Gender gender) {
-                    return gender.toString();
-                }
-
-                @Override
-                public Gender fromString(String s) {
-                    return null;
-                }
-            });
-            TeacherGenderChooser.setItems(GenderList);
-        }//GenderChooser
     }
 }

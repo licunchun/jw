@@ -12,20 +12,6 @@
             <children>
                 <AnchorPane prefWidth="200.0">
                     <children>
-                        <Label graphicTextGap="0.0" text="性别：">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Label>
-                        <Label fx:id="Gender" layoutX="60.0">
-                            <font>
-                                <Font size="20.0" />
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="200.0">
-                    <children>
                         <Label graphicTextGap="0.0" text="院校：">
                             <font>
                                 <Font size="20.0" />
@@ -40,7 +26,7 @@
                 </AnchorPane>
                 <AnchorPane prefWidth="200.0">
                     <children>
-                        <Hyperlink fx:id="EditSchool" layoutX="72.0" layoutY="-3.0" text="修改院校" onAction="#doEditSchool"/>
+                        <Hyperlink fx:id="EditSchool" layoutX="72.0" layoutY="-3.0" onAction="#doEditSchool" text="修改院校" />
                     </children>
                 </AnchorPane>
             </children>

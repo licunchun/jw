@@ -22,7 +22,7 @@ StudentSet
     -Set<Student> studentSet;//为什么不用Set而用List
 }
 ————————————————————————————
-Course
+Class
 {
     -String code;               //课堂编号
     -String name;               //课堂名称

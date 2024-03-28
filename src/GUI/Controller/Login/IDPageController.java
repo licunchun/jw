@@ -15,6 +15,9 @@ public class IDPageController {
     public Button ConfirmButton;
 
     public static final Stage stage=Main.getStage();
+    /*
+     * Function
+     */
     @FXML
     private  void initialize(){
         IDShowLabel.setText("您的ID是："+RegistController.getID());

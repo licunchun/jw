@@ -1,6 +1,6 @@
 package Sevice.Utils;
 
-import Data.Enum.Error.Regist;
+import GUI.Data.Enum.Error.Login.Regist;
 
 public class NameUtil extends StrUtil {
     public static boolean charCheck(String str) {

@@ -1,6 +1,5 @@
 package GUI.GUIUtil;
 
-import MainPackage.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -39,8 +38,11 @@ public class StageUtil {
         }
     }
 
-    public static Parent loadScene(String fxml) {
-        FXMLLoader loader=new FXMLLoader(StageUtil.class.getResource(fxml));
+    public static FXMLLoader loadScene(String fxml) {
+        return new FXMLLoader(StageUtil.class.getResource(fxml));
+    }
+
+    public static Parent newRoot(FXMLLoader loader){
         Parent root=null;
         try{
             root=loader.load();
@@ -48,5 +50,9 @@ public class StageUtil {
             e.printStackTrace();
         }
         return root;
+    }
+
+    public static <T> T getController(FXMLLoader loader){
+        return loader.getController();
     }
 }
