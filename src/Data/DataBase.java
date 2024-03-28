@@ -203,7 +203,10 @@ public class DataBase {
             }
 
             sql = "update students set classes = '" + classes + "' where account = '" + account + "'";
-            return statement.executeUpdate(sql) == 1;
+            if (statement.executeUpdate(sql) != 1) return false;
+            sql = "insert into points values ('" + code + "', '" + account + "', 'null')";
+            statement.execute(sql);
+            return true;
         } catch (SQLException e) {
             return false;
         }
