@@ -1,6 +1,5 @@
 package Data;
 
-import Data.Enum.User.Grade;
 import Data.Type.ClassInfo;
 import Data.Type.ClassInfoSet;
 import Data.Type.Student;
@@ -225,7 +224,6 @@ public class DataBase {
         try {
             for (int i = 0; i < 1000000; i++) {
                 resultSet = statement.executeQuery(sql + account + String.format("%06d", i) + "'");
-                System.out.println((sql + account + String.format("%06d", i) + "'"));
                 resultSet.next();
                 if (resultSet.getRow() == 0) {
                     return account + String.format("%06d", i);

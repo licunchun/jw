@@ -1,9 +1,5 @@
 package Data.Type;
 
-import Data.Enum.School;
-import Data.Enum.User.Gender;
-import Data.Enum.User.Grade;
-
 import java.util.ArrayList;
 import java.util.Set;
 
