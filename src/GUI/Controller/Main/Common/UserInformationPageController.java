@@ -47,7 +47,7 @@ public class UserInformationPageController {
 
     @FXML
     public void initialize(){
-
+        flush();
     }
     @FXML
     private void doChangePassword(){
@@ -62,6 +62,7 @@ public class UserInformationPageController {
             changePasswordPageStage.setOnHiding(e->{
                 isChangePasswordPageShow=false;
                 changePasswordPageStage.close();
+                flush();
             });
             changePasswordPageStage.show();
             changePasswordPageStage.setResizable(false);
@@ -84,6 +85,7 @@ public class UserInformationPageController {
             editNamePageStage.setOnHiding(e->{
                 isEditNamePageShow=false;
                 editNamePageStage.close();
+                flush();
             });
             editNamePageStage.show();
             editNamePageStage.setResizable(false);

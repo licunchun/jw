@@ -26,7 +26,9 @@ public class TeacherInformationController {
      * Function
      */
     @FXML
-    private void initialize(){}
+    private void initialize(){
+        flush();
+    }
     @FXML
     private void doEditSchool(){
         if(!isEditSchoolPageShow){
@@ -40,6 +42,7 @@ public class TeacherInformationController {
             editSchoolPageStage.setOnHiding(e->{
                 isEditSchoolPageShow=false;
                 editSchoolPageStage.close();
+                flush();
             });
             editSchoolPageStage.setResizable(false);
             editSchoolPageStage.show();

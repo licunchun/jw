@@ -47,7 +47,9 @@ public class StudentInformationController {
      * Function
      */
     @FXML
-    private void initialize(){}
+    private void initialize(){
+        flush();
+    }
     @FXML
     private void doEditGrade(){
         if(!isEditGradePageShow){
@@ -61,6 +63,7 @@ public class StudentInformationController {
             editGradePageStage.setOnHiding(e->{
                 isEditGradePageShow=false;
                 editGradePageStage.close();
+                flush();
             });
             editGradePageStage.setResizable(false);
             editGradePageStage.show();
@@ -83,6 +86,7 @@ public class StudentInformationController {
             editSchoolPageStage.setOnHiding(e->{
                 isEditSchoolPageShow=false;
                 editSchoolPageStage.close();
+                flush();
             });
             editSchoolPageStage.setResizable(false);
             editSchoolPageStage.show();
@@ -105,6 +109,7 @@ public class StudentInformationController {
             rechargePageStage.setOnHiding(e->{
                 isRechargePageShow=false;
                 rechargePageStage.close();
+                flush();
             });
             rechargePageStage.setResizable(false);
             rechargePageStage.show();
