@@ -1,43 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="GUI.Controller.Components.Time.Timetable"
-            prefHeight="400.0" prefWidth="600.0">
-    <TableView>
-        <!-- 表头 -->
-        <columns>
-            <TableColumn text="     "/>
-            <TableColumn text="星期一"/>
-            <TableColumn text="星期二"/>
-            <TableColumn text="星期三"/>
-            <TableColumn text="星期四"/>
-            <TableColumn text="星期五"/>
-            <TableColumn text="星期六"/>
-            <TableColumn text="星期天"/>
-        </columns>
 
-        <TableRow>
-            <TableCell>1</TableCell>
-            <TableCell>2</TableCell>
-            <TableCell>3</TableCell>
-            <TableCell>4</TableCell>
-            <TableCell>5</TableCell>
-            <TableCell>6</TableCell>
-            <TableCell>7</TableCell>
-            <TableCell>8</TableCell>
-            <TableCell>9</TableCell>
-            <TableCell>10</TableCell>
-            <TableCell>11</TableCell>
-            <TableCell>12</TableCell>
-            <TableCell>13</TableCell>
-        </TableRow>
-
-    </TableView>
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Components.Time.Timetable">
+   <children>
+      <Button layoutX="86.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="86.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="1" />
+      <Button layoutX="86.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="2" />
+      <Button layoutX="86.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="3" />
+      <Button layoutX="86.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="4" />
+      <Button layoutX="86.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="5" />
+      <Button layoutX="86.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="6" />
+      <Button layoutX="86.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="7" />
+      <Button layoutX="86.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="8" />
+      <Button layoutX="86.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="9" />
+      <Button layoutX="86.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="10" />
+      <Button layoutX="86.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="11" />
+      <Button layoutX="86.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="12" />
+      <Button layoutX="86.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="13" />
+      <Button layoutX="141.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="141.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="星期三" />
+      <Button layoutX="196.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="星期二" />
+      <Button layoutX="306.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="星期四" />
+      <Button layoutX="361.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="星期五" />
+      <Button layoutX="416.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="星期六" />
+      <Button layoutX="471.0" layoutY="32.0" mnemonicParsing="false" text="星期日" />
+      <Button layoutX="141.0" layoutY="32.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" text="星期一" />
+      <Button layoutX="196.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="196.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="251.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="306.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="359.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="414.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="55.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="216.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="193.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="170.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="124.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="101.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="147.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="78.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="239.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="308.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="285.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="262.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+      <Button layoutX="469.0" layoutY="331.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="55.0" />
+   </children>
 </AnchorPane>
