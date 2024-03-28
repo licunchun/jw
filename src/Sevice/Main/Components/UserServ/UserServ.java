@@ -20,7 +20,7 @@ public class UserServ {
     public static EditError editMoney(String ID,double money){
         return EditError.Success;
     }
-    public static EditError editAddMoney(String ID,String addMoney){
+    public static EditError editAddMoney(String ID,double addMoney){
         return EditError.Success;
     }
     public static EditError editGrade(String ID, Grade grade){
