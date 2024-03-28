@@ -125,6 +125,25 @@ public class DataBase {
             return false;
         }
     }
+    public boolean addCourse(String [] info) {
+        if (info.length != 15) return false;
+        try {
+            StringBuilder sql = new StringBuilder("select * from courses where code = '").append(info[0]).append("'");
+            resultSet = statement.executeQuery(sql.toString());
+            resultSet.next();
+            if (resultSet.getRow() == 1) return false;
+            sql = new StringBuilder("insert into courses values ('");
+            for (int i = 0; i < 14; i++) {
+                sql.append(info[i]).append("', '");
+            }
+            sql.append(info[14]).append("')");
+            System.out.println(sql);
+            statement.execute(sql.toString());
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
     public boolean deleteAccount(String account, int type) { // 删除学生或老师
         String table = switch (type) {
             case STUDENT -> "students";
