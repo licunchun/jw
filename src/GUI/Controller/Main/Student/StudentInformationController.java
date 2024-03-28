@@ -58,7 +58,7 @@ public class StudentInformationController {
             gradeEditorController.setID(ID);
             gradeEditorController.setStage(editGradePageStage);
 
-            editGradePageStage.setOnCloseRequest(e->{
+            editGradePageStage.setOnHiding(e->{
                 isEditGradePageShow=false;
                 editGradePageStage.close();
             });
@@ -80,7 +80,7 @@ public class StudentInformationController {
             studentSchoolEditorController.setID(ID);
             studentSchoolEditorController.setStage(editSchoolPageStage);
 
-            editSchoolPageStage.setOnCloseRequest(e->{
+            editSchoolPageStage.setOnHiding(e->{
                 isEditSchoolPageShow=false;
                 editSchoolPageStage.close();
             });
@@ -102,7 +102,7 @@ public class StudentInformationController {
             rechargerController.setID(ID);
             rechargerController.setStage(rechargePageStage);
 
-            rechargePageStage.setOnCloseRequest(e->{
+            rechargePageStage.setOnHiding(e->{
                 isRechargePageShow=false;
                 rechargePageStage.close();
             });

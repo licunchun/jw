@@ -59,7 +59,7 @@ public class UserInformationPageController {
             passwordChangerController.setID(ID);
             passwordChangerController.setStage(changePasswordPageStage);
 
-            changePasswordPageStage.setOnCloseRequest(e->{
+            changePasswordPageStage.setOnHiding(e->{
                 isChangePasswordPageShow=false;
                 changePasswordPageStage.close();
             });
@@ -81,7 +81,7 @@ public class UserInformationPageController {
             nameEditorController.setID(ID);
             nameEditorController.setStage(editNamePageStage);
 
-            editNamePageStage.setOnCloseRequest(e->{
+            editNamePageStage.setOnHiding(e->{
                 isEditNamePageShow=false;
                 editNamePageStage.close();
             });

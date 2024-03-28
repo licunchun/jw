@@ -37,7 +37,7 @@ public class TeacherInformationController {
             teacherSchoolEditorController.setID(ID);
             teacherSchoolEditorController.setStage(editSchoolPageStage);
 
-            editSchoolPageStage.setOnCloseRequest(e->{
+            editSchoolPageStage.setOnHiding(e->{
                 isEditSchoolPageShow=false;
                 editSchoolPageStage.close();
             });

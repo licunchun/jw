@@ -60,7 +60,7 @@ public class MainMenuController {
             {
                 informationPageStage = new Stage();
 
-                informationPageStage.setOnCloseRequest(e -> {
+                informationPageStage.setOnHiding(e -> {
                     isInformationPageShow = false;
                     userInformationPageController.closeAllChildren();
                     if (userType == UserType.Student) {
