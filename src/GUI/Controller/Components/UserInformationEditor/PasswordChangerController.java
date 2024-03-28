@@ -4,6 +4,7 @@ import GUI.Data.Enum.Error.Main.Components.UserServ.ChangePasswordError;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -15,11 +16,11 @@ public class PasswordChangerController {
     @FXML
     private Label tips;
     @FXML
-    private TextField ConfirmNewPassword;
+    private PasswordField ConfirmNewPassword;
     @FXML
-    private TextField NewPassword;
+    private PasswordField NewPassword;
     @FXML
-    private TextField OriginPassword;
+    private PasswordField OriginPassword;
     private String ID;
     private Stage stage;
     @FXML
