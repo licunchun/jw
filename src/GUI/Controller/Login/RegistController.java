@@ -49,8 +49,6 @@ public class RegistController {
     @FXML
     private ChoiceBox<School> TeacherSchoolChooser;
     @FXML
-    private ChoiceBox<Gender> TeacherGenderChooser;
-    @FXML
     private Button TeacherConfirmButton;
     private static boolean isRegist=true;//是否在第一页面
     private static boolean isStudent=true;//是否在学生页面
@@ -129,7 +127,7 @@ public class RegistController {
     }
     @FXML
     public void doTeacherConfirm(){
-        ID=store(userType,name,password,confirmPassword,StudentGenderChooser.getValue(),StudentSchoolChooser.getValue().toSchool(),StudentGradeChooser.getValue());
+        ID=store(userType,name,password,confirmPassword,null,TeacherSchoolChooser.getValue(),null);
         showIDPage();
     }
     public void showIDPage(){
@@ -248,20 +246,5 @@ public class RegistController {
 
             TeacherSchoolChooser.setItems(SchoolList);
         }//TeacherSchoolChooser
-        {
-            TeacherGenderChooser.setValue(Gender.Male);
-            TeacherGenderChooser.setConverter(new StringConverter<>() {
-                @Override
-                public String toString(Gender gender) {
-                    return gender.toString();
-                }
-
-                @Override
-                public Gender fromString(String s) {
-                    return null;
-                }
-            });
-            TeacherGenderChooser.setItems(GenderList);
-        }//GenderChooser
     }
 }

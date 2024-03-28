@@ -59,7 +59,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="Money" layoutX="60.0">
+                  <Label fx:id="Money" layoutX="100.0" prefHeight="27.0" prefWidth="0.0">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -68,9 +68,9 @@
             </AnchorPane>
              <AnchorPane prefWidth="200.0">
                  <children>
-                     <Hyperlink fx:id="EditGrade" layoutX="144.0" layoutY="-7.0" text="修改年级" onAction="#doEditGrade"/>
-                     <Hyperlink fx:id="EditSchool" layoutY="-7.0" text="修改院校" onAction="#doEditSchool"/>
-                     <Hyperlink fx:id="Recharge" layoutX="84.0" layoutY="-7.0" text="充值" onAction="#doRecharge"/>
+                     <Hyperlink fx:id="EditGrade" layoutX="144.0" layoutY="-7.0" onAction="#doEditGrade" text="修改年级" />
+                     <Hyperlink fx:id="EditSchool" layoutY="-7.0" onAction="#doEditSchool" text="修改院校" />
+                     <Hyperlink fx:id="Recharge" layoutX="84.0" layoutY="-7.0" onAction="#doRecharge" text="充值" />
                  </children>
              </AnchorPane>
          </children>

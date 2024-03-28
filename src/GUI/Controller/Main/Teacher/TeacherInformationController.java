@@ -8,12 +8,11 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
+import static Sevice.Main.Components.UserServ.UserServ.getSchool;
 
 public class TeacherInformationController {
     @FXML
     private Label School;
-    @FXML
-    private Label Gender;
     @FXML
     private Hyperlink EditSchool;
     private String ID;
@@ -57,5 +56,8 @@ public class TeacherInformationController {
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+    public void flush(){
+        School.setText(getSchool(ID).toString());
     }
 }

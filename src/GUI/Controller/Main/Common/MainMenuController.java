@@ -128,6 +128,12 @@ public class MainMenuController {
     }
 
     private void flushUserInformationPage(){
-
+        userInformationPageController.flush();
+        if(userType==UserType.Student){
+            studentInformationController.flush();
+        }
+        if(userType==UserType.Teacher){
+            teacherInformationController.flush();
+        }
     }
 }

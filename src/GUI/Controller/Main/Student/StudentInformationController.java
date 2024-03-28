@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
+import static Sevice.Main.Components.UserServ.UserServ.*;
 
 public class StudentInformationController {
     @FXML
@@ -123,5 +124,11 @@ public class StudentInformationController {
     }
     public void setID(String ID) {
         this.ID = ID;
+    }
+    public void flush(){
+        Money.setText(getMoney(ID).toString());
+        Grade.setText(getGrade(ID).toString());
+        Gender.setText(getGender(ID).toString());
+        School.setText(getSchool(ID).toString());
     }
 }

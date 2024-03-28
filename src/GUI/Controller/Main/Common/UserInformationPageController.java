@@ -11,6 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.*;
+import static Sevice.Main.Components.UserServ.UserServ.getName;
 
 public class UserInformationPageController {
     @FXML
@@ -108,5 +109,10 @@ public class UserInformationPageController {
 
     public void setID(String ID) {
         this.ID = ID;
+    }
+
+    public void flush(){
+        ShowID.setText(ID);
+        ShowName.setText(getName(ID));
     }
 }
