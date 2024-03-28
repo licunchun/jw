@@ -114,3 +114,15 @@
     (为什么这里需要返回详细信息？因为输入的密码是不可视的。)
     如果ID=null请报错
     Throw Exeption要包含函数名，函数位置，报错原因
+## +(Getter)(String ID)
+参数：
+
+    ID(String):用户的ID
+返回：
+
+    对应的数据类型
+描述：
+
+    用户基本信息的Getter，有哪些见UserServ
+    如果该ID没有对应数据类型或者ID=null请报错，Throw Exeption同上
+    如果未查询到该ID请返回null
