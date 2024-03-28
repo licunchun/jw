@@ -26,8 +26,6 @@ public class MainMenuController {
     @FXML
     private Button personalInformation;
     @FXML
-    private AnchorPane MainModule;
-    @FXML
     private javafx.scene.control.TabPane TabPane;
     private UserType userType=UserType.None;
     private String ID;
@@ -140,9 +138,15 @@ public class MainMenuController {
     public MenuBar getMenuBar(){
         return MainMenuBar;
     }
+
+    public javafx.scene.control.TabPane getTabPane() {
+        return TabPane;
+    }
+
     public void closeInformationPage(){
         if(isInformationPageShow){
             informationPageStage.close();
         }
     }
+
 }
