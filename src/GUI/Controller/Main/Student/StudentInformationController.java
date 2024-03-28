@@ -56,6 +56,7 @@ public class StudentInformationController {
 
             gradeEditorController=changeViews(editGradePageStage,"/GUI/Window/Components/UserInformationEditor/GradeEditor.fxml");
             gradeEditorController.setID(ID);
+            gradeEditorController.setStage(editGradePageStage);
 
             editGradePageStage.setOnCloseRequest(e->{
                 isEditGradePageShow=false;
@@ -77,6 +78,7 @@ public class StudentInformationController {
 
             studentSchoolEditorController=changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/StudentSchoolEditor.fxml");
             studentSchoolEditorController.setID(ID);
+            studentSchoolEditorController.setStage(editSchoolPageStage);
 
             editSchoolPageStage.setOnCloseRequest(e->{
                 isEditSchoolPageShow=false;
@@ -98,6 +100,7 @@ public class StudentInformationController {
 
             rechargerController=changeViews(rechargePageStage,"/GUI/Window/Components/UserInformationEditor/Recharger.fxml");
             rechargerController.setID(ID);
+            rechargerController.setStage(rechargePageStage);
 
             rechargePageStage.setOnCloseRequest(e->{
                 isRechargePageShow=false;

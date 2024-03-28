@@ -35,6 +35,7 @@ public class TeacherInformationController {
 
             teacherSchoolEditorController=changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
             teacherSchoolEditorController.setID(ID);
+            teacherSchoolEditorController.setStage(editSchoolPageStage);
 
             editSchoolPageStage.setOnCloseRequest(e->{
                 isEditSchoolPageShow=false;

@@ -23,7 +23,7 @@ public class UserInformationPageController {
     @FXML
     private VBox UserInformationBox;
     @FXML
-    private Hyperlink EditPassword;
+    private Hyperlink ChangePassword;
     @FXML
     private Hyperlink EditName;
     private Stage stage;
@@ -50,13 +50,15 @@ public class UserInformationPageController {
 
     }
     @FXML
-    private void doEditPassword(){
+    private void doChangePassword(){
         if(!isChangePasswordPageShow){
             isChangePasswordPageShow=true;
             changePasswordPageStage=new Stage();
 
             passwordChangerController=changeViews(changePasswordPageStage, "/GUI/Window/Components/UserInformationEditor/PasswordChanger.fxml");
             passwordChangerController.setID(ID);
+            passwordChangerController.setStage(changePasswordPageStage);
+
             changePasswordPageStage.setOnCloseRequest(e->{
                 isChangePasswordPageShow=false;
                 changePasswordPageStage.close();
@@ -77,6 +79,8 @@ public class UserInformationPageController {
 
             nameEditorController=changeViews(editNamePageStage,"/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
             nameEditorController.setID(ID);
+            nameEditorController.setStage(editNamePageStage);
+
             editNamePageStage.setOnCloseRequest(e->{
                 isEditNamePageShow=false;
                 editNamePageStage.close();

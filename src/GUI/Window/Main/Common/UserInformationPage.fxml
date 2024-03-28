@@ -49,7 +49,7 @@
             </AnchorPane>
             <AnchorPane prefWidth="200.0">
                <children>
-                  <Hyperlink fx:id="EditPassword" layoutX="100.0" layoutY="-7.0" text="修改密码" onAction="#doEditPassword"/>
+                  <Hyperlink fx:id="ChangePassword" layoutX="100.0" layoutY="-7.0" text="修改密码" onAction="#doChangePassword"/>
                   <Hyperlink fx:id="EditName" layoutX="44.0" layoutY="-7.0" text="修改姓名" onAction="#doEditName"/>
                </children>
             </AnchorPane>
