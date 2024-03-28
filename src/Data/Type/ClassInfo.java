@@ -3,11 +3,11 @@ package Data.Type;
 public class ClassInfo {
     public String code;
     public String name;
-    public int period;
-    public double credits;
+    public String period;
+    public String credits;
     public String time;
-    public int stdCount;
-    public int limitCount;
+    public String stdCount;
+    public String limitCount;
     public String courseType;
     public String department;
     public String campus;
@@ -15,9 +15,22 @@ public class ClassInfo {
     public String Language;
     public String education;
     public String classType;
-    public String teachers;
-    public String admin;
-    public ClassInfo() {
-
+    public String [] teachers;
+    public ClassInfo(String [] info) {
+        code = info[0];
+        name = info[1];
+        period = info[2];
+        credits = info[3];
+        time = info[4];
+        stdCount = info[5];
+        limitCount = info[6];
+        courseType = info[7];
+        department = info[8];
+        campus = info[9];
+        examMode = info[10];
+        Language = info[11];
+        education = info[12];
+        classType = info[13];
+        teachers = info[14].split(", ");
     }
 }

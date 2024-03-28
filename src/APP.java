@@ -1,17 +1,14 @@
+import Data.Enum.User.Grade;
 import Data.Type.ClassInfoSet;
 import Data.DataBase;
 
 public class APP {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         DataBase dataBase = new DataBase();
-//        if (dataBase.addClassOfStudent("PB22061222", "NS")) {
-//            System.out.println("成功");
-//        }
-        System.out.println(dataBase.infoOfStudent("PB22061222").major);
-        ClassInfoSet classInfoSet = dataBase.check();
-        System.out.println(classInfoSet.index(0).name);
-        dataBase.close();
 
+        System.out.println(dataBase.availableAccount(Grade.Grade1));
+
+        dataBase.close();
     }
 
 }

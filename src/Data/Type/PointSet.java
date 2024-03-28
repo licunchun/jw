@@ -1,10 +1,10 @@
 package Data.Type;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class PointSet {
-    List<Point> points;
-    public PointSet(String info) {
-
-    }
+    ArrayList<Point> points;
+    public PointSet() { points = new ArrayList<>(); }
+    public Point get(int i) { return points.get(i); }
+    public int length(int i) { return points.size(); }
 }
