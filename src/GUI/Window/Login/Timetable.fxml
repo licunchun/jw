@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="GUI.Controller.Components.Time.Timetable"
+            prefHeight="400.0" prefWidth="600.0">
+    <TableView>
+        <!-- 表头 -->
+        <columns>
+            <TableColumn text="     "/>
+            <TableColumn text="星期一"/>
+            <TableColumn text="星期二"/>
+            <TableColumn text="星期三"/>
+            <TableColumn text="星期四"/>
+            <TableColumn text="星期五"/>
+            <TableColumn text="星期六"/>
+            <TableColumn text="星期天"/>
+        </columns>
+
+        <TableRow>
+            <TableCell>1</TableCell>
+            <TableCell>2</TableCell>
+            <TableCell>3</TableCell>
+            <TableCell>4</TableCell>
+            <TableCell>5</TableCell>
+            <TableCell>6</TableCell>
+            <TableCell>7</TableCell>
+            <TableCell>8</TableCell>
+            <TableCell>9</TableCell>
+            <TableCell>10</TableCell>
+            <TableCell>11</TableCell>
+            <TableCell>12</TableCell>
+            <TableCell>13</TableCell>
+        </TableRow>
+
+    </TableView>
+</AnchorPane>
