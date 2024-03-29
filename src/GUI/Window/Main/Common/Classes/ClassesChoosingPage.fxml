@@ -4,7 +4,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -107,16 +106,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="30.0" prefWidth="1280.0" />
-            <AnchorPane prefHeight="570.0" prefWidth="1280.0">
-               <children>
-                  <ScrollPane prefHeight="600.0" prefWidth="1280.0">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="1280.0" />
-                    </content>
-                  </ScrollPane>
-               </children>
-            </AnchorPane>
+            <AnchorPane prefHeight="600.0" prefWidth="1280.0" />
          </children>
       </VBox>
    </children>

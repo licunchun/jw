@@ -15,7 +15,5 @@ public class CourseTimeSet {
         courseTimeSet.add(courseTime);
     }
 
-    public void show(){
-        System.out.println(courseTimeSet.toString());
-    }
+
 }

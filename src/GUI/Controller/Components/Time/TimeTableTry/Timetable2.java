@@ -29,7 +29,6 @@ public class Timetable2 extends Application {
         stage.setOnHiding(e->{
             courseTimeSet=timeTableController.getTimeSet();
             stage.close();
-            courseTimeSet.show();
         });
         stage.show();
         resetLocation(stage);
