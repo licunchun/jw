@@ -1,6 +1,7 @@
 package GUI.Controller.Components.Time;
 
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
+import GUI.Data.Enum.Classes.CourseTime;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -162,6 +163,5 @@ public class TimeTableController {
         }
         return courseTimeSet;
     }
-
 
 }

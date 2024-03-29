@@ -2,7 +2,7 @@ package GUI.Controller.Main.Student;
 
 import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
 import GUI.Controller.Main.Student.Classes.CheckGradePageController;
-import GUI.Controller.Main.Student.Classes.ClassesChoosingPageController;
+import GUI.Controller.Main.Common.Classes.ClassesChoosingPageController;
 import GUI.Controller.Main.Student.Classes.DropClassesPageController;
 import GUI.Data.Enum.User.UserType;
 import GUI.Controller.Main.Common.MainMenuController;
@@ -56,9 +56,13 @@ public class StudentMainMenuController {
         //Tab加载并绑定页面
         classesChoosingTab = new Tab("学生选课");
         {
-            FXMLLoader classesChoosingPageLoader = loadScene("/GUI/Window/Main/Student/Classes/ClassesChoosingPage.fxml");
+            FXMLLoader classesChoosingPageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesChoosingPage.fxml");
             Parent root = newRoot(classesChoosingPageLoader);
             classesChoosingPageController = getController(classesChoosingPageLoader);
+
+            classesChoosingPageController.setID(ID);
+            classesChoosingPageController.setUserType(UserType.Student);
+
             classesChoosingTab.setContent(root);
             classesChoosingTab.setOnCloseRequest(e->{
                 mainMenuTabPane.getSelectionModel().select(0);
