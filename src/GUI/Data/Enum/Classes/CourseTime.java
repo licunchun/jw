@@ -110,4 +110,16 @@ public enum CourseTime {
         this.week = week;
         this.section = section;
     }
+
+    public Week getWeek() {
+        return week;
+    }
+
+    public int getSection() {
+        return section;
+    }
+
+    public String toString(){
+        return '('+this.week.toString()+','+this.section+')';
+    }
 }

@@ -12,6 +12,7 @@
     ExamMode:考试方式
     Full:课堂是否是满的
     Language:教学语言
+    Util:和枚举类相关的工具类
     Week:星期一 ~ 星期日
 ## Error
 简介：各种报错信息，或者说是结果信息

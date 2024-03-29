@@ -1,7 +1,12 @@
 package GUI.Data.DataPackage.Classes;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ClassesSet {
-    Set<Classes> classesSet;
+    private Set<Classes> classesSet=new HashSet<>();
+
+    public ClassesSet(){
+
+    }
 }

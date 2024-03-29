@@ -107,7 +107,8 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="600.0" prefWidth="1280.0">
+            <AnchorPane prefHeight="30.0" prefWidth="1280.0" />
+            <AnchorPane prefHeight="570.0" prefWidth="1280.0">
                <children>
                   <ScrollPane prefHeight="600.0" prefWidth="1280.0">
                     <content>
