@@ -1,10 +1,13 @@
 package GUI.Controller.Components.Time;
 
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
+import GUI.Data.Enum.Classes.CourseTime;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+import static GUI.Data.Enum.Classes.Util.getTime;
 
 public class TimeTableController {
     @FXML
@@ -159,9 +162,6 @@ public class TimeTableController {
             }
         }
         return courseTimeSet;
-    }
-
-    private Object getTime(int i, int j) {
     }
 
 }
