@@ -24,7 +24,7 @@ public class Timetable2 extends Application {
             exit(0);
         });
         stage.setResizable(false);
-        TimeTableController timeTableController=GUI.GUIUtil.StageUtil.changeViews(stage, "/GUI/Controller/Main/test/TimeTable/UsingTableView/TimeTable.fxml");
+        TimeTableController timeTableController=GUI.GUIUtil.StageUtil.changeViews(stage, "/GUI/Window/Components/Time/TimeTable.fxml");
         timeTableController.setStage(stage);
         stage.setOnHiding(e->{
             courseTimeSet=timeTableController.getTimeSet();
