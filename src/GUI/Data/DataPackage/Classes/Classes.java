@@ -6,9 +6,10 @@ import GUI.Data.Enum.School;
 public class Classes {
     private String code;               //课堂编号
     private String name;               //课堂名称
-    private int period;                //学时
-    private double credits;            //学分
-    private CourseTimeSet time;           //时间
+    private Integer period;            //学时
+    private Double credits;            //学分
+    private CourseTimeSet time;        //时间
+    private String StringTime;         //字符串格式的时间
     private int stdCount;              //当前学生人数-
     private int limitCount;            //最大学生人数-
     private ClassType classType;       //理论/实验课
@@ -25,12 +26,29 @@ public class Classes {
 
     }
 
-    public Classes(String code, String name, int period, double credits, CourseTimeSet time, int stdCount, int limitCount, ClassType classType, CourseType courseType, School school, Campus campus, ExamMode examMode, Language language, Education education, IDSet teacher, Full full) {
+    public Classes(String code,
+                   String name,
+                   Integer period,
+                   Double credits,
+                   CourseTimeSet time,
+                   String stringTime,
+                   int stdCount,
+                   int limitCount,
+                   ClassType classType,
+                   CourseType courseType,
+                   School school,
+                   Campus campus,
+                   ExamMode examMode,
+                   Language language,
+                   Education education,
+                   IDSet teacher,
+                   Full full) {
         this.code = code;
         this.name = name;
         this.period = period;
         this.credits = credits;
         this.time = time;
+        StringTime = stringTime;
         this.stdCount = stdCount;
         this.limitCount = limitCount;
         this.classType = classType;
@@ -60,19 +78,19 @@ public class Classes {
         this.name = name;
     }
 
-    public int getPeriod() {
+    public Integer getPeriod() {
         return period;
     }
 
-    public void setPeriod(int period) {
+    public void setPeriod(Integer period) {
         this.period = period;
     }
 
-    public double getCredits() {
+    public Double getCredits() {
         return credits;
     }
 
-    public void setCredits(double credits) {
+    public void setCredits(Double credits) {
         this.credits = credits;
     }
 
@@ -82,6 +100,10 @@ public class Classes {
 
     public void setTime(CourseTimeSet time) {
         this.time = time;
+    }
+
+    public String getStringTime() {
+        return StringTime;
     }
 
     public int getStdCount() {
