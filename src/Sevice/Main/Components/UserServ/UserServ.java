@@ -1,5 +1,6 @@
 package Sevice.Main.Components.UserServ;
 
+import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.Enum.Error.Main.Components.UserServ.ChangePasswordError;
 import GUI.Data.Enum.Error.Main.Components.UserServ.EditError;
 import GUI.Data.Enum.School;
@@ -51,6 +52,12 @@ public class UserServ {
      */
     public static ChangePasswordError changePassword(String ID, String originPassword, String newPassword, String newConfirmPassword){
         return ChangePasswordError.Success;
+    }
+    public static IDSet findStudent(String name){
+        return null;
+    }
+    public static IDSet findTeacher(String teacher){
+        return null;
     }
 
 }

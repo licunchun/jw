@@ -8,4 +8,7 @@ public class IDSet {
     public IDSet(){
 
     }
+    public void add(String ID){
+        this.IDSet.add(ID);
+    }
 }

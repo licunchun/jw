@@ -126,3 +126,25 @@
     用户基本信息的Getter，有哪些见UserServ
     如果该ID没有对应数据类型或者ID=null请报错，Throw Exeption同上
     如果未查询到该ID请返回null
+## +FindStudent(String name)
+参数：
+
+    name(String):学生的名字
+返回：
+
+    studentIDSet(IDSet):搜索到的学生的ID集合
+描述：
+
+    根据名字搜索学生
+    注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
+## +FindTeacher(String name)
+参数：
+
+    name(String):老师的名字
+返回：
+
+    studentIDSet(IDSet):搜索到的老师的ID集合
+描述：
+
+    根据名字搜索老师
+    注意：没找到返回空集。不要返回null！不要返回null！不要返回null！

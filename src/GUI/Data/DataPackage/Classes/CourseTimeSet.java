@@ -16,8 +16,6 @@ public class CourseTimeSet {
     }
 
     public void show(){
-        for(CourseTime item:courseTimeSet){
-            System.out.println(courseTimeSet.toString());
-        }
+        System.out.println(courseTimeSet.toString());
     }
 }
