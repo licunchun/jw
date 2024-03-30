@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="660.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Main.Student.StudentScoreController">
+    <children>
+        <VBox prefHeight="640.0" prefWidth="1260.0">
+         <children>
+            <AnchorPane prefHeight="80.0" prefWidth="595.0">
+               <children>
+                  <Label layoutX="566.0" layoutY="19.0" text="我的成绩">
+                     <font>
+                        <Font size="32.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="58.0" prefWidth="1260.0" style="-fx-background-color: lightgray;">
+               <children>
+                  <Label layoutX="50.0" layoutY="20.0" text="总学分：" />
+                  <Label id="TotalCredits" layoutX="150.0" layoutY="20.0" />
+                  <Label layoutX="250.0" layoutY="20.0" text="已获学分：" />
+                  <Label id="ReceivedCredits" layoutX="350.0" layoutY="20.0" />
+                  <Label layoutX="450.0" layoutY="20.0" text="不及格学分：" />
+                  <Label id="FailedCredits" layoutX="550.0" layoutY="20.0" />
+                  <Label layoutX="650.0" layoutY="20.0" text="GPA：" />
+                  <Label id="GPA" layoutX="750.0" layoutY="20.0" />
+                  <Label layoutX="850.0" layoutY="20.0" text="加权平均分：" />
+                  <Label id="WeightAverageScore" layoutX="950.0" layoutY="20.0" />
+                  <Label id="ArithmeticAverageScore" layoutX="1050.0" layoutY="20.0" text="算术平均分：" />
+                  <Label id="ArithmeticAverageScore" layoutX="1150.0" layoutY="20.0" />
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="506.0" prefWidth="1260.0">
+               <children>
+                  <TableView id="CourseTable" layoutX="200.0" layoutY="19.0" prefHeight="481.0" prefWidth="860.0">
+                     <columns>
+                        <TableColumn id="Courses" prefWidth="380.0" text="课程" />
+                        <TableColumn id="Periods" prefWidth="120.0" text="学时" />
+                        <TableColumn id="Credits" prefWidth="120.0" text="学分" />
+                        <TableColumn id="GPAs" prefWidth="120.0" text="绩点" />
+                        <TableColumn id="Scores" prefWidth="120.0" text="成绩" />
+                     </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+         </children></VBox>
+    </children>
+</AnchorPane>
