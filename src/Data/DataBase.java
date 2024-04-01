@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Spliterator;
 
 public class DataBase {
+    public static final int INVALID = 0;
     public static final int STUDENT = 1;
     public static final int TEACHER = 2;
     public static final int MANAGER = 3;

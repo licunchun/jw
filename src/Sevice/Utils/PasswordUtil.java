@@ -2,27 +2,36 @@ package Sevice.Utils;
 
 import GUI.Data.Enum.Error.Login.Regist;
 
-public class PasswordUtil extends StrUtil {
+public class PasswordUtil{
+    final public static int MAX_NAME_LENGTH = 10;
+    final public static int EMPTY = 0;
+    final public static int PASS = 1;
+    final public static int INVALID_LENGTH = 2;
+    private final String password;
 
-    public static boolean charCheck(String str) {
-        int num = str.length();
-        for (int i = 0; i < num; i++) {
-            char ch = str.charAt(i);
-            if(ch>='a'&&ch<='z'||ch>='A'&&ch<='Z'||ch>='0'&&ch<='9')
-                continue;
-            else
-                return false;
-        }
-        return true;
+    public PasswordUtil(String password) {
+        this.password = password;
     }
-    public static Regist checkValid(String str) {
-        if (str.isEmpty())
-            return Regist.PasswordEmpty;
-        else if (!lengthCheck(str))
-            return Regist.PasswordOverLength;
-        else if (!charCheck(str))
-            return Regist.PasswordInvalidChar;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public int checkLength(){
+        if(this.password.isEmpty())
+            return EMPTY;
+        else if(this.password.length()>MAX_NAME_LENGTH)//
+            return INVALID_LENGTH;
         else
-            return Regist.Pass;
+            return PASS;
+    }
+
+    public boolean checkChar() {
+        return this.password.matches("^[a-zA-z0-9]+$");
+    }
+    public boolean checkValid() {
+        if (checkLength()!=PASS)
+            return false;
+        return checkChar();
     }
 }

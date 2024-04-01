@@ -13,7 +13,7 @@ public class LoginServ {
             return Login.PasswordEmpty;
         //判断用户类型
         int type = UserTypeUtil.IDToAccount(ID);
-        if(type==0)
+        if(type==DataBase.INVALID)
             return Login.NotPass;
         //从数据库获得用户密码
         DataBase db = new DataBase();

@@ -20,7 +20,7 @@ public class UserTypeUtil {
                 return DataBase.MANAGER;
             }
             default -> {
-                return 0;
+                return DataBase.INVALID;
             }
         }
     }
@@ -32,4 +32,22 @@ public class UserTypeUtil {
             default -> throw new RuntimeException("RegistServ.java(line 35)");
         };
     }
+    public static UserType IDToEnum(String ID){
+        int length = ID.length();
+        switch (length){
+            case STUDENT_ACCOUNT_LENGTH -> {
+                return UserType.Student;
+            }
+            case TEACHER_ACCOUNT_LENGTH -> {
+                return UserType.Teacher;
+            }
+            case MANAGER_ACCOUNT_LENGTH -> {
+                return UserType.Admin;
+            }
+            default -> {
+                return UserType.None;
+            }
+        }
+    }
+
 }
