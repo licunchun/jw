@@ -152,7 +152,7 @@ public class ClassesChoosingPageController {
             this.credits = new SimpleStringProperty(classes.getCredits().toString());
             this.time = new SimpleStringProperty(classes.getStringTime());
             this.student=new SimpleStringProperty(Integer.toString(classes.getStdCount())+'/'+
-                    Integer.toString(classes.getLimitCount()));
+                    classes.getLimitCount());
             this.classType = new SimpleStringProperty(classes.getClassType().toString());
             this.courseType = new SimpleStringProperty(classes.getCourseType().toString());
             this.school = new SimpleStringProperty(classes.getSchool().toString());
