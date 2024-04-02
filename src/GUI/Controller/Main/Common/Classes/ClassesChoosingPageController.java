@@ -397,6 +397,6 @@ public class ClassesChoosingPageController {
     }
 
     public void close(){
-
+        TimePageStage.close();
     }
 }
