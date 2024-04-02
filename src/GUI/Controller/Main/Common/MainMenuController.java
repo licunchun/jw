@@ -86,17 +86,20 @@ public class MainMenuController {
 
                 userInformationPageController.setStage(informationPageStage);
                 userInformationPageController.setID(ID);
+                userInformationPageController.flush();
                 if (userType == UserType.Student) {
                     FXMLLoader loader = loadScene("/GUI/Window/Main/Student/StudentInformation.fxml");
                     userInformationPageController.getChooseAnchorPane().getChildren().add(newRoot(loader));
                     studentInformationController = getController(loader);
                     studentInformationController.setID(ID);
+                    studentInformationController.flush();
                 }
                 if (userType == UserType.Teacher) {
                     FXMLLoader loader = loadScene("/GUI/Window/Main/Teacher/TeacherInformation.fxml");
                     userInformationPageController.getChooseAnchorPane().getChildren().add(newRoot(loader));
                     teacherInformationController = getController(loader);
                     teacherInformationController.setID(ID);
+                    teacherInformationController.flush();
                 }
             }//Scene的加载和基本信息的设置
             {

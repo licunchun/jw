@@ -48,7 +48,7 @@
                   <AnchorPane layoutX="760.0" prefHeight="30.0" prefWidth="200.0">
                      <children>
                         <Label layoutX="14.0" layoutY="7.0" text="教师名称" />
-                        <TextField fx:id="ClassesCreditField1" layoutX="86.0" layoutY="3.0" prefWidth="100.0" />
+                        <TextField fx:id="TeacherNameField" layoutX="86.0" layoutY="3.0" prefWidth="100.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
@@ -100,13 +100,13 @@
                   </AnchorPane>
                   <AnchorPane layoutX="1160.0" layoutY="30.0" prefHeight="30.0" prefWidth="120.0">
                      <children>
-                        <Button fx:id="TimeButton" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" text="时间" />
+                        <Button fx:id="TimeButton" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" text="时间" onAction="#openTimePage"/>
                         <Button fx:id="SearchButton" layoutX="70.0" layoutY="5.0" mnemonicParsing="false" onAction="#doSearch" text="查询" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane prefHeight="600.0" prefWidth="1280.0" />
+            <AnchorPane fx:id="TableViewPane" prefHeight="600.0" prefWidth="1280.0" />
          </children>
       </VBox>
    </children>

@@ -9,7 +9,6 @@ public class Classes {
     private Integer period;            //学时
     private Double credits;            //学分
     private CourseTimeSet time;        //时间
-    private String StringTime;         //字符串格式的时间
     private int stdCount;              //当前学生人数-
     private int limitCount;            //最大学生人数-
     private ClassType classType;       //理论/实验课
@@ -31,7 +30,6 @@ public class Classes {
                    Integer period,
                    Double credits,
                    CourseTimeSet time,
-                   String stringTime,
                    int stdCount,
                    int limitCount,
                    ClassType classType,
@@ -48,7 +46,6 @@ public class Classes {
         this.period = period;
         this.credits = credits;
         this.time = time;
-        StringTime = stringTime;
         this.stdCount = stdCount;
         this.limitCount = limitCount;
         this.classType = classType;
@@ -100,10 +97,6 @@ public class Classes {
 
     public void setTime(CourseTimeSet time) {
         this.time = time;
-    }
-
-    public String getStringTime() {
-        return StringTime;
     }
 
     public int getStdCount() {

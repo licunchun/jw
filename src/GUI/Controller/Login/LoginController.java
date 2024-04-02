@@ -59,7 +59,6 @@ public class LoginController {
                 return;
             case Login.Admin:
                 openMainPage(stage,UserType.Admin,UserID.getText());
-                return;
         }
     }
 

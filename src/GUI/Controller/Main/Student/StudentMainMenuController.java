@@ -60,17 +60,24 @@ public class StudentMainMenuController {
             Parent root = newRoot(classesChoosingPageLoader);
             classesChoosingPageController = getController(classesChoosingPageLoader);
 
+
+            ContextMenu contextMenu=classesChoosingPageController.classesChoosingPageContextMenu();
+            root.setOnContextMenuRequested(e->{
+                contextMenu.show(root,e.getScreenX(),e.getScreenY());
+            });
+
             classesChoosingPageController.setID(ID);
             classesChoosingPageController.setUserType(UserType.Student);
 
             classesChoosingTab.setContent(root);
             classesChoosingTab.setOnCloseRequest(e->{
+                classesChoosingPageController.close();
                 mainMenuTabPane.getSelectionModel().select(0);
                 isClassesChoosingPageExist=false;
                 mainMenuTabPane.getTabs().remove(classesChoosingTab);
             });
         }
-        classesScheduleTab = new Tab("课表");
+        classesScheduleTab = new Tab("课表");//TODO  未同步
         {
             FXMLLoader classesSchedulePageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesSchedulePage.fxml");
             Parent root = newRoot(classesSchedulePageLoader);
@@ -82,7 +89,7 @@ public class StudentMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesScheduleTab);
             });
         }
-        dropClassesTab = new Tab("退课");
+        dropClassesTab = new Tab("退课");//TODO  未同步
         {
             FXMLLoader dropClassesPageLoader = loadScene("/GUI/Window/Main/Student/Classes/DropClassesPage.fxml");
             Parent root = newRoot(dropClassesPageLoader);
@@ -94,7 +101,7 @@ public class StudentMainMenuController {
                 mainMenuTabPane.getTabs().remove(dropClassesTab);
             });
         }
-        checkGradeTab = new Tab("查看成绩");
+        checkGradeTab = new Tab("查看成绩");//TODO 未同步
         {
             FXMLLoader checkGradePageLoader = loadScene("/GUI/Window/Main/Student/Classes/CheckGradePage.fxml");
             Parent root = newRoot(checkGradePageLoader);

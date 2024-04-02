@@ -47,7 +47,6 @@ public class UserInformationPageController {
 
     @FXML
     public void initialize(){
-        flush();
     }
     @FXML
     private void doChangePassword(){
@@ -119,6 +118,9 @@ public class UserInformationPageController {
 
     public void flush(){
         ShowID.setText(ID);
+        if(getName(ID)==null){
+            throw new RuntimeException("UserInformationPageController.java:运行过程中账户ID改变，故停止程序运行");
+        }
         ShowName.setText(getName(ID));
     }
 }

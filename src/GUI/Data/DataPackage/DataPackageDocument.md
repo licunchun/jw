@@ -10,6 +10,8 @@
     
     Classes:班级的类
     这个里面你也别放方法(要用的构造方法和Getter&Setter除外)捏
+
+    ClassesForTable:给GUI的TableView提供服务的类，不熟悉性质请勿使用
     
     ClassesSet:
     Classes的set（别问我为啥不用Set，因为前端懒得搞逻辑，直接打包给我）

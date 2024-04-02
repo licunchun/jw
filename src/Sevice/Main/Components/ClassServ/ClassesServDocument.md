@@ -11,5 +11,16 @@
 说明：
 
     枚举类只能选一个，
-    CourseTimeSet中检索所有时间包含于classes.CourseTimeSet的Classes
-    如果该项没有被选择则classes对应的值为null
+    数据库中检索所有满足条件且时间包含于classes.CourseTimeSet的Classes
+    如果该项没有被选择则classes对应的值则返回空的集合类
+
+## +toStringTime(CourseTimeSet courseTimeSet)
+参数：
+
+    courseTimeSet(CourseTimeSet):时间类
+返回：
+    
+    timeString(String):字符串形式的时间
+说明：
+
+    将时间集合转换为字符串形式的时间

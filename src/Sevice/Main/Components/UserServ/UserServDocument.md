@@ -135,7 +135,7 @@
     studentIDSet(IDSet):搜索到的学生的ID集合
 描述：
 
-    根据名字搜索学生
+    根据名字搜索学生，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
 ## +FindTeacher(String name)
 参数：
@@ -146,5 +146,5 @@
     studentIDSet(IDSet):搜索到的老师的ID集合
 描述：
 
-    根据名字搜索老师
+    根据名字搜索老师，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
