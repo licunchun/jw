@@ -394,6 +394,8 @@ public class ClassesChoosingPageController {
     }
 
     public void close(){
-        TimePageStage.close();
+        if(isTimePageExist){
+            TimePageStage.close();
+        }
     }
 }
