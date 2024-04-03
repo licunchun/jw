@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static GUI.Controller.Main.Util.MainPageUtil.openMainPage;
+import static GUI.GUIUtil.MainPageUtil.openMainPage;
 import static GUI.GUIUtil.StageUtil.*;
 
 public class AdminMainMenuController {

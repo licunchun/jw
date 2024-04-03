@@ -1,4 +1,4 @@
-package GUI.Controller.Main.Util;
+package GUI.GUIUtil;
 
 import GUI.Data.Enum.User.UserType;
 import GUI.Controller.Main.Admin.AdminMainMenuController;
