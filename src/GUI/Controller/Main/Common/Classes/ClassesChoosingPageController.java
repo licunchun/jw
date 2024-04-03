@@ -91,6 +91,12 @@ public class ClassesChoosingPageController {
     private Pagination pagination;
     private static final int ROWS_PER_PAGE=20;//每页最多有多少行
     /*
+     * Classes Main Page
+     */
+    private boolean isClassesMainPageExist=false;
+    private Stage classesMainPageStage;
+    private ClassesMainPageController classesMainPageController;
+    /*
      * Else
      */
     private Classes searchingClasses=new Classes();//用于搜索的Classes
@@ -196,8 +202,14 @@ public class ClassesChoosingPageController {
 
                 {
                     hyperlink.setOnAction(event -> {
-                        //点击课堂编号跳出课程主页
-                        //TODO
+                        if(!isClassesMainPageExist){
+                            isClassesMainPageExist=false;
+                            openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
+                            resetLocation(classesMainPageStage);
+                        }
+                        else{
+                            resetLocation(classesMainPageStage);
+                        }
                     });
                 }//超链接点击事件
 
@@ -393,9 +405,30 @@ public class ClassesChoosingPageController {
         return contextMenu;
     }
 
+    private void openClassesMainPage(String ClassesCode){
+        classesMainPageStage=new Stage();
+
+        classesMainPageController=changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
+
+        classesMainPageController.setStage(classesMainPageStage);
+        classesMainPageController.setID(ID);
+        classesMainPageController.setUserType(userType);
+
+        classesMainPageStage.setOnHiding(e->{
+            isClassesMainPageExist=false;
+            classesMainPageStage.close();
+        });
+
+        classesMainPageStage.show();
+        classesMainPageStage.setResizable(false);
+    }
+
     public void close(){
         if(isTimePageExist){
             TimePageStage.close();
+        }
+        if(isClassesMainPageExist){
+            classesMainPageStage.close();
         }
     }
 }
