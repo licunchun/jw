@@ -77,7 +77,7 @@ public class StudentMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesChoosingTab);
             });
         }
-        classesScheduleTab = new Tab("课表");//TODO  未同步
+        classesScheduleTab = new Tab("查看课表");//TODO  未同步
         {
             FXMLLoader classesSchedulePageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesSchedulePage.fxml");
             Parent root = newRoot(classesSchedulePageLoader);

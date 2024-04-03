@@ -1,4 +1,4 @@
-package GUI.Controller.Components.Time.TimeTableTry;
+package GUI.Controller.Components.Time.TimeTableBy_LCC;
 
 import GUI.Controller.Components.Time.TimeTableController;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
@@ -19,7 +19,7 @@ public class Timetable2 extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        GUI.Controller.Components.Time.TimeTableTry.Timetable2.stage = stage;
+        GUI.Controller.Components.Time.TimeTableBy_LCC.Timetable2.stage = stage;
         stage.setOnHiding(e -> {
             exit(0);
         });
