@@ -117,22 +117,22 @@ public class UserServ {
 
         return School.GiftedYoung;
     }
-    public static Grade getGrade(String ID){return Grade.Grade1;}
+    public static Grade getGrade(String ID){return Grade.Grade1;}//TODO
     public static Double getMoney(String ID){
         return (double) 0;
-    }
+    }//TODO
     /*
      * Else
      */
     public static ChangePasswordError changePassword(String ID, String originPassword, String newPassword, String newConfirmPassword){
         return ChangePasswordError.Success;
-    }
+    }//TODO
     public static IDSet findStudent(String name){
 
-        return null;
-    }
+        return new IDSet();
+    }//TODO
     public static IDSet findTeacher(String teacher){
-        return null;
-    }
+        return new IDSet();
+    }//TODO
 
 }
