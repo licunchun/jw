@@ -4,7 +4,7 @@ public enum Full {
     Full("已满"),
     NotFull("未满");
 
-    private String name;
+    private final String name;
     Full(String name){
         this.name=name;
     }

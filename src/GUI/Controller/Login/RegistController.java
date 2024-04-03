@@ -113,7 +113,7 @@ public class RegistController {
                 changeViews(stage,"/GUI/Window/Login/registTeacher.fxml");
                 return;
             case UserType.Admin:
-                ID=store(userType,name,password,confirmPassword,null,null,null);
+                ID=store(userType,name,password,confirmPassword,Gender.Male,School.GiftedYoung,Grade.Grade1);
                 showIDPage();
                 break;
             default:
@@ -127,7 +127,7 @@ public class RegistController {
     }
     @FXML
     public void doTeacherConfirm(){
-        ID=store(userType,name,password,confirmPassword,null,TeacherSchoolChooser.getValue(),null);
+        ID=store(userType,name,password,confirmPassword,Gender.Male,TeacherSchoolChooser.getValue(),Grade.Grade1);
         showIDPage();
     }
     public void showIDPage(){

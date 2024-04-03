@@ -1,6 +1,5 @@
 package GUI.Data.Enum.Classes.EnumForClassesSearching;
 
-import GUI.Data.Enum.Classes.Campus;
 import GUI.Data.Enum.Classes.Language;
 
 public enum C_Language {

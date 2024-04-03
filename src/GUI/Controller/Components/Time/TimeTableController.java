@@ -1,7 +1,6 @@
 package GUI.Controller.Components.Time;
 
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
-import GUI.Data.Enum.Classes.CourseTime;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
@@ -15,7 +14,7 @@ public class TimeTableController {
     @FXML
     private Button ConfirmButton;
     private Stage stage;
-    private Button [][] Tabel= new Button[8][14];
+    private Button [][] Table= new Button[8][14];
 
     static final double BUTTON_WIDE=45.0;
     static final double BUTTON_HEIGHT=30.0;
@@ -32,11 +31,11 @@ public class TimeTableController {
                 AnchorPane.setTopAnchor(button,Distance+j*BUTTON_HEIGHT);
                 AnchorPane.setLeftAnchor(button,Distance+i*BUTTON_WIDE);
                 TablePlace.getChildren().add(button);
-                Tabel[i][j]=button;
+                Table[i][j]=button;
             }
         }
 
-        Tabel[0][0].setOnAction(e->{
+        Table[0][0].setOnAction(e->{
             if(isChosen[0][0]){
                 for (int i = 1; i <= 7; i++) {
                     for (int j = 1; j <= 13; j++) {
@@ -55,9 +54,9 @@ public class TimeTableController {
         });
 
         for(int i=1;i<=7;++i){
-            Tabel[i][0].setText(Integer.toString(i));
+            Table[i][0].setText(Integer.toString(i));
             int finalI = i;
-            Tabel[i][0].setOnAction(e->{
+            Table[i][0].setOnAction(e->{
                 if(isChosen[finalI][0]){
                     for (int j = 1; j <= 13; j++) {
                         isChosen[finalI][j]=false;
@@ -73,9 +72,9 @@ public class TimeTableController {
         }
 
         for(int j=1;j<=13;++j){
-            Tabel[0][j].setText(Integer.toString(j));
+            Table[0][j].setText(Integer.toString(j));
             int finalJ=j;
-            Tabel[0][j].setOnAction(e->{
+            Table[0][j].setOnAction(e->{
                 if(isChosen[0][finalJ]){
                     for (int i = 1; i <=7; i++) {
                         isChosen[i][finalJ]=false;
@@ -94,7 +93,7 @@ public class TimeTableController {
             for (int j = 1; j <= 13; j++) {
                 int finalI = i;
                 int finalJ = j;
-                Tabel[i][j].setOnAction(e->{
+                Table[i][j].setOnAction(e->{
                     isChosen[finalI][finalJ]=!isChosen[finalI][finalJ];
                     flush();
                 });
@@ -134,10 +133,10 @@ public class TimeTableController {
         for (int i = 0; i <= 7; i++) {
             for (int j = 0; j <= 13; j++) {
                 if(isChosen[i][j]){
-                    Tabel[i][j].setStyle("-fx-background-color: skyblue;");
+                    Table[i][j].setStyle("-fx-background-color: skyblue;");
                 }
                 else{
-                    Tabel[i][j].setStyle("-fx-background-color: lightgray;");
+                    Table[i][j].setStyle("-fx-background-color: lightgray;");
                 }
             }
         }

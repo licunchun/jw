@@ -1,8 +1,5 @@
 package Data.Type;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 public class Student {
     public String name;
     public String account;

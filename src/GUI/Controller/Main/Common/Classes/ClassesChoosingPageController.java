@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import static GUI.Data.Enum.ObservableList.ClassesChoosingObservableList.*;
-import static GUI.Data.Enum.ObservableList.UserObservableList.UserTypeList;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
 import static Sevice.Main.Components.ClassServ.ClassesServ.searchClasses;
@@ -192,19 +191,19 @@ public class ClassesChoosingPageController {
             fullColumn.setCellValueFactory(cellData -> cellData.getValue().fullProperty());
         }//设置表格列与数据对象的属性关联
         {
-            codeColumn.setCellFactory(column-> new TableCell<ClassesForTable,Void>(){
-                private final Hyperlink hyperlink =new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
+            codeColumn.setCellFactory(column-> new TableCell<>() {
+                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
 
                 {
-                hyperlink.setOnAction(event->{
-                    //点击课堂编号跳出课程主页
-                    //TODO
-                });
+                    hyperlink.setOnAction(event -> {
+                        //点击课堂编号跳出课程主页
+                        //TODO
+                    });
                 }//超链接点击事件
 
                 @Override
-                protected void updateItem(Void item,boolean empty){
-                    super.updateItem(item,empty);;
+                protected void updateItem(Void item, boolean empty) {
+                    super.updateItem(item, empty);
                     if (empty) {
                         setGraphic(null);
                     } else {
@@ -387,9 +386,7 @@ public class ClassesChoosingPageController {
 
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
-        flushMenuItem.setOnAction(event->{
-            flush();
-        });
+        flushMenuItem.setOnAction(event-> flush());
 
         contextMenu.getItems().addAll(flushMenuItem);
 

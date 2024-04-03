@@ -34,9 +34,7 @@ public class LoginServ {
                 case DataBase.MANAGER -> {
                     return Login.Admin;
                 }
-                default -> {
-                    throw new RuntimeException("UserService.java(line ) StoreUser have no userType");
-                }
+                default -> throw new RuntimeException("UserService.java(line ) StoreUser have no userType");
             }
         }
         else

@@ -149,9 +149,7 @@ public class TeacherMainMenuController {
 
                     Reload.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
 
-                    Reload.setOnAction(e->{
-                        reloadPage();
-                    });
+                    Reload.setOnAction(e-> reloadPage());
 
                     PageMenu.getItems().addAll(Reload);
                 }//页面里的子菜单

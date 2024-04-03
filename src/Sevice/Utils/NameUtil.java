@@ -1,8 +1,5 @@
 package Sevice.Utils;
 
-import Data.DataBase;
-import GUI.Data.Enum.Error.Login.Regist;
-
 public class NameUtil{
     final public static int MAX_NAME_LENGTH = 10;
     final public static int EMPTY = 0;

@@ -62,9 +62,7 @@ public class StudentMainMenuController {
 
 
             ContextMenu contextMenu=classesChoosingPageController.classesChoosingPageContextMenu();
-            root.setOnContextMenuRequested(e->{
-                contextMenu.show(root,e.getScreenX(),e.getScreenY());
-            });
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
 
             classesChoosingPageController.setID(ID);
             classesChoosingPageController.setUserType(UserType.Student);
@@ -190,9 +188,7 @@ public class StudentMainMenuController {
 
                     Reload.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
 
-                    Reload.setOnAction(e->{
-                        reloadPage();
-                    });
+                    Reload.setOnAction(e-> reloadPage());
 
                     PageMenu.getItems().addAll(Reload);
                 }//页面里的子菜单

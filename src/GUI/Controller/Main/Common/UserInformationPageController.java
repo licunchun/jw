@@ -2,7 +2,6 @@ package GUI.Controller.Main.Common;
 
 import GUI.Controller.Components.UserInformationEditor.NameEditorController;
 import GUI.Controller.Components.UserInformationEditor.PasswordChangerController;
-import GUI.Data.Enum.User.UserType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;

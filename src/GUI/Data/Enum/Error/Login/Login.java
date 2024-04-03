@@ -6,5 +6,5 @@ public enum Login {
     NotPass,//不通过
     Student,//学生
     Teacher,//教师
-    Admin;//管理员
+    Admin//管理员
 }

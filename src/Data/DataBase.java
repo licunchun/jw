@@ -8,7 +8,6 @@ import Data.Type.Teacher;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Spliterator;
 
 public class DataBase {
     public static final int INVALID = 0;

@@ -9,10 +9,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.input.KeyCharacterCombination;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 
@@ -76,9 +74,7 @@ public class MainMenuController {
                 Scene scene=new Scene(root);
                 {
                     ContextMenu contextMenu=initInformationPageContextMenu();
-                    scene.setOnContextMenuRequested(e->{
-                        contextMenu.show(scene.getWindow(),e.getScreenX(),e.getScreenY());
-                    });
+                    scene.setOnContextMenuRequested(e-> contextMenu.show(scene.getWindow(),e.getScreenX(),e.getScreenY()));
                 }//右键菜单栏代码块
                 informationPageStage.setScene(scene);
                 resetLocation(informationPageStage);
@@ -119,9 +115,7 @@ public class MainMenuController {
 
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
-        flushMenuItem.setOnAction(event->{
-            flushUserInformationPage();
-        });
+        flushMenuItem.setOnAction(event-> flushUserInformationPage());
 
         contextMenu.getItems().addAll(flushMenuItem);
 

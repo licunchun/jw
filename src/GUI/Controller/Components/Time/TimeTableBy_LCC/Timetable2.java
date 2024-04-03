@@ -18,11 +18,9 @@ public class Timetable2 extends Application {
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         GUI.Controller.Components.Time.TimeTableBy_LCC.Timetable2.stage = stage;
-        stage.setOnHiding(e -> {
-            exit(0);
-        });
+        stage.setOnHiding(e -> exit(0));
         stage.setResizable(false);
         TimeTableController timeTableController=GUI.GUIUtil.StageUtil.changeViews(stage, "/GUI/Window/Components/Time/TimeTable.fxml");
         timeTableController.setStage(stage);

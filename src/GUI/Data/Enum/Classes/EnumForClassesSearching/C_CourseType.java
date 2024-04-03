@@ -1,6 +1,5 @@
 package GUI.Data.Enum.Classes.EnumForClassesSearching;
 
-import GUI.Data.Enum.Classes.Campus;
 import GUI.Data.Enum.Classes.CourseType;
 
 public enum C_CourseType {

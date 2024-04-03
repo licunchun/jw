@@ -1,27 +1,17 @@
 package GUI.Data.Enum.Classes;
 
-import java.time.MonthDay;
-
 public class Util {
     public static Week getWeek(int i){
-        switch (i){
-            case 1:
-                return Week.Monday;
-            case 2:
-                return Week.Tuesday;
-            case 3:
-                return Week.Wednesday;
-            case 4:
-                return Week.Thursday;
-            case 5:
-                return Week.Friday;
-            case 6:
-                return Week.Saturday;
-            case 7:
-                return Week.Sunday;
-            default:
-                throw new RuntimeException("getWeek(Util.java) get a out of Range int");
-        }
+        return switch (i) {
+            case 1 -> Week.Monday;
+            case 2 -> Week.Tuesday;
+            case 3 -> Week.Wednesday;
+            case 4 -> Week.Thursday;
+            case 5 -> Week.Friday;
+            case 6 -> Week.Saturday;
+            case 7 -> Week.Sunday;
+            default -> throw new RuntimeException("getWeek(Util.java) get a out of Range int");
+        };
     }
 
     public static CourseTime getTime(int week,int section){

@@ -7,5 +7,5 @@ public enum ChangePasswordError {
     WrongOriginPassword,//原始密码错误
     InvalidChar,//newPassword不合法字符
     OverLength,//newPassword过长
-    NotMatch;//两次输入的密码不匹配
+    NotMatch//两次输入的密码不匹配
 }

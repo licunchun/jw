@@ -1,9 +1,6 @@
 package MainPackage;
 
-import GUI.GUIUtil.StageUtil;
 import javafx.application.Application;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.resetLocation;
@@ -18,11 +15,9 @@ public class Main extends Application{
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         Main.stage =stage;
-        stage.setOnHiding(e->{
-            exit(0);
-        });
+        stage.setOnHiding(e-> exit(0));
         stage.setResizable(false);
         stage.setTitle("学生选课系统");
         GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Login/Login.fxml");

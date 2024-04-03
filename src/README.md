@@ -42,7 +42,7 @@ PS：通用的可以修改到JavaBean类中
 
 ---
 
-# Sevice
+# Service
 
 + GUI给中间层的文档
 
@@ -72,7 +72,7 @@ set函数禁用，需要修改什么加函数传形参
 
 ---
 
-# Sevice.Utils
+# Service.Utils
 
 工具类，用于辅助Service
 

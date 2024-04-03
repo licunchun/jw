@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class StageUtil {
-    public StageUtil(){};
+    public StageUtil(){}
+
     //将窗口移至屏幕中间
     public static void setCenter(Stage stage){
         double x=(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-stage.getWidth())/2;
