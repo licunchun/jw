@@ -21,3 +21,27 @@
 说明：
 
     选课的方法，注意了这个不要返回null
+
+## +dropClasses(String studentID,String classesCode)
+参数：
+
+    studentID(String):学生的ID
+    classesCode(String):课程的课程代码
+返回：
+
+    dropClassesError(DropClassesError):退课的错误类型
+说明：
+
+    退课的方法，注意了这个不要返回null
+
+## +isPicked(String studentID,String classesCode)
+参数：
+
+    studentID(String):学生的ID
+    classesCode(String):课程代码
+返回：
+
+    isChosen(Boolean):是否选择了该课程
+说明：
+
+    查询课程是否被选择，如果查询失败（ID不存在或者Code不存在等等）则返回null

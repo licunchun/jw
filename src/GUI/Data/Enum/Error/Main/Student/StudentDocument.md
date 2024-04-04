@@ -6,4 +6,7 @@
 
     PickClassesError:
     /Service/Main/Student/ClassServ/ClassServ.pickClasses函数的返回报错
+
+    DropClassesError:
+    /Service/Main/Student/ClassServ/ClassServ.dropClasses函数的返回报错
     

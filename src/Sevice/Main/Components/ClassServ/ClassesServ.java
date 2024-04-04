@@ -4,8 +4,12 @@ import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.DataPackage.Classes.IDSet;
+import GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError;
 
 public class ClassesServ {
+    public static Classes getClasses(String classesCode){
+        return new Classes();
+    }//TODO
     public static ClassesSet searchClasses(Classes classes){
         return new ClassesSet();
     }//TODO
@@ -20,5 +24,8 @@ public class ClassesServ {
     }//TODO
     public static String toStringTime(CourseTimeSet courseTimeSet){
         return "";
+    }//TODO
+    public static DeleteClassesError deleteClasses(String classesCode){
+        return DeleteClassesError.Success;
     }//TODO
 }

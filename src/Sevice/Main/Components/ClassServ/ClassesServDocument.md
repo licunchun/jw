@@ -1,6 +1,18 @@
 # ClassesServ Document
 简介：服务于通用课程信息的类
 
+## +getClasses(String classesCode)
+参数：
+
+    classesCode(String)：该课程的课程编码
+返回：
+
+    classes(Classes):对应课程的类
+
+说明：
+
+    获取对应的Classes类，如果没找到则返回null
+
 ## +searchClasses(Classes classes)
 参数：
 
@@ -60,3 +72,14 @@
 说明：
 
     将时间集合转换为字符串形式的时间
+
+## +deleteClasses(String classesCode)
+参数：
+
+    classesCode(String)：该课程的课程编码
+返回：
+
+    deleteClassesError(DeleteClassesError):删除课程的报错
+说明：
+
+    删除课程的方法，不要返回null！！！！

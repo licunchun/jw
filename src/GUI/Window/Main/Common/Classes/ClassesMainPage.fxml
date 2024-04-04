@@ -221,16 +221,17 @@
             </AnchorPane>
             <AnchorPane prefHeight="60.0" prefWidth="600.0">
                <children>
-                  <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false" prefWidth="80.0" text="点我" onAction="#doClick">
+                  <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false" onAction="#doClick" prefWidth="80.0" text="点我">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
-                  <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false" prefWidth="80.0" text="返回" onAction="#doBack">
+                  <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false" onAction="#doBack" prefWidth="80.0" text="返回">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Button>
+                  <Label fx:id="Tips" layoutX="37.0" layoutY="23.0" textFill="RED" />
                </children>
             </AnchorPane>
          </children>
