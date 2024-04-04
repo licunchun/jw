@@ -57,7 +57,7 @@ public class AdminMainMenuController {
     public void initialize(){
         stage.setTitle("课程管理系统");
         //Tab加载并绑定页面
-        classesManageTab = new Tab("管理课程");//TODO  未同步
+        classesManageTab = new Tab("管理课程");
         {
             FXMLLoader classesManagePageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesChoosingPage.fxml");
             Parent root = newRoot(classesManagePageLoader);
@@ -78,37 +78,58 @@ public class AdminMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesManageTab);
             });
         }
-        manageStudentTab = new Tab("管理学生");//TODO  未同步
+        manageStudentTab = new Tab("管理学生");
         {
             FXMLLoader manageStudentPageLoader = loadScene("/GUI/Window/Main/Admin/ManageUserPage.fxml");
             Parent root = newRoot(manageStudentPageLoader);
+
+            ContextMenu contextMenu=manageStudentPageController.manageUserPageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
+            manageStudentPageController.setUserType(UserType.Student);
+
             manageStudentPageController = getController(manageStudentPageLoader);
             manageStudentTab.setContent(root);
             manageStudentTab.setOnCloseRequest(e -> {
+                manageStudentPageController.close();
                 mainMenuTabPane.getSelectionModel().select(0);
                 isManageStudentPageExist = false;
                 mainMenuTabPane.getTabs().remove(manageStudentTab);
             });
         }
-        manageTeacherTab = new Tab("管理教师");//TODO  未同步
+        manageTeacherTab = new Tab("管理教师");
         {
             FXMLLoader manageTeacherPageLoader = loadScene("/GUI/Window/Main/Admin/ManageUserPage.fxml");
             Parent root = newRoot(manageTeacherPageLoader);
+
+            ContextMenu contextMenu=manageTeacherPageController.manageUserPageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
+            manageTeacherPageController.setUserType(UserType.Teacher);
+
             manageTeacherPageController = getController(manageTeacherPageLoader);
             manageTeacherTab.setContent(root);
             manageTeacherTab.setOnCloseRequest(e -> {
+                manageTeacherPageController.close();
                 mainMenuTabPane.getSelectionModel().select(0);
                 isManageTeacherPageExist = false;
                 mainMenuTabPane.getTabs().remove(manageTeacherTab);
             });
         }
-        manageAdminTab = new Tab("管理管理员");//TODO  未同步
+        manageAdminTab = new Tab("管理管理员");
         {
             FXMLLoader manageAdminPageLoader = loadScene("/GUI/Window/Main/Admin/ManageUserPage.fxml");
             Parent root = newRoot(manageAdminPageLoader);
+
+            ContextMenu contextMenu=manageAdminPageController.manageUserPageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
+            manageAdminPageController.setUserType(UserType.Admin);
+
             manageAdminPageController = getController(manageAdminPageLoader);
             manageAdminTab.setContent(root);
             manageAdminTab.setOnCloseRequest(e -> {
+                manageAdminPageController.close();
                 mainMenuTabPane.getSelectionModel().select(0);
                 isManageAdminPageExist = false;
                 mainMenuTabPane.getTabs().remove(manageAdminTab);

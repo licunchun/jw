@@ -55,11 +55,18 @@ public class TeacherMainMenuController {
     public void initialize(){
         stage.setTitle("教师授课系统");
         //Tab加载并绑定页面
-        classesScheduleTab = new Tab("查看课表");//TODO  未同步
+        classesScheduleTab = new Tab("查看课表");
         {
             FXMLLoader classesSchedulePageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesSchedulePage.fxml");
             Parent root = newRoot(classesSchedulePageLoader);
             classesSchedulePageController = getController(classesSchedulePageLoader);
+
+            ContextMenu contextMenu=classesSchedulePageController.classesSchedulePageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
+            classesSchedulePageController.setID(ID);
+            classesSchedulePageController.setUserType(UserType.Teacher);
+
             classesScheduleTab.setContent(root);
             classesScheduleTab.setOnCloseRequest(e -> {
                 mainMenuTabPane.getSelectionModel().select(0);
@@ -67,10 +74,13 @@ public class TeacherMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesScheduleTab);
             });
         }
-        proposeCourseTab = new Tab("申请开课");//TODO  未同步
+        proposeCourseTab = new Tab("申请开课");
         {
             FXMLLoader proposeCoursePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/ProposeCoursePage.fxml");
             Parent root = newRoot(proposeCoursePageLoader);
+
+            //这里不需要右键菜单
+
             proposeCoursePageController = getController(proposeCoursePageLoader);
             proposeCourseTab.setContent(root);
             proposeCourseTab.setOnCloseRequest(e -> {
@@ -79,10 +89,13 @@ public class TeacherMainMenuController {
                 mainMenuTabPane.getTabs().remove(proposeCourseTab);
             });
         }
-        assignGradeTab = new Tab("给分");//TODO  未同步
+        assignGradeTab = new Tab("给分");
         {
             FXMLLoader assignGradePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/AssignGradePage.fxml");
             Parent root = newRoot(assignGradePageLoader);
+
+            //等lcc的界面
+
             assignGradePageController = getController(assignGradePageLoader);
             assignGradeTab.setContent(root);
             assignGradeTab.setOnCloseRequest(e -> {

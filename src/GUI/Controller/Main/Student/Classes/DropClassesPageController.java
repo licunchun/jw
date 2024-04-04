@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -60,7 +62,16 @@ public class DropClassesPageController{
         loadTable();
     }
     public ContextMenu dropClassesPageContextMenu(){
-        return new ContextMenu();
+        ContextMenu contextMenu= new ContextMenu();
+        MenuItem flushMenuItem = new MenuItem("刷新");
+
+        flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
+
+        flushMenuItem.setOnAction(event-> flush());
+
+        contextMenu.getItems().addAll(flushMenuItem);
+
+        return contextMenu;
     }
     public void setID(String ID) {
         this.ID = ID;
