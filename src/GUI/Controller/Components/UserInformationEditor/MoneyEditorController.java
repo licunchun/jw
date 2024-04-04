@@ -1,4 +1,4 @@
 package GUI.Controller.Components.UserInformationEditor;
 
-public class MoneyEditorController {
+public class MoneyEditorController {//TODO
 }

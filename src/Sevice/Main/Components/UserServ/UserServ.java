@@ -136,6 +136,9 @@ public class UserServ {
     public static IDSet findAdmin(String name){
         return new IDSet();
     }//TODO
+    public static IDSet FindUser(UserType userType,String ID,String Name){
+        return new IDSet();
+    }//TODO
     public static boolean isIDExist(String ID){
         return true;
     }//TODO

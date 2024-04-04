@@ -48,6 +48,11 @@ public class ManageUserPageController {
     private MoneyEditorController moneyEditorController;
     private ObservableList<UserInformationForTable> data= FXCollections.observableArrayList();//用于表格的展示的ObservableList
     /*
+     * Else
+     */
+    private String name=null;
+    private String ID=null;
+    /*
      * Functions
      */
     @FXML
@@ -56,9 +61,10 @@ public class ManageUserPageController {
     }
     @FXML
     private void doSearch(){
-
-    }//TODO
-
+        name=NameField.getText();
+        ID=IDField.getText();
+        flush();
+    }
     public void setUserType(UserType userType) {
         this.userType = userType;
     }

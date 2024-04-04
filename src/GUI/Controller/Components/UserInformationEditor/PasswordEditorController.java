@@ -1,4 +1,4 @@
 package GUI.Controller.Components.UserInformationEditor;
 
-public class PasswordEditorController {
+public class PasswordEditorController {//TODO
 }

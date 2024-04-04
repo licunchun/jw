@@ -129,7 +129,7 @@
 ## +FindStudent(String name)
 参数：
 
-    name(String):学生的名字
+    name(String):学生的名字，不参与搜索可能为“”或者null
 返回：
 
     studentIDSet(IDSet):搜索到的学生的ID集合
@@ -140,7 +140,7 @@
 ## +FindTeacher(String name)
 参数：
 
-    name(String):老师的名字
+    name(String):老师的名字，不参与搜索可能为“”或者null
 返回：
 
     teacherIDSet(IDSet):搜索到的老师的ID集合
@@ -151,13 +151,26 @@
 ## +FindAdmin(String name)
 参数：
 
-    name(String):管理员的名字
+    name(String):管理员的名字，不参与搜索可能为“”或者null
 返回：
 
     adminIDSet(IDSet):搜索到的老师的ID集合
 描述：
 
     根据名字搜索管理员，重名一起返回
+    注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
+## +FindUser(UserType userType,String ID,String Name)
+参数：
+
+    userType(UserType):用户的类型，不参与搜索可能为None或者null
+    ID(String):用户的ID，不参与搜索可能为“”或者null
+    name(String):用户的名字，不参与搜索可能为“”或者null
+返回：
+
+    IDSet(IDSet):搜索到的用户的ID集合
+描述：
+
+    搜索用户，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
 ## +isIDExist(String ID)
 参数：
