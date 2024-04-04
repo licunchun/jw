@@ -3,7 +3,7 @@ package GUI.Controller.Main.Common.Classes;
 import GUI.Data.Enum.User.UserType;
 import javafx.scene.control.ContextMenu;
 
-public class ClassesSchedulePageController {
+public class ClassesSchedulePageController {//TODO
     private String ID;
     private UserType userType;
     public ContextMenu classesSchedulePageContextMenu(){

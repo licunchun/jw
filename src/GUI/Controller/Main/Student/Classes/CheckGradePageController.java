@@ -2,7 +2,7 @@ package GUI.Controller.Main.Student.Classes;
 
 import javafx.scene.control.ContextMenu;
 
-public class CheckGradePageController {
+public class CheckGradePageController {//TODO
     private String ID;
 
     public ContextMenu checkGradePageContextMenu(){
