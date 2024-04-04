@@ -53,6 +53,7 @@ public class StudentMainMenuController {
      */
     @FXML
     public void initialize(){
+        stage.setTitle("学生选课系统");
         //Tab加载并绑定页面
         classesChoosingTab = new Tab("学生选课");
         {

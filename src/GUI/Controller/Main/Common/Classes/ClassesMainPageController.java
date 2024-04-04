@@ -188,6 +188,7 @@ public class ClassesMainPageController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("课程主页");
     }
 
     public void setID(String ID) {

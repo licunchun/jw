@@ -65,5 +65,6 @@ public class PasswordChangerController {
     }
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("修改密码");
     }
 }

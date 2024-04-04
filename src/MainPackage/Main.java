@@ -19,7 +19,6 @@ public class Main extends Application{
         Main.stage =stage;
         stage.setOnHiding(e-> exit(0));
         stage.setResizable(false);
-        stage.setTitle("课程管理一体化系统");
         //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Login/Login.fxml");
         GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Student/StudentMainMenu.fxml");
         //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Teacher/TeacherMainMenu.fxml");
@@ -33,5 +32,3 @@ public class Main extends Application{
         return stage;
     }
 }
-
-//TODO 界面名字等落实

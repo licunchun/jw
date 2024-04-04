@@ -30,6 +30,7 @@ public class RechargerController {
     }
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("充值界面");
     }
     @FXML
     private void initialize(){}

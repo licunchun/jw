@@ -42,5 +42,6 @@ public class NameEditorController {
     }
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("修改姓名");
     }
 }

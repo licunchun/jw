@@ -55,5 +55,6 @@ public class TeacherSchoolEditorController{
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("修改教师院系");
     }
 }

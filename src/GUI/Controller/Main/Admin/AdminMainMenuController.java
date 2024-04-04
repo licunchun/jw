@@ -55,6 +55,7 @@ public class AdminMainMenuController {
     }
     @FXML
     public void initialize(){
+        stage.setTitle("课程管理系统");
         //Tab加载并绑定页面
         classesManageTab = new Tab("管理课程");//TODO  未同步
         {

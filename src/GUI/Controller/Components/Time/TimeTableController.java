@@ -149,6 +149,7 @@ public class TimeTableController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+        stage.setTitle("时间选择页面");
     }
 
     public CourseTimeSet getTimeSet(){

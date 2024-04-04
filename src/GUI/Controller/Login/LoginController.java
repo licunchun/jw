@@ -34,7 +34,9 @@ public class LoginController {
      * Function
      */
     @FXML
-    public void initialize(){}
+    public void initialize(){
+        stage.setTitle("登录界面");
+    }
 
     @FXML
     public void doLogin(){

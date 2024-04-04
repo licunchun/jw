@@ -53,6 +53,7 @@ public class TeacherMainMenuController {
     }
     @FXML
     public void initialize(){
+        stage.setTitle("教师授课系统");
         //Tab加载并绑定页面
         classesScheduleTab = new Tab("查看课表");//TODO  未同步
         {
