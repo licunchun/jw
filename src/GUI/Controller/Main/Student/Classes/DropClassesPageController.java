@@ -1,16 +1,18 @@
 package GUI.Controller.Main.Student.Classes;
 
 import javafx.application.Application;
+import javafx.scene.control.ContextMenu;
 import javafx.stage.Stage;
 
-public class DropClassesPageController extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
+public class DropClassesPageController{
+    private String ID;
+    public ContextMenu dropClassesPageContextMenu(){
+        return new ContextMenu();
     }
-
-    @Override
-    public void start(Stage primaryStage) {
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+    public void close(){
 
     }
 }

@@ -54,7 +54,7 @@ public class StudentMainMenuController {
     @FXML
     public void initialize(){
         //Tab加载并绑定页面
-        classesChoosingTab = new Tab("学生选课");
+        classesChoosingTab = new Tab("学生选课");//TODO  改为启动另一个窗口
         {
             FXMLLoader classesChoosingPageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesChoosingPage.fxml");
             Parent root = newRoot(classesChoosingPageLoader);
@@ -75,11 +75,18 @@ public class StudentMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesChoosingTab);
             });
         }
-        classesScheduleTab = new Tab("查看课表");//TODO  未同步
+        classesScheduleTab = new Tab("查看课表");
         {
             FXMLLoader classesSchedulePageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesSchedulePage.fxml");
             Parent root = newRoot(classesSchedulePageLoader);
             classesSchedulePageController = getController(classesSchedulePageLoader);
+
+            ContextMenu contextMenu=classesSchedulePageController.classesSchedulePageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
+            classesSchedulePageController.setID(ID);
+            classesSchedulePageController.setUserType(UserType.Student);
+
             classesScheduleTab.setContent(root);
             classesScheduleTab.setOnCloseRequest(e -> {
                 mainMenuTabPane.getSelectionModel().select(0);
@@ -87,23 +94,35 @@ public class StudentMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesScheduleTab);
             });
         }
-        dropClassesTab = new Tab("退课");//TODO  未同步
+        dropClassesTab = new Tab("已选课程");
         {
             FXMLLoader dropClassesPageLoader = loadScene("/GUI/Window/Main/Student/Classes/DropClassesPage.fxml");
             Parent root = newRoot(dropClassesPageLoader);
             dropClassesPageController = getController(dropClassesPageLoader);
+
+
+            ContextMenu contextMenu=dropClassesPageController.dropClassesPageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
+            dropClassesPageController.setID(ID);
+
             dropClassesTab.setContent(root);
             dropClassesTab.setOnCloseRequest(e->{
+                dropClassesPageController.close();
                 mainMenuTabPane.getSelectionModel().select(0);
                 isDropClassesPageExist=false;
                 mainMenuTabPane.getTabs().remove(dropClassesTab);
             });
         }
-        checkGradeTab = new Tab("查看成绩");//TODO 未同步
+        checkGradeTab = new Tab("查看成绩");
         {
             FXMLLoader checkGradePageLoader = loadScene("/GUI/Window/Main/Student/Classes/CheckGradePage.fxml");
             Parent root = newRoot(checkGradePageLoader);
             checkGradePageController = getController(checkGradePageLoader);
+
+            ContextMenu contextMenu=checkGradePageController.checkGradePageContextMenu();
+            root.setOnContextMenuRequested(e-> contextMenu.show(root,e.getScreenX(),e.getScreenY()));
+
             checkGradeTab.setContent(root);
             checkGradeTab.setOnCloseRequest(e->{
                 mainMenuTabPane.getSelectionModel().select(0);
@@ -144,7 +163,7 @@ public class StudentMainMenuController {
                 Menu ChoiceClassesMenu = new Menu("已选课程");
                 {
                     MenuItem OpenClassesSchedulePage=new MenuItem("查看课表");
-                    MenuItem OpenDropClassesPage=new MenuItem("退课");
+                    MenuItem OpenDropClassesPage=new MenuItem("已选课程");
                     MenuItem OpenCheckGradePage=new MenuItem("查看成绩");
 
                     OpenClassesSchedulePage.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
