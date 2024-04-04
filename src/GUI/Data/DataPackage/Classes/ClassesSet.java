@@ -13,7 +13,7 @@ public class ClassesSet {
 
     }
 
-    public ObservableList<ClassesForTable> toOBservableList(){
+    public ObservableList<ClassesForTable> toObservableList(){
         ObservableList<ClassesForTable> observableList = FXCollections.observableArrayList();
         if(classesSet==null){
             return observableList;

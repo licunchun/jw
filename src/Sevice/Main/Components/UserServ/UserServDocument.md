@@ -159,7 +159,7 @@
 
     根据名字搜索管理员，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
-## +FindUser(UserType userType,String ID,String Name)
+## +findUser(UserType userType,String ID,String Name)
 参数：
 
     userType(UserType):用户的类型，不参与搜索可能为None或者null

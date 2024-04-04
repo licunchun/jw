@@ -17,4 +17,8 @@
     Classes的set（别问我为啥不用Set，因为前端懒得搞逻辑，直接打包给我）
     对了里面不要放方法(要用的构造方法和Getter&Setter除外)，
     功能实现用单独的Serv工具类，这个我可能要放一些自己的格式处理方法
+## UserInformation
+简介：用户信息
+
+    UserInformationForTable:给GUI的TableView提供服务的类，不熟悉性质请勿使用
     

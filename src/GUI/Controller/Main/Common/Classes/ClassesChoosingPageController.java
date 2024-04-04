@@ -235,6 +235,7 @@ public class ClassesChoosingPageController {
 
         flush();//刷新数据
         tableView.setItems(data);
+
         tableView.getColumns().addAll(
                 codeColumn,
                 nameColumn,
@@ -268,7 +269,7 @@ public class ClassesChoosingPageController {
     }
 
     public void flush(){
-        data=searchClasses(searchingClasses).toOBservableList();
+        data=searchClasses(searchingClasses).toObservableList();
     }
 
     private void choiceBoxInitialize(){

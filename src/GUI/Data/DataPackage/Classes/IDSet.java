@@ -1,5 +1,9 @@
 package GUI.Data.DataPackage.Classes;
 
+import GUI.Data.DataPackage.UserInformation.UserInformationForTable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,5 +29,16 @@ public class IDSet {
             i++;
         }
         return stringBuilder.toString();
+    }
+
+    public ObservableList<UserInformationForTable> toObservableList(){
+        ObservableList<UserInformationForTable> observableList = FXCollections.observableArrayList();
+        if(IDSet==null){
+            return observableList;
+        }
+        for(String ID:IDSet){
+            observableList.add(new UserInformationForTable(ID));
+        }
+        return observableList;
     }
 }
