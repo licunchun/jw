@@ -401,7 +401,7 @@ public class ClassesChoosingPageController {
     }
 
     private void openClassesMainPage(String classesCode){
-        if(!isTimePageExist){
+        if(!isClassesMainPageExist){
             classesMainPageStage=new Stage();
 
             classesMainPageController=changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");

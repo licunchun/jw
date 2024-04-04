@@ -4,6 +4,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="GUI.Controller.Main.Student.Classes.DropClassesPageController"
-            prefHeight="660.0" prefWidth="1280.0">
+            prefHeight="660.0" prefWidth="1280.0"
+            fx:id="TableViewPane">
 
 </AnchorPane>
