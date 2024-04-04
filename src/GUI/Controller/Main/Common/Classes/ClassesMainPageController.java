@@ -97,15 +97,9 @@ public class ClassesMainPageController {
                 stage.close();
                 System.err.println("Error:ID not found!\nPlease refresh the page and try again!");
             }
-            case PickClassesError.ClassesISChosen -> {
-                Tips.setText("同类课程已选择，不可重复选课！");
-            }
-            case PickClassesError.ClassesIsFull -> {
-                Tips.setText("课程人数已满！");
-            }
-            case PickClassesError.Success -> {
-                flush();
-            }
+            case PickClassesError.ClassesISChosen -> Tips.setText("同类课程已选择，不可重复选课！");
+            case PickClassesError.ClassesIsFull -> Tips.setText("课程人数已满！");
+            case PickClassesError.Success -> flush();
         }
     }
     private void doDropClasses(){
@@ -118,9 +112,7 @@ public class ClassesMainPageController {
                 stage.close();
                 System.err.println("Error:ID not found!\nPlease refresh the page and try again!");
             }
-            case DropClassesError.Success -> {
-                flush();
-            }
+            case DropClassesError.Success -> flush();
         }
     }
     private void doDeleteClasses(){
@@ -129,9 +121,7 @@ public class ClassesMainPageController {
                 stage.close();
                 System.err.println("Error:ClassesCode not found!\nPlease refresh the page and try again!");
             }
-            case DeleteClassesError.Success -> {
-                stage.close();
-            }
+            case DeleteClassesError.Success -> stage.close();
         }
     }
 

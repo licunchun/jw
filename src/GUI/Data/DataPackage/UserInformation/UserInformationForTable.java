@@ -36,12 +36,8 @@ public class UserInformationForTable {
                 this.gender=new SimpleStringProperty("");
                 this.money=new SimpleStringProperty("");
             }
-            case UserType.None -> {
-                throw new RuntimeException("Error:UserInformationForTable,Constructor get a None UserType!");
-            }
-            case null -> {
-                throw new RuntimeException("Error:UserInformationForTable,Constructor get a null UserType!");
-            }
+            case UserType.None -> throw new RuntimeException("Error:UserInformationForTable,Constructor get a None UserType!");
+            case null -> throw new RuntimeException("Error:UserInformationForTable,Constructor get a null UserType!");
         }
     }//构造之前一定要验证ID是否存在
 

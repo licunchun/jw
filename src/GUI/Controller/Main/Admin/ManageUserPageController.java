@@ -218,32 +218,26 @@ public class ManageUserPageController {
     }
     private void loadColumn(){
         switch (userType){
-            case UserType.Student -> {
-                tableView.getColumns().addAll(
-                        IDColumn,
-                        NameColumn,
-                        PasswordColumn,
-                        GradeColumn,
-                        SchoolColumn,
-                        GenderColumn,
-                        MoneyColumn
-                );
-            }
-            case UserType.Teacher ->{
-                tableView.getColumns().addAll(
-                        IDColumn,
-                        NameColumn,
-                        PasswordColumn,
-                        SchoolColumn
-                );
-            }
-            case UserType.Admin -> {
-                tableView.getColumns().addAll(
-                        IDColumn,
-                        NameColumn,
-                        PasswordColumn
-                );
-            }
+            case UserType.Student -> tableView.getColumns().addAll(
+                    IDColumn,
+                    NameColumn,
+                    PasswordColumn,
+                    GradeColumn,
+                    SchoolColumn,
+                    GenderColumn,
+                    MoneyColumn
+            );
+            case UserType.Teacher -> tableView.getColumns().addAll(
+                    IDColumn,
+                    NameColumn,
+                    PasswordColumn,
+                    SchoolColumn
+            );
+            case UserType.Admin -> tableView.getColumns().addAll(
+                    IDColumn,
+                    NameColumn,
+                    PasswordColumn
+            );
         }
     }
     private void openEditPage(String ID,EditUserPage editUserPage){

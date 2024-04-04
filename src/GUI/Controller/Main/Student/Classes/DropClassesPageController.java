@@ -167,7 +167,7 @@ public class DropClassesPageController{
         if(studentClassesSet==null){
             System.err.println("Error:Get student classes set error!\nPlease try again later!");
         }
-        data=studentClassesSet.toOBservableList();
+        data=studentClassesSet.toObservableList();
     }
     private void openClassesMainPage(String classesCode){
         if(!isClassesMainPageExist){
