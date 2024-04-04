@@ -19,8 +19,8 @@ public class Main extends Application{
         Main.stage =stage;
         stage.setOnHiding(e-> exit(0));
         stage.setResizable(false);
-        //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Login/Login.fxml");
-        GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Student/StudentMainMenu.fxml");
+        GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Login/Login.fxml");
+        //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Student/StudentMainMenu.fxml");
         //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Teacher/TeacherMainMenu.fxml");
         //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Admin/AdminMainMenu.fxml");
         //GUI.GUIUtil.StageUtil.changeViews(stage,"/GUI/Window/Main/Common/Classes/ClassesChoosingPage.fxml");

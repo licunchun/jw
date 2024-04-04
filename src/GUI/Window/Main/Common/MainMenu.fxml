@@ -30,8 +30,8 @@
                 <graphic>
                    <ImageView>
                       <Image url="/GUI/Resources/profilePhoto.png" />
-                      <fitWidth>20</fitWidth>
-                      <fitHeight>20</fitHeight>
+                      <fitWidth>13</fitWidth>
+                      <fitHeight>13</fitHeight>
                    </ImageView>
                 </graphic>
             </Button>
