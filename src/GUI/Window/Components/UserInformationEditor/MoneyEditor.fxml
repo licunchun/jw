@@ -6,9 +6,49 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.text.Font?>
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="GUI.Controller.Components.UserInformationEditor.MoneyEditorController"
-            prefHeight="400.0" prefWidth="600.0">
+            prefWidth="250.0">
+    <children>
+        <VBox prefWidth="250.0">
+            <children>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Label layoutX="61.0" text="编译钱包">
+                            <font>
+                                <Font size="32.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Label text="金额">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Label>
+                        <TextField fx:id="ChangedMoney" layoutX="50.0" layoutY="2.0" prefHeight="23.0" prefWidth="180.0" promptText="请输入修改后的金额" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Label fx:id="Tips" prefHeight="15.0" prefWidth="200.0" textFill="RED" />
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="250.0">
+                    <children>
+                        <Button fx:id="Confirm" layoutX="92.0" layoutY="-6.0" mnemonicParsing="false" text="确认" onAction="#doConfirm">
+                            <font>
+                                <Font size="20.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
+    </children>
 
 </AnchorPane>
