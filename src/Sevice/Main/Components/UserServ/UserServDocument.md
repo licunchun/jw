@@ -143,8 +143,29 @@
     name(String):老师的名字
 返回：
 
-    studentIDSet(IDSet):搜索到的老师的ID集合
+    teacherIDSet(IDSet):搜索到的老师的ID集合
 描述：
 
     根据名字搜索老师，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
+## +FindAdmin(String name)
+参数：
+
+    name(String):管理员的名字
+返回：
+
+    adminIDSet(IDSet):搜索到的老师的ID集合
+描述：
+
+    根据名字搜索管理员，重名一起返回
+    注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
+## +isIDExist(String ID)
+参数：
+
+    ID(String)：用户的ID
+返回：
+
+    result(boolean):结果（用户是否存在）
+描述：
+
+    查询对应ID是否存在

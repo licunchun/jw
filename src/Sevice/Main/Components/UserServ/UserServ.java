@@ -128,11 +128,15 @@ public class UserServ {
         return ChangePasswordError.Success;
     }//TODO
     public static IDSet findStudent(String name){
-
         return new IDSet();
     }//TODO
-    public static IDSet findTeacher(String teacher){
+    public static IDSet findTeacher(String name){
         return new IDSet();
     }//TODO
-
+    public static IDSet findAdmin(String name){
+        return new IDSet();
+    }//TODO
+    public static boolean isIDExist(String ID){
+        return true;
+    }//TODO
 }
