@@ -54,7 +54,7 @@ public class StudentMainMenuController {
     @FXML
     public void initialize(){
         //Tab加载并绑定页面
-        classesChoosingTab = new Tab("学生选课");//TODO  改为启动另一个窗口
+        classesChoosingTab = new Tab("学生选课");
         {
             FXMLLoader classesChoosingPageLoader = loadScene("/GUI/Window/Main/Common/Classes/ClassesChoosingPage.fxml");
             Parent root = newRoot(classesChoosingPageLoader);

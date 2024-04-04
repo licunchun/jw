@@ -202,14 +202,9 @@ public class ClassesChoosingPageController {
 
                 {
                     hyperlink.setOnAction(event -> {
-                        if(!isClassesMainPageExist){
-                            isClassesMainPageExist=false;
-                            openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
-                            resetLocation(classesMainPageStage);
-                        }
-                        else{
-                            resetLocation(classesMainPageStage);
-                        }
+                        isClassesMainPageExist=true;
+                        openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
+                        resetLocation(classesMainPageStage);
                     });
                 }//超链接点击事件
 
@@ -405,22 +400,30 @@ public class ClassesChoosingPageController {
         return contextMenu;
     }
 
-    private void openClassesMainPage(String ClassesCode){
-        classesMainPageStage=new Stage();
+    private void openClassesMainPage(String classesCode){
+        if(!isTimePageExist){
+            classesMainPageStage=new Stage();
 
-        classesMainPageController=changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
+            classesMainPageController=changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
 
-        classesMainPageController.setStage(classesMainPageStage);
-        classesMainPageController.setID(ID);
-        classesMainPageController.setUserType(userType);
+            classesMainPageController.setStage(classesMainPageStage);
+            classesMainPageController.setID(ID);
+            classesMainPageController.setUserType(userType);
+            classesMainPageController.setClassesCode(classesCode);
+            classesMainPageController.flush();
 
-        classesMainPageStage.setOnHiding(e->{
-            isClassesMainPageExist=false;
-            classesMainPageStage.close();
-        });
+            classesMainPageStage.setOnHiding(e->{
+                isClassesMainPageExist=false;
+                classesMainPageStage.close();
+            });
 
-        classesMainPageStage.show();
-        classesMainPageStage.setResizable(false);
+            classesMainPageStage.show();
+            classesMainPageStage.setResizable(false);
+        }
+        else if(!classesCode.equals(classesMainPageController.getClassesCode())){
+            classesMainPageController.setClassesCode(classesCode);
+            classesMainPageController.flush();
+        }
     }
 
     public void close(){

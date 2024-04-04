@@ -9,11 +9,16 @@ public class ClassesMainPageController {
     private Stage stage;
     private String ID;
     private UserType userType;
+    private String classesCode;
     /*
      * Functions
      */
     @FXML
     private void initialize(){
+
+    }
+
+    public void flush(){
 
     }
 
@@ -27,5 +32,13 @@ public class ClassesMainPageController {
 
     public void setUserType(UserType userType) {
         this.userType = userType;
+    }
+
+    public void setClassesCode(String classesCode) {
+        this.classesCode = classesCode;
+    }
+
+    public String getClassesCode() {
+        return classesCode;
     }
 }
