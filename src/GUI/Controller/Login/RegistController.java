@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 
-import static GUI.Data.Enum.ObservableList.UserObservableList.*;
+import static GUI.Data.Enum.GUI.ObservableList.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static Sevice.Login.RegistServ.regist;
 import static Sevice.Login.RegistServ.store;

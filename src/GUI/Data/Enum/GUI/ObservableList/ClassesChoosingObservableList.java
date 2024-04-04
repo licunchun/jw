@@ -1,4 +1,4 @@
-package GUI.Data.Enum.ObservableList;
+package GUI.Data.Enum.GUI.ObservableList;
 
 import GUI.Data.Enum.Classes.EnumForClassesSearching.*;
 import javafx.collections.FXCollections;

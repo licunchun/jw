@@ -9,7 +9,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import static GUI.Data.Enum.ObservableList.UserObservableList.StudentSchoolList;
+import static GUI.Data.Enum.GUI.ObservableList.UserObservableList.StudentSchoolList;
 import static Sevice.Main.Components.UserServ.UserServ.editSchool;
 
 public class StudentSchoolEditorController {

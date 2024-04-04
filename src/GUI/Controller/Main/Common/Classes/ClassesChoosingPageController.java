@@ -18,7 +18,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import static GUI.Data.Enum.ObservableList.ClassesChoosingObservableList.*;
+import static GUI.Data.Enum.GUI.ObservableList.ClassesChoosingObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
 import static Sevice.Main.Components.ClassServ.ClassesServ.searchClasses;
@@ -72,7 +72,6 @@ public class ClassesChoosingPageController {
      * Table Information
      */
     private TableView<ClassesForTable> tableView = new TableView<>();
-
     private TableColumn<ClassesForTable, Void> codeColumn = new TableColumn<>("课堂编号");
     private TableColumn<ClassesForTable, String> nameColumn = new TableColumn<>("课堂名称");
     private TableColumn<ClassesForTable, String> periodColumn = new TableColumn<>("学时");
@@ -176,7 +175,7 @@ public class ClassesChoosingPageController {
         this.userType = userType;
     }
 
-    public void loadTable(){
+    private void loadTable(){
         tableView.setPrefWidth(1280);
         tableView.setPrefHeight(560);
 

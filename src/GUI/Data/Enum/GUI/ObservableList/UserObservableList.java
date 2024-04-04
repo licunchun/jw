@@ -1,4 +1,4 @@
-package GUI.Data.Enum.ObservableList;
+package GUI.Data.Enum.GUI.ObservableList;
 
 import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Gender;
