@@ -5,48 +5,48 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Login.RegistController">
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="200.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="GUI.Controller.Login.RegistController">
     <children>
-      <ImageView fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Resources/background200x250.png" />
-         </image>
-      </ImageView>
-          <VBox prefHeight="200.0" prefWidth="250.0">
-              <children>
-            <AnchorPane>
-               <children>
-                      <Label layoutX="53.0" text="注册页面">
-                          <font>
-                              <Font size="36.0" />
-                          </font>
-                      </Label>
-               </children>
-            </AnchorPane>
-                  <AnchorPane prefWidth="200.0">
-                      <children>
-                          <Label layoutX="14.0" layoutY="1.0" text="院校">
-                              <font>
-                                  <Font size="20.0" />
-                              </font>
-                          </Label>
-                          <ChoiceBox fx:id="TeacherSchoolChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0" />
-                      </children>
-                  </AnchorPane>
-                  <AnchorPane prefHeight="100.0" prefWidth="250.0">
-                      <children>
-                          <Button fx:id="TeacherConfirmButton" layoutX="92.0" layoutY="29.0" mnemonicParsing="false" onAction="#doTeacherConfirm" text="确认">
-                              <font>
-                                  <Font size="20.0" />
-                              </font>
-                          </Button>
-                      </children>
-                  </AnchorPane>
-              </children>
-          </VBox>
+        <ImageView fitHeight="200.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../Resources/background200x250.png"/>
+            </image>
+        </ImageView>
+        <VBox prefHeight="200.0" prefWidth="250.0">
+            <children>
+                <AnchorPane>
+                    <children>
+                        <Label layoutX="53.0" text="注册页面">
+                            <font>
+                                <Font size="36.0"/>
+                            </font>
+                        </Label>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefWidth="200.0">
+                    <children>
+                        <Label layoutX="14.0" layoutY="1.0" text="院校">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Label>
+                        <ChoiceBox fx:id="TeacherSchoolChooser" layoutX="86.0" layoutY="3.0" prefWidth="150.0"/>
+                    </children>
+                </AnchorPane>
+                <AnchorPane prefHeight="100.0" prefWidth="250.0">
+                    <children>
+                        <Button fx:id="TeacherConfirmButton" layoutX="92.0" layoutY="29.0" mnemonicParsing="false"
+                                onAction="#doTeacherConfirm" text="确认">
+                            <font>
+                                <Font size="20.0"/>
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </children>
+        </VBox>
     </children>
 </AnchorPane>

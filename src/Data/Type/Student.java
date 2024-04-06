@@ -7,9 +7,10 @@ public class Student {
     public String grade;
     public String gender;
     public String major;
-    public String [] classes = null;
+    public String[] classes = null;
     public String money;
-    public Student(String [] info) {
+
+    public Student(String[] info) {
         name = info[0];
         account = info[1];
         key = info[2];

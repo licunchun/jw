@@ -16,7 +16,7 @@ public enum Language {
         this.name = name;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 }

@@ -1,6 +1,6 @@
 package Sevice.Utils;
 
-public class PasswordUtil{
+public class PasswordUtil {
     final public static int MAX_NAME_LENGTH = 10;
     final public static int EMPTY = 0;
     final public static int PASS = 1;
@@ -15,10 +15,10 @@ public class PasswordUtil{
         return password;
     }
 
-    public int checkLength(){
-        if(this.password.isEmpty())
+    public int checkLength() {
+        if (this.password.isEmpty())
             return EMPTY;
-        else if(this.password.length()>MAX_NAME_LENGTH)//
+        else if (this.password.length() > MAX_NAME_LENGTH)//
             return INVALID_LENGTH;
         else
             return PASS;
@@ -27,8 +27,9 @@ public class PasswordUtil{
     public boolean checkChar() {
         return this.password.matches("^[a-zA-z0-9]+$");
     }
+
     public boolean checkValid() {
-        if (checkLength()!=PASS)
+        if (checkLength() != PASS)
             return false;
         return checkChar();
     }

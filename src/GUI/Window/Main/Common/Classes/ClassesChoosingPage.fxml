@@ -1,113 +1,119 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-
-<AnchorPane maxHeight="660.0" maxWidth="1280.0" minHeight="660.0" minWidth="1280.0" prefHeight="660.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Main.Common.Classes.ClassesChoosingPageController">
-   <children>
-      <VBox prefHeight="660.0" prefWidth="1280.0">
-         <children>
-            <AnchorPane prefHeight="60.0" prefWidth="1280.0">
-               <children>
-                  <ImageView fitHeight="60.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../Resources/Gray60x1280.png" />
-                     </image>
-                  </ImageView>
-                  <AnchorPane prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="课堂编号" />
-                        <TextField fx:id="ClassesCodeField" layoutX="86.0" layoutY="3.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="200.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="课堂名称" />
-                        <TextField fx:id="ClassesNameField" layoutX="86.0" layoutY="3.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="400.0" prefHeight="30.0" prefWidth="180.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="学时" />
-                        <TextField fx:id="ClassesPeriodField" layoutX="66.0" layoutY="3.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="580.0" prefHeight="30.0" prefWidth="180.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="学分" />
-                        <TextField fx:id="ClassesCreditField" layoutX="66.0" layoutY="3.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="760.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="教师名称" />
-                        <TextField fx:id="TeacherNameField" layoutX="86.0" layoutY="3.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="课程类型" />
-                        <ChoiceBox fx:id="ClassTypeChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="200.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="课程种类" />
-                        <ChoiceBox fx:id="CourseTypeChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="400.0" layoutY="30.0" prefHeight="30.0" prefWidth="180.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="院校" />
-                        <ChoiceBox fx:id="SchoolChoiceBox" layoutX="66.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="580.0" layoutY="30.0" prefHeight="30.0" prefWidth="180.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="校区" />
-                        <ChoiceBox fx:id="CampusChoiceBox" layoutX="66.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="760.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="考试方式" />
-                        <ChoiceBox fx:id="ExamModeChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="960.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="教学语言" />
-                        <ChoiceBox fx:id="LanguageChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="960.0" prefHeight="30.0" prefWidth="200.0">
-                     <children>
-                        <Label layoutX="14.0" layoutY="7.0" text="教育阶段" />
-                        <ChoiceBox fx:id="EducationChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0" prefWidth="100.0" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="1160.0" prefHeight="30.0" prefWidth="120.0">
-                     <children>
-                        <CheckBox fx:id="FullCheckBox" layoutX="26.0" layoutY="6.0" mnemonicParsing="false" text="未满班级" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane layoutX="1160.0" layoutY="30.0" prefHeight="30.0" prefWidth="120.0">
-                     <children>
-                        <Button fx:id="TimeButton" layoutX="15.0" layoutY="5.0" mnemonicParsing="false" text="时间" onAction="#openTimePage"/>
-                        <Button fx:id="SearchButton" layoutX="70.0" layoutY="5.0" mnemonicParsing="false" onAction="#doSearch" text="查询" />
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="TableViewPane" prefHeight="600.0" prefWidth="1280.0" />
-         </children>
-      </VBox>
-   </children>
+<?import javafx.scene.layout.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" maxHeight="660.0" maxWidth="1280.0" minHeight="660.0" minWidth="1280.0"
+            prefHeight="660.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="GUI.Controller.Main.Common.Classes.ClassesChoosingPageController">
+    <children>
+        <VBox prefHeight="660.0" prefWidth="1280.0">
+            <children>
+                <AnchorPane prefHeight="60.0" prefWidth="1280.0">
+                    <children>
+                        <ImageView fitHeight="60.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../../../../Resources/Gray60x1280.png"/>
+                            </image>
+                        </ImageView>
+                        <AnchorPane prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="课堂编号"/>
+                                <TextField fx:id="ClassesCodeField" layoutX="86.0" layoutY="3.0" prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="200.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="课堂名称"/>
+                                <TextField fx:id="ClassesNameField" layoutX="86.0" layoutY="3.0" prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="400.0" prefHeight="30.0" prefWidth="180.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="学时"/>
+                                <TextField fx:id="ClassesPeriodField" layoutX="66.0" layoutY="3.0" prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="580.0" prefHeight="30.0" prefWidth="180.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="学分"/>
+                                <TextField fx:id="ClassesCreditField" layoutX="66.0" layoutY="3.0" prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="760.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="教师名称"/>
+                                <TextField fx:id="TeacherNameField" layoutX="86.0" layoutY="3.0" prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="课程类型"/>
+                                <ChoiceBox fx:id="ClassTypeChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="200.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="课程种类"/>
+                                <ChoiceBox fx:id="CourseTypeChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="400.0" layoutY="30.0" prefHeight="30.0" prefWidth="180.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="院校"/>
+                                <ChoiceBox fx:id="SchoolChoiceBox" layoutX="66.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="580.0" layoutY="30.0" prefHeight="30.0" prefWidth="180.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="校区"/>
+                                <ChoiceBox fx:id="CampusChoiceBox" layoutX="66.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="760.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="考试方式"/>
+                                <ChoiceBox fx:id="ExamModeChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="960.0" layoutY="30.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="教学语言"/>
+                                <ChoiceBox fx:id="LanguageChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="960.0" prefHeight="30.0" prefWidth="200.0">
+                            <children>
+                                <Label layoutX="14.0" layoutY="7.0" text="教育阶段"/>
+                                <ChoiceBox fx:id="EducationChoiceBox" layoutX="86.0" layoutY="3.0" prefHeight="23.0"
+                                           prefWidth="100.0"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="1160.0" prefHeight="30.0" prefWidth="120.0">
+                            <children>
+                                <CheckBox fx:id="FullCheckBox" layoutX="26.0" layoutY="6.0" mnemonicParsing="false"
+                                          text="未满班级"/>
+                            </children>
+                        </AnchorPane>
+                        <AnchorPane layoutX="1160.0" layoutY="30.0" prefHeight="30.0" prefWidth="120.0">
+                            <children>
+                                <Button fx:id="TimeButton" layoutX="15.0" layoutY="5.0" mnemonicParsing="false"
+                                        text="时间" onAction="#openTimePage"/>
+                                <Button fx:id="SearchButton" layoutX="70.0" layoutY="5.0" mnemonicParsing="false"
+                                        onAction="#doSearch" text="查询"/>
+                            </children>
+                        </AnchorPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane fx:id="TableViewPane" prefHeight="600.0" prefWidth="1280.0"/>
+            </children>
+        </VBox>
+    </children>
 </AnchorPane>

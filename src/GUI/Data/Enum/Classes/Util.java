@@ -1,7 +1,7 @@
 package GUI.Data.Enum.Classes;
 
 public class Util {
-    public static Week getWeek(int i){
+    public static Week getWeek(int i) {
         return switch (i) {
             case 1 -> Week.Monday;
             case 2 -> Week.Tuesday;
@@ -14,15 +14,15 @@ public class Util {
         };
     }
 
-    public static CourseTime getTime(int week,int section){
-        if(week<1||week>7){
+    public static CourseTime getTime(int week, int section) {
+        if (week < 1 || week > 7) {
             throw new RuntimeException("getWeek(Util.java) get a out of Range week(int)");
         }
-        if(section<1||section>13){
+        if (section < 1 || section > 13) {
             throw new RuntimeException("getWeek(Util.java) get a out of Range section(int)");
         }
-        for(CourseTime item:CourseTime.values()){
-            if(item.getWeek()==getWeek(week)&&item.getSection()==section){
+        for (CourseTime item : CourseTime.values()) {
+            if (item.getWeek() == getWeek(week) && item.getSection() == section) {
                 return item;
             }
         }

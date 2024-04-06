@@ -10,18 +10,20 @@ import java.util.Set;
 import static Sevice.Main.Components.UserServ.UserServ.getName;
 
 public class IDSet {
-    private Set<String> IDSet=new HashSet<>();
-    public IDSet(){
+    private Set<String> IDSet = new HashSet<>();
+
+    public IDSet() {
 
     }
-    public void add(String ID){
+
+    public void add(String ID) {
         this.IDSet.add(ID);
     }
 
-    public String getNames(){
-        StringBuilder stringBuilder=new StringBuilder();
-        int i=0;
-        for (String ID:IDSet) {
+    public String getNames() {
+        StringBuilder stringBuilder = new StringBuilder();
+        int i = 0;
+        for (String ID : IDSet) {
             stringBuilder.append(getName(ID));
             if (i < IDSet.size() - 1) {
                 stringBuilder.append(",");
@@ -31,12 +33,12 @@ public class IDSet {
         return stringBuilder.toString();
     }
 
-    public ObservableList<UserInformationForTable> toObservableList(){
+    public ObservableList<UserInformationForTable> toObservableList() {
         ObservableList<UserInformationForTable> observableList = FXCollections.observableArrayList();
-        if(IDSet==null){
+        if (IDSet == null) {
             return observableList;
         }
-        for(String ID:IDSet){
+        for (String ID : IDSet) {
             observableList.add(new UserInformationForTable(ID));
         }
         return observableList;

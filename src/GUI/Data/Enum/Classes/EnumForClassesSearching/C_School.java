@@ -32,17 +32,18 @@ public enum C_School {
 
     private final String name;
 
-    C_School(String name){
-        this.name=name;
+    C_School(String name) {
+        this.name = name;
     }
-    public String toString(){   //生成中文字符串
+
+    public String toString() {   //生成中文字符串
         return this.name;
     }
-    public School toSchool(){
-        if(this==C_School.None){
+
+    public School toSchool() {
+        if (this == C_School.None) {
             return null;
-        }
-        else{
+        } else {
             return School.valueOf(this.name());
         }
     }

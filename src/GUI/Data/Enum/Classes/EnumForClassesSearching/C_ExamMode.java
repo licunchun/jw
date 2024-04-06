@@ -19,14 +19,14 @@ public enum C_ExamMode {
         this.name = name;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
-    public ExamMode toExamMode(){
-        if(this==C_ExamMode.None){
+
+    public ExamMode toExamMode() {
+        if (this == C_ExamMode.None) {
             return null;
-        }
-        else{
+        } else {
             return ExamMode.valueOf(this.name());
         }
     }

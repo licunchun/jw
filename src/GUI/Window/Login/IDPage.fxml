@@ -6,23 +6,24 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Login.IDPageController">
-   <children>
-      <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../Resources/background100x200.png" />
-         </image>
-      </ImageView>
-      <Label fx:id="IDShowLabel" layoutY="15.0" prefWidth="200.0" textAlignment="CENTER">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <Button fx:id="ConfirmButton" layoutX="27.0" layoutY="51.0" mnemonicParsing="false" onAction="#doClick" text="回到登录界面">
-         <font>
-            <Font size="20.0" />
-         </font>
-      </Button>
-   </children>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="100.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="GUI.Controller.Login.IDPageController">
+    <children>
+        <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../Resources/background100x200.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="IDShowLabel" layoutY="15.0" prefWidth="200.0" textAlignment="CENTER">
+            <font>
+                <Font size="15.0"/>
+            </font>
+        </Label>
+        <Button fx:id="ConfirmButton" layoutX="27.0" layoutY="51.0" mnemonicParsing="false" onAction="#doClick"
+                text="回到登录界面">
+            <font>
+                <Font size="20.0"/>
+            </font>
+        </Button>
+    </children>
 </AnchorPane>

@@ -4,7 +4,6 @@ import GUI.Controller.Main.Common.Classes.ClassesMainPageController;
 import GUI.Data.DataPackage.Classes.ClassesForTable;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.Enum.User.UserType;
-import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,10 +17,10 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Sevice.Main.Components.ClassServ.ClassesServ.searchClasses;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 
-public class DropClassesPageController{
+public class DropClassesPageController {
+    private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
     @FXML
     private AnchorPane TableViewPane;
     /*
@@ -42,41 +41,44 @@ public class DropClassesPageController{
     private TableColumn<ClassesForTable, String> educationColumn = new TableColumn<>("教育阶段");
     private TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
     private Pagination pagination;
-    private static final int ROWS_PER_PAGE=20;//每页最多有多少行
     /*
      * Classes Main Page
      */
-    private boolean isClassesMainPageExist=false;
+    private boolean isClassesMainPageExist = false;
     private Stage classesMainPageStage;
     private ClassesMainPageController classesMainPageController;
-    private ObservableList<ClassesForTable> data= FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private ObservableList<ClassesForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     /*
      * Basic Information
      */
     private String ID;
+
     /*
      * Functions
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         loadTable();
     }
-    public ContextMenu dropClassesPageContextMenu(){
-        ContextMenu contextMenu= new ContextMenu();
+
+    public ContextMenu dropClassesPageContextMenu() {
+        ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
 
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
-        flushMenuItem.setOnAction(event-> flush());
+        flushMenuItem.setOnAction(event -> flush());
 
         contextMenu.getItems().addAll(flushMenuItem);
 
         return contextMenu;
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }
-    public void loadTable(){
+
+    public void loadTable() {
         tableView.setPrefWidth(1280);
         tableView.setPrefHeight(600);
 
@@ -95,12 +97,12 @@ public class DropClassesPageController{
             teacherColumn.setCellValueFactory(cellData -> cellData.getValue().teacherProperty());
         }//设置表格列与数据对象的属性关联
         {
-            codeColumn.setCellFactory(column-> new TableCell<>() {
+            codeColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isClassesMainPageExist=true;
+                        isClassesMainPageExist = true;
                         openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
                         resetLocation(classesMainPageStage);
                     });
@@ -162,18 +164,19 @@ public class DropClassesPageController{
         TableViewPane.getChildren().add(pagination);
     }
 
-    public void flush(){
-        ClassesSet studentClassesSet =getStudentClassesSet(ID);
-        if(studentClassesSet==null){
+    public void flush() {
+        ClassesSet studentClassesSet = getStudentClassesSet(ID);
+        if (studentClassesSet == null) {
             System.err.println("Error:Get student classes set error!\nPlease try again later!");
         }
-        data=studentClassesSet.toObservableList();
+        data = studentClassesSet.toObservableList();
     }
-    private void openClassesMainPage(String classesCode){
-        if(!isClassesMainPageExist){
-            classesMainPageStage=new Stage();
 
-            classesMainPageController=changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
+    private void openClassesMainPage(String classesCode) {
+        if (!isClassesMainPageExist) {
+            classesMainPageStage = new Stage();
+
+            classesMainPageController = changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
 
             classesMainPageController.setStage(classesMainPageStage);
             classesMainPageController.setID(ID);
@@ -181,22 +184,22 @@ public class DropClassesPageController{
             classesMainPageController.setClassesCode(classesCode);
             classesMainPageController.flush();
 
-            classesMainPageStage.setOnHiding(e->{
-                isClassesMainPageExist=false;
+            classesMainPageStage.setOnHiding(e -> {
+                isClassesMainPageExist = false;
                 classesMainPageStage.close();
                 flush();
             });
 
             classesMainPageStage.show();
             classesMainPageStage.setResizable(false);
-        }
-        else if(!classesCode.equals(classesMainPageController.getClassesCode())){
+        } else if (!classesCode.equals(classesMainPageController.getClassesCode())) {
             classesMainPageController.setClassesCode(classesCode);
             classesMainPageController.flush();
         }
     }
-    public void close(){
-        if(isClassesMainPageExist){
+
+    public void close() {
+        if (isClassesMainPageExist) {
             classesMainPageStage.close();
         }
     }

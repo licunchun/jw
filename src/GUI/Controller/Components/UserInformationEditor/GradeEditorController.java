@@ -21,8 +21,9 @@ public class GradeEditorController {
     private Button Confirm;
     private String ID;
     private Stage stage;
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         GradeChooser.setValue(Grade.Grade1);
         GradeChooser.setConverter(new StringConverter<>() {
             @Override
@@ -38,9 +39,10 @@ public class GradeEditorController {
 
         GradeChooser.setItems(GradeList);
     }
+
     @FXML
-    private void doConfirm(){
-        switch(editGrade(ID,GradeChooser.getValue())){
+    private void doConfirm() {
+        switch (editGrade(ID, GradeChooser.getValue())) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -49,9 +51,11 @@ public class GradeEditorController {
                 stage.close();
         }
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setTitle("修改年级");

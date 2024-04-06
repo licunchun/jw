@@ -25,18 +25,23 @@ public class RechargerController {
     private Button MoneyAdd500;
     private String ID;
     private Stage stage;
+
     public void setID(String ID) {
         this.ID = ID;
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setTitle("充值界面");
     }
+
     @FXML
-    private void initialize(){}
+    private void initialize() {
+    }
+
     @FXML
-    private void doMoneyAdd10(){
-        switch(editAddMoney(ID,10)){
+    private void doMoneyAdd10() {
+        switch (editAddMoney(ID, 10)) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -45,9 +50,10 @@ public class RechargerController {
                 stage.close();
         }
     }
+
     @FXML
-    private void doMoneyAdd20(){
-        switch(editAddMoney(ID,20)){
+    private void doMoneyAdd20() {
+        switch (editAddMoney(ID, 20)) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -56,9 +62,10 @@ public class RechargerController {
                 stage.close();
         }
     }
+
     @FXML
-    private void doMoneyAdd50(){
-        switch(editAddMoney(ID,50)){
+    private void doMoneyAdd50() {
+        switch (editAddMoney(ID, 50)) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -67,9 +74,10 @@ public class RechargerController {
                 stage.close();
         }
     }
+
     @FXML
-    private void doMoneyAdd100(){
-        switch(editAddMoney(ID,100)){
+    private void doMoneyAdd100() {
+        switch (editAddMoney(ID, 100)) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -78,9 +86,10 @@ public class RechargerController {
                 stage.close();
         }
     }
+
     @FXML
-    private void doMoneyAdd200(){
-        switch(editAddMoney(ID,200)){
+    private void doMoneyAdd200() {
+        switch (editAddMoney(ID, 200)) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -89,9 +98,10 @@ public class RechargerController {
                 stage.close();
         }
     }
+
     @FXML
-    private void doMoneyAdd500(){
-        switch(editAddMoney(ID,500)){
+    private void doMoneyAdd500() {
+        switch (editAddMoney(ID, 500)) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);

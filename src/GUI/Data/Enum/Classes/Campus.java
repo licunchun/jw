@@ -12,7 +12,8 @@ public enum Campus {
     Campus(String name) {
         this.name = name;
     }
-    public String toString(){
+
+    public String toString() {
         return this.name;
     }
 }

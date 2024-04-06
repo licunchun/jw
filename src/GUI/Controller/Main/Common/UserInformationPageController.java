@@ -9,7 +9,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import static GUI.GUIUtil.StageUtil.*;
+import static GUI.GUIUtil.StageUtil.changeViews;
+import static GUI.GUIUtil.StageUtil.resetLocation;
 import static Sevice.Main.Components.UserServ.UserServ.getName;
 
 public class UserInformationPageController {
@@ -32,64 +33,64 @@ public class UserInformationPageController {
      */
 
     //Edit name page
-    private boolean isEditNamePageShow=false;
-    private Stage editNamePageStage=null;
+    private boolean isEditNamePageShow = false;
+    private Stage editNamePageStage = null;
     private NameEditorController nameEditorController;
 
     //Edit password Page
-    private boolean isChangePasswordPageShow=false;
-    private Stage changePasswordPageStage=null;
+    private boolean isChangePasswordPageShow = false;
+    private Stage changePasswordPageStage = null;
     private PasswordChangerController passwordChangerController;
     /*
      * Function
      */
 
     @FXML
-    public void initialize(){
+    public void initialize() {
     }
-    @FXML
-    private void doChangePassword(){
-        if(!isChangePasswordPageShow){
-            isChangePasswordPageShow=true;
-            changePasswordPageStage=new Stage();
 
-            passwordChangerController=changeViews(changePasswordPageStage, "/GUI/Window/Components/UserInformationEditor/PasswordChanger.fxml");
+    @FXML
+    private void doChangePassword() {
+        if (!isChangePasswordPageShow) {
+            isChangePasswordPageShow = true;
+            changePasswordPageStage = new Stage();
+
+            passwordChangerController = changeViews(changePasswordPageStage, "/GUI/Window/Components/UserInformationEditor/PasswordChanger.fxml");
             passwordChangerController.setID(ID);
             passwordChangerController.setStage(changePasswordPageStage);
 
-            changePasswordPageStage.setOnHiding(e->{
-                isChangePasswordPageShow=false;
+            changePasswordPageStage.setOnHiding(e -> {
+                isChangePasswordPageShow = false;
                 changePasswordPageStage.close();
                 flush();
             });
             changePasswordPageStage.show();
             changePasswordPageStage.setResizable(false);
             resetLocation(changePasswordPageStage);
-        }
-        else{
+        } else {
             resetLocation(changePasswordPageStage);
         }
     }
-    @FXML
-    private void doEditName(){
-        if(!isEditNamePageShow){
-            isEditNamePageShow=true;
-            editNamePageStage=new Stage();
 
-            nameEditorController=changeViews(editNamePageStage,"/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
+    @FXML
+    private void doEditName() {
+        if (!isEditNamePageShow) {
+            isEditNamePageShow = true;
+            editNamePageStage = new Stage();
+
+            nameEditorController = changeViews(editNamePageStage, "/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
             nameEditorController.setID(ID);
             nameEditorController.setStage(editNamePageStage);
 
-            editNamePageStage.setOnHiding(e->{
-                isEditNamePageShow=false;
+            editNamePageStage.setOnHiding(e -> {
+                isEditNamePageShow = false;
                 editNamePageStage.close();
                 flush();
             });
             editNamePageStage.show();
             editNamePageStage.setResizable(false);
             resetLocation(editNamePageStage);
-        }
-        else{
+        } else {
             resetLocation(editNamePageStage);
         }
     }
@@ -98,11 +99,11 @@ public class UserInformationPageController {
         return chooseAnchorPane;
     }
 
-    public void closeAllChildren(){
-        if(isEditNamePageShow){
+    public void closeAllChildren() {
+        if (isEditNamePageShow) {
             editNamePageStage.close();
         }
-        if(isChangePasswordPageShow){
+        if (isChangePasswordPageShow) {
             changePasswordPageStage.close();
         }
     }
@@ -116,9 +117,9 @@ public class UserInformationPageController {
         this.ID = ID;
     }
 
-    public void flush(){
+    public void flush() {
         ShowID.setText(ID);
-        if(getName(ID)==null){
+        if (getName(ID) == null) {
             throw new RuntimeException("UserInformationPageController.java:运行过程中账户ID改变，故停止程序运行");
         }
         ShowName.setText(getName(ID));

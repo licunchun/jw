@@ -16,7 +16,7 @@ public enum ExamMode {
         this.name = name;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
 }

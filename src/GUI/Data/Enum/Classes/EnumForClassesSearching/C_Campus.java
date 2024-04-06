@@ -15,15 +15,15 @@ public enum C_Campus {
     C_Campus(String name) {
         this.name = name;
     }
-    public String toString(){
+
+    public String toString() {
         return this.name;
     }
 
-    public Campus toCampus(){
-        if(this==C_Campus.None){
+    public Campus toCampus() {
+        if (this == C_Campus.None) {
             return null;
-        }
-        else{
+        } else {
             return Campus.valueOf(this.name());
         }
     }

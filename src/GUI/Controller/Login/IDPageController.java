@@ -9,21 +9,22 @@ import javafx.stage.Stage;
 import static GUI.GUIUtil.StageUtil.changeViews;
 
 public class IDPageController {
+    public static final Stage stage = Main.getStage();
     @FXML
     public Label IDShowLabel;
     @FXML
     public Button ConfirmButton;
 
-    public static final Stage stage=Main.getStage();
     /*
      * Function
      */
     @FXML
-    private  void initialize(){
-        IDShowLabel.setText("您的ID是："+RegistController.getID());
+    private void initialize() {
+        IDShowLabel.setText("您的ID是：" + RegistController.getID());
     }
+
     @FXML
-    public void doClick(){
-        changeViews(stage,"/GUI/Window/Login/login.fxml");
+    public void doClick() {
+        changeViews(stage, "/GUI/Window/Login/login.fxml");
     }
 }

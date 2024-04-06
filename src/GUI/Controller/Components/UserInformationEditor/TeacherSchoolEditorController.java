@@ -12,7 +12,7 @@ import javafx.util.StringConverter;
 import static GUI.Data.Enum.GUI.ObservableList.UserObservableList.SchoolList;
 import static Sevice.Main.Components.UserServ.UserServ.editSchool;
 
-public class TeacherSchoolEditorController{
+public class TeacherSchoolEditorController {
     @FXML
     private Label tips;
     @FXML
@@ -21,8 +21,9 @@ public class TeacherSchoolEditorController{
     private Button Confirm;
     private String ID;
     private Stage stage;
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         TeacherSchoolChooser.setValue(School.GiftedYoung);
         TeacherSchoolChooser.setConverter(new StringConverter<>() {
             @Override
@@ -38,9 +39,10 @@ public class TeacherSchoolEditorController{
 
         TeacherSchoolChooser.setItems(SchoolList);
     }
+
     @FXML
-    private void doConfirm(){
-        switch(editSchool(ID,TeacherSchoolChooser.getValue())){
+    private void doConfirm() {
+        switch (editSchool(ID, TeacherSchoolChooser.getValue())) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -49,6 +51,7 @@ public class TeacherSchoolEditorController{
                 stage.close();
         }
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }

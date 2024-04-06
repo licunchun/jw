@@ -6,12 +6,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CourseTimeSet {
-    private Set<CourseTime> courseTimeSet=new HashSet<>();
+    private Set<CourseTime> courseTimeSet = new HashSet<>();
 
-    public CourseTimeSet(){
+    public CourseTimeSet() {
 
     }
-    public void add(CourseTime courseTime){
+
+    public void add(CourseTime courseTime) {
         courseTimeSet.add(courseTime);
     }
 

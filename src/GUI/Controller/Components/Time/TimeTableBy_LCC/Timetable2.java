@@ -17,22 +17,22 @@ public class Timetable2 extends Application {
         launch(args);
     }
 
+    public static Stage getStage() {
+        return stage;
+    }
+
     @Override
     public void start(Stage stage) {
         GUI.Controller.Components.Time.TimeTableBy_LCC.Timetable2.stage = stage;
         stage.setOnHiding(e -> exit(0));
         stage.setResizable(false);
-        TimeTableController timeTableController=GUI.GUIUtil.StageUtil.changeViews(stage, "/GUI/Window/Components/Time/TimeTable.fxml");
+        TimeTableController timeTableController = GUI.GUIUtil.StageUtil.changeViews(stage, "/GUI/Window/Components/Time/TimeTable.fxml");
         timeTableController.setStage(stage);
-        stage.setOnHiding(e->{
-            courseTimeSet=timeTableController.getTimeSet();
+        stage.setOnHiding(e -> {
+            courseTimeSet = timeTableController.getTimeSet();
             stage.close();
         });
         stage.show();
         resetLocation(stage);
-    }
-
-    public static Stage getStage() {
-        return stage;
     }
 }

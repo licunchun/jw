@@ -5,8 +5,9 @@ public enum Full {
     NotFull("未满");
 
     private final String name;
-    Full(String name){
-        this.name=name;
+
+    Full(String name) {
+        this.name = name;
     }
 
     @Override

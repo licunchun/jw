@@ -1,108 +1,98 @@
 # Interface
 
-
-
 ## Package
-
-
 
 ### Data:
 
-
-
 #### DataBase:
-
-
 
 ##### String keyOfStudent(String account);
 
-​	arguments: 学生账号
+​ arguments: 学生账号
 
-​	return: 学生账号密码
+​ return: 学生账号密码
 
 ##### String keyOfTeacher(String account);
 
-​	arguments: 老师账号
+​ arguments: 老师账号
 
-​	return: 老师账号密码
+​ return: 老师账号密码
 
 ##### String keyOfManager(String account);
 
-​	arguments: 管理员账号
+​ arguments: 管理员账号
 
-​	return: 管理员账号密码
+​ return: 管理员账号密码
 
 ##### void changeKeyOfStudent(String key);
 
-​	arguments: 学生账号
+​ arguments: 学生账号
 
 ##### void changeKeyOfTeacher(String key);
 
-​	arguments: 老师账号
+​ arguments: 老师账号
 
 ##### void changeKeyOfManager(String key);
 
-​	arguments: 管理员账号
+​ arguments: 管理员账号
 
 ##### boolean registerStudent(String name, String account, String key);
 
-​	arguments: ...
+​ arguments: ...
 
 ##### boolean registerTeacher(String name, String account, String key);
 
-​	arguments: ...
+​ arguments: ...
 
 ##### boolean registerManager(String name, String account, String key);
 
-​	arguments: ...
+​ arguments: ...
 
 ##### ClassSet check();
 
-​	return: 课程集
+​ return: 课程集
 
 ##### boolean addClassOfStudent(String account, String code);
 
-​	arguments: 学生账号, 课程代号
+​ arguments: 学生账号, 课程代号
 
-​	return: 操作结果
+​ return: 操作结果
 
 ##### boolean setMoney(String account, int money);
 
-​	arguments: 学生账号, 现金
+​ arguments: 学生账号, 现金
 
-​	return: 操作结果
+​ return: 操作结果
 
 ##### boolean cancelClass(String account, String code);
 
-​	arguments: 学生账号, 课程代号
+​ arguments: 学生账号, 课程代号
 
-​	return: 操作结果
+​ return: 操作结果
 
 ##### StudentSet checkStudent(String code);
 
-​	arguments: 课程代号
+​ arguments: 课程代号
 
-​	return: 学生集
+​ return: 学生集
 
 ##### PointSet studentCheckPoints(String account);
 
-​	arguments: 学生账号
+​ arguments: 学生账号
 
-​	return: 分数集
+​ return: 分数集
 
 ##### PointSet teacherCheckPoints(String code);
 
-​	argument: 课程代号
+​ argument: 课程代号
 
-​	return: 分数集
+​ return: 分数集
 
 boolean setPoint(String code, String account, int point);
 
-​	argument: 课程代号, 学生账号, 分数
+​ argument: 课程代号, 学生账号, 分数
 
-​	return: 操作结果
-
-
+​ return: 操作结果
 
 #### Class:
 
@@ -120,7 +110,7 @@ boolean setPoint(String code, String account, int point);
 
 ##### limitCount
 
-##### courseType  
+##### courseType
 
 ##### department
 
@@ -138,21 +128,17 @@ boolean setPoint(String code, String account, int point);
 
 ##### admin
 
-
-
 #### ClassSet:
 
 ##### Class index(int n);
 
-​	argument: 角标
+​ argument: 角标
 
-​	return: 课程内容
+​ return: 课程内容
 
 ##### int length();
 
-​	return: 课程个数
-
-
+​ return: 课程个数
 
 #### Student:
 
@@ -166,21 +152,17 @@ boolean setPoint(String code, String account, int point);
 
 ##### money
 
-
-
 #### StudentSet:
 
 ##### Student index(int n);
 
-​	argument: 角标
+​ argument: 角标
 
-​	return: 学生信息
+​ return: 学生信息
 
 ##### int length();
 
-​	return: 学生个数
-
-
+​ return: 学生个数
 
 #### Point:
 
@@ -189,8 +171,6 @@ boolean setPoint(String code, String account, int point);
 ##### course
 
 ##### point
-
-
 
 #### PointSet:
 

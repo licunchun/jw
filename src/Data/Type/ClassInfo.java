@@ -15,8 +15,9 @@ public class ClassInfo {
     public String Language;
     public String education;
     public String classType;
-    public String [] teachers;
-    public ClassInfo(String [] info) {
+    public String[] teachers;
+
+    public ClassInfo(String[] info) {
         code = info[0];
         name = info[1];
         period = info[2];

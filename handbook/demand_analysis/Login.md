@@ -22,8 +22,6 @@ us.register()
 
 创建成功返回2
 
-
-
 us.login()返回true之后
 
 根据us.getPermission()返回值（权限类型）确定要创建的服务对象
@@ -31,10 +29,6 @@ us.login()返回true之后
 StudentService/TeacherService/AdministratorService
 
 ***创建完服务对象，删除UserService对象us***
-
-
-
-
 
 对后端需求：
 

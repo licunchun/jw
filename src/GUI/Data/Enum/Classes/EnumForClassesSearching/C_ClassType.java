@@ -16,14 +16,14 @@ public enum C_ClassType {
         this.name = name;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
-    public ClassType toClassType(){
-        if(this==C_ClassType.None){
+
+    public ClassType toClassType() {
+        if (this == C_ClassType.None) {
             return null;
-        }
-        else{
+        } else {
             return ClassType.valueOf(this.name());
         }
     }

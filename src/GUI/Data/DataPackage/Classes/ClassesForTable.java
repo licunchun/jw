@@ -4,7 +4,7 @@ import javafx.beans.property.SimpleStringProperty;
 
 import static Sevice.Main.Components.ClassServ.ClassesServ.toStringTime;
 
-public class ClassesForTable{
+public class ClassesForTable {
     private final SimpleStringProperty code;
     private final SimpleStringProperty name;
     private final SimpleStringProperty period;
@@ -27,7 +27,7 @@ public class ClassesForTable{
         this.period = new SimpleStringProperty(classes.getPeriod().toString());
         this.credits = new SimpleStringProperty(classes.getCredits().toString());
         this.time = new SimpleStringProperty(toStringTime(classes.getTime()));
-        this.student=new SimpleStringProperty(Integer.toString(classes.getStdCount())+'/'+
+        this.student = new SimpleStringProperty(Integer.toString(classes.getStdCount()) + '/' +
                 classes.getLimitCount());
         this.classType = new SimpleStringProperty(classes.getClassType().toString());
         this.courseType = new SimpleStringProperty(classes.getCourseType().toString());

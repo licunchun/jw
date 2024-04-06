@@ -3,13 +3,14 @@ package Sevice.Utils;
 
 import Data.DataBase;
 
-public class IDUtil{
+public class IDUtil {
 
     final private static int EMPTY = 0;
     final private static int PASS = 1;
     final private static int INVALID_LENGTH = 2;
     private final String ID;
     private final int type;
+
     public IDUtil(String ID) {
         this.ID = ID;
         type = UserTypeUtil.IDToAccount(this.ID);
@@ -23,17 +24,18 @@ public class IDUtil{
         return type;
     }
 
-    private int checkLength(){
-        if(this.ID.isEmpty())
+    private int checkLength() {
+        if (this.ID.isEmpty())
             return EMPTY;
-        else if(this.type== DataBase.INVALID)//
+        else if (this.type == DataBase.INVALID)//
             return INVALID_LENGTH;
         else
             return PASS;
     }
-    private boolean checkChar(){
+
+    private boolean checkChar() {
         //目前只有学生ID合法
-        switch (type){
+        switch (type) {
             case DataBase.INVALID -> {
                 return false;
             }
@@ -51,8 +53,9 @@ public class IDUtil{
             }
         }
     }
-    public boolean checkValid(){
-        if(checkLength()!=PASS)
+
+    public boolean checkValid() {
+        if (checkLength() != PASS)
             return false;
         return checkChar();
     }

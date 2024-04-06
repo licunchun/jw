@@ -17,6 +17,7 @@ public class DataBase {
     Connection connection = null;
     Statement statement = null;
     ResultSet resultSet = null;
+
     public DataBase() {
         try {
             Class.forName("org.sqlite.JDBC");
@@ -32,6 +33,7 @@ public class DataBase {
             System.out.println("Fail to Connect DataBase");
         }
     }
+
     public String key(String account, int type) { // 返回密码
         String table = switch (type) {
             case STUDENT -> "students";
@@ -50,6 +52,7 @@ public class DataBase {
             return "";
         }
     }
+
     public boolean setKey(String account, String key, int type) { // 更改密码
         String table = switch (type) {
             case STUDENT -> "students";
@@ -66,12 +69,13 @@ public class DataBase {
             return false;
         }
     }
+
     public Student infoOfStudent(String account) { // 已返回对应账号的学生信息
         String sql = "select * from students where account = '" + account + "'";
         try {
             resultSet = statement.executeQuery(sql);
             resultSet.next();
-            String [] info = new String[8];
+            String[] info = new String[8];
             for (int i = 0; i < 8; i++) {
                 info[i] = resultSet.getString(i + 1);
             }
@@ -80,6 +84,7 @@ public class DataBase {
             return null;
         }
     }
+
     public Teacher infoOfTeacher(String account) { // 返回对应账号的老师信息
         String sql = "select * from teachers where account = '" + account + "'";
         try {
@@ -94,6 +99,7 @@ public class DataBase {
             return null;
         }
     }
+
     public boolean addStudent(String name, String account, String key, String grade, String gender, String major) { // 注册学生
         String sql = "insert into students (name, account, key, grade, gender, major, classes, money) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "', '" + grade + "', '" + gender +
@@ -105,6 +111,7 @@ public class DataBase {
             return false;
         }
     }
+
     public boolean addTeacher(String name, String account, String key) { // 注册老师
         String sql = "insert into teachers (name, account, key, classes) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "', '')";
@@ -115,6 +122,7 @@ public class DataBase {
             return false;
         }
     }
+
     public boolean addManager(String name, String account, String key) { // 注册管理员
         String sql = "insert into managers (name, account, key) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "')";
@@ -125,7 +133,8 @@ public class DataBase {
             return false;
         }
     }
-    public boolean addCourse(String [] info) {
+
+    public boolean addCourse(String[] info) {
         if (info.length != 15) return false;
         try {
             StringBuilder sql = new StringBuilder("select * from courses where code = '").append(info[0]).append("'");
@@ -144,6 +153,7 @@ public class DataBase {
             return false;
         }
     }
+
     public boolean deleteAccount(String account, int type) { // 删除学生或老师
         String table = switch (type) {
             case STUDENT -> "students";
@@ -158,6 +168,7 @@ public class DataBase {
             return false;
         }
     }
+
     public boolean setMoney(String account, int money) { // 设置学生余额
         String sql = "update students set money = " + money + " where account = '" + account + "'";
         try {
@@ -167,13 +178,14 @@ public class DataBase {
             return false;
         }
     }
+
     public ClassInfoSet check() { // 查看总课程
         ClassInfoSet classInfoSet = new ClassInfoSet();
         String sql = "select * from courses";
-        try{
+        try {
             resultSet = statement.executeQuery(sql);
-            while(resultSet.next()){
-                String [] info = new String[16];
+            while (resultSet.next()) {
+                String[] info = new String[16];
                 for (int i = 0; i < 15; i++) {
                     info[i] = resultSet.getString(i + 1);
                 }
@@ -181,18 +193,18 @@ public class DataBase {
                 classInfoSet.classInfos.add(classInfo);
             }
             return classInfoSet;
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             return null;
         }
     }
+
     public boolean addClassOfStudent(String account, String code) { // 学生添加课程
         String sql = "select classes from students where account = '" + account + "'";
         try {
             resultSet = statement.executeQuery(sql);
             resultSet.next();
             String classes = resultSet.getString(1);
-            String [] classList = classes.split(", ");
+            String[] classList = classes.split(", ");
             for (String i : classList) {
                 if (i.equals(code)) return false;
             }
@@ -211,6 +223,7 @@ public class DataBase {
             return false;
         }
     }
+
     public boolean cancelClassOfStudent(String account, String code) { // 学生取消课程
         StringBuilder sql = new StringBuilder("select classes from students where account = '" + account + "'");
         try {
@@ -220,11 +233,10 @@ public class DataBase {
             ArrayList<String> classList = new ArrayList<>(Arrays.asList(classes.toString().split(", ")));
             if (!classList.remove(code)) return false;
             classes = new StringBuilder();
-            for (String i: classList) {
+            for (String i : classList) {
                 if (classes.isEmpty()) {
                     classes = new StringBuilder(i);
-                }
-                else {
+                } else {
                     classes.append(", ").append(i);
                 }
             }
@@ -234,6 +246,7 @@ public class DataBase {
             return false;
         }
     }
+
     public String availableAccount(String grade) { // 获取可行学生账号
         String account = switch (grade) {
             case "大一" -> "PB23";
@@ -256,24 +269,31 @@ public class DataBase {
         }
         return "";
     }
+
     public String keyOfStudent(String account) {
         return key(account, STUDENT);
     }
+
     public String keyOfTeacher(String account) {
         return key(account, TEACHER);
     }
+
     public String keyOfManager(String account) {
         return key(account, MANAGER);
     }
-    public boolean changeKeyOfStudent(String account,String key){
+
+    public boolean changeKeyOfStudent(String account, String key) {
         return setKey(account, key, STUDENT);
     }
-    public boolean changeKeyOfTeacher(String account,String key){
+
+    public boolean changeKeyOfTeacher(String account, String key) {
         return setKey(account, key, TEACHER);
     }
-    public boolean changeKeyOfManager(String account,String key){
+
+    public boolean changeKeyOfManager(String account, String key) {
         return setKey(account, key, MANAGER);
     }
+
     public void close() {
         try {
             statement.close();

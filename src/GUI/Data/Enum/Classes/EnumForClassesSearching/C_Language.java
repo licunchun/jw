@@ -19,14 +19,14 @@ public enum C_Language {
         this.name = name;
     }
 
-    public String toString(){
+    public String toString() {
         return this.name;
     }
-    public Language toLanguage(){
-        if(this==C_Language.None){
+
+    public Language toLanguage() {
+        if (this == C_Language.None) {
             return null;
-        }
-        else{
+        } else {
             return Language.valueOf(this.name());
         }
     }

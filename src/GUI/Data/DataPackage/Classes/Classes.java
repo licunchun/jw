@@ -21,7 +21,7 @@ public class Classes {
     private IDSet teacher;             //教师ID的
     private Full full;                 //课堂是否满了
 
-    public Classes(){
+    public Classes() {
 
     }
 

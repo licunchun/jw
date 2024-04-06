@@ -21,8 +21,9 @@ public class StudentSchoolEditorController {
     private Button Confirm;
     private String ID;
     private Stage stage;
+
     @FXML
-    public void initialize(){
+    public void initialize() {
         StudentSchoolChooser.setValue(StudentSchool.GiftedYoung);
         StudentSchoolChooser.setConverter(new StringConverter<>() {
             @Override
@@ -38,9 +39,10 @@ public class StudentSchoolEditorController {
 
         StudentSchoolChooser.setItems(StudentSchoolList);
     }
+
     @FXML
-    private void doConfirm(){
-        switch(editSchool(ID,StudentSchoolChooser.getValue().toSchool())){
+    private void doConfirm() {
+        switch (editSchool(ID, StudentSchoolChooser.getValue().toSchool())) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -49,9 +51,11 @@ public class StudentSchoolEditorController {
                 stage.close();
         }
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setTitle("修改学生院系");

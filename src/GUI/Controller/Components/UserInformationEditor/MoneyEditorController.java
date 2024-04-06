@@ -18,24 +18,26 @@ public class MoneyEditorController {
     public Button Confirm;
     private Stage stage;
     private String ID;
+
     /*
      * Functions
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
+
     @FXML
-    private void doConfirm(){
+    private void doConfirm() {
         double money;
-        try{
-            money= Double.parseDouble(ChangedMoney.getText());
-        }catch(NumberFormatException e){
+        try {
+            money = Double.parseDouble(ChangedMoney.getText());
+        } catch (NumberFormatException e) {
             Tips.setText("金额不合法，请重新输入");
             Tips.setVisible(true);
             return;
         }
-        switch(editMoney(ID,money)){
+        switch (editMoney(ID, money)) {
             case EditError.IDNotFound:
                 Tips.setText("未找到ID，请重新登录！！");
                 Tips.setVisible(true);
@@ -48,6 +50,7 @@ public class MoneyEditorController {
                 stage.close();
         }
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }

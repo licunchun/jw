@@ -10,29 +10,33 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class StageUtil {
-    public StageUtil(){}
+    public StageUtil() {
+    }
 
     //将窗口移至屏幕中间
-    public static void setCenter(Stage stage){
-        double x=(Toolkit.getDefaultToolkit().getScreenSize().getWidth()-stage.getWidth())/2;
-        double y=(Toolkit.getDefaultToolkit().getScreenSize().getHeight()-stage.getHeight())/2;
+    public static void setCenter(Stage stage) {
+        double x = (Toolkit.getDefaultToolkit().getScreenSize().getWidth() - stage.getWidth()) / 2;
+        double y = (Toolkit.getDefaultToolkit().getScreenSize().getHeight() - stage.getHeight()) / 2;
         stage.setX(x);
         stage.setY(y);
     }
-    public static void resetLocation(Stage stage){
+
+    public static void resetLocation(Stage stage) {
         stage.setIconified(false);
         stage.toFront();
         setCenter(stage);
     }
-    public static void setScene(Stage stage,Parent root){
+
+    public static void setScene(Stage stage, Parent root) {
         stage.setScene(new Scene(root));
         resetLocation(stage);
     }
-    public static <T> T changeViews(Stage stage,String fxml){
+
+    public static <T> T changeViews(Stage stage, String fxml) {
         try {
-            FXMLLoader loader=new FXMLLoader(Objects.requireNonNull(StageUtil.class.getResource(fxml)));
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(StageUtil.class.getResource(fxml)));
             Parent root = loader.load();
-            setScene(stage,root);
+            setScene(stage, root);
             return loader.getController();
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -43,17 +47,17 @@ public class StageUtil {
         return new FXMLLoader(StageUtil.class.getResource(fxml));
     }
 
-    public static Parent newRoot(FXMLLoader loader){
-        Parent root=null;
-        try{
-            root=loader.load();
-        }catch (IOException e){
+    public static Parent newRoot(FXMLLoader loader) {
+        Parent root = null;
+        try {
+            root = loader.load();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return root;
     }
 
-    public static <T> T getController(FXMLLoader loader){
+    public static <T> T getController(FXMLLoader loader) {
         return loader.getController();
     }
 }

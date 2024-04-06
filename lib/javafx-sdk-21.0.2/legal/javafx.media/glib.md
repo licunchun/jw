@@ -1,6 +1,7 @@
 ## GNU Glib v2.78.1
 
 ### Glib Notice
+
 ```
 
 You are receiving a copy of GNU Glib, Version: 2.78.1 in either source or
@@ -29,6 +30,7 @@ code is here:
 ```
 
 ### LICENSE
+
 ```
 There are multiple licenses that apply to different parts of Glib. The
 overarching license is LGPL 2.1, however parts are covered by MIT and
@@ -36,6 +38,7 @@ other parts by BSD-style licenses.
 ```
 
 #### LGPL 2.1 License
+
 ```
 Copyright (C) 1997-2005 Tim Janik
 Copyright (C) 1995-1998  Peter Mattis, Spencer Kimball and Josh MacDonald
@@ -601,6 +604,7 @@ That's all there is to it!
 ```
 
 #### MIT License
+
 ```
 ---------------------------------
 The below license applies to the following files:
@@ -652,6 +656,7 @@ SOFTWARE.
 ```
 
 #### Permissive License
+
 ```
 ---------------------------------
 The below license applies to the following files:

@@ -3,8 +3,8 @@ package GUI.Controller.Main.Common.Classes;
 import GUI.Controller.Components.Time.TimeTableController;
 import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesForTable;
-import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.Classes.EnumForClassesSearching.*;
+import GUI.Data.Enum.Classes.Full;
 import GUI.Data.Enum.User.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +25,7 @@ import static Sevice.Main.Components.ClassServ.ClassesServ.searchClasses;
 import static Sevice.Main.Components.UserServ.UserServ.findTeacher;
 
 public class ClassesChoosingPageController {
+    private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
     @FXML
     private AnchorPane TableViewPane;
     @FXML
@@ -60,7 +61,7 @@ public class ClassesChoosingPageController {
     /*
      * Time Table
      */
-    private boolean isTimePageExist=false;
+    private boolean isTimePageExist = false;
     private Stage TimePageStage;
     private TimeTableController timePageController;
     /*
@@ -88,41 +89,42 @@ public class ClassesChoosingPageController {
     private TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
     private TableColumn<ClassesForTable, String> fullColumn = new TableColumn<>("是否满人");
     private Pagination pagination;
-    private static final int ROWS_PER_PAGE=20;//每页最多有多少行
     /*
      * Classes Main Page
      */
-    private boolean isClassesMainPageExist=false;
+    private boolean isClassesMainPageExist = false;
     private Stage classesMainPageStage;
     private ClassesMainPageController classesMainPageController;
     /*
      * Else
      */
-    private Classes searchingClasses=new Classes();//用于搜索的Classes
-    private ObservableList<ClassesForTable> data= FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private Classes searchingClasses = new Classes();//用于搜索的Classes
+    private ObservableList<ClassesForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+
     /*
      * Function
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         choiceBoxInitialize();
         loadTable();
     }
+
     @FXML
-    private void doSearch(){
+    private void doSearch() {
         {
             searchingClasses.setCode(ClassesCodeField.getText());
             searchingClasses.setName(ClassesNameField.getText());
-            try{
-                Integer m_period=Integer.valueOf(ClassesPeriodField.getText());
+            try {
+                Integer m_period = Integer.valueOf(ClassesPeriodField.getText());
                 searchingClasses.setPeriod(m_period);
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 searchingClasses.setPeriod(null);
             }
-            try{
-                Double m_credits=Double.valueOf(ClassesCreditField.getText());
+            try {
+                Double m_credits = Double.valueOf(ClassesCreditField.getText());
                 searchingClasses.setCredits(m_credits);
-            }catch (NumberFormatException e){
+            } catch (NumberFormatException e) {
                 searchingClasses.setCredits(null);
             }
             searchingClasses.setTeacher(findTeacher(ClassesCodeField.getText()));
@@ -133,36 +135,35 @@ public class ClassesChoosingPageController {
             searchingClasses.setExamMode(ExamModeChoiceBox.getValue().toExamMode());
             searchingClasses.setLanguage(LanguageChoiceBox.getValue().toLanguage());
             searchingClasses.setEducation(EducationChoiceBox.getValue().toEducation());
-            if(FullCheckBox.isSelected()){
+            if (FullCheckBox.isSelected()) {
                 searchingClasses.setFull(Full.NotFull);
-            }
-            else{
+            } else {
                 searchingClasses.setFull(null);
             }
         }//读取参数
         flush();
     }
-    @FXML
-    private void openTimePage(){
-        if(!isTimePageExist){
-            isTimePageExist=true;
-            TimePageStage=new Stage();
 
-            timePageController=changeViews(TimePageStage,"/GUI/Window/Components/Time/TimeTable.fxml");
+    @FXML
+    private void openTimePage() {
+        if (!isTimePageExist) {
+            isTimePageExist = true;
+            TimePageStage = new Stage();
+
+            timePageController = changeViews(TimePageStage, "/GUI/Window/Components/Time/TimeTable.fxml");
 
             timePageController.setStage(TimePageStage);
 
-            TimePageStage.setOnHiding(e->{
+            TimePageStage.setOnHiding(e -> {
                 searchingClasses.setTime(timePageController.getTimeSet());
                 TimePageStage.close();
-                isTimePageExist=false;
+                isTimePageExist = false;
             });
 
             TimePageStage.show();
             TimePageStage.setResizable(false);
             resetLocation(TimePageStage);
-        }
-        else{
+        } else {
             resetLocation(TimePageStage);
         }
     }
@@ -175,7 +176,7 @@ public class ClassesChoosingPageController {
         this.userType = userType;
     }
 
-    private void loadTable(){
+    private void loadTable() {
         tableView.setPrefWidth(1280);
         tableView.setPrefHeight(560);
 
@@ -196,12 +197,12 @@ public class ClassesChoosingPageController {
             fullColumn.setCellValueFactory(cellData -> cellData.getValue().fullProperty());
         }//设置表格列与数据对象的属性关联
         {
-            codeColumn.setCellFactory(column-> new TableCell<>() {
+            codeColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isClassesMainPageExist=true;
+                        isClassesMainPageExist = true;
                         openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
                         resetLocation(classesMainPageStage);
                     });
@@ -252,7 +253,7 @@ public class ClassesChoosingPageController {
                 educationColumn,
                 teacherColumn,
                 fullColumn
-                );
+        );
 
         {
             pagination = new Pagination((tableView.getItems().size() - 1) / ROWS_PER_PAGE + 1);
@@ -268,11 +269,11 @@ public class ClassesChoosingPageController {
         TableViewPane.getChildren().add(pagination);
     }
 
-    public void flush(){
-        data=searchClasses(searchingClasses).toObservableList();
+    public void flush() {
+        data = searchClasses(searchingClasses).toObservableList();
     }
 
-    private void choiceBoxInitialize(){
+    private void choiceBoxInitialize() {
         {
             ClassTypeChoiceBox.setValue(C_ClassType.None);
             ClassTypeChoiceBox.setConverter(new StringConverter<>() {
@@ -387,24 +388,24 @@ public class ClassesChoosingPageController {
         }//EducationChoiceBox
     }
 
-    public ContextMenu classesChoosingPageContextMenu(){
-        ContextMenu contextMenu=new ContextMenu();
+    public ContextMenu classesChoosingPageContextMenu() {
+        ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
 
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
-        flushMenuItem.setOnAction(event-> flush());
+        flushMenuItem.setOnAction(event -> flush());
 
         contextMenu.getItems().addAll(flushMenuItem);
 
         return contextMenu;
     }
 
-    private void openClassesMainPage(String classesCode){
-        if(!isClassesMainPageExist){
-            classesMainPageStage=new Stage();
+    private void openClassesMainPage(String classesCode) {
+        if (!isClassesMainPageExist) {
+            classesMainPageStage = new Stage();
 
-            classesMainPageController=changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
+            classesMainPageController = changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
 
             classesMainPageController.setStage(classesMainPageStage);
             classesMainPageController.setID(ID);
@@ -412,25 +413,24 @@ public class ClassesChoosingPageController {
             classesMainPageController.setClassesCode(classesCode);
             classesMainPageController.flush();
 
-            classesMainPageStage.setOnHiding(e->{
-                isClassesMainPageExist=false;
+            classesMainPageStage.setOnHiding(e -> {
+                isClassesMainPageExist = false;
                 classesMainPageStage.close();
             });
 
             classesMainPageStage.show();
             classesMainPageStage.setResizable(false);
-        }
-        else if(!classesCode.equals(classesMainPageController.getClassesCode())){
+        } else if (!classesCode.equals(classesMainPageController.getClassesCode())) {
             classesMainPageController.setClassesCode(classesCode);
             classesMainPageController.flush();
         }
     }
 
-    public void close(){
-        if(isTimePageExist){
+    public void close() {
+        if (isTimePageExist) {
             TimePageStage.close();
         }
-        if(isClassesMainPageExist){
+        if (isClassesMainPageExist) {
             classesMainPageStage.close();
         }
     }

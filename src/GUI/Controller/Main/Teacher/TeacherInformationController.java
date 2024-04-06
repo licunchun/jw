@@ -19,41 +19,43 @@ public class TeacherInformationController {
     /*
      * Children Page
      */
-    private boolean isEditSchoolPageShow=false;
-    private Stage editSchoolPageStage=null;
+    private boolean isEditSchoolPageShow = false;
+    private Stage editSchoolPageStage = null;
     private TeacherSchoolEditorController teacherSchoolEditorController;
+
     /*
      * Function
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         flush();
     }
-    @FXML
-    private void doEditSchool(){
-        if(!isEditSchoolPageShow){
-            isEditSchoolPageShow=true;
-            editSchoolPageStage=new Stage();
 
-            teacherSchoolEditorController=changeViews(editSchoolPageStage,"/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
+    @FXML
+    private void doEditSchool() {
+        if (!isEditSchoolPageShow) {
+            isEditSchoolPageShow = true;
+            editSchoolPageStage = new Stage();
+
+            teacherSchoolEditorController = changeViews(editSchoolPageStage, "/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
             teacherSchoolEditorController.setID(ID);
             teacherSchoolEditorController.setStage(editSchoolPageStage);
 
-            editSchoolPageStage.setOnHiding(e->{
-                isEditSchoolPageShow=false;
+            editSchoolPageStage.setOnHiding(e -> {
+                isEditSchoolPageShow = false;
                 editSchoolPageStage.close();
                 flush();
             });
             editSchoolPageStage.setResizable(false);
             editSchoolPageStage.show();
             resetLocation(editSchoolPageStage);
-        }
-        else{
+        } else {
             resetLocation(editSchoolPageStage);
         }
     }
-    public void closeAllChildren(){
-        if(isEditSchoolPageShow){
+
+    public void closeAllChildren() {
+        if (isEditSchoolPageShow) {
             editSchoolPageStage.close();
         }
     }
@@ -61,7 +63,8 @@ public class TeacherInformationController {
     public void setID(String ID) {
         this.ID = ID;
     }
-    public void flush(){
+
+    public void flush() {
         School.setText(getSchool(ID).toString());
     }
 }

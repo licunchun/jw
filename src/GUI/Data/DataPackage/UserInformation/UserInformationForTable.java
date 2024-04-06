@@ -11,32 +11,34 @@ public class UserInformationForTable {
     private final SimpleStringProperty school;
     private final SimpleStringProperty gender;
     private final SimpleStringProperty money;
-    public UserInformationForTable(String ID){
-        this.ID=new SimpleStringProperty(ID);
-        this.name=new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getName(ID));
-        this.password=new SimpleStringProperty("修改密码");
+
+    public UserInformationForTable(String ID) {
+        this.ID = new SimpleStringProperty(ID);
+        this.name = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getName(ID));
+        this.password = new SimpleStringProperty("修改密码");
         //不会真的有人直接传密码吧，不会吧，不会吧！！
-        UserType userType=Sevice.Main.Components.UserServ.UserServ.getUserType(ID);
-        switch (userType){
+        UserType userType = Sevice.Main.Components.UserServ.UserServ.getUserType(ID);
+        switch (userType) {
             case UserType.Student -> {
-                this.grade=new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getGrade(ID).toString());
-                this.school=new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getSchool(ID).toString());
-                this.gender=new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getGender(ID).toString());
-                this.money=new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getMoney(ID).toString());
+                this.grade = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getGrade(ID).toString());
+                this.school = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getSchool(ID).toString());
+                this.gender = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getGender(ID).toString());
+                this.money = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getMoney(ID).toString());
             }
             case UserType.Teacher -> {
-                this.grade=new SimpleStringProperty("");
-                this.school=new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getSchool(ID).toString());
-                this.gender=new SimpleStringProperty("");
-                this.money=new SimpleStringProperty("");
+                this.grade = new SimpleStringProperty("");
+                this.school = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getSchool(ID).toString());
+                this.gender = new SimpleStringProperty("");
+                this.money = new SimpleStringProperty("");
             }
             case UserType.Admin -> {
-                this.grade=new SimpleStringProperty("");
-                this.school=new SimpleStringProperty("");
-                this.gender=new SimpleStringProperty("");
-                this.money=new SimpleStringProperty("");
+                this.grade = new SimpleStringProperty("");
+                this.school = new SimpleStringProperty("");
+                this.gender = new SimpleStringProperty("");
+                this.money = new SimpleStringProperty("");
             }
-            case UserType.None -> throw new RuntimeException("Error:UserInformationForTable,Constructor get a None UserType!");
+            case UserType.None ->
+                    throw new RuntimeException("Error:UserInformationForTable,Constructor get a None UserType!");
             case null -> throw new RuntimeException("Error:UserInformationForTable,Constructor get a null UserType!");
         }
     }//构造之前一定要验证ID是否存在

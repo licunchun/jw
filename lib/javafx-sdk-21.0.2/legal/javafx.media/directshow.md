@@ -1,6 +1,7 @@
 ## Microsoft DirectShow Samples v156905
 
 ### MIT License (MIT)
+
 ```
 
 Copyright (c) 1992-2004 Microsoft Corporation. All rights reserved.

@@ -55,40 +55,42 @@ public class ClassesMainPageController {
     private String ID;
     private UserType userType;
     private String classesCode;
+
     /*
      * Functions
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
+
     @FXML
-    private void doClick(){
-        if(userType==UserType.Student){
-            Boolean isChosen=isPicked(ID,classesCode);
-            if(isChosen==null){
+    private void doClick() {
+        if (userType == UserType.Student) {
+            Boolean isChosen = isPicked(ID, classesCode);
+            if (isChosen == null) {
                 stage.close();
                 System.err.println("Error:ClassesCode not found or ID not found!\nPlease refresh the page and try again!");
                 return;
             }
-            if(Boolean.TRUE.equals(isChosen)){
+            if (Boolean.TRUE.equals(isChosen)) {
                 doDropClasses();
-            }
-            else{
+            } else {
                 doPickClasses();
             }
         }
-        if(userType==UserType.Admin){
+        if (userType == UserType.Admin) {
             doDeleteClasses();
         }
     }
+
     @FXML
-    private void doBack(){
+    private void doBack() {
         stage.close();
     }
 
-    private void doPickClasses(){
-        switch (pickClasses(ID,classesCode)){
+    private void doPickClasses() {
+        switch (pickClasses(ID, classesCode)) {
             case PickClassesError.ClassesCodeNotFind -> {
                 stage.close();
                 System.err.println("Error:ClassesCode not found!\nPlease refresh the page and try again!");
@@ -102,8 +104,9 @@ public class ClassesMainPageController {
             case PickClassesError.Success -> flush();
         }
     }
-    private void doDropClasses(){
-        switch (dropClasses(ID,classesCode)){
+
+    private void doDropClasses() {
+        switch (dropClasses(ID, classesCode)) {
             case DropClassesError.ClassesCodeNotFind -> {
                 stage.close();
                 System.err.println("Error:ClassesCode not found!\nPlease refresh the page and try again!");
@@ -115,8 +118,9 @@ public class ClassesMainPageController {
             case DropClassesError.Success -> flush();
         }
     }
-    private void doDeleteClasses(){
-        switch (deleteClasses(classesCode)){
+
+    private void doDeleteClasses() {
+        switch (deleteClasses(classesCode)) {
             case DeleteClassesError.ClassesCodeNotFind -> {
                 stage.close();
                 System.err.println("Error:ClassesCode not found!\nPlease refresh the page and try again!");
@@ -125,15 +129,15 @@ public class ClassesMainPageController {
         }
     }
 
-    public void flush(){
+    public void flush() {
         {
             Classes classes = getClasses(classesCode);
-            if(classes==null){
+            if (classes == null) {
                 stage.close();
                 System.err.println("ClassesCode not found!\nPlease refresh the page and try again!");
                 return;
             }
-            ClassesForTable classesForTable=new ClassesForTable(classes);
+            ClassesForTable classesForTable = new ClassesForTable(classes);
 
             CodeLabel.setText(classesForTable.getCode());
             NameLabel.setText(classesForTable.getName());
@@ -152,22 +156,21 @@ public class ClassesMainPageController {
             Tips.setText("");
         }//Classes Basic Information
         {
-            if(userType==UserType.Student){
-                Boolean isChosen=isPicked(ID,classesCode);
-                if(isChosen==null){
+            if (userType == UserType.Student) {
+                Boolean isChosen = isPicked(ID, classesCode);
+                if (isChosen == null) {
                     stage.close();
                     System.err.println("ClassesCode not found or ID not found!\nPlease refresh the page and try again!");
                     return;
                 }
-                if(Boolean.TRUE.equals(isChosen)){
+                if (Boolean.TRUE.equals(isChosen)) {
                     ClickButton.setText("退课");
-                }
-                else{
+                } else {
                     ClickButton.setText("选课");
                 }
                 return;
             }
-            if(userType==UserType.Admin){
+            if (userType == UserType.Admin) {
                 ClickButton.setText("删除");
             }
         }//Button Setting
@@ -189,11 +192,11 @@ public class ClassesMainPageController {
         this.userType = userType;
     }
 
-    public void setClassesCode(String classesCode) {
-        this.classesCode = classesCode;
-    }
-
     public String getClassesCode() {
         return classesCode;
+    }
+
+    public void setClassesCode(String classesCode) {
+        this.classesCode = classesCode;
     }
 }

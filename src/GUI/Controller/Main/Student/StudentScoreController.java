@@ -1,17 +1,23 @@
 package GUI.Controller.Main.Student;
 
-import Data.Type.Student;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 
 public class StudentScoreController {
+    @FXML
+    TableColumn<Coursetable, String> courseCol;
+    @FXML
+    TableColumn<Coursetable, Integer> periodCol;
+    @FXML
+    TableColumn<Coursetable, Integer> creditCol;
+    @FXML
+    TableColumn<Coursetable, Double> gpaCol;
+    @FXML
+    TableColumn<Coursetable, Integer> scoreCol;
     @FXML
     private Label TotalCredits;
     @FXML
@@ -26,16 +32,6 @@ public class StudentScoreController {
     private Label ArithmeticAverageScore;
     @FXML
     private TableView<Coursetable> CourseTable;
-    @FXML
-    TableColumn<Coursetable, String> courseCol;
-    @FXML
-    TableColumn<Coursetable, Integer> periodCol;
-    @FXML
-    TableColumn<Coursetable, Integer> creditCol;
-    @FXML
-    TableColumn<Coursetable, Double> gpaCol;
-    @FXML
-    TableColumn<Coursetable, Integer> scoreCol;
 
     public void initialize() {
         Coursetable[] courses = {
@@ -57,6 +53,7 @@ public class StudentScoreController {
         CourseTable.setItems(FXCollections.observableArrayList(courses));
     }
 }
+
 class Coursetable {
     private final String Course;
     private final int Period;

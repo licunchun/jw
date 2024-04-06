@@ -18,13 +18,15 @@ public class NameEditorController {
     private Button Confirm;
     private String ID;
     private Stage stage;
+
     @FXML
-    public void initialize(){
+    public void initialize() {
 
     }
+
     @FXML
-    private void doConfirm(){
-        switch(editName(ID,ChangedName.getText())){
+    private void doConfirm() {
+        switch (editName(ID, ChangedName.getText())) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
                 tips.setVisible(true);
@@ -37,9 +39,11 @@ public class NameEditorController {
                 stage.close();
         }
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setTitle("修改姓名");

@@ -1,6 +1,6 @@
 package Sevice.Utils;
 
-public class NameUtil{
+public class NameUtil {
     final public static int MAX_NAME_LENGTH = 10;
     final public static int EMPTY = 0;
     final public static int PASS = 1;
@@ -10,19 +10,22 @@ public class NameUtil{
     public NameUtil(String name) {
         this.name = name;
     }
-    public int checkLength(){
-        if(this.name.isEmpty())
+
+    public int checkLength() {
+        if (this.name.isEmpty())
             return EMPTY;
-        else if(this.name.length()>MAX_NAME_LENGTH)//
+        else if (this.name.length() > MAX_NAME_LENGTH)//
             return INVALID_LENGTH;
         else
             return PASS;
     }
+
     public boolean checkChar() {
         return this.name.matches("^[\u4e00-\u9fa5·]+$");
     }
-    public  boolean checkValid(){
-        if(checkLength()!=PASS)
+
+    public boolean checkValid() {
+        if (checkLength() != PASS)
             return false;
         return checkChar();
     }

@@ -20,6 +20,7 @@ import static GUI.GUIUtil.StageUtil.resetLocation;
 import static Sevice.Main.Components.UserServ.UserServ.findUser;
 
 public class ManageUserPageController {
+    private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
     @FXML
     private TextField IDField;
     @FXML
@@ -41,12 +42,11 @@ public class ManageUserPageController {
     private TableColumn<UserInformationForTable, String> GenderColumn = new TableColumn<>("性别");
     private TableColumn<UserInformationForTable, Void> MoneyColumn = new TableColumn<>("账户金额");
     private Pagination pagination;
-    private static final int ROWS_PER_PAGE=20;//每页最多有多少行
     /*
      * Edit Pages
      */
-    private boolean isEditPagesExist=false;
-    private EditUserPage existPage=null;
+    private boolean isEditPagesExist = false;
+    private EditUserPage existPage = null;
     private Stage editPageStage;
     private NameEditorController nameEditorController;
     private PasswordEditorController passwordEditorController;
@@ -54,46 +54,50 @@ public class ManageUserPageController {
     private StudentSchoolEditorController studentSchoolEditorController;
     private TeacherSchoolEditorController teacherSchoolEditorController;
     private MoneyEditorController moneyEditorController;
-    private ObservableList<UserInformationForTable> data= FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private ObservableList<UserInformationForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     /*
      * Else
      */
-    private String name=null;
-    private String ID=null;
+    private String name = null;
+    private String ID = null;
+
     /*
      * Functions
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
         loadTable();
     }
+
     @FXML
-    private void doSearch(){
-        name=NameField.getText();
-        ID=IDField.getText();
+    private void doSearch() {
+        name = NameField.getText();
+        ID = IDField.getText();
         flush();
     }
+
     public void setUserType(UserType userType) {
         this.userType = userType;
         loadColumn();
     }
-    private void loadTable(){
+
+    private void loadTable() {
         tableView.setPrefWidth(1280);
         tableView.setPrefHeight(560);
 
         {
-            IDColumn.setCellValueFactory(cellData->cellData.getValue().nameProperty());
-            GenderColumn.setCellValueFactory(cellData->cellData.getValue().nameProperty());
+            IDColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+            GenderColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         }//设置表格列与数据对象的属性关联
         {
             IDColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
-            NameColumn.setCellFactory(column-> new TableCell<>() {
+            NameColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getName());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isEditPagesExist=true;
-                        openEditPage(getTableView().getItems().get(getIndex()).getID(),EditUserPage.Name);
+                        isEditPagesExist = true;
+                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Name);
                         resetLocation(editPageStage);
                     });
                 }//超链接点击事件
@@ -108,13 +112,13 @@ public class ManageUserPageController {
                     }
                 }
             });
-            PasswordColumn.setCellFactory(column-> new TableCell<>() {
+            PasswordColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getPassword());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isEditPagesExist=true;
-                        openEditPage(getTableView().getItems().get(getIndex()).getID(),EditUserPage.Password);
+                        isEditPagesExist = true;
+                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Password);
                         resetLocation(editPageStage);
                     });
                 }//超链接点击事件
@@ -129,13 +133,13 @@ public class ManageUserPageController {
                     }
                 }
             });
-            GradeColumn.setCellFactory(column-> new TableCell<>() {
+            GradeColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getGrade());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isEditPagesExist=true;
-                        openEditPage(getTableView().getItems().get(getIndex()).getID(),EditUserPage.Grade);
+                        isEditPagesExist = true;
+                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Grade);
                         resetLocation(editPageStage);
                     });
                 }//超链接点击事件
@@ -150,17 +154,16 @@ public class ManageUserPageController {
                     }
                 }
             });
-            SchoolColumn.setCellFactory(column-> new TableCell<>() {
+            SchoolColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getSchool());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isEditPagesExist=true;
-                        if(userType==UserType.Student){
-                            openEditPage(getTableView().getItems().get(getIndex()).getID(),EditUserPage.StudentSchool);
-                        }
-                        else {
-                            openEditPage(getTableView().getItems().get(getIndex()).getID(),EditUserPage.TeacherSchool);
+                        isEditPagesExist = true;
+                        if (userType == UserType.Student) {
+                            openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.StudentSchool);
+                        } else {
+                            openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.TeacherSchool);
                         }
                         resetLocation(editPageStage);
                     });
@@ -177,13 +180,13 @@ public class ManageUserPageController {
                 }
             });
             GenderColumn.setCellValueFactory(new PropertyValueFactory<>("性别"));
-            MoneyColumn.setCellFactory(column-> new TableCell<>() {
+            MoneyColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getMoney());
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isEditPagesExist=true;
-                        openEditPage(getTableView().getItems().get(getIndex()).getID(),EditUserPage.Money);
+                        isEditPagesExist = true;
+                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Money);
                         resetLocation(editPageStage);
                     });
                 }//超链接点击事件
@@ -216,8 +219,9 @@ public class ManageUserPageController {
         }//翻页
         TablePane.getChildren().add(pagination);
     }
-    private void loadColumn(){
-        switch (userType){
+
+    private void loadColumn() {
+        switch (userType) {
             case UserType.Student -> tableView.getColumns().addAll(
                     IDColumn,
                     NameColumn,
@@ -240,76 +244,80 @@ public class ManageUserPageController {
             );
         }
     }
-    private void openEditPage(String ID,EditUserPage editUserPage){
-        if(!isEditPagesExist){
-            isEditPagesExist=true;
-            editPageStage=new Stage();
-            doOpen(ID,editUserPage);
 
-            editPageStage.setOnHiding(e->{
-                isEditPagesExist=false;
-                this.existPage=null;
+    private void openEditPage(String ID, EditUserPage editUserPage) {
+        if (!isEditPagesExist) {
+            isEditPagesExist = true;
+            editPageStage = new Stage();
+            doOpen(ID, editUserPage);
+
+            editPageStage.setOnHiding(e -> {
+                isEditPagesExist = false;
+                this.existPage = null;
                 editPageStage.close();
             });
 
             editPageStage.show();
             editPageStage.setResizable(false);
-        }
-        else {
-            doOpen(ID,editUserPage);
+        } else {
+            doOpen(ID, editUserPage);
         }
     }
-    private void doOpen(String ID,EditUserPage editUserPage){
-        switch (editUserPage){
+
+    private void doOpen(String ID, EditUserPage editUserPage) {
+        switch (editUserPage) {
             case EditUserPage.Name -> {
-                nameEditorController=changeViews(editPageStage,"/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
+                nameEditorController = changeViews(editPageStage, "/GUI/Window/Components/UserInformationEditor/NameEditor.fxml");
                 nameEditorController.setStage(editPageStage);
                 nameEditorController.setID(ID);
             }
             case EditUserPage.Password -> {
-                passwordEditorController=changeViews(editPageStage,"/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
+                passwordEditorController = changeViews(editPageStage, "/GUI/Window/Components/UserInformationEditor/PasswordEditor.fxml");
                 passwordEditorController.setStage(editPageStage);
                 passwordEditorController.setID(ID);
             }
             case EditUserPage.Grade -> {
-                gradeEditorController=changeViews(editPageStage,"/GUI/Window/Components/UserInformationEditor/GradeEditor.fxml");
+                gradeEditorController = changeViews(editPageStage, "/GUI/Window/Components/UserInformationEditor/GradeEditor.fxml");
                 gradeEditorController.setStage(editPageStage);
                 gradeEditorController.setID(ID);
             }
             case EditUserPage.StudentSchool -> {
-                studentSchoolEditorController=changeViews(editPageStage,"/GUI/Window/Components/UserInformationEditor/StudentSchoolEditor.fxml");
+                studentSchoolEditorController = changeViews(editPageStage, "/GUI/Window/Components/UserInformationEditor/StudentSchoolEditor.fxml");
                 studentSchoolEditorController.setStage(editPageStage);
                 studentSchoolEditorController.setID(ID);
             }
             case EditUserPage.TeacherSchool -> {
-                teacherSchoolEditorController=changeViews(editPageStage,"/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
+                teacherSchoolEditorController = changeViews(editPageStage, "/GUI/Window/Components/UserInformationEditor/TeacherSchoolEditor.fxml");
                 teacherSchoolEditorController.setStage(editPageStage);
                 teacherSchoolEditorController.setID(ID);
             }
             case EditUserPage.Money -> {
-                moneyEditorController=changeViews(editPageStage,"/GUI/Window/Components/UserInformationEditor/MoneyEditor.fxml");
+                moneyEditorController = changeViews(editPageStage, "/GUI/Window/Components/UserInformationEditor/MoneyEditor.fxml");
                 moneyEditorController.setStage(editPageStage);
                 moneyEditorController.setID(ID);
             }
         }
     }
-    public void flush(){
-        data=findUser(userType,ID,name).toObservableList();
+
+    public void flush() {
+        data = findUser(userType, ID, name).toObservableList();
     }
-    public ContextMenu manageUserPageContextMenu(){
-        ContextMenu contextMenu=new ContextMenu();
+
+    public ContextMenu manageUserPageContextMenu() {
+        ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
 
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
-        flushMenuItem.setOnAction(event-> flush());
+        flushMenuItem.setOnAction(event -> flush());
 
         contextMenu.getItems().addAll(flushMenuItem);
 
         return contextMenu;
     }
-    public void close(){
-        if(isEditPagesExist){
+
+    public void close() {
+        if (isEditPagesExist) {
             editPageStage.close();
         }
     }

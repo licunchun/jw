@@ -7,18 +7,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ClassesSet {
-    private Set<Classes> classesSet=new HashSet<>();
+    private Set<Classes> classesSet = new HashSet<>();
 
-    public ClassesSet(){
+    public ClassesSet() {
 
     }
 
-    public ObservableList<ClassesForTable> toObservableList(){
+    public ObservableList<ClassesForTable> toObservableList() {
         ObservableList<ClassesForTable> observableList = FXCollections.observableArrayList();
-        if(classesSet==null){
+        if (classesSet == null) {
             return observableList;
         }
-        for(Classes classes:classesSet){
+        for (Classes classes : classesSet) {
             observableList.add(new ClassesForTable(classes));
         }
         return observableList;

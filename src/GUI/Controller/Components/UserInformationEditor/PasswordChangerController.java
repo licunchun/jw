@@ -22,13 +22,15 @@ public class PasswordChangerController {
     private PasswordField OriginPassword;
     private String ID;
     private Stage stage;
+
     @FXML
-    public void initialize(){
+    public void initialize() {
 
     }
+
     @FXML
-    private void doConfirm(){
-        switch (changePassword(ID,OriginPassword.getText(),NewPassword.getText(),ConfirmNewPassword.getText())){
+    private void doConfirm() {
+        switch (changePassword(ID, OriginPassword.getText(), NewPassword.getText(), ConfirmNewPassword.getText())) {
             case ChangePasswordError.Success:
                 tips.setText("");
                 tips.setVisible(true);
@@ -60,9 +62,11 @@ public class PasswordChangerController {
                 break;
         }
     }
+
     public void setID(String ID) {
         this.ID = ID;
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
         stage.setTitle("修改密码");

@@ -29,10 +29,11 @@ public enum School {
 
     private final String name;
 
-    School(String name){
-        this.name=name;
+    School(String name) {
+        this.name = name;
     }
-    public String toString(){   //生成中文字符串
+
+    public String toString() {   //生成中文字符串
         return this.name;
     }
 }

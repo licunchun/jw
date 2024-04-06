@@ -6,7 +6,8 @@ import javafx.scene.control.ContextMenu;
 public class ClassesSchedulePageController {//TODO
     private String ID;
     private UserType userType;
-    public ContextMenu classesSchedulePageContextMenu(){
+
+    public ContextMenu classesSchedulePageContextMenu() {
         return new ContextMenu();
     }
 

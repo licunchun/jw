@@ -1,6 +1,7 @@
 ## LibFFI v3.4.4
 
 ### LibFFI License
+
 ```
 
 libffi - Copyright (c) 1996-2022  Anthony Green, Red Hat, Inc and others.
@@ -38,6 +39,7 @@ Copyright (C) 2002-2007  Bo Thorsen <bo@suse.de>
 ```
 
 ### AUTHORS File Information
+
 ```
 
 libffi was originally written by Anthony Green <green@moxielogic.com>.

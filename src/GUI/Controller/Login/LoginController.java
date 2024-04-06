@@ -16,7 +16,7 @@ import static Sevice.Login.LoginServ.checkIDAndPassword;
 
 
 public class LoginController {
-    private static final Stage stage=Main.getStage();
+    private static final Stage stage = Main.getStage();
     /*
      * Major function
      */
@@ -30,17 +30,18 @@ public class LoginController {
     private TextField UserID;
     @FXML
     private PasswordField UserPassword;
+
     /*
      * Function
      */
     @FXML
-    public void initialize(){
+    public void initialize() {
         stage.setTitle("登录界面");
     }
 
     @FXML
-    public void doLogin(){
-        switch(checkIDAndPassword(UserID.getText(),UserPassword.getText())){
+    public void doLogin() {
+        switch (checkIDAndPassword(UserID.getText(), UserPassword.getText())) {
             case Login.IDEmpty:
                 Tips.setText("ID不能为空");
                 Tips.setVisible(true);
@@ -54,19 +55,19 @@ public class LoginController {
                 Tips.setVisible(true);
                 return;
             case Login.Student:
-                openMainPage(stage,UserType.Student,UserID.getText());
+                openMainPage(stage, UserType.Student, UserID.getText());
                 return;
             case Login.Teacher:
-                openMainPage(stage,UserType.Teacher,UserID.getText());
+                openMainPage(stage, UserType.Teacher, UserID.getText());
                 return;
             case Login.Admin:
-                openMainPage(stage,UserType.Admin,UserID.getText());
+                openMainPage(stage, UserType.Admin, UserID.getText());
         }
     }
 
     @FXML
-    public void doRegist(){
-        changeViews(stage,"/GUI/Window/Login/regist.fxml");
+    public void doRegist() {
+        changeViews(stage, "/GUI/Window/Login/regist.fxml");
     }
 
-    }
+}

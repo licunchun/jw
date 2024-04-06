@@ -4,8 +4,6 @@
 
 常用枚举类型：报错返回等
 
-
-
 + （
 
 数据库的一些属性类
@@ -38,8 +36,6 @@ PS：通用的可以修改到JavaBean类中
 
 # MainPackage
 
-
-
 ---
 
 # Service
@@ -48,15 +44,11 @@ PS：通用的可以修改到JavaBean类中
 
 用于写GUI给Service的需求
 
-
-
 set函数禁用，需要修改什么加函数传形参
 
 + UserService
 
 用于提供用户注册和登录的一些函数
-
-
 
 + StudentService
 
@@ -78,9 +70,10 @@ set函数禁用，需要修改什么加函数传形参
 
 + DataBase
 
-+ + Service给Database的文档
-  
-  + 
++
+    + Service给Database的文档
+
+    +
 
 这个里面希望实现数据库与Service接口的重写/改造，也会有一些对数据库的要求
 
@@ -96,15 +89,21 @@ Database:
 
 + public String key(String account, int type) //传入账户及其类型，返回密码
 
-+ + public String keyOfStudent(String account) 
-+ + public String keyOfTeacher(String account) 
-+ + public String keyOfManager(String account) //传入账户，返回密码（key也可以用，看哪个合适方便 自取)
++
+    + public String keyOfStudent(String account)
++
+    + public String keyOfTeacher(String account)
++
+    + public String keyOfManager(String account) //传入账户，返回密码（key也可以用，看哪个合适方便 自取)
 
 + public boolean changeKey(String account, String key, int type) //传入账户类型密码，返回是否change成功
 
-+ + public boolean changeKeyOfStudent(String account,String key)
-+ + public boolean changeKeyOfTeacher(String account,String key)
-+ + public boolean changeKeyOfManager(String account,String key)//同上
++
+    + public boolean changeKeyOfStudent(String account,String key)
++
+    + public boolean changeKeyOfTeacher(String account,String key)
++
+    + public boolean changeKeyOfManager(String account,String key)//同上
 
 + public Student infoOfStudent(String account) //查询Student信息
 

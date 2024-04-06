@@ -30,11 +30,11 @@ public enum C_CourseType {
     public String toString() {
         return this.name;
     }
-    public CourseType toCourseType(){
-        if(this==C_CourseType.None){
+
+    public CourseType toCourseType() {
+        if (this == C_CourseType.None) {
             return null;
-        }
-        else{
+        } else {
             return CourseType.valueOf(this.name());
         }
     }

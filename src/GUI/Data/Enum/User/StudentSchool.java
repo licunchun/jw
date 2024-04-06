@@ -23,14 +23,15 @@ public enum StudentSchool {
 
     private final String name;
 
-    StudentSchool(String name){
-        this.name=name;
+    StudentSchool(String name) {
+        this.name = name;
     }
 
-    public String toString(){	//生成中文字符串
+    public String toString() {    //生成中文字符串
         return this.name;
     }
-    public School toSchool(){	//生成对应的School对象
+
+    public School toSchool() {    //生成对应的School对象
         return School.valueOf(this.name());
     }
 }

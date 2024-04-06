@@ -18,11 +18,11 @@ public enum C_Education {
     public String toString() {
         return this.name;
     }
-    public Education toEducation(){
-        if(this==C_Education.None){
+
+    public Education toEducation() {
+        if (this == C_Education.None) {
             return null;
-        }
-        else{
+        } else {
             return Education.valueOf(this.name());
         }
     }

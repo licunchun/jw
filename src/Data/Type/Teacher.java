@@ -5,7 +5,8 @@ public class Teacher {
     public String account;
     public String key;
     public String classes;
-    public Teacher(String [] info) {
+
+    public Teacher(String[] info) {
         name = info[0];
         account = info[1];
         key = info[2];

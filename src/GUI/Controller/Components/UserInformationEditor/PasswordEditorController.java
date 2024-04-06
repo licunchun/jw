@@ -7,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static Sevice.Main.Components.UserServ.UserServ.editName;
 import static Sevice.Main.Components.UserServ.UserServ.editPassword;
 
 public class PasswordEditorController {
@@ -19,16 +18,18 @@ public class PasswordEditorController {
     private Button Confirm;
     private Stage stage;
     private String ID;
+
     /*
      * Functions
      */
     @FXML
-    private void initialize(){
+    private void initialize() {
 
     }
+
     @FXML
-    private void doConfirm(){
-        switch(editPassword(ID,ChangedPassword.getText())){
+    private void doConfirm() {
+        switch (editPassword(ID, ChangedPassword.getText())) {
             case EditError.IDNotFound:
                 Tips.setText("未找到ID，请重新登录！！");
                 Tips.setVisible(true);
@@ -41,6 +42,7 @@ public class PasswordEditorController {
                 stage.close();
         }
     }
+
     public void setStage(Stage stage) {
         this.stage = stage;
     }

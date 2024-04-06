@@ -1,6 +1,7 @@
 ## IBM International Components for Unicode (ICU4C) v73.1
 
 ### ICU License
+
 ```
 
 UNICODE, INC. LICENSE AGREEMENT - DATA FILES AND SOFTWARE
