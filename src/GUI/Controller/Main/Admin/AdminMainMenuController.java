@@ -1,6 +1,7 @@
 package GUI.Controller.Main.Admin;
 
 import GUI.Controller.Main.Common.Classes.ClassesChoosingPageController;
+import GUI.Controller.Main.Common.Classes.ProposeCoursePageController;
 import GUI.Controller.Main.Common.MainMenuController;
 import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
@@ -27,6 +28,10 @@ public class AdminMainMenuController {
     @FXML
     private AnchorPane subPane;
     private String ID;
+    //Propose Course Page
+    private boolean isProposeCoursePageExist = false;
+    private ProposeCoursePageController proposeCoursePageController;
+    private Stage proposeCoursePageStage;
     /*
      * Main TabPane
      */
@@ -146,8 +151,10 @@ public class AdminMainMenuController {
             Menu ClasesMenu = new Menu("课程");
             {
                 MenuItem OpenClassesManagePage = new MenuItem("管理课程");
+                MenuItem OpenProposeCoursePage = new MenuItem("新建课程");
 
                 OpenClassesManagePage.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
+                OpenProposeCoursePage.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
 
                 OpenClassesManagePage.setOnAction(e -> {
                     if (!isClassesManagePageExist) {
@@ -157,8 +164,19 @@ public class AdminMainMenuController {
                         mainMenuTabPane.getSelectionModel().select(classesManageTab);
                     }
                 });
+                OpenProposeCoursePage.setOnAction(e -> {
+                    if (!isProposeCoursePageExist) {
+                        isProposeCoursePageExist = true;
+                        proposeCoursePageStage = new Stage();
 
-                ClasesMenu.getItems().addAll(OpenClassesManagePage);
+                        proposeCoursePageController = changeViews(proposeCoursePageStage, "/GUI/Window/Main/Common/Classes/ProposeCoursePage.fxml");
+                        resetLocation(proposeCoursePageStage);
+                    } else {
+                        resetLocation(proposeCoursePageStage);
+                    }
+                });
+
+                ClasesMenu.getItems().addAll(OpenClassesManagePage, OpenProposeCoursePage);
             }//选课里面的子菜单
             Menu ClassesTeachingMenu = new Menu("用户");
             {
