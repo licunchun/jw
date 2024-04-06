@@ -1,4 +1,4 @@
-package GUI.Controller.Main.Teacher.Classes;
+package GUI.Controller.Main.Common.Classes;
 
 public class ProposeCoursePageController {//TODO
 }

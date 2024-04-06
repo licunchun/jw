@@ -123,7 +123,7 @@ public class MainMenuController {
         contextMenu.getItems().addAll(flushMenuItem);
 
         return contextMenu;
-    }
+    }//TODO
 
     private void flushUserInformationPage() {
         userInformationPageController.flush();

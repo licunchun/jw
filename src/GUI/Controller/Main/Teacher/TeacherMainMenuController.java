@@ -1,9 +1,9 @@
 package GUI.Controller.Main.Teacher;
 
 import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
+import GUI.Controller.Main.Common.Classes.ProposeCoursePageController;
 import GUI.Controller.Main.Common.MainMenuController;
 import GUI.Controller.Main.Teacher.Classes.AssignGradePageController;
-import GUI.Controller.Main.Teacher.Classes.ProposeCoursePageController;
 import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -29,6 +29,11 @@ public class TeacherMainMenuController {
     @FXML
     private AnchorPane subPane;
     private String ID;
+
+    //Propose Course Page
+    private boolean isProposeCoursePageExist = false;
+    private ProposeCoursePageController proposeCoursePageController;
+    private Stage proposeCoursePageStage;
     /*
      * Main TabPane
      */
@@ -36,10 +41,6 @@ public class TeacherMainMenuController {
     private boolean isClassesSchedulePageExist = false;
     private ClassesSchedulePageController classesSchedulePageController;
     private Tab classesScheduleTab;
-    //Propose Course Page
-    private boolean isProposeCoursePageExist = false;
-    private ProposeCoursePageController proposeCoursePageController;
-    private Tab proposeCourseTab;
     //Assign Grade Page
     private boolean isAssignGradePageExist = false;
     private AssignGradePageController assignGradePageController;
@@ -73,21 +74,6 @@ public class TeacherMainMenuController {
                 mainMenuTabPane.getSelectionModel().select(0);
                 isClassesSchedulePageExist = false;
                 mainMenuTabPane.getTabs().remove(classesScheduleTab);
-            });
-        }
-        proposeCourseTab = new Tab("申请开课");
-        {
-            FXMLLoader proposeCoursePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/ProposeCoursePage.fxml");
-            Parent root = newRoot(proposeCoursePageLoader);
-
-            //这里不需要右键菜单
-
-            proposeCoursePageController = getController(proposeCoursePageLoader);
-            proposeCourseTab.setContent(root);
-            proposeCourseTab.setOnCloseRequest(e -> {
-                mainMenuTabPane.getSelectionModel().select(0);
-                isProposeCoursePageExist = false;
-                mainMenuTabPane.getTabs().remove(proposeCourseTab);
             });
         }
         assignGradeTab = new Tab("给分");
@@ -138,9 +124,12 @@ public class TeacherMainMenuController {
                     OpenProposeCoursePage.setOnAction(e -> {
                         if (!isProposeCoursePageExist) {
                             isProposeCoursePageExist = true;
-                            mainMenuTabPane.getTabs().add(proposeCourseTab);
+                            proposeCoursePageStage = new Stage();
+
+                            proposeCoursePageController = changeViews(proposeCoursePageStage, "/GUI/Window/Main/Common/Classes/ProposeCoursePage.fxml");
+                            resetLocation(proposeCoursePageStage);
                         } else {
-                            mainMenuTabPane.getSelectionModel().select(proposeCourseTab);
+                            resetLocation(proposeCoursePageStage);
                         }
                     });
                     OpenAssignGradePage.setOnAction(e -> {
