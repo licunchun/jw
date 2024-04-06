@@ -288,7 +288,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            ClassTypeChoiceBox.setItems(ClassTypeList);
+            ClassTypeChoiceBox.setItems(C_ClassTypeList);
         }//ClassTypeChoiceBox
         {
             CourseTypeChoiceBox.setValue(C_CourseType.None);
@@ -304,7 +304,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            CourseTypeChoiceBox.setItems(CourseTypeList);
+            CourseTypeChoiceBox.setItems(C_CourseTypeList);
         }//CourseTypeChoiceBox
         {
             SchoolChoiceBox.setValue(C_School.None);
@@ -320,7 +320,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            SchoolChoiceBox.setItems(SchoolList);
+            SchoolChoiceBox.setItems(C_SchoolList);
         }//SchoolChoiceBox
         {
             CampusChoiceBox.setValue(C_Campus.None);
@@ -336,7 +336,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            CampusChoiceBox.setItems(CampusList);
+            CampusChoiceBox.setItems(C_CampusList);
         }//CampusChoiceBox
         {
             ExamModeChoiceBox.setValue(C_ExamMode.None);
@@ -352,7 +352,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            ExamModeChoiceBox.setItems(ExamModeList);
+            ExamModeChoiceBox.setItems(C_ExamModeList);
         }//ExamModeChoiceBox
         {
             LanguageChoiceBox.setValue(C_Language.None);
@@ -368,7 +368,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            LanguageChoiceBox.setItems(LanguageList);
+            LanguageChoiceBox.setItems(C_LanguageList);
         }//LanguageChoiceBox
         {
             EducationChoiceBox.setValue(C_Education.None);
@@ -384,7 +384,7 @@ public class ClassesChoosingPageController {
                 }
             });
 
-            EducationChoiceBox.setItems(EducationList);
+            EducationChoiceBox.setItems(C_EducationList);
         }//EducationChoiceBox
     }
 

@@ -82,11 +82,9 @@
 参数：
 
     courseTimeSet(CourseTimeSet):时间类
-
 返回：
 
     timeString(String):字符串形式的时间
-
 说明：
 
     将时间集合转换为字符串形式的时间
@@ -100,7 +98,33 @@
 返回：
 
     deleteClassesError(DeleteClassesError):删除课程的报错
-
 说明：
 
     删除课程的方法，不要返回null！！！！
+
+## +newClasses(String code,String name,String period,String credits,CourseTimeSet time,String maxCount,ClassType classType,CourseType courseType,School school,Campus campus,ExamMode examMode,Language language,Education education,String teacher)
+
+参数：
+
+    code(String):课程代码
+    name(String):课程名称
+    period(String):课程学时
+    credits(String):课程学分
+    time(CourseTimeSet):课程时间
+    maxCount(String):课程容量
+    classType(ClassType):课堂类型
+    courseType(CourseType):课程种类
+    school(School):课程院系
+    campus(Campus):课程校区
+    examMode(ExamMode):考核方式
+    language(Language):教学语言
+    education(Education):教育阶段
+    teacher(String):教师
+
+返回：
+
+    newClassesError(NewClassesError):新建课程的报错
+
+说明：
+
+    为了GUI界面体验，请按照参数顺序逐个验证错误

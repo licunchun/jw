@@ -176,6 +176,11 @@ public class AdminMainMenuController {
                         proposeCoursePageController.setID(ID);
                         proposeCoursePageController.flush();
 
+                        proposeCoursePageStage.setOnHiding(event -> {
+                            proposeCoursePageController.close();
+                            proposeCoursePageStage.close();
+                        });
+
                         resetLocation(proposeCoursePageStage);
                     } else {
                         resetLocation(proposeCoursePageStage);
