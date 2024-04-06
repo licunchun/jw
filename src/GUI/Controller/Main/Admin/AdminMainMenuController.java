@@ -168,8 +168,14 @@ public class AdminMainMenuController {
                     if (!isProposeCoursePageExist) {
                         isProposeCoursePageExist = true;
                         proposeCoursePageStage = new Stage();
+                        proposeCoursePageStage.setTitle("新建课程");
 
                         proposeCoursePageController = changeViews(proposeCoursePageStage, "/GUI/Window/Main/Common/Classes/ProposeCoursePage.fxml");
+                        proposeCoursePageController.setUserType(UserType.Admin);
+                        proposeCoursePageController.setStage(proposeCoursePageStage);
+                        proposeCoursePageController.setID(ID);
+                        proposeCoursePageController.flush();
+
                         resetLocation(proposeCoursePageStage);
                     } else {
                         resetLocation(proposeCoursePageStage);
