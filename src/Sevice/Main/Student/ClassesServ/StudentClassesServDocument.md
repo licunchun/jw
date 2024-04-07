@@ -16,7 +16,7 @@
 
     搜索学生所选的课程集合，如果ID不存在则返回null
 
-## +getStudentClassesSet(String ID)
+## +getStudentCourseCodeSet(String ID)
 
 参数：
 

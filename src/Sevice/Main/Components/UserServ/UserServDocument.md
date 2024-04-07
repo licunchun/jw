@@ -155,7 +155,7 @@
     如果该ID没有对应数据类型或者ID=null请报错，Throw Exeption同上
     如果未查询到该ID请返回null
 
-## +FindStudent(String name)
+## +findStudent(String name)
 
 参数：
 
@@ -170,7 +170,7 @@
     根据名字搜索学生，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
 
-## +FindTeacher(String name)
+## +findTeacher(String name)
 
 参数：
 
@@ -185,7 +185,7 @@
     根据名字搜索老师，重名一起返回
     注意：没找到返回空集。不要返回null！不要返回null！不要返回null！
 
-## +FindAdmin(String name)
+## +findAdmin(String name)
 
 参数：
 
