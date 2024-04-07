@@ -129,14 +129,6 @@ public class StudentScoreController {
         ArithmeticAverageScore.setText(formattedArithmeticAverageScore);
 
         CourseTableView.setItems(data);
-
-        CourseTableView.getColumns().addAll(
-                nameColumn,
-                periodColumn,
-                creditsColumn,
-                GPAColumn,
-                scoreColumn
-        );
     }
 
 }
