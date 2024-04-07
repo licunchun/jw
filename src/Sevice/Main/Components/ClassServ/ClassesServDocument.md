@@ -61,13 +61,13 @@
 
     查询学生的成绩，如果查询失败则返回-1
 
-## +setStudentGrade(String classesCode,String ID,double grade)
+## +setStudentGrade(String classesCode,String ID,int grade)
 
 参数：
 
     classesCode(String)：该课程的课程编码
     ID(String):学生的ID
-    grade(double):成绩，百分制,如果非法直接报错
+    grade(int):成绩，百分制,如果非法直接报错
 
 返回：
 
@@ -76,6 +76,21 @@
 说明：
 
     修改学生的成绩，如果修改失败则返回false
+
+## +getStudentGPA(String classesCode,String ID)
+
+参数：
+
+    classesCode(String)：该课程的课程编码
+    ID(String):学生的ID
+
+返回：
+
+    GPA(double)
+
+说明：
+
+    查询学生的绩点，如果查询失败则返回-1
 
 ## +toStringTime(CourseTimeSet courseTimeSet)
 
