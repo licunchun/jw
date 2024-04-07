@@ -4,14 +4,14 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class CourseTable {
+public class StudentCourseScoreTable {
     private final SimpleStringProperty name;
     private final SimpleIntegerProperty period;
     private final SimpleDoubleProperty credits;
     private final SimpleDoubleProperty GPA;
     private final SimpleIntegerProperty score;
 
-    public CourseTable(Classes classes, double GPA, int score) {
+    public StudentCourseScoreTable(Classes classes, double GPA, int score) {
         this.name = new SimpleStringProperty(classes.getName());
         this.period = new SimpleIntegerProperty(classes.getPeriod());
         this.credits = new SimpleDoubleProperty(classes.getCredits());

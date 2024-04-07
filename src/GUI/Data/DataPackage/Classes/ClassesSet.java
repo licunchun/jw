@@ -27,4 +27,8 @@ public class ClassesSet {
         }
         return observableList;
     }
+    public Iterable<Classes> getClassesIterable() {
+        return classesSet;
+    }
+
 }
