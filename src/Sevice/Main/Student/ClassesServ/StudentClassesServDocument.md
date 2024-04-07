@@ -30,6 +30,90 @@
 
     搜索学生所选的课程集合，如果ID不存在则返回null
 
+## +getStudentTotalCredits(String ID)
+
+参数：
+
+    ID(String):学生的ID
+
+返回：
+
+    Credits(double)
+
+说明：
+
+    查询学生总学分，如果查询失败则返回-1
+
+## +getStudentReceivedCredits(String ID)
+
+参数：
+
+    ID(String):学生的ID
+
+返回：
+
+    Credits(double)
+
+说明：
+
+    查询学生已获得学分（已打分的学分），如果查询失败则返回-1
+
+## +getStudentFailedCredits(String ID)
+
+参数：
+
+    ID(String):学生的ID
+
+返回：
+
+    Credits(double)
+
+说明：
+
+    查询学生挂科，如果查询失败则返回-1
+
+## +getStudentAverageGrade(String ID)
+
+参数：
+
+    ID(String):学生的ID
+
+返回：
+
+    Grade(int)
+
+说明：
+
+    查询学生平均的成绩，如果查询失败则返回-1
+
+## +getStudentWeightedAverageGrade(String ID)
+
+参数：
+
+    ID(String):学生的ID
+
+返回：
+
+    Grade(int)
+
+说明：
+
+    查询学生加权平均的成绩，如果查询失败则返回-1
+
+## +getStudentGPA(String ID)
+
+参数：
+
+    ID(String):学生的ID
+
+返回：
+
+    GPA(double)
+
+说明：
+
+    查询学生的平均绩点，如果查询失败则返回-1
+
 ## +pickClasses(String studentID,String classesCode)
 
 参数：

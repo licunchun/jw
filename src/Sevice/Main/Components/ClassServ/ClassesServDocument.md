@@ -61,20 +61,6 @@
 
     查询学生的成绩，如果查询失败则返回-1
 
-## +getStudentGrade(String ID)
-
-参数：
-
-    ID(String):学生的ID
-
-返回：
-
-    Grade(int)
-
-说明：
-
-    查询学生平均的成绩，如果查询失败则返回-1
-
 ## +setStudentGrade(String classesCode,String ID,int grade)
 
 参数：
@@ -105,20 +91,6 @@
 说明：
 
     查询学生的绩点，如果查询失败则返回-1
-
-## +getStudentGPA(String ID)
-
-参数：
-
-    ID(String):学生的ID
-
-返回：
-
-    GPA(double)
-
-说明：
-
-    查询学生的平均绩点，如果查询失败则返回-1
 
 ## +toStringTime(CourseTimeSet courseTimeSet)
 

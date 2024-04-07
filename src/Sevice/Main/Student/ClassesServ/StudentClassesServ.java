@@ -14,6 +14,30 @@ public class StudentClassesServ {
         return new CourseCodeSet();
     }//TODO
 
+    public static double getStudentTotalCredits() {
+        return 0;
+    }//TODO
+
+    public static double getStudentReceivedCredits() {
+        return 0;
+    }//TODO
+
+    public static double getStudentFailedCredits() {
+        return 0;
+    }//TODO
+
+    public static int getStudentAverageGrade(String ID) {
+        return 0;
+    }//TODO
+
+    public static int getStudentWeightedAverageGrade(String ID) {
+        return 0;
+    }//TODO
+
+    public static double getStudentGPA(String classesCode, String ID) {
+        return 0;
+    }//TODO
+
     public static PickClassesError pickClasses(String studentID, String classesCode) {
         return PickClassesError.Success;
     }//TODO

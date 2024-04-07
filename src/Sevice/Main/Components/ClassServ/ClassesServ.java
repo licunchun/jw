@@ -26,19 +26,11 @@ public class ClassesServ {
         return 0;
     }//TODO
 
-    public static int getStudentGrade(String ID) {
-        return 0;
-    }//TODO
-
     public static boolean setStudentGrade(String classesCode, String ID, int grade) {
         return true;
     }//TODO
 
     public static double getStudentGPA(String classesCode, String ID) {
-        return 0;
-    }//TODO
-
-    public static double getStudentGPA(String ID) {
         return 0;
     }//TODO
 
