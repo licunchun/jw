@@ -77,7 +77,7 @@ public class StudentScoreController {
 
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         periodColumn.setCellValueFactory(cellData -> cellData.getValue().periodProperty().asObject());
-        creditsColumn.setCellValueFactory(cellData -> cellData.getValue().creditProperty().asObject());
+        creditsColumn.setCellValueFactory(cellData -> cellData.getValue().creditsProperty().asObject());
         GPAColumn.setCellValueFactory(cellData -> cellData.getValue().GPAProperty().asObject());
         scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty().asObject());
 

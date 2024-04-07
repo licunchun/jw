@@ -5,6 +5,7 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class StudentCourseScoreTable {
+
     private final SimpleStringProperty name;
     private final SimpleIntegerProperty period;
     private final SimpleDoubleProperty credits;
@@ -19,38 +20,43 @@ public class StudentCourseScoreTable {
         this.score = new SimpleIntegerProperty(score);
     }
 
-    public String getName() {
-        return name.get();
-    }
-    public SimpleStringProperty nameProperty() {
-        return name;
-    }
-
-    public Integer getPeriod() {
+    public int getPeriod() {
         return period.get();
     }
+
     public SimpleIntegerProperty periodProperty() {
         return period;
     }
 
-    public Double getCredits() {
+    public double getCredits() {
         return credits.get();
     }
-    public SimpleDoubleProperty creditProperty() {
+
+    public SimpleDoubleProperty creditsProperty() {
         return credits;
     }
 
-    public Double getGPA() {
+    public double getGPA() {
         return GPA.get();
     }
+
     public SimpleDoubleProperty GPAProperty() {
         return GPA;
     }
 
-    public Integer getScore() {
+    public int getScore() {
         return score.get();
     }
+
     public SimpleIntegerProperty scoreProperty() {
         return score;
+    }
+
+    public String getName() {
+        return name.get();
+    }
+
+    public SimpleStringProperty nameProperty() {
+        return name;
     }
 }
