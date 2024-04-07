@@ -1,5 +1,6 @@
 package GUI.Controller.Main.Student;
 
+import GUI.Data.DataPackage.Classes.CourseTable;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -9,15 +10,15 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 public class StudentScoreController {
     @FXML
-    TableColumn<Coursetable, String> courseCol;
+    TableColumn<CourseTable, String> nameColumn;
     @FXML
-    TableColumn<Coursetable, Integer> periodCol;
+    TableColumn<CourseTable, Integer> periodColumn;
     @FXML
-    TableColumn<Coursetable, Integer> creditCol;
+    TableColumn<CourseTable, Double> creditsColumn;
     @FXML
-    TableColumn<Coursetable, Double> gpaCol;
+    TableColumn<CourseTable, Double> GPAColumn;
     @FXML
-    TableColumn<Coursetable, Integer> scoreCol;
+    TableColumn<CourseTable, Integer> scoreColumn;
     @FXML
     private Label TotalCredits;
     @FXML
@@ -31,61 +32,32 @@ public class StudentScoreController {
     @FXML
     private Label ArithmeticAverageScore;
     @FXML
-    private TableView<Coursetable> CourseTable;
+    private TableView<CourseTable> CourseTableView;
 
     public void initialize() {
-        Coursetable[] courses = {
-                new Coursetable("Course 1", 120, 3, 3.5, 85),
-                new Coursetable("Course 2", 80, 4, 4.0, 92),
-                new Coursetable("Course 3", 60, 2, 3.2, 78),
-                new Coursetable("Course 4", 80, 3, 3.8, 88),
-                new Coursetable("Course 5", 40, 3, 3.6, 86)
-        };
-
-        courseCol.setCellValueFactory(new PropertyValueFactory<>("course"));
-        periodCol.setCellValueFactory(new PropertyValueFactory<>("period"));
-        creditCol.setCellValueFactory(new PropertyValueFactory<>("credit"));
-        gpaCol.setCellValueFactory(new PropertyValueFactory<>("gpa"));
-        scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-
-        CourseTable.getColumns().addAll(courseCol, periodCol, creditCol, gpaCol, scoreCol);
-
-        CourseTable.setItems(FXCollections.observableArrayList(courses));
+//        CourseTable[] courses = {
+//                new CourseTable("Course 1", 120, 3, 3.5, 85),
+//                new CourseTable("Course 2", 80, 4, 4.0, 92),
+//                new CourseTable("Course 3", 60, 2, 3.2, 78),
+//                new CourseTable("Course 4", 80, 3, 3.8, 88),
+//                new CourseTable("Course 5", 40, 3, 3.6, 86)
+//        };
+//
+//        courseCol.setCellValueFactory(cellData -> cellData.getValue().courseProperty());
+//        periodCol.setCellValueFactory(new PropertyValueFactory<>("period"));
+//        creditCol.setCellValueFactory(new PropertyValueFactory<>("credit"));
+//        gpaCol.setCellValueFactory(new PropertyValueFactory<>("gpa"));
+//        scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
+//
+//        CourseTableView.getColumns().addAll(courseCol, periodCol, creditCol, gpaCol, scoreCol);
+//
+//        CourseTableView.setItems(FXCollections.observableArrayList(courses));
     }
-}
+    private void loadTable() {
+        CourseTableView.setPrefWidth(1280);
+        CourseTableView.setPrefHeight(560);
 
-class Coursetable {
-    private final String Course;
-    private final int Period;
-    private final int Credit;
-    private final double GPA;
-    private final int Score;
-
-    public Coursetable(String Course, int Period, int Credit, double GPA, int Score) {
-        this.Course = Course;
-        this.Period = Period;
-        this.Credit = Credit;
-        this.GPA = GPA;
-        this.Score = Score;
-    }
-
-    public String getCourse() {
-        return Course;
-    }
-
-    public int getPeriod() {
-        return Period;
-    }
-
-    public int getCredit() {
-        return Credit;
-    }
-
-    public double getGPA() {
-        return GPA;
-    }
-
-    public int getScore() {
-        return Score;
+        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        periodColumn.setCellValueFactory(cellData -> cellData.getValue().periodProperty());
     }
 }

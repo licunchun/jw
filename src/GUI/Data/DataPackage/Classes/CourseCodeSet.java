@@ -17,7 +17,7 @@ public class CourseCodeSet {
         this.courseCodeSet.add(ID);
     }
 
-    public ObservableList<CourseGradeForTable> toGradeObservableList() {
+    public ObservableList<CourseTable> toGradeObservableList() {
         return FXCollections.observableArrayList();
     }//TODO
 }
