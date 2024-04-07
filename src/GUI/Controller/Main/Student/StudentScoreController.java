@@ -48,23 +48,6 @@ public class StudentScoreController {
         this.ID = ID;
     }
     public void initialize() {
-//        CourseTable[] courses = {
-//                new CourseTable("Course 1", 120, 3, 3.5, 85),
-//                new CourseTable("Course 2", 80, 4, 4.0, 92),
-//                new CourseTable("Course 3", 60, 2, 3.2, 78),
-//                new CourseTable("Course 4", 80, 3, 3.8, 88),
-//                new CourseTable("Course 5", 40, 3, 3.6, 86)
-//        };
-//
-//        courseCol.setCellValueFactory(cellData -> cellData.getValue().courseProperty());
-//        periodCol.setCellValueFactory(new PropertyValueFactory<>("period"));
-//        creditCol.setCellValueFactory(new PropertyValueFactory<>("credit"));
-//        gpaCol.setCellValueFactory(new PropertyValueFactory<>("gpa"));
-//        scoreCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-//
-//        CourseTableView.getColumns().addAll(courseCol, periodCol, creditCol, gpaCol, scoreCol);
-//
-//        CourseTableView.setItems(FXCollections.observableArrayList(courses));
         loadTable();
     }
     public void flush() {
