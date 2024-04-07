@@ -11,11 +11,8 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 
-import java.text.DecimalFormat;
-
 import static Sevice.Main.Components.ClassServ.ClassesServ.*;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentCourseCodeSet;
+import static Sevice.Main.Student.ClassesServ.StudentClassesServ.*;
 
 public class StudentScoreController {
     @FXML
@@ -44,14 +41,6 @@ public class StudentScoreController {
     private Label ArithmeticAverageScore;//算数平均分
     private ObservableList<StudentCourseScoreTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
-
-    //    private int countClasses = 0;
-//    private double totalCredits = 0, receivedCredits = 0, failedCredits = 0;
-//    private double sumGPA = 0, weightAverageScore = 0, arithmeticAverageScore = 0, averageGPA;
-//    private DecimalFormat decimalFormat1 = new DecimalFormat("#.0");
-//    private DecimalFormat decimalFormat2 = new DecimalFormat("#.00");
-//    private String formattedTotalCredits, formattedReceivedCredits, formattedFailedCredits, formattedGPA
-//    private String formattedWeightAverageScore, formattedArithmeticAverageScore;
     public void setID(String ID) {
         this.ID = ID;
     }
@@ -60,21 +49,12 @@ public class StudentScoreController {
     }
     public void flush() {
         data = getStudentCourseCodeSet(ID).toGradeObservableList();
-//        countClasses = 0;
-//        totalCredits = 0;
-//        receivedCredits = 0;
-//        failedCredits = 0;
-//        sumGPA = 0;
-//        weightAverageScore = 0;
-//        arithmeticAverageScore = 0;
-//        averageGPA = 0;
-//
-//        TotalCredits.setText(formattedTotalCredits);
-//        ReceivedCredits.setText(formattedReceivedCredits);
-//        FailedCredits.setText(formattedFailedCredits);
-//        GPA.setText(formattedGPA);
-//        WeightAverageScore.setText(formattedWeightAverageScore);
-//        ArithmeticAverageScore.setText(formattedArithmeticAverageScore);
+        TotalCredits.setText(Double.toString(getStudentTotalCredits(ID)));
+        ReceivedCredits.setText(Double.toString(getStudentReceivedCredits(ID)));
+        FailedCredits.setText(Double.toString(getStudentFailedCredits(ID)));
+        GPA.setText(Double.toString(getStudentGPA(ID)));
+        WeightAverageScore.setText(Double.toString(getStudentWeightedAverageGrade(ID)));
+        ArithmeticAverageScore.setText(Double.toString(getStudentAverageGrade(ID)));
     }
     private void loadTable() {
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
@@ -83,43 +63,18 @@ public class StudentScoreController {
         GPAColumn.setCellValueFactory(cellData -> cellData.getValue().GPAProperty().asObject());
         scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty().asObject());
 
-//        ClassesSet classesSet = getStudentClassesSet(ID);
-//        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
-//
-//        for(Classes studentClass : classesSetIterable) {
-//            String code = studentClass.getCode();
-//            int score = getStudentGrade(code, ID);
-//            double GPA = getStudentGPA(code, ID);
-//            StudentCourseScoreTable newData = new StudentCourseScoreTable(studentClass, GPA, score);
-//            data.add(newData);
-//
-//            double credits = studentClass.getCredits();
-//            totalCredits = totalCredits + credits;
-//            if(score >= 60) {
-//                receivedCredits = receivedCredits + credits;
-//            }
-//            else {
-//                failedCredits = failedCredits + credits;
-//            }
-//            sumGPA = sumGPA + GPA * credits;
-//            weightAverageScore = weightAverageScore + score * credits;
-//            arithmeticAverageScore = arithmeticAverageScore + score;
-//            countClasses = countClasses + 1;
-//        }
+        ClassesSet classesSet = getStudentClassesSet(ID);
+        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
 
-//        averageGPA = sumGPA / countClasses;
-//        weightAverageScore /= totalCredits;
-//        arithmeticAverageScore /=countClasses;
-//        formattedTotalCredits = decimalFormat1.format(totalCredits);
-//        formattedReceivedCredits = decimalFormat1.format(receivedCredits);
-//        formattedFailedCredits = decimalFormat1.format(failedCredits);
-//        formattedGPA = decimalFormat2.format(averageGPA);
-//        formattedWeightAverageScore = decimalFormat2.format(weightAverageScore);
-//        formattedArithmeticAverageScore = decimalFormat2.format(arithmeticAverageScore);
-
-
-
+        for(Classes studentClass : classesSetIterable) {
+            String code = studentClass.getCode();
+            int score = getStudentGrade(code, ID);
+            double GPA = getStudentGPA(code, ID);
+            StudentCourseScoreTable newData = new StudentCourseScoreTable(studentClass, GPA, score);
+            data.add(newData);
+        }
         CourseTableView.setItems(data);
+        flush();
     }
 
     public ContextMenu studentScoreContextMenu() {

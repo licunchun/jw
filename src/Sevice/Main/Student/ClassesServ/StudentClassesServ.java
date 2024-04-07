@@ -77,19 +77,21 @@ public class StudentClassesServ {
         return (Math.round(studentWeightedAverageGrade * 100) / 100.0);
     }
 
-    public static double getStudentGPA(String classesCode, String ID) {//返回GPA
+    public static double getStudentGPA(String ID) {//返回GPA
         ClassesSet classesSet = getStudentClassesSet(ID);
         Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
         double studentGPA = 0;
         double countStudentCredits = 0;//计算总学分
         for(Classes studentClass : classesSetIterable) {
-            studentGPA += getStudentGPA(studentClass.getCode(), ID) * studentClass.getCredits();
+            studentGPA += getStudentClassGPA(studentClass.getCode(), ID) * studentClass.getCredits();
             countStudentCredits += studentClass.getCredits();
         }
         studentGPA /= countStudentCredits;
         return (Math.round(studentGPA * 100) / 100.0);
     }
-
+    public static double getStudentClassGPA(String classesCode, String ID) {
+        return 0;
+    }//TODO
     public static PickClassesError pickClasses(String studentID, String classesCode) {
         return PickClassesError.Success;
     }//TODO
