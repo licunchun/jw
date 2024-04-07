@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CourseCodeSet {
-    private Set<String> courseCodeSet = new HashSet<>();
+    private final Set<String> courseCodeSet = new HashSet<>();
 
     public CourseCodeSet() {
 

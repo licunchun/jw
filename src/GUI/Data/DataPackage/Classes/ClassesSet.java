@@ -7,10 +7,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class ClassesSet {
-    private Set<Classes> classesSet = new HashSet<>();
+    private final Set<Classes> classesSet = new HashSet<>();
 
     public ClassesSet() {
 
+    }
+
+    public void add(Classes classes) {
+        this.classesSet.add(classes);
     }
 
     public ObservableList<ClassesForTable> toObservableList() {

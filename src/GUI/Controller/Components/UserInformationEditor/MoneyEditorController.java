@@ -19,14 +19,6 @@ public class MoneyEditorController {
     private Stage stage;
     private String ID;
 
-    /*
-     * Functions
-     */
-    @FXML
-    private void initialize() {
-
-    }
-
     @FXML
     private void doConfirm() {
         double money;

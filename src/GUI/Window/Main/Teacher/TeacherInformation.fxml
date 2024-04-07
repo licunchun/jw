@@ -7,30 +7,22 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="200.0" xmlns="http://javafx.com/javafx/21"
             fx:controller="GUI.Controller.Main.Teacher.TeacherInformationController">
-    <children>
-        <VBox prefWidth="200.0">
-            <children>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Label graphicTextGap="0.0" text="院校：">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="School" layoutX="60.0">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Hyperlink fx:id="EditSchool" layoutX="72.0" layoutY="-3.0" onAction="#doEditSchool"
-                                   text="修改院校"/>
-                    </children>
-                </AnchorPane>
-            </children>
-        </VBox>
-    </children>
+    <VBox prefWidth="200.0">
+        <AnchorPane prefWidth="200.0">
+            <Label graphicTextGap="0.0" text="院校：">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <Label fx:id="School" layoutX="60.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefWidth="200.0">
+            <Hyperlink fx:id="EditSchool" layoutX="72.0" layoutY="-3.0" onAction="#doEditSchool"
+                       text="修改院校"/>
+        </AnchorPane>
+    </VBox>
 </AnchorPane>

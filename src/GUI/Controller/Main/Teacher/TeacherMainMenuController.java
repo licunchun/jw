@@ -17,6 +17,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static GUI.GUIUtil.MainPageUtil.openMainPage;
 import static GUI.GUIUtil.StageUtil.*;
@@ -168,7 +170,8 @@ public class TeacherMainMenuController {
                 menuBar.getMenus().addAll(ClassesTeachingMenu, PageMenu);
             }//MenuBar配置
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLogger");
+            logger.log(Level.SEVERE, "An error occurred", e);
         }
         //mainMenuController赋值
         mainMenuController.setUserType(UserType.Teacher);

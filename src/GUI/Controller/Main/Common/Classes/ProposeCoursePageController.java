@@ -3,7 +3,6 @@ package GUI.Controller.Main.Common.Classes;
 import GUI.Controller.Components.Time.TimeTableController;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.Enum.Classes.*;
-import GUI.Data.Enum.Classes.EnumForClassesSearching.*;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.UserType;
@@ -15,7 +14,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
-import static GUI.Data.Enum.GUI.ObservableList.ClassesChoosingObservableList.*;
 import static GUI.Data.Enum.GUI.ObservableList.ClassesInformationObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
@@ -143,9 +141,7 @@ public class ProposeCoursePageController {
                 Tips.setText("教师名称不合法，请重新输入");
                 Tips.setVisible(true);
             }
-            case NewClassesError.Success -> {
-                stage.close();
-            }
+            case NewClassesError.Success -> stage.close();
         }
     }
 

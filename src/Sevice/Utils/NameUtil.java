@@ -21,7 +21,7 @@ public class NameUtil {
     }
 
     public boolean checkChar() {
-        return this.name.matches("^[\u4e00-\u9fa5·]+$");
+        return this.name.matches("^[一-龥·]+$");
     }
 
     public boolean checkValid() {

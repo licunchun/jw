@@ -5,74 +5,60 @@
 <?import javafx.scene.text.*?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="200.0" xmlns="http://javafx.com/javafx/21"
             fx:controller="GUI.Controller.Main.Student.StudentInformationController">
-    <children>
-        <VBox prefWidth="200.0">
-            <children>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Label graphicTextGap="0.0" text="年级：">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="Grade" layoutX="60.0">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Label graphicTextGap="0.0" text="性别：">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="Gender" layoutX="60.0">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Label graphicTextGap="0.0" text="院校：">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="School" layoutX="60.0">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Label graphicTextGap="0.0" text="账户余额：">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                        <Label fx:id="Money" layoutX="100.0" prefHeight="27.0" prefWidth="0.0">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="200.0">
-                    <children>
-                        <Hyperlink fx:id="EditGrade" layoutX="144.0" layoutY="-7.0" onAction="#doEditGrade"
-                                   text="修改年级"/>
-                        <Hyperlink fx:id="EditSchool" layoutY="-7.0" onAction="#doEditSchool" text="修改院校"/>
-                        <Hyperlink fx:id="Recharge" layoutX="84.0" layoutY="-7.0" onAction="#doRecharge" text="充值"/>
-                    </children>
-                </AnchorPane>
-            </children>
-        </VBox>
-    </children>
+    <VBox prefWidth="200.0">
+        <AnchorPane prefWidth="200.0">
+            <Label graphicTextGap="0.0" text="年级：">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <Label fx:id="Grade" layoutX="60.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefWidth="200.0">
+            <Label graphicTextGap="0.0" text="性别：">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <Label fx:id="Gender" layoutX="60.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefWidth="200.0">
+            <Label graphicTextGap="0.0" text="院校：">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <Label fx:id="School" layoutX="60.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefWidth="200.0">
+            <Label graphicTextGap="0.0" text="账户余额：">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <Label fx:id="Money" layoutX="100.0" prefHeight="27.0" prefWidth="0.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefWidth="200.0">
+            <Hyperlink fx:id="EditGrade" layoutX="144.0" layoutY="-7.0" onAction="#doEditGrade"
+                       text="修改年级"/>
+            <Hyperlink fx:id="EditSchool" layoutY="-7.0" onAction="#doEditSchool" text="修改院校"/>
+            <Hyperlink fx:id="Recharge" layoutX="84.0" layoutY="-7.0" onAction="#doRecharge" text="充值"/>
+        </AnchorPane>
+    </VBox>
 </AnchorPane>

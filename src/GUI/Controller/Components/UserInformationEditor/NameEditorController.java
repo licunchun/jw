@@ -20,11 +20,6 @@ public class NameEditorController {
     private Stage stage;
 
     @FXML
-    public void initialize() {
-
-    }
-
-    @FXML
     private void doConfirm() {
         switch (editName(ID, ChangedName.getText())) {
             case EditError.IDNotFound:

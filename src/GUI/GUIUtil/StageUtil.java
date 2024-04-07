@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import java.awt.*;
 import java.io.IOException;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class StageUtil {
     public StageUtil() {
@@ -52,7 +54,8 @@ public class StageUtil {
         try {
             root = loader.load();
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger logger = Logger.getLogger("MyLogger");
+            logger.log(Level.SEVERE, "An error occurred", e);
         }
         return root;
     }

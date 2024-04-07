@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class CourseTimeSet {
-    private Set<CourseTime> courseTimeSet = new HashSet<>();
+    private final Set<CourseTime> courseTimeSet = new HashSet<>();
 
     public CourseTimeSet() {
 

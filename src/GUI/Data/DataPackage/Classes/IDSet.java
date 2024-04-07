@@ -10,7 +10,7 @@ import java.util.Set;
 import static Sevice.Main.Components.UserServ.UserServ.getName;
 
 public class IDSet {
-    private Set<String> IDSet = new HashSet<>();
+    private final Set<String> IDSet = new HashSet<>();
 
     public IDSet() {
 

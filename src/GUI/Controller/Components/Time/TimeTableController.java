@@ -12,13 +12,13 @@ public class TimeTableController {
     static final double BUTTON_WIDE = 45.0;
     static final double BUTTON_HEIGHT = 30.0;
     static final double Distance = 20.0;
-    static boolean[][] isChosen = new boolean[8][14];
+    static final boolean[][] isChosen = new boolean[8][14];
     @FXML
     private AnchorPane TablePlace;
     @FXML
     private Button ConfirmButton;
     private Stage stage;
-    private Button[][] Table = new Button[8][14];
+    private final Button[][] Table = new Button[8][14];
 
     @FXML
     private void initialize() {

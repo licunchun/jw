@@ -56,14 +56,6 @@ public class ClassesMainPageController {
     private UserType userType;
     private String classesCode;
 
-    /*
-     * Functions
-     */
-    @FXML
-    private void initialize() {
-
-    }
-
     @FXML
     private void doClick() {
         if (userType == UserType.Student) {

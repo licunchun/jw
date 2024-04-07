@@ -50,10 +50,6 @@ public class MainMenuController {
     }
 
     @FXML
-    public void initialize() {
-    }
-
-    @FXML
     private void showInformationPage() {
         if (!isInformationPageShow) {
             isInformationPageShow = true;

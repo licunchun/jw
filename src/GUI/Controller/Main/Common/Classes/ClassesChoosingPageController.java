@@ -72,22 +72,22 @@ public class ClassesChoosingPageController {
     /*
      * Table Information
      */
-    private TableView<ClassesForTable> tableView = new TableView<>();
-    private TableColumn<ClassesForTable, Void> codeColumn = new TableColumn<>("课堂编号");
-    private TableColumn<ClassesForTable, String> nameColumn = new TableColumn<>("课堂名称");
-    private TableColumn<ClassesForTable, String> periodColumn = new TableColumn<>("学时");
-    private TableColumn<ClassesForTable, String> creditsColumn = new TableColumn<>("学分");
-    private TableColumn<ClassesForTable, String> timeColumn = new TableColumn<>("上课时间");
-    private TableColumn<ClassesForTable, String> studentColumn = new TableColumn<>("课堂人数");
-    private TableColumn<ClassesForTable, String> classTypeColumn = new TableColumn<>("课堂类型");
-    private TableColumn<ClassesForTable, String> courseTypeColumn = new TableColumn<>("课程种类");
-    private TableColumn<ClassesForTable, String> schoolColumn = new TableColumn<>("院校");
-    private TableColumn<ClassesForTable, String> campusColumn = new TableColumn<>("校区");
-    private TableColumn<ClassesForTable, String> examModeColumn = new TableColumn<>("考试方式");
-    private TableColumn<ClassesForTable, String> languageColumn = new TableColumn<>("教学语言");
-    private TableColumn<ClassesForTable, String> educationColumn = new TableColumn<>("教育阶段");
-    private TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
-    private TableColumn<ClassesForTable, String> fullColumn = new TableColumn<>("是否满人");
+    private final TableView<ClassesForTable> tableView = new TableView<>();
+    private final TableColumn<ClassesForTable, Void> codeColumn = new TableColumn<>("课堂编号");
+    private final TableColumn<ClassesForTable, String> nameColumn = new TableColumn<>("课堂名称");
+    private final TableColumn<ClassesForTable, String> periodColumn = new TableColumn<>("学时");
+    private final TableColumn<ClassesForTable, String> creditsColumn = new TableColumn<>("学分");
+    private final TableColumn<ClassesForTable, String> timeColumn = new TableColumn<>("上课时间");
+    private final TableColumn<ClassesForTable, String> studentColumn = new TableColumn<>("课堂人数");
+    private final TableColumn<ClassesForTable, String> classTypeColumn = new TableColumn<>("课堂类型");
+    private final TableColumn<ClassesForTable, String> courseTypeColumn = new TableColumn<>("课程种类");
+    private final TableColumn<ClassesForTable, String> schoolColumn = new TableColumn<>("院校");
+    private final TableColumn<ClassesForTable, String> campusColumn = new TableColumn<>("校区");
+    private final TableColumn<ClassesForTable, String> examModeColumn = new TableColumn<>("考试方式");
+    private final TableColumn<ClassesForTable, String> languageColumn = new TableColumn<>("教学语言");
+    private final TableColumn<ClassesForTable, String> educationColumn = new TableColumn<>("教育阶段");
+    private final TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
+    private final TableColumn<ClassesForTable, String> fullColumn = new TableColumn<>("是否满人");
     private Pagination pagination;
     /*
      * Classes Main Page
@@ -98,7 +98,7 @@ public class ClassesChoosingPageController {
     /*
      * Else
      */
-    private Classes searchingClasses = new Classes();//用于搜索的Classes
+    private final Classes searchingClasses = new Classes();//用于搜索的Classes
     private ObservableList<ClassesForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
 
     /*

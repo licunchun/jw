@@ -5,45 +5,33 @@
 <?import javafx.scene.text.Font?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="250.0" xmlns="http://javafx.com/javafx/21"
             fx:controller="GUI.Controller.Components.UserInformationEditor.NameEditorController">
-    <children>
-        <VBox prefWidth="250.0">
-            <children>
-                <AnchorPane prefWidth="250.0">
-                    <children>
-                        <Label layoutX="61.0" text="修改名称">
-                            <font>
-                                <Font size="32.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="250.0">
-                    <children>
-                        <Label text="名称">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Label>
-                        <TextField fx:id="ChangedName" layoutX="50.0" layoutY="2.0" prefHeight="23.0" prefWidth="180.0"
-                                   promptText="请输入修改后的名称"/>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="250.0">
-                    <children>
-                        <Label fx:id="tips" prefHeight="15.0" prefWidth="200.0" textFill="RED"/>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefWidth="250.0">
-                    <children>
-                        <Button fx:id="Confirm" layoutX="92.0" layoutY="-6.0" mnemonicParsing="false" text="确认"
-                                onAction="#doConfirm">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Button>
-                    </children>
-                </AnchorPane>
-            </children>
-        </VBox>
-    </children>
+    <VBox prefWidth="250.0">
+        <AnchorPane prefWidth="250.0">
+            <Label layoutX="61.0" text="修改名称">
+                <font>
+                    <Font size="32.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefWidth="250.0">
+            <Label text="名称">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="ChangedName" layoutX="50.0" layoutY="2.0" prefHeight="23.0" prefWidth="180.0"
+                       promptText="请输入修改后的名称"/>
+        </AnchorPane>
+        <AnchorPane prefWidth="250.0">
+            <Label fx:id="tips" prefHeight="15.0" prefWidth="200.0" textFill="RED"/>
+        </AnchorPane>
+        <AnchorPane prefWidth="250.0">
+            <Button fx:id="Confirm" layoutX="92.0" layoutY="-6.0" mnemonicParsing="false" text="确认"
+                    onAction="#doConfirm">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Button>
+        </AnchorPane>
+    </VBox>
 </AnchorPane>

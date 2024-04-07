@@ -33,14 +33,14 @@ public class ManageUserPageController {
     /*
      * Table Component
      */
-    private TableView<UserInformationForTable> tableView = new TableView<>();
-    private TableColumn<UserInformationForTable, String> IDColumn = new TableColumn<>("ID");
-    private TableColumn<UserInformationForTable, Void> NameColumn = new TableColumn<>("姓名");
-    private TableColumn<UserInformationForTable, Void> PasswordColumn = new TableColumn<>("密码");
-    private TableColumn<UserInformationForTable, Void> GradeColumn = new TableColumn<>("年级");
-    private TableColumn<UserInformationForTable, Void> SchoolColumn = new TableColumn<>("院校");
-    private TableColumn<UserInformationForTable, String> GenderColumn = new TableColumn<>("性别");
-    private TableColumn<UserInformationForTable, Void> MoneyColumn = new TableColumn<>("账户金额");
+    private final TableView<UserInformationForTable> tableView = new TableView<>();
+    private final TableColumn<UserInformationForTable, String> IDColumn = new TableColumn<>("ID");
+    private final TableColumn<UserInformationForTable, Void> NameColumn = new TableColumn<>("姓名");
+    private final TableColumn<UserInformationForTable, Void> PasswordColumn = new TableColumn<>("密码");
+    private final TableColumn<UserInformationForTable, Void> GradeColumn = new TableColumn<>("年级");
+    private final TableColumn<UserInformationForTable, Void> SchoolColumn = new TableColumn<>("院校");
+    private final TableColumn<UserInformationForTable, String> GenderColumn = new TableColumn<>("性别");
+    private final TableColumn<UserInformationForTable, Void> MoneyColumn = new TableColumn<>("账户金额");
     private Pagination pagination;
     /*
      * Edit Pages

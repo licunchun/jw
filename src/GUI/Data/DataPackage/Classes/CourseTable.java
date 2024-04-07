@@ -3,7 +3,6 @@ package GUI.Data.DataPackage.Classes;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
 
 public class CourseTable {
     private final SimpleStringProperty name;

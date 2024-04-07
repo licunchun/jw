@@ -46,10 +46,6 @@ public class UserInformationPageController {
      */
 
     @FXML
-    public void initialize() {
-    }
-
-    @FXML
     private void doChangePassword() {
         if (!isChangePasswordPageShow) {
             isChangePasswordPageShow = true;

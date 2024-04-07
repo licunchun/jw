@@ -10,188 +10,150 @@
 
 <AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="GUI.Controller.Main.Common.Classes.ProposeCoursePageController">
-    <children>
-        <VBox prefWidth="600.0">
-            <children>
-                <AnchorPane prefHeight="60.0" prefWidth="600.0">
-                    <children>
-                        <Label layoutX="236.0" layoutY="9.0" text="创建课程">
-                            <font>
-                                <Font size="32.0"/>
-                            </font>
-                        </Label>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="510.0" prefWidth="200.0">
-                    <children>
-                        <AnchorPane layoutX="70.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课程编号：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="CodeTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                                           prefWidth="100.0" promptText="请输入课程编号"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课程名称：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="NameTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                                           prefWidth="100.0" promptText="请输入课程名称"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="70.0" layoutY="90.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课程学时：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="PeriodTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                                           prefWidth="100.0" promptText="请输入课程学时"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="90.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课程学分：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="CreditsTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                                           prefWidth="100.0" promptText="请输入课程学分"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="70.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="上课时间：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <Button fx:id="TimeTableButton" layoutX="94.0" layoutY="14.0" mnemonicParsing="false"
-                                        text="时间选择器"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课程人数：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="MaxCountTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                                           prefWidth="100.0" promptText="请输入课程人数" onAction="#openTimePage"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="70.0" layoutY="230.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课堂类型：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="ClassesTypeChoiceBox" layoutX="94.0" layoutY="14.0"
-                                           prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="230.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="课程种类：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="CourseTypeChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="70.0" layoutY="300.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="开课院校：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="SchoolChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="300.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="上课校区：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="CampusChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="70.0" layoutY="370.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="考试方式：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="ExamModeChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="370.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="教学语言：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="LanguageChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="70.0" layoutY="440.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="教育阶段：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <ChoiceBox fx:id="EducationChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
-                            </children>
-                        </AnchorPane>
-                        <AnchorPane layoutX="330.0" layoutY="440.0" prefHeight="50.0" prefWidth="200.0">
-                            <children>
-                                <Label layoutX="14.0" layoutY="14.0" text="授课教师：">
-                                    <font>
-                                        <Font size="16.0"/>
-                                    </font>
-                                </Label>
-                                <TextField fx:id="TeacherTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                                           prefWidth="100.0" promptText="请输入教师名称"/>
-                            </children>
-                        </AnchorPane>
-                    </children>
-                </AnchorPane>
-                <AnchorPane prefHeight="60.0" prefWidth="600.0">
-                    <children>
-                        <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false"
-                                onAction="#doClick" prefWidth="80.0" text="创建">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Button>
-                        <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false"
-                                onAction="#doBack" prefWidth="80.0" text="返回">
-                            <font>
-                                <Font size="20.0"/>
-                            </font>
-                        </Button>
-                        <Label fx:id="Tips" layoutX="37.0" layoutY="23.0" textFill="RED"/>
-                    </children>
-                </AnchorPane>
-            </children>
-        </VBox>
-    </children>
+    <VBox prefWidth="600.0">
+        <AnchorPane prefHeight="60.0" prefWidth="600.0">
+            <Label layoutX="236.0" layoutY="9.0" text="创建课程">
+                <font>
+                    <Font size="32.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefHeight="510.0" prefWidth="200.0">
+            <AnchorPane layoutX="70.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程编号：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="CodeTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
+                           prefWidth="100.0" promptText="请输入课程编号"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程名称：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="NameTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
+                           prefWidth="100.0" promptText="请输入课程名称"/>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="90.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程学时：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="PeriodTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
+                           prefWidth="100.0" promptText="请输入课程学时"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="90.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程学分：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="CreditsTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
+                           prefWidth="100.0" promptText="请输入课程学分"/>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="上课时间：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <Button fx:id="TimeTableButton" layoutX="94.0" layoutY="14.0" mnemonicParsing="false"
+                        text="时间选择器"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程人数：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="MaxCountTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
+                           prefWidth="100.0" promptText="请输入课程人数" onAction="#openTimePage"/>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="230.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课堂类型：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="ClassesTypeChoiceBox" layoutX="94.0" layoutY="14.0"
+                           prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="230.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程种类：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="CourseTypeChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="300.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="开课院校：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="SchoolChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="300.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="上课校区：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="CampusChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="370.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="考试方式：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="ExamModeChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="370.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="教学语言：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="LanguageChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="440.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="教育阶段：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <ChoiceBox fx:id="EducationChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="440.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="授课教师：">
+                    <font>
+                        <Font size="16.0"/>
+                    </font>
+                </Label>
+                <TextField fx:id="TeacherTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
+                           prefWidth="100.0" promptText="请输入教师名称"/>
+            </AnchorPane>
+        </AnchorPane>
+        <AnchorPane prefHeight="60.0" prefWidth="600.0">
+            <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false"
+                    onAction="#doClick" prefWidth="80.0" text="创建">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Button>
+            <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false"
+                    onAction="#doBack" prefWidth="80.0" text="返回">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Button>
+            <Label fx:id="Tips" layoutX="37.0" layoutY="23.0" textFill="RED"/>
+        </AnchorPane>
+    </VBox>
 </AnchorPane>

@@ -24,11 +24,6 @@ public class PasswordChangerController {
     private Stage stage;
 
     @FXML
-    public void initialize() {
-
-    }
-
-    @FXML
     private void doConfirm() {
         switch (changePassword(ID, OriginPassword.getText(), NewPassword.getText(), ConfirmNewPassword.getText())) {
             case ChangePasswordError.Success:

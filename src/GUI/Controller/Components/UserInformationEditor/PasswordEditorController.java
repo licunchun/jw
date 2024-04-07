@@ -19,14 +19,6 @@ public class PasswordEditorController {
     private Stage stage;
     private String ID;
 
-    /*
-     * Functions
-     */
-    @FXML
-    private void initialize() {
-
-    }
-
     @FXML
     private void doConfirm() {
         switch (editPassword(ID, ChangedPassword.getText())) {

@@ -36,10 +36,6 @@ public class RechargerController {
     }
 
     @FXML
-    private void initialize() {
-    }
-
-    @FXML
     private void doMoneyAdd10() {
         switch (editAddMoney(ID, 10)) {
             case EditError.IDNotFound:
