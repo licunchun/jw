@@ -132,7 +132,6 @@ public class DropClassesPageController {
             teacherColumn.setCellValueFactory(new PropertyValueFactory<>("教师名称"));
         }//设置自定义格式工厂
 
-        flush();//刷新数据
         tableView.setItems(data);
         tableView.getColumns().addAll(
                 codeColumn,
