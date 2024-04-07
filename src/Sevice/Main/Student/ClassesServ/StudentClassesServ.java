@@ -10,19 +10,19 @@ public class StudentClassesServ {
         return new ClassesSet();
     }//TODO
 
-    public static CourseCodeSet getStudentCourseCodeSet() {
+    public static CourseCodeSet getStudentCourseCodeSet(String ID) {
         return new CourseCodeSet();
     }//TODO
 
-    public static double getStudentTotalCredits() {
+    public static double getStudentTotalCredits(String ID) {
         return 0;
     }//TODO
 
-    public static double getStudentReceivedCredits() {
+    public static double getStudentReceivedCredits(String ID) {
         return 0;
     }//TODO
 
-    public static double getStudentFailedCredits() {
+    public static double getStudentFailedCredits(String ID) {
         return 0;
     }//TODO
 
