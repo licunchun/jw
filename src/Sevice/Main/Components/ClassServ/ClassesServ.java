@@ -22,7 +22,7 @@ public class ClassesServ {
         return new IDSet();
     }//TODO
 
-    public static double getStudentGrade(String classesCode, String ID) {
+    public static int getStudentGrade(String classesCode, String ID) {
         return 0;
     }//TODO
 

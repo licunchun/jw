@@ -55,7 +55,7 @@
 
 返回：
 
-    Grade(double)
+    Grade(int)
 
 说明：
 
