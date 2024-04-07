@@ -17,11 +17,17 @@ import static Sevice.Main.Components.ClassServ.ClassesServ.*;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 
 public class StudentScoreController {
+    @FXML
     private final TableView<StudentCourseScoreTable> CourseTableView = new TableView<>();
+    @FXML
     private TableColumn<StudentCourseScoreTable, String> nameColumn = new TableColumn<>("课程");
+    @FXML
     private TableColumn<StudentCourseScoreTable, Integer> periodColumn = new TableColumn<>("学时");
+    @FXML
     private TableColumn<StudentCourseScoreTable, Double> creditsColumn = new TableColumn<>("学分");
+    @FXML
     private TableColumn<StudentCourseScoreTable, Double> GPAColumn = new TableColumn<>("绩点");
+    @FXML
     private TableColumn<StudentCourseScoreTable, Integer> scoreColumn = new TableColumn<>("成绩");
     @FXML
     private Label TotalCredits;//总学分
@@ -35,7 +41,7 @@ public class StudentScoreController {
     private Label WeightAverageScore;//加权平均分
     @FXML
     private Label ArithmeticAverageScore;//算数平均分
-    private ObservableList<StudentCourseScoreTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private final ObservableList<StudentCourseScoreTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
 
     private int countClasses = 0;
@@ -115,12 +121,12 @@ public class StudentScoreController {
         formattedWeightAverageScore = decimalFormat2.format(weightAverageScore);
         formattedArithmeticAverageScore = decimalFormat2.format(arithmeticAverageScore);
 
-        TotalCredits.setId(formattedTotalCredits);
-        ReceivedCredits.setId(formattedReceivedCredits);
-        FailedCredits.setId(formattedFailedCredits);
-        GPA.setId(formattedGPA);
-        WeightAverageScore.setId(formattedWeightAverageScore);
-        ArithmeticAverageScore.setId(formattedArithmeticAverageScore);
+        TotalCredits.setText(formattedTotalCredits);
+        ReceivedCredits.setText(formattedReceivedCredits);
+        FailedCredits.setText(formattedFailedCredits);
+        GPA.setText(formattedGPA);
+        WeightAverageScore.setText(formattedWeightAverageScore);
+        ArithmeticAverageScore.setText(formattedArithmeticAverageScore);
 
         CourseTableView.setItems(data);
 
@@ -132,4 +138,5 @@ public class StudentScoreController {
                 scoreColumn
         );
     }
+
 }
