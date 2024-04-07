@@ -58,6 +58,6 @@ public class StudentScoreController {
         CourseTableView.setPrefHeight(560);
 
         nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
-        periodColumn.setCellValueFactory(cellData -> cellData.getValue().periodProperty());
+        periodColumn.setCellValueFactory(cellData -> cellData.getValue().periodProperty().asObject());
     }
 }

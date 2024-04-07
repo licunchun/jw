@@ -26,25 +26,29 @@ public class CourseTable {
     public SimpleStringProperty nameProperty() {
         return name;
     }
-    public int getPeriod() {
+
+    public Integer getPeriod() {
         return period.get();
     }
     public SimpleIntegerProperty periodProperty() {
         return period;
     }
-    public double getCredits() {
+
+    public Double getCredits() {
         return credits.get();
     }
     public SimpleDoubleProperty creditProperty() {
         return credits;
     }
-    public double getGPA() {
+
+    public Double getGPA() {
         return GPA.get();
     }
     public SimpleDoubleProperty GPAProperty() {
         return GPA;
     }
-    public int getScore() {
+
+    public Integer getScore() {
         return score.get();
     }
     public SimpleIntegerProperty scoreProperty() {
