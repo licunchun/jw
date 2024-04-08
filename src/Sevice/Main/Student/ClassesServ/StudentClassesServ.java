@@ -23,7 +23,7 @@ public class StudentClassesServ {
 //            totalCredits = totalCredits + studentClass.getCredits();
 //        }
 //        return Math.round(totalCredits * 10) / 10.0;
-        return 0;
+        return -1;
     }//TODO
 
     public static double getStudentReceivedCredits(String ID) {
@@ -37,7 +37,7 @@ public class StudentClassesServ {
 //            }
 //        }
 //        return Math.round(studentReceivedCredits * 10) / 10.0;
-        return 0;
+        return -1;
     }//TODO
 
     public static double getStudentFailedCredits(String ID) {
@@ -51,7 +51,7 @@ public class StudentClassesServ {
 //            }
 //        }
 //        return Math.round(studentFailedCredits * 10) / 10.0;
-        return 0;
+        return -1;
     }//TODO
 
     public static double getStudentAverageGrade(String ID) {
@@ -66,7 +66,7 @@ public class StudentClassesServ {
 //        }
 //        studentAverageGrade /= countStudentClass;
 //        return (Math.round(studentAverageGrade * 100) / 100.0);
-        return 0;
+        return -1;
     }//TODO
 
     public static double getStudentWeightedAverageGrade(String ID) {
@@ -81,7 +81,7 @@ public class StudentClassesServ {
 //        }
 //        studentWeightedAverageGrade /= countStudentCredits;
 //        return (Math.round(studentWeightedAverageGrade * 100) / 100.0);
-        return 0;
+        return -1;
     }//TODO
 
     public static double getStudentGPA(String ID) {
@@ -96,7 +96,7 @@ public class StudentClassesServ {
 //        }
 //        studentGPA /= countStudentCredits;
 //        return (Math.round(studentGPA * 100) / 100.0);
-        return 0;
+        return -1;
     }//TODO
 
     public static PickClassesError pickClasses(String studentID, String classesCode) {

@@ -23,7 +23,7 @@ import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentWeigh
 
 public class StudentScoreController {
     @FXML
-    private final TableView<StudentCourseScoreTable> CourseTableView = new TableView<>();
+    private TableView<StudentCourseScoreTable> CourseTableView = new TableView<>();
     @FXML
     private TableColumn<StudentCourseScoreTable, String> nameColumn = new TableColumn<>("课程");
     @FXML
@@ -56,15 +56,48 @@ public class StudentScoreController {
     public void initialize() {
         loadTable();
     }
+    private void setLabel() {
+        if(getStudentTotalCredits(ID) != -1) {
+            TotalCredits.setText(Double.toString(getStudentTotalCredits(ID)));
+        }
+        else {
+            TotalCredits.setText("NaN");
+        }
+        if(getStudentReceivedCredits(ID) != -1) {
+            ReceivedCredits.setText(Double.toString(getStudentReceivedCredits(ID)));
+        }
+        else {
+            ReceivedCredits.setText("NaN");
+        }
+        if(getStudentFailedCredits(ID) != -1) {
+            FailedCredits.setText(Double.toString(getStudentFailedCredits(ID)));
+        }
+        else {
+            FailedCredits.setText("NaN");
+        }
+        if(getStudentGPA(ID) != -1) {
+            GPA.setText(Double.toString(getStudentGPA(ID)));
+        }
+        else {
+            GPA.setText("NaN");
+        }
+        if(getStudentWeightedAverageGrade(ID) != -1) {
+            WeightAverageScore.setText(Double.toString(getStudentWeightedAverageGrade(ID)));
+        }
+        else {
+            WeightAverageScore.setText("NaN");
+        }
+        if(getStudentAverageGrade(ID) != -1) {
+            ArithmeticAverageScore.setText(Double.toString(getStudentAverageGrade(ID)));
+        }
+        else {
+            ArithmeticAverageScore.setText("NaN");
+        }
+    }
 
     public void flush() {
-        data = getStudentCourseCodeSet(ID).toGradeObservableList();
-        TotalCredits.setText(Double.toString(getStudentTotalCredits(ID)));
-        ReceivedCredits.setText(Double.toString(getStudentReceivedCredits(ID)));
-        FailedCredits.setText(Double.toString(getStudentFailedCredits(ID)));
-        GPA.setText(Double.toString(getStudentGPA(ID)));
-        WeightAverageScore.setText(Double.toString(getStudentWeightedAverageGrade(ID)));
-        ArithmeticAverageScore.setText(Double.toString(getStudentAverageGrade(ID)));
+        data = getStudentClassesSet(ID).toGradeObservableList(ID);
+        setLabel();
     }
 
     private void loadTable() {

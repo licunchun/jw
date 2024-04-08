@@ -6,18 +6,20 @@ import javafx.collections.ObservableList;
 import java.util.HashSet;
 import java.util.Set;
 
+import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
+import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGrade;
+import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
+
 public class CourseCodeSet {
-    private final Set<String> courseCodeSet = new HashSet<>();
+    private final Set<StudentCourseScoreTable> courseCodeSet = new HashSet<>();
 
     public CourseCodeSet() {
 
     }
 
-    public void add(String ID) {
-        this.courseCodeSet.add(ID);
+    public void add(StudentCourseScoreTable classes) {
+        this.courseCodeSet.add(classes);
     }
 
-    public ObservableList<StudentCourseScoreTable> toGradeObservableList() {
-        return FXCollections.observableArrayList();
-    }//TODO
+
 }
