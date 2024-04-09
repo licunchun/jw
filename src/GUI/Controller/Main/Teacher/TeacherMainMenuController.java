@@ -4,6 +4,7 @@ import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
 import GUI.Controller.Main.Common.Classes.ProposeCoursePageController;
 import GUI.Controller.Main.Common.MainMenuController;
 import GUI.Controller.Main.Teacher.Classes.AssignGradePageController;
+import GUI.Controller.Main.Teacher.Classes.TeacherScoreController;
 import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -45,7 +46,7 @@ public class TeacherMainMenuController {
     private Tab classesScheduleTab;
     //Assign Grade Page
     private boolean isAssignGradePageExist = false;
-    private AssignGradePageController assignGradePageController;
+    private TeacherScoreController assignGradePageController;
     private Tab assignGradeTab;
 
     /*
@@ -80,12 +81,16 @@ public class TeacherMainMenuController {
         }
         assignGradeTab = new Tab("给分");
         {
-            FXMLLoader assignGradePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/AssignGradePage.fxml");
+            FXMLLoader assignGradePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScore.fxml");
             Parent root = newRoot(assignGradePageLoader);
-
-            //等lcc的界面
-
             assignGradePageController = getController(assignGradePageLoader);
+
+
+            ContextMenu contextMenu = assignGradePageController.teacherCourseContextMenu();
+            root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
+
+            assignGradePageController.setID(ID);
+
             assignGradeTab.setContent(root);
             assignGradeTab.setOnCloseRequest(e -> {
                 mainMenuTabPane.getSelectionModel().select(0);
