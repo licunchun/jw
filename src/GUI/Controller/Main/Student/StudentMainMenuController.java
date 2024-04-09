@@ -120,7 +120,7 @@ public class StudentMainMenuController {
         }
         checkGradeTab = new Tab("查看成绩");
         {
-            FXMLLoader checkGradePageLoader = loadScene("/GUI/Window/Main/Student/Classes/CheckGradePage.fxml");
+            FXMLLoader checkGradePageLoader = loadScene("/GUI/Window/Main/Student/Classes/StudentScore.fxml");
             Parent root = newRoot(checkGradePageLoader);
             checkGradePageController = getController(checkGradePageLoader);
 

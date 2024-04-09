@@ -1,4 +1,4 @@
-package GUI.Controller.Main.Student;
+package GUI.Controller.Main.Student.Classes;
 
 import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
