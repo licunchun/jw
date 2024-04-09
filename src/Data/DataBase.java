@@ -178,7 +178,6 @@ public class DataBase {
             return false;
         }
     }
-
     public ClassInfoSet check() { // 查看总课程
         ClassInfoSet classInfoSet = new ClassInfoSet();
         String sql = "select * from courses";
