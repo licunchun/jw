@@ -107,18 +107,8 @@ public class StudentScoreController {
         GPAColumn.setCellValueFactory(cellData -> cellData.getValue().GPAProperty().asObject());
         scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty().asObject());
 
-        ClassesSet classesSet = getStudentClassesSet(ID);
-        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
-
-        for (Classes studentClass : classesSetIterable) {
-            String code = studentClass.getCode();
-            int score = getStudentGrade(code, ID);
-            double GPA = getStudentGPA(code, ID);
-            StudentCourseScoreTable newData = new StudentCourseScoreTable(studentClass, GPA, score);
-            data.add(newData);
-        }
-        CourseTableView.setItems(data);
         flush();
+        CourseTableView.setItems(data);
     }
 
     public ContextMenu studentScoreContextMenu() {

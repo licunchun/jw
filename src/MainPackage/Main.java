@@ -29,6 +29,7 @@ public class Main extends Application {
         //changeViews(stage,"/GUI/Window/Main/Teacher/TeacherMainMenu.fxml");
         //changeViews(stage,"/GUI/Window/Main/Admin/AdminMainMenu.fxml");
         //changeViews(stage,"/GUI/Window/Main/Common/Classes/ClassesChoosingPage.fxml");
+        //changeViews(stage,"/GUI/Window/Main/Student/Classes/StudentScore.fxml");
         stage.show();
         resetLocation(stage);
     }

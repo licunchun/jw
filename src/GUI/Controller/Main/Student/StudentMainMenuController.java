@@ -5,6 +5,7 @@ import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
 import GUI.Controller.Main.Common.MainMenuController;
 import GUI.Controller.Main.Student.Classes.CheckGradePageController;
 import GUI.Controller.Main.Student.Classes.DropClassesPageController;
+import GUI.Controller.Main.Student.Classes.StudentScoreController;
 import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -48,7 +49,7 @@ public class StudentMainMenuController {
     private Tab dropClassesTab;
     //Check Grade Page
     private boolean isCheckGradePageExist = false;
-    private CheckGradePageController checkGradePageController;
+    private StudentScoreController studentScoreController;
     private Tab checkGradeTab;
 
     /*
@@ -122,10 +123,12 @@ public class StudentMainMenuController {
         {
             FXMLLoader checkGradePageLoader = loadScene("/GUI/Window/Main/Student/Classes/StudentScore.fxml");
             Parent root = newRoot(checkGradePageLoader);
-            checkGradePageController = getController(checkGradePageLoader);
+            studentScoreController = getController(checkGradePageLoader);
 
-            ContextMenu contextMenu = checkGradePageController.checkGradePageContextMenu();
+            ContextMenu contextMenu = studentScoreController.studentScoreContextMenu();
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
+
+            studentScoreController.setID(ID);
 
             checkGradeTab.setContent(root);
             checkGradeTab.setOnCloseRequest(e -> {
