@@ -158,6 +158,7 @@ public class StudentMainMenuController {
                         if (!isClassesChoosingPageExist) {
                             isClassesChoosingPageExist = true;
                             mainMenuTabPane.getTabs().add(classesChoosingTab);
+                            classesChoosingPageController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(classesChoosingTab);
                         }
@@ -180,6 +181,7 @@ public class StudentMainMenuController {
                         if (!isClassesSchedulePageExist) {
                             isClassesSchedulePageExist = true;
                             mainMenuTabPane.getTabs().add(classesScheduleTab);
+                            classesSchedulePageController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(classesScheduleTab);
                         }
@@ -188,6 +190,7 @@ public class StudentMainMenuController {
                         if (!isDropClassesPageExist) {
                             isDropClassesPageExist = true;
                             mainMenuTabPane.getTabs().add(dropClassesTab);
+                            dropClassesPageController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(dropClassesTab);
                         }
@@ -196,6 +199,7 @@ public class StudentMainMenuController {
                         if (!isCheckGradePageExist) {
                             isCheckGradePageExist = true;
                             mainMenuTabPane.getTabs().add(checkGradeTab);
+                            studentScoreController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(checkGradeTab);
                         }

@@ -24,9 +24,6 @@ public class ClassesSet {
 
     public ObservableList<ClassesForTable> toObservableList() {
         ObservableList<ClassesForTable> observableList = FXCollections.observableArrayList();
-        if (classesSet == null) {
-            return observableList;
-        }
         for (Classes classes : classesSet) {
             observableList.add(new ClassesForTable(classes));
         }
@@ -35,21 +32,7 @@ public class ClassesSet {
     public Iterable<Classes> getClassesIterable() {
         return classesSet;
     }
-    public ObservableList<StudentCourseScoreTable> toGradeObservableList(String ID) {
-        ObservableList<StudentCourseScoreTable> observableList = FXCollections.observableArrayList();
 
-        ClassesSet classesSet = getStudentClassesSet(ID);
-        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
-
-        for (Classes studentClass : classesSetIterable) {
-            String code = studentClass.getCode();
-            int score = getStudentGrade(code, ID);
-            double GPA = getStudentGPA(code, ID);
-            StudentCourseScoreTable newData = new StudentCourseScoreTable(studentClass, GPA, score);
-            observableList.add(newData);
-        }
-        return FXCollections.observableArrayList();
-    }
     public ObservableList<String> toListClassesObservableList(String ID) {
         ObservableList<String> observableList = FXCollections.observableArrayList();
         ClassesSet classesSet = getTeacherClassesSet(ID);

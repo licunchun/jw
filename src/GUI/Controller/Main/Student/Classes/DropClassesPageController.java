@@ -118,18 +118,18 @@ public class DropClassesPageController {
                     }
                 }
             });
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("课堂名称"));
-            periodColumn.setCellValueFactory(new PropertyValueFactory<>("学时"));
-            creditsColumn.setCellValueFactory(new PropertyValueFactory<>("学分"));
-            timeColumn.setCellValueFactory(new PropertyValueFactory<>("上课时间"));
-            classTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课堂类型"));
-            courseTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课程种类"));
-            schoolColumn.setCellValueFactory(new PropertyValueFactory<>("院校"));
-            campusColumn.setCellValueFactory(new PropertyValueFactory<>("校区"));
-            examModeColumn.setCellValueFactory(new PropertyValueFactory<>("考试方式"));
-            languageColumn.setCellValueFactory(new PropertyValueFactory<>("教学语言"));
-            educationColumn.setCellValueFactory(new PropertyValueFactory<>("教育阶段"));
-            teacherColumn.setCellValueFactory(new PropertyValueFactory<>("教师名称"));
+//            nameColumn.setCellValueFactory(new PropertyValueFactory<>("课堂名称"));
+//            periodColumn.setCellValueFactory(new PropertyValueFactory<>("学时"));
+//            creditsColumn.setCellValueFactory(new PropertyValueFactory<>("学分"));
+//            timeColumn.setCellValueFactory(new PropertyValueFactory<>("上课时间"));
+//            classTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课堂类型"));
+//            courseTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课程种类"));
+//            schoolColumn.setCellValueFactory(new PropertyValueFactory<>("院校"));
+//            campusColumn.setCellValueFactory(new PropertyValueFactory<>("校区"));
+//            examModeColumn.setCellValueFactory(new PropertyValueFactory<>("考试方式"));
+//            languageColumn.setCellValueFactory(new PropertyValueFactory<>("教学语言"));
+//            educationColumn.setCellValueFactory(new PropertyValueFactory<>("教育阶段"));
+//            teacherColumn.setCellValueFactory(new PropertyValueFactory<>("教师名称"));
         }//设置自定义格式工厂
 
         tableView.setItems(data);

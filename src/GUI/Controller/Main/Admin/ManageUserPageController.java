@@ -90,7 +90,7 @@ public class ManageUserPageController {
             GenderColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         }//设置表格列与数据对象的属性关联
         {
-            IDColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
+//            IDColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
             NameColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getName());
 
@@ -179,7 +179,7 @@ public class ManageUserPageController {
                     }
                 }
             });
-            GenderColumn.setCellValueFactory(new PropertyValueFactory<>("性别"));
+//            GenderColumn.setCellValueFactory(new PropertyValueFactory<>("性别"));
             MoneyColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getMoney());
 

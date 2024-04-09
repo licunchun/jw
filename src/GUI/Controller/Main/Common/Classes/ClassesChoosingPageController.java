@@ -218,20 +218,20 @@ public class ClassesChoosingPageController {
                     }
                 }
             });
-            nameColumn.setCellValueFactory(new PropertyValueFactory<>("课堂名称"));
-            periodColumn.setCellValueFactory(new PropertyValueFactory<>("学时"));
-            creditsColumn.setCellValueFactory(new PropertyValueFactory<>("学分"));
-            timeColumn.setCellValueFactory(new PropertyValueFactory<>("上课时间"));
-            studentColumn.setCellValueFactory(new PropertyValueFactory<>("课堂人数"));
-            classTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课堂类型"));
-            courseTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课程种类"));
-            schoolColumn.setCellValueFactory(new PropertyValueFactory<>("院校"));
-            campusColumn.setCellValueFactory(new PropertyValueFactory<>("校区"));
-            examModeColumn.setCellValueFactory(new PropertyValueFactory<>("考试方式"));
-            languageColumn.setCellValueFactory(new PropertyValueFactory<>("教学语言"));
-            educationColumn.setCellValueFactory(new PropertyValueFactory<>("教育阶段"));
-            teacherColumn.setCellValueFactory(new PropertyValueFactory<>("教师名称"));
-            fullColumn.setCellValueFactory(new PropertyValueFactory<>("是否满人"));
+//            nameColumn.setCellValueFactory(new PropertyValueFactory<>("课堂名称"));
+//            periodColumn.setCellValueFactory(new PropertyValueFactory<>("学时"));
+//            creditsColumn.setCellValueFactory(new PropertyValueFactory<>("学分"));
+//            timeColumn.setCellValueFactory(new PropertyValueFactory<>("上课时间"));
+//            studentColumn.setCellValueFactory(new PropertyValueFactory<>("课堂人数"));
+//            classTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课堂类型"));
+//            courseTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课程种类"));
+//            schoolColumn.setCellValueFactory(new PropertyValueFactory<>("院校"));
+//            campusColumn.setCellValueFactory(new PropertyValueFactory<>("校区"));
+//            examModeColumn.setCellValueFactory(new PropertyValueFactory<>("考试方式"));
+//            languageColumn.setCellValueFactory(new PropertyValueFactory<>("教学语言"));
+//            educationColumn.setCellValueFactory(new PropertyValueFactory<>("教育阶段"));
+//            teacherColumn.setCellValueFactory(new PropertyValueFactory<>("教师名称"));
+//            fullColumn.setCellValueFactory(new PropertyValueFactory<>("是否满人"));
         }//设置自定义格式工厂
 
         flush();//刷新数据

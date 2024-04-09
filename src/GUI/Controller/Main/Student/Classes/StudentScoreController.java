@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 
+import static GUI.Data.Util.Classes.ObservableListUtil.getStudentScoreObservableList;
 import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
 import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGrade;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentAverageGrade;
@@ -49,13 +50,11 @@ public class StudentScoreController {
     private ObservableList<StudentCourseScoreTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
 
-    public void setID(String ID) {
-        this.ID = ID;
-    }
 
     public void initialize() {
         loadTable();
     }
+
     private void setLabel() {
         if(getStudentTotalCredits(ID) != -1) {
             TotalCredits.setText(Double.toString(getStudentTotalCredits(ID)));
@@ -96,7 +95,7 @@ public class StudentScoreController {
     }
 
     public void flush() {
-        data = getStudentClassesSet(ID).toGradeObservableList(ID);
+        data = getStudentScoreObservableList(ID);
         setLabel();
     }
 
@@ -107,7 +106,6 @@ public class StudentScoreController {
         GPAColumn.setCellValueFactory(cellData -> cellData.getValue().GPAProperty().asObject());
         scoreColumn.setCellValueFactory(cellData -> cellData.getValue().scoreProperty().asObject());
 
-        flush();
         CourseTableView.setItems(data);
     }
 
@@ -122,5 +120,9 @@ public class StudentScoreController {
         contextMenu.getItems().addAll(flushMenuItem);
 
         return contextMenu;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

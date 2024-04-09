@@ -162,6 +162,7 @@ public class AdminMainMenuController {
                     if (!isClassesManagePageExist) {
                         isClassesManagePageExist = true;
                         mainMenuTabPane.getTabs().add(classesManageTab);
+                        classesManagePageController.flush();
                     } else {
                         mainMenuTabPane.getSelectionModel().select(classesManageTab);
                     }
@@ -205,6 +206,7 @@ public class AdminMainMenuController {
                     if (!isManageStudentPageExist) {
                         isManageStudentPageExist = true;
                         mainMenuTabPane.getTabs().add(manageStudentTab);
+                        manageStudentPageController.flush();
                     } else {
                         mainMenuTabPane.getSelectionModel().select(manageStudentTab);
                     }
@@ -213,6 +215,7 @@ public class AdminMainMenuController {
                     if (!isManageTeacherPageExist) {
                         isManageTeacherPageExist = true;
                         mainMenuTabPane.getTabs().add(manageTeacherTab);
+                        manageTeacherPageController.flush();
                     } else {
                         mainMenuTabPane.getSelectionModel().select(manageTeacherTab);
                     }
@@ -221,6 +224,7 @@ public class AdminMainMenuController {
                     if (!isManageAdminPageExist) {
                         isManageAdminPageExist = true;
                         mainMenuTabPane.getTabs().add(manageAdminTab);
+                        manageAdminPageController.flush();
                     } else {
                         mainMenuTabPane.getSelectionModel().select(manageAdminTab);
                     }

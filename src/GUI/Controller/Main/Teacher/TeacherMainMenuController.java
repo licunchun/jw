@@ -119,6 +119,7 @@ public class TeacherMainMenuController {
                         if (!isClassesSchedulePageExist) {
                             isClassesSchedulePageExist = true;
                             mainMenuTabPane.getTabs().add(classesScheduleTab);
+                            classesSchedulePageController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(classesScheduleTab);
                         }
@@ -149,6 +150,7 @@ public class TeacherMainMenuController {
                         if (!isAssignGradePageExist) {
                             isAssignGradePageExist = true;
                             mainMenuTabPane.getTabs().add(assignGradeTab);
+                            assignGradePageController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(assignGradeTab);
                         }
