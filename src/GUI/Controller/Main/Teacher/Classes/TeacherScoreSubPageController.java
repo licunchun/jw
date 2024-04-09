@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import static Sevice.Main.Components.ClassServ.ClassesServ.*;
 
 public class TeacherScoreSubPageController {
-
     @FXML
     private Label classesName;
     @FXML
@@ -32,14 +31,18 @@ public class TeacherScoreSubPageController {
     private TableColumn<TeacherScoreSubTable, Button> ButtonColumn;
     @FXML
     private TableColumn<TeacherScoreSubTable, TextField> studentModifiedScoreColumn;
-    private final String classesCode;
-    private final Classes classes;
-    private final IDSet studentSet;
+    private String classesCode;
+    private Classes classes;
+    private IDSet studentSet;
+    private String ID;
 
-    public TeacherScoreSubPageController(String buttonId) {
+    public void setTeacherScoreSubPageController(String buttonId) {
         this.classesCode = buttonId;
         this.classes = getClasses(classesCode);
         this.classesName.setText(classes.getName());
         this.studentSet = getStudentSet(classes.getCode());
+    }
+    public void setID(String ID) {
+        this.ID = ID;
     }
 }

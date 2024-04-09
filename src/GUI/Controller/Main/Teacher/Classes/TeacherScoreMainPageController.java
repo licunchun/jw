@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherCourseObservableList;
+import static GUI.GUIUtil.StageUtil.getController;
 
 public class TeacherScoreMainPageController {
 
@@ -91,7 +92,11 @@ public class TeacherScoreMainPageController {
             // 设置控制器工厂，负责创建Controller对象并传递参数
             loader.setControllerFactory(controllerClass -> {
                 try {
-                    TeacherScoreSubPageController teacherScoreSubPageController = new TeacherScoreSubPageController(buttonId);
+                    TeacherScoreSubPageController teacherScoreSubPageController = getController(loader);
+
+                    teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
+                    teacherScoreSubPageController.setID(ID);
+
                     return teacherScoreSubPageController;
                 } catch (Exception e) {
                     throw new RuntimeException(e);
