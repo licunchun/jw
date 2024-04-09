@@ -22,11 +22,11 @@ public class ClassesServ {
         return new IDSet();
     }//TODO
 
-    public static int getStudentGrade(String classesCode, String ID) {
+    public static int getStudentScore(String classesCode, String ID) {
         return 0;
     }//TODO
 
-    public static boolean setStudentGrade(String classesCode, String ID, int grade) {
+    public static boolean setStudentScore(String classesCode, String ID, int grade) {
         return true;
     }//TODO
 

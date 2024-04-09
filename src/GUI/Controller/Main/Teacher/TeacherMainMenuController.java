@@ -3,8 +3,7 @@ package GUI.Controller.Main.Teacher;
 import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
 import GUI.Controller.Main.Common.Classes.ProposeCoursePageController;
 import GUI.Controller.Main.Common.MainMenuController;
-import GUI.Controller.Main.Teacher.Classes.AssignGradePageController;
-import GUI.Controller.Main.Teacher.Classes.TeacherScoreController;
+import GUI.Controller.Main.Teacher.Classes.TeacherScoreMainPageController;
 import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -46,7 +45,7 @@ public class TeacherMainMenuController {
     private Tab classesScheduleTab;
     //Assign Grade Page
     private boolean isAssignGradePageExist = false;
-    private TeacherScoreController assignGradePageController;
+    private TeacherScoreMainPageController assignGradePageController;
     private Tab assignGradeTab;
 
     /*
@@ -81,7 +80,7 @@ public class TeacherMainMenuController {
         }
         assignGradeTab = new Tab("给分");
         {
-            FXMLLoader assignGradePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScore.fxml");
+            FXMLLoader assignGradePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreMainPage.fxml");
             Parent root = newRoot(assignGradePageLoader);
             assignGradePageController = getController(assignGradePageLoader);
 

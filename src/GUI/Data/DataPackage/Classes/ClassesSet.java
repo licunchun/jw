@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGrade;
+import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentScore;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 import static Sevice.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 

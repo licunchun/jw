@@ -12,7 +12,7 @@ import javafx.scene.input.KeyCodeCombination;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getStudentScoreObservableList;
 import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGrade;
+import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentScore;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentAverageGrade;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentCourseCodeSet;

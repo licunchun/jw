@@ -1,23 +1,22 @@
 package GUI.Data.DataPackage.Classes;
 
-import javafx.beans.property.ReadOnlyObjectProperty;
-import javafx.beans.property.ReadOnlyObjectWrapper;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 import javafx.scene.control.Button;
 
-public class TeacherCourseTable {
+public class TeacherScoreMainTable {
     private final SimpleStringProperty code;
     private final SimpleStringProperty name;
-    private final CourseTimeSet time;
+    private final ObjectProperty<CourseTimeSet> time;
     private final SimpleIntegerProperty totalStudent;
-    Button button = new Button("更改");
+    private final ObjectProperty<Button> button;
 
-    public TeacherCourseTable(Classes classes) {
+    public TeacherScoreMainTable(Classes classes) {
         this.code = new SimpleStringProperty(classes.getCode());
         this.name = new SimpleStringProperty(classes.getName());
-        this.time = classes.getTime();
+        this.time = new SimpleObjectProperty<>(classes.getTime());
         this.totalStudent = new SimpleIntegerProperty(classes.getStdCount());
+        this.button = new SimpleObjectProperty<>(new Button("更改"));
+        this.button.get().setId(getCode());
     }
     public String getCode() {
         return code.get();
@@ -36,11 +35,10 @@ public class TeacherCourseTable {
     }
 
     public CourseTimeSet getTime() {
-        return time;
+        return time.get();
     }
-
-    public ReadOnlyObjectProperty<CourseTimeSet> timeProperty() {
-        return time.timeProperty();
+    public ObjectProperty<CourseTimeSet> timeProperty() {
+        return time;
     }
 
     public int getTotalStudent() {
@@ -51,8 +49,11 @@ public class TeacherCourseTable {
         return totalStudent;
     }
 
-    public ReadOnlyObjectProperty<Button> buttonProperty() {
-        return new ReadOnlyObjectWrapper<>(button);
+    public ObjectProperty<Button> buttonProperty() {
+        return button;
+    }
+    public Button getButton() {
+        return button.get();
     }
 
 }
