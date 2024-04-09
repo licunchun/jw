@@ -9,6 +9,7 @@ import java.util.Set;
 import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
 import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGrade;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
+import static Sevice.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
 public class ClassesSet {
     private final Set<Classes> classesSet = new HashSet<>();
@@ -49,4 +50,13 @@ public class ClassesSet {
         }
         return FXCollections.observableArrayList();
     }
+    public ObservableList<String> toListClassesObservableList(String ID) {
+        ObservableList<String> observableList = FXCollections.observableArrayList();
+        ClassesSet classesSet = getTeacherClassesSet(ID);
+        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
+        for(Classes teacherClass : classesSetIterable) {
+            observableList.add(teacherClass.getName());
+        }
+        return observableList;
+    }//TODO
 }

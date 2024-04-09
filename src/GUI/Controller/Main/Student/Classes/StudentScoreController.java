@@ -23,17 +23,17 @@ import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentWeigh
 
 public class StudentScoreController {
     @FXML
-    private TableView<StudentCourseScoreTable> CourseTableView = new TableView<>();
+    private TableView<StudentCourseScoreTable> CourseTableView;
     @FXML
-    private TableColumn<StudentCourseScoreTable, String> nameColumn = new TableColumn<>("课程");
+    private TableColumn<StudentCourseScoreTable, String> nameColumn;
     @FXML
-    private TableColumn<StudentCourseScoreTable, Integer> periodColumn = new TableColumn<>("学时");
+    private TableColumn<StudentCourseScoreTable, Integer> periodColumn;
     @FXML
-    private TableColumn<StudentCourseScoreTable, Double> creditsColumn = new TableColumn<>("学分");
+    private TableColumn<StudentCourseScoreTable, Double> creditsColumn;
     @FXML
-    private TableColumn<StudentCourseScoreTable, Double> GPAColumn = new TableColumn<>("绩点");
+    private TableColumn<StudentCourseScoreTable, Double> GPAColumn;
     @FXML
-    private TableColumn<StudentCourseScoreTable, Integer> scoreColumn = new TableColumn<>("成绩");
+    private TableColumn<StudentCourseScoreTable, Integer> scoreColumn;
     @FXML
     private Label TotalCredits;//总学分
     @FXML
