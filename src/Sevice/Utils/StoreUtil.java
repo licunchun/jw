@@ -1,8 +1,8 @@
 package Sevice.Utils;
 
+import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Gender;
 import GUI.Data.Enum.User.Grade;
-import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.UserType;
 
 public class StoreUtil {
