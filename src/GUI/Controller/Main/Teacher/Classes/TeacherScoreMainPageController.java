@@ -1,5 +1,7 @@
 package GUI.Controller.Main.Teacher.Classes;
 
+import GUI.Controller.Main.Common.MainMenuController;
+import GUI.Controller.Main.Teacher.TeacherMainMenuController;
 import GUI.Data.DataPackage.Classes.*;
 
 import javafx.collections.FXCollections;
@@ -17,7 +19,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreMainPageObservableList;
-import static GUI.GUIUtil.StageUtil.getController;
+import static GUI.GUIUtil.StageUtil.*;
 
 public class TeacherScoreMainPageController {
 
@@ -35,12 +37,14 @@ public class TeacherScoreMainPageController {
     private TableColumn<TeacherScoreMainTable, Button> buttonColumn;
     private ObservableList<TeacherScoreMainTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
-    private Stage primaryStage; // 主页面的舞台对象
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-    }
+    public Tab teacherScoreSubPageTab;
+    private TeacherScoreSubPageController teacherScoreSubPageController;
+    public TabPane tabPane;
     public void setID(String ID) {
         this.ID=ID;
+    }
+    public void setTabPane(TabPane tabPane) {
+        this.tabPane = tabPane;
     }
     public void initialize() {
         loadTable();
@@ -57,7 +61,19 @@ public class TeacherScoreMainPageController {
                 }
             }
         });
+        teacherScoreSubPageTab = new Tab("具体给分页面");
+        {
+            FXMLLoader teacherScoreSubPageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml");
+            Parent root = newRoot(teacherScoreSubPageLoader);
+            teacherScoreSubPageController = getController(teacherScoreSubPageLoader);
 
+            ContextMenu contextMenu = teacherScoreSubPageController.teacherCourseSubPageContextMenu();
+            root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
+
+            teacherScoreSubPageController.setID(ID);
+
+            teacherScoreSubPageTab.setContent(root);
+        }
     }
 
     private void loadTable() {
@@ -84,35 +100,40 @@ public class TeacherScoreMainPageController {
 
         return contextMenu;
     }
-    private void openSubPage(String buttonId) {//TODO
-        try {
-            // 加载子页面的FXML文件
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml"));
-
-            // 设置控制器工厂，负责创建Controller对象并传递参数
-            loader.setControllerFactory(controllerClass -> {
-                try {
-                    TeacherScoreSubPageController teacherScoreSubPageController = getController(loader);
-
-                    teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
-                    teacherScoreSubPageController.setID(ID);
-                    teacherScoreSubPageController.setPrimaryStage(primaryStage);
-
-                    return teacherScoreSubPageController;
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-            });
-
-            Parent root = loader.load();
-
-            // 创建子页面的场景
-            Scene scene = new Scene(root);
-
-            // 将子页面的场景设置为主页面的场景，使其覆盖主页面
-            primaryStage.setScene(scene);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//    private void openSubPage(String buttonId) {//TODO
+//        try {
+//            // 加载子页面的FXML文件
+//            FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml"));
+//
+//            // 设置控制器工厂，负责创建Controller对象并传递参数
+//            loader.setControllerFactory(controllerClass -> {
+//                try {
+//                    TeacherScoreSubPageController teacherScoreSubPageController = getController(loader);
+//
+//                    teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
+//                    teacherScoreSubPageController.setID(ID);
+//                    teacherScoreSubPageController.setPrimaryStage(primaryStage);
+//
+//                    return teacherScoreSubPageController;
+//                } catch (Exception e) {
+//                    throw new RuntimeException(e);
+//                }
+//            });
+//
+//            Parent root = loader.load();
+//
+//            // 创建子页面的场景
+//            Scene scene = new Scene(root);
+//
+//            // 将子页面的场景设置为主页面的场景，使其覆盖主页面
+//            primaryStage.setScene(scene);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
+    private void openSubPage(String buttonId) {
+        teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
+        TeacherMainMenuController.setIsTeacherScoreSubPageExist();
     }
+
 }
