@@ -82,7 +82,7 @@ public class TeacherMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesScheduleTab);
             });
         }
-        teacherScoreMainPageTab = new Tab("给分主页面");
+        teacherScoreMainPageTab = new Tab("评分页面");
         {
             FXMLLoader teacherScoreMainPageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreMainPage.fxml");
             Parent root = newRoot(teacherScoreMainPageLoader);
@@ -128,7 +128,7 @@ public class TeacherMainMenuController {
                 {
                     MenuItem OpenClassesSchedulePage = new MenuItem("查看课表");
                     MenuItem OpenProposeCoursePage = new MenuItem("申请开课");
-                    MenuItem OpenAssignGradePage = new MenuItem("给分");
+                    MenuItem OpenAssignGradePage = new MenuItem("评分页面");
 
                     OpenClassesSchedulePage.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
                     OpenProposeCoursePage.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
