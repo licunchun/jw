@@ -72,7 +72,7 @@ public class TeacherScoreMainPageController {
     public void flush() {
         data = getTeacherScoreMainPageObservableList(ID);
     }
-    public ContextMenu teacherCourseContextMenu() {
+    public ContextMenu teacherCourseMainPageContextMenu() {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
 
@@ -84,7 +84,7 @@ public class TeacherScoreMainPageController {
 
         return contextMenu;
     }
-    private void openSubPage(String buttonId) {
+    private void openSubPage(String buttonId) {//TODO
         try {
             // 加载子页面的FXML文件
             FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml"));

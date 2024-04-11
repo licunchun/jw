@@ -10,6 +10,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -117,5 +119,16 @@ public class TeacherScoreSubPageController {
 
         teacherScoreSubTableView.setItems(data);
     }
+    public ContextMenu teacherCourseSubPageContextMenu() {//TODO
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem flushMenuItem = new MenuItem("刷新");
 
+        flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
+
+        flushMenuItem.setOnAction(event -> flush());
+
+        contextMenu.getItems().addAll(flushMenuItem);
+
+        return contextMenu;
+    }
 }

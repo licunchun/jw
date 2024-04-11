@@ -4,6 +4,7 @@ import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
 import GUI.Controller.Main.Common.Classes.ProposeCoursePageController;
 import GUI.Controller.Main.Common.MainMenuController;
 import GUI.Controller.Main.Teacher.Classes.TeacherScoreMainPageController;
+import GUI.Controller.Main.Teacher.Classes.TeacherScoreSubPageController;
 import GUI.Data.Enum.User.UserType;
 import MainPackage.Main;
 import javafx.fxml.FXML;
@@ -43,11 +44,14 @@ public class TeacherMainMenuController {
     private boolean isClassesSchedulePageExist = false;
     private ClassesSchedulePageController classesSchedulePageController;
     private Tab classesScheduleTab;
-    //Assign Grade Page
-    private boolean isAssignGradePageExist = false;
-    private TeacherScoreMainPageController assignGradePageController;
-    private Tab assignGradeTab;
-
+    //Assign Grade Main Page
+    private boolean isTeacherScoreMainPageExist = false;
+    private TeacherScoreMainPageController teacherScoreMainPageController;
+    private Tab teacherScoreMainPageTab;
+    //Assign Grade Sub Page
+    private boolean isTeacherScoreSubPageExist = false;
+    private TeacherScoreSubPageController teacherScoreSubPageController;
+    private Tab teacherScoreSubPageTab;
     /*
      * Function
      */
@@ -78,23 +82,35 @@ public class TeacherMainMenuController {
                 mainMenuTabPane.getTabs().remove(classesScheduleTab);
             });
         }
-        assignGradeTab = new Tab("给分");
+        teacherScoreMainPageTab = new Tab("给分主页面");
         {
-            FXMLLoader assignGradePageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreMainPage.fxml");
-            Parent root = newRoot(assignGradePageLoader);
-            assignGradePageController = getController(assignGradePageLoader);
+            FXMLLoader teacherScoreMainPageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreMainPage.fxml");
+            Parent root = newRoot(teacherScoreMainPageLoader);
+            teacherScoreMainPageController = getController(teacherScoreMainPageLoader);
 
-            ContextMenu contextMenu = assignGradePageController.teacherCourseContextMenu();
+            ContextMenu contextMenu = teacherScoreMainPageController.teacherCourseMainPageContextMenu();
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
 
-            assignGradePageController.setID(ID);
+            teacherScoreMainPageController.setID(ID);
 
-            assignGradeTab.setContent(root);
-            assignGradeTab.setOnCloseRequest(e -> {
+            teacherScoreMainPageTab.setContent(root);
+            teacherScoreMainPageTab.setOnCloseRequest(e -> {
                 mainMenuTabPane.getSelectionModel().select(0);
-                isAssignGradePageExist = false;
-                mainMenuTabPane.getTabs().remove(assignGradeTab);
+                isTeacherScoreMainPageExist = false;
+                mainMenuTabPane.getTabs().remove(teacherScoreMainPageTab);
             });
+        }
+        teacherScoreSubPageTab = new Tab("具体给分页面");
+        {
+            FXMLLoader teacherScoreSubPageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml");
+            Parent root = newRoot(teacherScoreSubPageLoader);
+            teacherScoreSubPageController = getController(teacherScoreSubPageLoader);
+
+            ContextMenu contextMenu = teacherScoreSubPageController.teacherCourseSubPageContextMenu();
+            root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
+
+            teacherScoreSubPageController.setID(ID);
+            //TODO
         }
 
         //子区域加载，mainMenuController赋值
@@ -150,12 +166,12 @@ public class TeacherMainMenuController {
                         }
                     });
                     OpenAssignGradePage.setOnAction(e -> {
-                        if (!isAssignGradePageExist) {
-                            isAssignGradePageExist = true;
-                            mainMenuTabPane.getTabs().add(assignGradeTab);
-                            assignGradePageController.flush();
+                        if (!isTeacherScoreMainPageExist) {
+                            isTeacherScoreMainPageExist = true;
+                            mainMenuTabPane.getTabs().add(teacherScoreMainPageTab);
+                            teacherScoreMainPageController.flush();
                         } else {
-                            mainMenuTabPane.getSelectionModel().select(assignGradeTab);
+                            mainMenuTabPane.getSelectionModel().select(teacherScoreMainPageTab);
                         }
                     });
 
