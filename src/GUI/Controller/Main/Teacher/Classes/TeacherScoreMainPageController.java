@@ -44,7 +44,7 @@ public class TeacherScoreMainPageController {
     }
     public void initialize() {
         loadTable();
-        buttonColumn.setCellFactory(column -> new TableCell<TeacherScoreMainTable, Button>() {
+        buttonColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Button button, boolean empty) {
                 super.updateItem(button, empty);
