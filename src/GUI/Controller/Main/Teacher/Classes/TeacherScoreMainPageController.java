@@ -40,11 +40,15 @@ public class TeacherScoreMainPageController {
     public Tab teacherScoreSubPageTab;
     private TeacherScoreSubPageController teacherScoreSubPageController;
     public TabPane tabPane;
+    TeacherMainMenuController teacherMainMenuController;
     public void setID(String ID) {
         this.ID=ID;
     }
     public void setTabPane(TabPane tabPane) {
         this.tabPane = tabPane;
+    }
+    public void setTeacherScoreSubPageController(TeacherMainMenuController teacherMainMenuController) {
+        this.teacherMainMenuController = teacherMainMenuController;
     }
     public void initialize() {
         loadTable();
@@ -133,7 +137,7 @@ public class TeacherScoreMainPageController {
 //    }
     private void openSubPage(String buttonId) {
         teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
-        TeacherMainMenuController.setIsTeacherScoreSubPageExist();
+        teacherMainMenuController.setIsTeacherScoreSubPageExist();
     }
 
 }

@@ -93,6 +93,7 @@ public class TeacherMainMenuController {
 
             teacherScoreMainPageController.setID(ID);
             teacherScoreMainPageController.setTabPane(mainMenuTabPane);
+            teacherScoreMainPageController.setTeacherScoreSubPageController(this);
         //    teacherScoreMainPageController.setPrimaryStage(stage);
 
             teacherScoreMainPageTab.setContent(root);
@@ -209,7 +210,7 @@ public class TeacherMainMenuController {
         mainMenuController.setUserType(UserType.Teacher);
         mainMenuController.setID(ID);
     }
-    public static void setIsTeacherScoreSubPageExist() {
+    public void setIsTeacherScoreSubPageExist() {
         isTeacherScoreSubPageExist = true;
     }
     private void reloadPage() {
