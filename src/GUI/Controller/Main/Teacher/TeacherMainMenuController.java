@@ -84,7 +84,6 @@ public class TeacherMainMenuController {
             Parent root = newRoot(assignGradePageLoader);
             assignGradePageController = getController(assignGradePageLoader);
 
-
             ContextMenu contextMenu = assignGradePageController.teacherCourseContextMenu();
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
 

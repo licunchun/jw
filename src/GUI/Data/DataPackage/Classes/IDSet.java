@@ -43,4 +43,8 @@ public class IDSet {
         }
         return observableList;
     }
+
+    public Iterable<String> getStudentIDSetIterable() {
+        return IDSet;
+    }
 }

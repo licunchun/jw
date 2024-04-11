@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherCourseObservableList;
+import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreMainPageObservableList;
 import static GUI.GUIUtil.StageUtil.getController;
 
 public class TeacherScoreMainPageController {
@@ -70,7 +70,7 @@ public class TeacherScoreMainPageController {
         teacherCourseTableView.setItems(data);
     }
     public void flush() {
-        data = getTeacherCourseObservableList(ID);
+        data = getTeacherScoreMainPageObservableList(ID);
     }
     public ContextMenu teacherCourseContextMenu() {
         ContextMenu contextMenu = new ContextMenu();
@@ -96,6 +96,7 @@ public class TeacherScoreMainPageController {
 
                     teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
                     teacherScoreSubPageController.setID(ID);
+                    teacherScoreSubPageController.setPrimaryStage(primaryStage);
 
                     return teacherScoreSubPageController;
                 } catch (Exception e) {

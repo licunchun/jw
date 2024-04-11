@@ -1,14 +1,11 @@
 package GUI.Data.Util.Classes;
 
-import GUI.Data.DataPackage.Classes.Classes;
-import GUI.Data.DataPackage.Classes.ClassesSet;
-import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
-import GUI.Data.DataPackage.Classes.TeacherScoreMainTable;
+import GUI.Controller.Main.Teacher.Classes.TeacherScoreSubPageController;
+import GUI.Data.DataPackage.Classes.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentScore;
+import static Sevice.Main.Components.ClassServ.ClassesServ.*;
 import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 import static Sevice.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
@@ -28,7 +25,7 @@ public class ObservableListUtil {
         }
         return observableList;
     }
-    public static ObservableList<TeacherScoreMainTable> getTeacherCourseObservableList(String ID) {
+    public static ObservableList<TeacherScoreMainTable> getTeacherScoreMainPageObservableList(String ID) {
         ObservableList<TeacherScoreMainTable> observableList = FXCollections.observableArrayList();
 
         ClassesSet classesSet = getTeacherClassesSet(ID);
@@ -36,6 +33,21 @@ public class ObservableListUtil {
 
         for (Classes teacherClass : classesSetIterable) {
             TeacherScoreMainTable newData = new TeacherScoreMainTable(teacherClass);
+            observableList.add(newData);
+        }
+
+        return observableList;
+    }
+    public static ObservableList<TeacherScoreSubTable> getTeacherScoreSubPageObservableList(String ID, Classes classes) {
+        ObservableList<TeacherScoreSubTable> observableList = FXCollections.observableArrayList();
+
+        String classesCode = classes.getCode();
+        IDSet studentIDSet = getStudentSet(classesCode);
+        Iterable<String> studentIDSetIterable = studentIDSet.getStudentIDSetIterable();
+
+        for (String studentID : studentIDSetIterable) {
+        //    TeacherScoreMainTable newData = new TeacherScoreMainTable(teacherClass);
+            TeacherScoreSubTable newData = new TeacherScoreSubTable(classesCode, studentID);
             observableList.add(newData);
         }
 
