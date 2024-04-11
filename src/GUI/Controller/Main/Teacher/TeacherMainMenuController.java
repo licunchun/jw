@@ -202,4 +202,8 @@ public class TeacherMainMenuController {
     private void reloadPage() {
         openMainPage(stage, UserType.Teacher, ID);
     }
+
+    public TabPane getMainMenuTabPane() {
+        return mainMenuTabPane;
+    }
 }
