@@ -92,6 +92,9 @@ public class TeacherMainMenuController {
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
 
             teacherScoreMainPageController.setID(ID);
+            teacherScoreMainPageController.setTabPane(mainMenuTabPane);
+            teacherScoreMainPageController.setTeacherScoreSubPageController(this);
+        //    teacherScoreMainPageController.setPrimaryStage(stage);
 
             teacherScoreMainPageTab.setContent(root);
             teacherScoreMainPageTab.setOnCloseRequest(e -> {
@@ -100,18 +103,19 @@ public class TeacherMainMenuController {
                 mainMenuTabPane.getTabs().remove(teacherScoreMainPageTab);
             });
         }
-        teacherScoreSubPageTab = new Tab("具体给分页面");
-        {
-            FXMLLoader teacherScoreSubPageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml");
-            Parent root = newRoot(teacherScoreSubPageLoader);
-            teacherScoreSubPageController = getController(teacherScoreSubPageLoader);
-
-            ContextMenu contextMenu = teacherScoreSubPageController.teacherCourseSubPageContextMenu();
-            root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
-
-            teacherScoreSubPageController.setID(ID);
-            //TODO
-        }
+//        teacherScoreSubPageTab = new Tab("具体给分页面");
+//        {
+//            FXMLLoader teacherScoreSubPageLoader = loadScene("/GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml");
+//            Parent root = newRoot(teacherScoreSubPageLoader);
+//            teacherScoreSubPageController = getController(teacherScoreSubPageLoader);
+//
+//            ContextMenu contextMenu = teacherScoreSubPageController.teacherCourseSubPageContextMenu();
+//            root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
+//
+//            teacherScoreSubPageController.setID(ID);
+//        //    teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
+//            //TODO
+//        }
 
         //子区域加载，mainMenuController赋值
         try {
@@ -128,11 +132,13 @@ public class TeacherMainMenuController {
                 {
                     MenuItem OpenClassesSchedulePage = new MenuItem("查看课表");
                     MenuItem OpenProposeCoursePage = new MenuItem("申请开课");
-                    MenuItem OpenAssignGradePage = new MenuItem("评分页面");
+                    MenuItem OpenTeacherScoreMainPage = new MenuItem("评分主页面");
+                    MenuItem OpenTeacherScoreSubPage = new MenuItem("评分具体界面");
 
                     OpenClassesSchedulePage.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
                     OpenProposeCoursePage.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
-                    OpenAssignGradePage.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
+                    OpenTeacherScoreMainPage.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
+                    OpenTeacherScoreSubPage.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCombination.CONTROL_DOWN));
 
                     OpenClassesSchedulePage.setOnAction(e -> {
                         if (!isClassesSchedulePageExist) {
@@ -165,7 +171,7 @@ public class TeacherMainMenuController {
                             resetLocation(proposeCoursePageStage);
                         }
                     });
-                    OpenAssignGradePage.setOnAction(e -> {
+                    OpenTeacherScoreMainPage.setOnAction(e -> {
                         if (!isTeacherScoreMainPageExist) {
                             isTeacherScoreMainPageExist = true;
                             mainMenuTabPane.getTabs().add(teacherScoreMainPageTab);
@@ -174,8 +180,14 @@ public class TeacherMainMenuController {
                             mainMenuTabPane.getSelectionModel().select(teacherScoreMainPageTab);
                         }
                     });
-
-                    ClassesTeachingMenu.getItems().addAll(OpenClassesSchedulePage, OpenProposeCoursePage, OpenAssignGradePage);
+                    OpenTeacherScoreSubPage.setOnAction(e -> {
+                        if (isTeacherScoreSubPageExist) {
+                            mainMenuTabPane.getTabs().add(teacherScoreSubPageTab);
+                            teacherScoreSubPageController.flush();
+                            mainMenuTabPane.getSelectionModel().select(teacherScoreSubPageTab);
+                        }
+                    });
+                    ClassesTeachingMenu.getItems().addAll(OpenClassesSchedulePage, OpenProposeCoursePage, OpenTeacherScoreMainPage, OpenTeacherScoreSubPage);
                 }//教授课程里面的子菜单
 
                 Menu PageMenu = new Menu("页面");
@@ -198,7 +210,9 @@ public class TeacherMainMenuController {
         mainMenuController.setUserType(UserType.Teacher);
         mainMenuController.setID(ID);
     }
-
+    public void setIsTeacherScoreSubPageExist() {
+        isTeacherScoreSubPageExist = true;
+    }
     private void reloadPage() {
         openMainPage(stage, UserType.Teacher, ID);
     }

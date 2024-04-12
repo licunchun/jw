@@ -41,10 +41,10 @@ public class TeacherScoreSubPageController {
     private TableColumn<TeacherScoreSubTable, Button> ButtonColumn;
     @FXML
     private TableColumn<TeacherScoreSubTable, TextField> studentModifiedScoreColumn;
-    private Stage primaryStage;
+    @FXML
+    private Button changeAllButton;
     private String classesCode;
     private Classes classes;
-    private IDSet studentSet;
     private String ID;
     private ObservableList<TeacherScoreSubTable> data =  FXCollections.observableArrayList();
 
@@ -52,11 +52,6 @@ public class TeacherScoreSubPageController {
         this.classesCode = buttonId;
         this.classes = getClasses(classesCode);
         this.classesName.setText(classes.getName());
-        this.studentSet = getStudentSet(classes.getCode());
-    }
-
-    public void setPrimaryStage(Stage primaryStage) {
-        this.primaryStage = primaryStage;
     }
 
     public void setID(String ID) {
@@ -98,6 +93,32 @@ public class TeacherScoreSubPageController {
                 }
             }
         });
+        changeAllButton.setOnAction(event -> {
+            // 遍历所有行
+            for (TeacherScoreSubTable rowData : teacherScoreSubTableView.getItems()) {
+                // 获取学生ID
+                String studentID = rowData.getStudentID();
+                // 获取对应的文本框
+                TextField textField = findTextField(studentID);
+                if (textField != null) {
+                    // 将文本框中的值解析为新的分数
+                    int newScore = Integer.parseInt(textField.getText());
+                    // 根据学生ID和新的分数设置分数
+                    setStudentScore(classesCode, studentID, newScore);
+                    // 清空文本框
+                    textField.setText("");
+                }
+            }
+            // 创建一个延迟对象，持续 1 秒钟
+            PauseTransition delay = new PauseTransition(Duration.seconds(1));
+            delay.setOnFinished(e -> {
+                // 延迟结束后将按钮状态恢复为未点击状态
+                changeAllButton.setDisable(false);
+            });
+            // 启动延迟
+            delay.play();
+        });
+
     }
     private TextField findTextField(String ID) {
         for (TeacherScoreSubTable item : data) {
@@ -119,7 +140,7 @@ public class TeacherScoreSubPageController {
 
         teacherScoreSubTableView.setItems(data);
     }
-    public ContextMenu teacherCourseSubPageContextMenu() {//TODO
+    public ContextMenu teacherCourseSubPageContextMenu() {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
 
