@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="80.0" prefWidth="260.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Main.Common.Classes.ClassesController">
+    <VBox prefHeight="80.0" prefWidth="260.0">
+        <AnchorPane prefHeight="80.0" prefWidth="260.0" style="-fx-background-color: lightskyblue;">
+         <children>
+            <Label fx:id="classesID" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="10.0" prefHeight="15.0" prefWidth="120.0" text="ClassesID" />
+            <Label fx:id="classesName" alignment="CENTER" contentDisplay="CENTER" layoutX="30.0" layoutY="25.0" prefHeight="15.0" prefWidth="200.0" text="ClassesName" />
+            <Label fx:id="teacherName" alignment="CENTER" contentDisplay="CENTER" layoutX="70.0" layoutY="40.0" prefHeight="15.0" prefWidth="120.0" text="TeacherName" />
+            <Label fx:id="classesPlace" alignment="CENTER" contentDisplay="CENTER" layoutX="80.0" layoutY="55.0" prefHeight="15.0" prefWidth="100.0" text="Place" />
+         </children></AnchorPane>
+    </VBox>
+</AnchorPane>

@@ -58,7 +58,7 @@ public class ClassesSchedulePageController {//TODO
     public void flush() {
         initializeData();
     }//TODO
-    public void initializeData() {
+    private void initializeData() {
         for(int i = 1; i <= 13 ; i++) {
             TimeTable newTimetable = new TimeTable(i);
             data.add(newTimetable);
@@ -76,7 +76,7 @@ public class ClassesSchedulePageController {//TODO
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
-    public void loadTable() {
+    private void loadTable() {
         numberColumn.setCellValueFactory(cellData -> cellData.getValue().numberProperty().asObject());
         MondayColumn.setCellValueFactory(cellData -> cellData.getValue().mondayProperty());
         TuesdayColumn.setCellValueFactory(cellData -> cellData.getValue().tuesdayProperty());
@@ -90,5 +90,15 @@ public class ClassesSchedulePageController {//TODO
 
         timeTable.setFixedCellSize(40); // 设置每行的高度
         timeTable.prefHeightProperty().bind(Bindings.size(data).multiply(timeTable.getFixedCellSize()).add(40)); // 设置表格的高度
+    }
+    private double findLayoutX(int columnIndex) {//列
+        // 获取 TableView 在父容器中的布局位置
+        double tableViewLayoutX = timeTable.getLayoutX();
+        return tableViewLayoutX + 90 + 130 * (columnIndex - 1);
+    }
+    private double findLayoutY(int rowIndex, int columnIndex) {//行
+        // 获取 TableView 在父容器中的布局位置
+        double tableViewLayoutY = timeTable.getLayoutY();
+        return tableViewLayoutY + 40 * (rowIndex - 1);
     }
 }
