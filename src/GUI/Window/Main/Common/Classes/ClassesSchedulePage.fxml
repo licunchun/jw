@@ -24,7 +24,7 @@
          </children>
         </AnchorPane>
         <AnchorPane prefHeight="600.0" prefWidth="1280.0">
-            <TableView fx:id="TimeTable" layoutX="140.0" layoutY="19.0" prefHeight="600.0" prefWidth="1000.0">
+            <TableView fx:id="timeTable" layoutX="140.0" layoutY="19.0" prefHeight="600.0" prefWidth="1000.0">
                 <columns>
                     <TableColumn fx:id="numberColumn" prefWidth="90.0" />
                     <TableColumn fx:id="MondayColumn" prefWidth="130.0" text="星期一" />
