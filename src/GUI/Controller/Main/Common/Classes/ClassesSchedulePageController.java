@@ -3,12 +3,15 @@ package GUI.Controller.Main.Common.Classes;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import GUI.Data.DataPackage.Classes.TimeTable;
 import GUI.Data.Enum.User.UserType;
+import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
+
+import static Sevice.Main.Components.UserServ.UserServ.getName;
 
 public class ClassesSchedulePageController {//TODO
     @FXML
@@ -60,6 +63,10 @@ public class ClassesSchedulePageController {//TODO
             TimeTable newTimetable = new TimeTable(i);
             data.add(newTimetable);
         }
+        if(ID != null){
+            name.setText(getName(ID));
+            userID.setText(ID);
+        }
     }
 
     public void setID(String ID) {
@@ -80,5 +87,8 @@ public class ClassesSchedulePageController {//TODO
         SundayColumn.setCellValueFactory(cellData -> cellData.getValue().sundayProperty());
 
         timeTable.setItems(data);
+
+        timeTable.setFixedCellSize(40); // 设置每行的高度
+        timeTable.prefHeightProperty().bind(Bindings.size(data).multiply(timeTable.getFixedCellSize()).add(40)); // 设置表格的高度
     }
 }
