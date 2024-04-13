@@ -1,12 +1,20 @@
 package GUI.Controller.Main.Common.Classes;
 
 import GUI.Data.Enum.User.UserType;
+import javafx.fxml.FXML;
 import javafx.scene.control.ContextMenu;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 
 public class ClassesSchedulePageController {//TODO
+    @FXML
+    private Label name;
+    @FXML
+    private Label userID;
+
+
     private String ID;
     private UserType userType;
 
