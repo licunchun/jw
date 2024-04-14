@@ -20,4 +20,7 @@ public enum Week {
     public String toString() {
         return this.name;
     }
+    public int getIndex() {
+        return index;
+    }
 }

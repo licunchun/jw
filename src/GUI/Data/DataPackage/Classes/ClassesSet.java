@@ -32,14 +32,4 @@ public class ClassesSet {
     public Iterable<Classes> getClassesIterable() {
         return classesSet;
     }
-
-    public ObservableList<String> toListClassesObservableList(String ID) {
-        ObservableList<String> observableList = FXCollections.observableArrayList();
-        ClassesSet classesSet = getTeacherClassesSet(ID);
-        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
-        for(Classes teacherClass : classesSetIterable) {
-            observableList.add(teacherClass.getName());
-        }
-        return observableList;
-    }//TODO
 }

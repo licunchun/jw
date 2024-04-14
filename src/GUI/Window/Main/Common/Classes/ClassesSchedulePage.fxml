@@ -23,7 +23,7 @@
             </Label>
          </children>
         </AnchorPane>
-        <AnchorPane prefHeight="600.0" prefWidth="1280.0">
+        <AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="1280.0">
             <TableView fx:id="timeTable" layoutX="140.0" layoutY="19.0" prefHeight="560.0" prefWidth="1000.0">
                 <columns>
                     <TableColumn fx:id="numberColumn" prefWidth="90.0" />
