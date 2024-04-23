@@ -20,6 +20,7 @@ public class Classes {
     private Education education;       //本科/研究生
     private IDSet teacher;             //教师ID的
     private Full full;                 //课堂是否满了
+    private String place;
 
     public Classes() {
 
@@ -40,7 +41,8 @@ public class Classes {
                    Language language,
                    Education education,
                    IDSet teacher,
-                   Full full) {
+                   Full full,
+                    String place) {
         this.code = code;
         this.name = name;
         this.period = period;
@@ -57,6 +59,14 @@ public class Classes {
         this.education = education;
         this.teacher = teacher;
         this.full = full;
+        this.place = place;
+    }
+
+    public String getPlace() {
+        return place;
+    }
+    public void setPlace(String place) {
+        this.place = place;
     }
 
     public String getCode() {

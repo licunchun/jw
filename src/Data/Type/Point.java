@@ -1,9 +1,9 @@
 package Data.Type;
 
 public class Point {
-    String code;
-    String account;
-    String point;
+    public String code;
+    public String account;
+    public String point;
 
     public Point(String[] info) {
         code = info[0];
