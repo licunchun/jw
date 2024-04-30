@@ -9,18 +9,16 @@
             fx:controller="GUI.Controller.Main.Common.Classes.ClassesSchedulePageController">
     <VBox prefHeight="660.0" prefWidth="1280.0">
         <AnchorPane prefHeight="60.0" prefWidth="1280.0">
-            <children>
-                <Label fx:id="name" layoutX="199.0" layoutY="13.0" prefHeight="27.0" prefWidth="79.0">
-                    <font>
-                        <Font size="20.0"/>
-                    </font>
-                </Label>
-                <Label fx:id="userID" layoutX="309.0" layoutY="13.0" prefHeight="27.0" prefWidth="115.0">
-                    <font>
-                        <Font size="20.0"/>
-                    </font>
-                </Label>
-            </children>
+            <Label fx:id="name" layoutX="199.0" layoutY="13.0" prefHeight="27.0" prefWidth="79.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <Label fx:id="userID" layoutX="309.0" layoutY="13.0" prefHeight="27.0" prefWidth="115.0">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
         </AnchorPane>
         <AnchorPane fx:id="anchorPane" prefHeight="600.0" prefWidth="1280.0">
             <TableView fx:id="timeTable" layoutX="140.0" layoutY="19.0" prefHeight="560.0" prefWidth="1000.0">

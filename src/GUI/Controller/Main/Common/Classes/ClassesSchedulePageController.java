@@ -127,7 +127,6 @@ public class ClassesSchedulePageController {//TODO
             return;
         }
         if (userType.equals(UserType.Teacher)) classesSet = getTeacherClassesSet(ID);
-        ;
         if (userType.equals(UserType.Student)) classesSet = getStudentClassesSet(ID);
         classesSet = getTeacherClassesSet(ID);
         Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();

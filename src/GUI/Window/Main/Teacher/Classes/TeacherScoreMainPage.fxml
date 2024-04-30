@@ -15,9 +15,7 @@
             </Label>
         </AnchorPane>
         <AnchorPane prefHeight="58.0" prefWidth="1260.0" style="-fx-background-color: lightgray;">
-            <children>
-                <Label layoutX="614.0" prefHeight="63.0" prefWidth="181.0" style="-fx-font-size: 25;" text="课程表单"/>
-            </children>
+            <Label layoutX="614.0" prefHeight="63.0" prefWidth="181.0" style="-fx-font-size: 25;" text="课程表单"/>
         </AnchorPane>
         <AnchorPane prefHeight="506.0" prefWidth="1260.0">
             <TableView fx:id="teacherCourseTableView" layoutX="200.0" layoutY="20.0" prefHeight="480.0"
