@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.AnchorPane;
@@ -21,8 +20,6 @@ import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClass
 
 public class DropClassesPageController {
     private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
-    @FXML
-    private AnchorPane TableViewPane;
     /*
      * Table Information
      */
@@ -40,6 +37,8 @@ public class DropClassesPageController {
     private final TableColumn<ClassesForTable, String> languageColumn = new TableColumn<>("教学语言");
     private final TableColumn<ClassesForTable, String> educationColumn = new TableColumn<>("教育阶段");
     private final TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
+    @FXML
+    private AnchorPane TableViewPane;
     private Pagination pagination;
     /*
      * Classes Main Page

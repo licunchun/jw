@@ -97,9 +97,11 @@
 参数：
 
     courseTimeSet(CourseTimeSet):时间类
+
 返回：
 
     timeString(String):字符串形式的时间
+
 说明：
 
     将时间集合转换为字符串形式的时间
@@ -113,6 +115,7 @@
 返回：
 
     deleteClassesError(DeleteClassesError):删除课程的报错
+
 说明：
 
     删除课程的方法，不要返回null！！！！

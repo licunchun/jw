@@ -1,7 +1,6 @@
 package GUI.Controller.Main.Teacher.Classes;
 
 import GUI.Data.DataPackage.Classes.Classes;
-import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.DataPackage.Classes.TeacherScoreSubTable;
 import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Grade;
@@ -12,13 +11,13 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.util.Objects;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreSubPageObservableList;
-import static Sevice.Main.Components.ClassServ.ClassesServ.*;
+import static Sevice.Main.Components.ClassServ.ClassesServ.getClasses;
+import static Sevice.Main.Components.ClassServ.ClassesServ.setStudentScore;
 
 public class TeacherScoreSubPageController {
     @FXML
@@ -46,7 +45,7 @@ public class TeacherScoreSubPageController {
     private String classesCode;
     private Classes classes;
     private String ID;
-    private ObservableList<TeacherScoreSubTable> data =  FXCollections.observableArrayList();
+    private ObservableList<TeacherScoreSubTable> data = FXCollections.observableArrayList();
 
     public void setTeacherScoreSubPageController(String buttonId) {
         this.classesCode = buttonId;
@@ -68,10 +67,9 @@ public class TeacherScoreSubPageController {
             @Override
             protected void updateItem(Button button, boolean empty) {
                 super.updateItem(button, empty);
-                if(button == null | empty) {
+                if (button == null | empty) {
                     setGraphic(null);
-                }
-                else {
+                } else {
                     TeacherScoreSubTable rowData = getTableRow().getItem();
 
                     if (rowData != null) {
@@ -120,6 +118,7 @@ public class TeacherScoreSubPageController {
         });
 
     }
+
     private TextField findTextField(String ID) {
         for (TeacherScoreSubTable item : data) {
             if (ID.equals(item.getStudentID())) {
@@ -128,6 +127,7 @@ public class TeacherScoreSubPageController {
         }
         return null;
     }
+
     private void loadTable() {
         studentIDColumn.setCellValueFactory(cellData -> cellData.getValue().studentIDProperty());
         studentNameColumn.setCellValueFactory(cellData -> cellData.getValue().studentNameProperty());
@@ -140,6 +140,7 @@ public class TeacherScoreSubPageController {
 
         teacherScoreSubTableView.setItems(data);
     }
+
     public ContextMenu teacherCourseSubPageContextMenu() {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");

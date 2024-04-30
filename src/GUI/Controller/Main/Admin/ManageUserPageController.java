@@ -8,7 +8,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.AnchorPane;
@@ -21,15 +20,6 @@ import static Sevice.Main.Components.UserServ.UserServ.findUser;
 
 public class ManageUserPageController {
     private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
-    @FXML
-    private TextField IDField;
-    @FXML
-    private TextField NameField;
-    @FXML
-    private Button SearchButton;
-    @FXML
-    private AnchorPane TablePane;
-    private UserType userType;//管理什么用户的界面
     /*
      * Table Component
      */
@@ -41,6 +31,15 @@ public class ManageUserPageController {
     private final TableColumn<UserInformationForTable, Void> SchoolColumn = new TableColumn<>("院校");
     private final TableColumn<UserInformationForTable, String> GenderColumn = new TableColumn<>("性别");
     private final TableColumn<UserInformationForTable, Void> MoneyColumn = new TableColumn<>("账户金额");
+    @FXML
+    private TextField IDField;
+    @FXML
+    private TextField NameField;
+    @FXML
+    private Button SearchButton;
+    @FXML
+    private AnchorPane TablePane;
+    private UserType userType;//管理什么用户的界面
     private Pagination pagination;
     /*
      * Edit Pages

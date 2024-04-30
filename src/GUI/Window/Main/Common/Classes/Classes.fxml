@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <AnchorPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Main.Common.Classes.ClassesController">
-    <VBox fx:id="vBox" alignment="CENTER" spacing="10.0" style="-fx-background-color: lightskyblue;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" >
+    <VBox xmlns:fx="http://javafx.com/fxml/1" fx:id="vBox" alignment="CENTER" spacing="10.0"
+          style="-fx-background-color: lightskyblue;" xmlns="http://javafx.com/javafx/21">
         <Label fx:id="classesCode" alignment="CENTER" contentDisplay="CENTER"
                prefHeight="15.0" prefWidth="60.0" text="ClassesID"/>
         <Label fx:id="classesName" alignment="CENTER" contentDisplay="CENTER"

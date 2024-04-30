@@ -1,7 +1,5 @@
 package GUI.Controller.Main.Student.Classes;
 
-import GUI.Data.DataPackage.Classes.Classes;
-import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,16 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getStudentScoreObservableList;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentScore;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentAverageGrade;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentCourseCodeSet;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentFailedCredits;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentGPA;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentReceivedCredits;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentTotalCredits;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentWeightedAverageGrade;
+import static Sevice.Main.Student.ClassesServ.StudentClassesServ.*;
 
 public class StudentScoreController {
     @FXML
@@ -56,40 +45,34 @@ public class StudentScoreController {
     }
 
     private void setLabel() {
-        if(getStudentTotalCredits(ID) != -1) {
+        if (getStudentTotalCredits(ID) != -1) {
             TotalCredits.setText(Double.toString(getStudentTotalCredits(ID)));
-        }
-        else {
+        } else {
             TotalCredits.setText("NaN");
         }
-        if(getStudentReceivedCredits(ID) != -1) {
+        if (getStudentReceivedCredits(ID) != -1) {
             ReceivedCredits.setText(Double.toString(getStudentReceivedCredits(ID)));
-        }
-        else {
+        } else {
             ReceivedCredits.setText("NaN");
         }
-        if(getStudentFailedCredits(ID) != -1) {
+        if (getStudentFailedCredits(ID) != -1) {
             FailedCredits.setText(Double.toString(getStudentFailedCredits(ID)));
-        }
-        else {
+        } else {
             FailedCredits.setText("NaN");
         }
-        if(getStudentGPA(ID) != -1) {
+        if (getStudentGPA(ID) != -1) {
             GPA.setText(Double.toString(getStudentGPA(ID)));
-        }
-        else {
+        } else {
             GPA.setText("NaN");
         }
-        if(getStudentWeightedAverageGrade(ID) != -1) {
+        if (getStudentWeightedAverageGrade(ID) != -1) {
             WeightAverageScore.setText(Double.toString(getStudentWeightedAverageGrade(ID)));
-        }
-        else {
+        } else {
             WeightAverageScore.setText("NaN");
         }
-        if(getStudentAverageGrade(ID) != -1) {
+        if (getStudentAverageGrade(ID) != -1) {
             ArithmeticAverageScore.setText(Double.toString(getStudentAverageGrade(ID)));
-        }
-        else {
+        } else {
             ArithmeticAverageScore.setText("NaN");
         }
     }

@@ -1,6 +1,9 @@
 package GUI.Data.DataPackage.Classes;
 
-import javafx.beans.property.*;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 
 public class TeacherScoreMainTable {
@@ -18,6 +21,7 @@ public class TeacherScoreMainTable {
         this.button = new SimpleObjectProperty<>(new Button("更改"));
         this.button.get().setId(getCode());
     }
+
     public String getCode() {
         return code.get();
     }
@@ -37,6 +41,7 @@ public class TeacherScoreMainTable {
     public CourseTimeSet getTime() {
         return time.get();
     }
+
     public ObjectProperty<CourseTimeSet> timeProperty() {
         return time;
     }
@@ -52,6 +57,7 @@ public class TeacherScoreMainTable {
     public ObjectProperty<Button> buttonProperty() {
         return button;
     }
+
     public Button getButton() {
         return button.get();
     }

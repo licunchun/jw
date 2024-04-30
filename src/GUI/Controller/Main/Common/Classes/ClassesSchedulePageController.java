@@ -1,6 +1,9 @@
 package GUI.Controller.Main.Common.Classes;
 
-import GUI.Data.DataPackage.Classes.*;
+import GUI.Data.DataPackage.Classes.Classes;
+import GUI.Data.DataPackage.Classes.ClassesSet;
+import GUI.Data.DataPackage.Classes.CourseTimeSet;
+import GUI.Data.DataPackage.Classes.TimeTable;
 import GUI.Data.Enum.Classes.CourseTime;
 import GUI.Data.Enum.User.UserType;
 import javafx.beans.binding.Bindings;
@@ -62,19 +65,22 @@ public class ClassesSchedulePageController {//TODO
 
         return contextMenu;
     }
+
     public void initialize() throws IOException {
         loadTable();
         loadClasses();
     }
+
     public void flush() {
         initializeData();
     }//TODO
+
     private void initializeData() {
-        for(int i = 1; i <= 13 ; i++) {
+        for (int i = 1; i <= 13; i++) {
             TimeTable newTimetable = new TimeTable(i);
             data.add(newTimetable);
         }
-        if(ID != null){
+        if (ID != null) {
             name.setText(getName(ID));
             userID.setText(ID);
         }
@@ -87,6 +93,7 @@ public class ClassesSchedulePageController {//TODO
     public void setUserType(UserType userType) {
         this.userType = userType;
     }
+
     private void loadTable() {
         numberColumn.setCellValueFactory(cellData -> cellData.getValue().numberProperty().asObject());
         MondayColumn.setCellValueFactory(cellData -> cellData.getValue().mondayProperty());
@@ -102,22 +109,26 @@ public class ClassesSchedulePageController {//TODO
         timeTable.setFixedCellSize(40); // 设置每行的高度
         timeTable.prefHeightProperty().bind(Bindings.size(data).multiply(timeTable.getFixedCellSize()).add(40)); // 设置表格的高度
     }
+
     private double findLayoutX(int columnIndex) {//列
         // 获取 TableView 在父容器中的布局位置
         double tableViewLayoutX = timeTable.getLayoutX();
         return tableViewLayoutX + 90 + 130 * (columnIndex - 1);
     }
+
     private double findLayoutY(int rowIndex) {//行
         // 获取 TableView 在父容器中的布局位置
         double tableViewLayoutY = timeTable.getLayoutY();
         return tableViewLayoutY + 40 * (rowIndex - 1);
     }
+
     private void loadClasses() throws IOException {
-        if(ID == null) {
+        if (ID == null) {
             return;
         }
-        if(userType.equals(UserType.Teacher)) classesSet = getTeacherClassesSet(ID);;
-        if(userType.equals(UserType.Student)) classesSet = getStudentClassesSet(ID);
+        if (userType.equals(UserType.Teacher)) classesSet = getTeacherClassesSet(ID);
+        ;
+        if (userType.equals(UserType.Student)) classesSet = getStudentClassesSet(ID);
         classesSet = getTeacherClassesSet(ID);
         Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
         for (Classes teacherClass : classesSetIterable) {
@@ -126,16 +137,15 @@ public class ClassesSchedulePageController {//TODO
             CourseTime lastCourseTime = null;
             int length = 0;
             for (CourseTime courseTime : courseTimeSetIterable) {
-                if(lastCourseTime == null) {
+                if (lastCourseTime == null) {
                     lastCourseTime = courseTime;
                     length = 1;
                     continue;
                 }
-                if(courseTime.getWeek().equals(lastCourseTime.getWeek()) && courseTime.getSection() == lastCourseTime.getSection() + 1) {
+                if (courseTime.getWeek().equals(lastCourseTime.getWeek()) && courseTime.getSection() == lastCourseTime.getSection() + 1) {
                     lastCourseTime = courseTime;
-                    length ++;
-                }
-                else {
+                    length++;
+                } else {
                     double LayoutX = findLayoutX(lastCourseTime.getWeek().getIndex());
                     double LayoutY = findLayoutY(lastCourseTime.getSection() - length + 1);
 

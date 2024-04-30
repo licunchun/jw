@@ -21,6 +21,7 @@ public class CourseTimeSet {
     public ReadOnlyObjectProperty<CourseTimeSet> timeProperty() {
         return new ReadOnlyObjectWrapper<>(this);
     }
+
     public Iterable<CourseTime> getCourseTimeIterable() {
         return courseTimeSet;
     }

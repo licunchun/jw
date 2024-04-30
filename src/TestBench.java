@@ -1,6 +1,4 @@
 import Data.DataBase;
-import Data.Type.ClassInfoSet;
-import Data.Type.Point;
 import Data.Type.PointSet;
 
 public class TestBench {

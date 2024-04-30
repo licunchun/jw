@@ -42,7 +42,7 @@ public class Classes {
                    Education education,
                    IDSet teacher,
                    Full full,
-                    String place) {
+                   String place) {
         this.code = code;
         this.name = name;
         this.period = period;
@@ -65,6 +65,7 @@ public class Classes {
     public String getPlace() {
         return place;
     }
+
     public void setPlace(String place) {
         this.place = place;
     }

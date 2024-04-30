@@ -13,6 +13,17 @@ public class TimeTable {//TODO
     private final SimpleStringProperty Saturday;
     private final SimpleStringProperty Sunday;
 
+    public TimeTable(int number) {
+        this.number = new SimpleIntegerProperty(number);
+        this.Monday = new SimpleStringProperty();
+        this.Tuesday = new SimpleStringProperty();
+        this.Wednesday = new SimpleStringProperty();
+        this.Thursday = new SimpleStringProperty();
+        this.Friday = new SimpleStringProperty();
+        this.Saturday = new SimpleStringProperty();
+        this.Sunday = new SimpleStringProperty();
+    }
+
     public int getNumber() {
         return number.get();
     }
@@ -75,16 +86,5 @@ public class TimeTable {//TODO
 
     public SimpleStringProperty sundayProperty() {
         return Sunday;
-    }
-
-    public TimeTable(int number) {
-        this.number = new SimpleIntegerProperty(number);
-        this.Monday = new SimpleStringProperty();
-        this.Tuesday = new SimpleStringProperty();
-        this.Wednesday = new SimpleStringProperty();
-        this.Thursday = new SimpleStringProperty();
-        this.Friday = new SimpleStringProperty();
-        this.Saturday = new SimpleStringProperty();
-        this.Sunday = new SimpleStringProperty();
     }
 }

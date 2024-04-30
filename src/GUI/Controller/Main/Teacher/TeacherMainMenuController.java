@@ -52,6 +52,7 @@ public class TeacherMainMenuController {
     private boolean isTeacherScoreSubPageExist = false;
     private TeacherScoreSubPageController teacherScoreSubPageController;
     private Tab teacherScoreSubPageTab;
+
     /*
      * Function
      */
@@ -94,7 +95,7 @@ public class TeacherMainMenuController {
             teacherScoreMainPageController.setID(ID);
             teacherScoreMainPageController.setTabPane(mainMenuTabPane);
             teacherScoreMainPageController.setTeacherScoreSubPageController(this);
-        //    teacherScoreMainPageController.setPrimaryStage(stage);
+            //    teacherScoreMainPageController.setPrimaryStage(stage);
 
             teacherScoreMainPageTab.setContent(root);
             teacherScoreMainPageTab.setOnCloseRequest(e -> {
@@ -210,9 +211,11 @@ public class TeacherMainMenuController {
         mainMenuController.setUserType(UserType.Teacher);
         mainMenuController.setID(ID);
     }
+
     public void setIsTeacherScoreSubPageExist() {
         isTeacherScoreSubPageExist = true;
     }
+
     private void reloadPage() {
         openMainPage(stage, UserType.Teacher, ID);
     }

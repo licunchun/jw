@@ -1,6 +1,5 @@
 package GUI.Data.Util.Classes;
 
-import GUI.Controller.Main.Teacher.Classes.TeacherScoreSubPageController;
 import GUI.Data.DataPackage.Classes.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,6 +24,7 @@ public class ObservableListUtil {
         }
         return observableList;
     }
+
     public static ObservableList<TeacherScoreMainTable> getTeacherScoreMainPageObservableList(String ID) {
         ObservableList<TeacherScoreMainTable> observableList = FXCollections.observableArrayList();
 
@@ -38,6 +38,7 @@ public class ObservableListUtil {
 
         return observableList;
     }
+
     public static ObservableList<TeacherScoreSubTable> getTeacherScoreSubPageObservableList(String ID, Classes classes) {
         ObservableList<TeacherScoreSubTable> observableList = FXCollections.observableArrayList();
 
@@ -46,7 +47,7 @@ public class ObservableListUtil {
         Iterable<String> studentIDSetIterable = studentIDSet.getStudentIDSetIterable();
 
         for (String studentID : studentIDSetIterable) {
-        //    TeacherScoreMainTable newData = new TeacherScoreMainTable(teacherClass);
+            //    TeacherScoreMainTable newData = new TeacherScoreMainTable(teacherClass);
             TeacherScoreSubTable newData = new TeacherScoreSubTable(classesCode, studentID);
             observableList.add(newData);
         }

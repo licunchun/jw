@@ -3,7 +3,6 @@ package GUI.Controller.Main.Student;
 import GUI.Controller.Main.Common.Classes.ClassesChoosingPageController;
 import GUI.Controller.Main.Common.Classes.ClassesSchedulePageController;
 import GUI.Controller.Main.Common.MainMenuController;
-import GUI.Controller.Main.Student.Classes.CheckGradePageController;
 import GUI.Controller.Main.Student.Classes.DropClassesPageController;
 import GUI.Controller.Main.Student.Classes.StudentScoreController;
 import GUI.Data.Enum.User.UserType;

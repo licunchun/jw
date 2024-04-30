@@ -1,28 +1,25 @@
 package GUI.Controller.Main.Teacher.Classes;
 
-import GUI.Controller.Main.Common.MainMenuController;
 import GUI.Controller.Main.Teacher.TeacherMainMenuController;
-import GUI.Data.DataPackage.Classes.*;
-
+import GUI.Data.DataPackage.Classes.CourseTimeSet;
+import GUI.Data.DataPackage.Classes.TeacherScoreMainTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-
-import javafx.fxml.FXML;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
-import javafx.stage.Stage;
-
-import java.io.IOException;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreMainPageObservableList;
 import static GUI.GUIUtil.StageUtil.*;
 
 public class TeacherScoreMainPageController {
 
+    public Tab teacherScoreSubPageTab;
+    public TabPane tabPane;
+    TeacherMainMenuController teacherMainMenuController;
     @FXML
     private TableView<TeacherScoreMainTable> teacherCourseTableView;
     @FXML
@@ -37,19 +34,20 @@ public class TeacherScoreMainPageController {
     private TableColumn<TeacherScoreMainTable, Button> buttonColumn;
     private ObservableList<TeacherScoreMainTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
-    public Tab teacherScoreSubPageTab;
     private TeacherScoreSubPageController teacherScoreSubPageController;
-    public TabPane tabPane;
-    TeacherMainMenuController teacherMainMenuController;
+
     public void setID(String ID) {
-        this.ID=ID;
+        this.ID = ID;
     }
+
     public void setTabPane(TabPane tabPane) {
         this.tabPane = tabPane;
     }
+
     public void setTeacherScoreSubPageController(TeacherMainMenuController teacherMainMenuController) {
         this.teacherMainMenuController = teacherMainMenuController;
     }
+
     public void initialize() {
         loadTable();
         buttonColumn.setCellFactory(column -> new TableCell<>() {
@@ -89,9 +87,11 @@ public class TeacherScoreMainPageController {
 
         teacherCourseTableView.setItems(data);
     }
+
     public void flush() {
         data = getTeacherScoreMainPageObservableList(ID);
     }
+
     public ContextMenu teacherCourseMainPageContextMenu() {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
@@ -104,7 +104,8 @@ public class TeacherScoreMainPageController {
 
         return contextMenu;
     }
-//    private void openSubPage(String buttonId) {//TODO
+
+    //    private void openSubPage(String buttonId) {//TODO
 //        try {
 //            // 加载子页面的FXML文件
 //            FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml"));

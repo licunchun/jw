@@ -10,7 +10,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.layout.AnchorPane;
@@ -26,6 +25,29 @@ import static Sevice.Main.Components.UserServ.UserServ.findTeacher;
 
 public class ClassesChoosingPageController {
     private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
+    /*
+     * Table Information
+     */
+    private final TableView<ClassesForTable> tableView = new TableView<>();
+    private final TableColumn<ClassesForTable, Void> codeColumn = new TableColumn<>("课堂编号");
+    private final TableColumn<ClassesForTable, String> nameColumn = new TableColumn<>("课堂名称");
+    private final TableColumn<ClassesForTable, String> periodColumn = new TableColumn<>("学时");
+    private final TableColumn<ClassesForTable, String> creditsColumn = new TableColumn<>("学分");
+    private final TableColumn<ClassesForTable, String> timeColumn = new TableColumn<>("上课时间");
+    private final TableColumn<ClassesForTable, String> studentColumn = new TableColumn<>("课堂人数");
+    private final TableColumn<ClassesForTable, String> classTypeColumn = new TableColumn<>("课堂类型");
+    private final TableColumn<ClassesForTable, String> courseTypeColumn = new TableColumn<>("课程种类");
+    private final TableColumn<ClassesForTable, String> schoolColumn = new TableColumn<>("院校");
+    private final TableColumn<ClassesForTable, String> campusColumn = new TableColumn<>("校区");
+    private final TableColumn<ClassesForTable, String> examModeColumn = new TableColumn<>("考试方式");
+    private final TableColumn<ClassesForTable, String> languageColumn = new TableColumn<>("教学语言");
+    private final TableColumn<ClassesForTable, String> educationColumn = new TableColumn<>("教育阶段");
+    private final TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
+    private final TableColumn<ClassesForTable, String> fullColumn = new TableColumn<>("是否满人");
+    /*
+     * Else
+     */
+    private final Classes searchingClasses = new Classes();//用于搜索的Classes
     @FXML
     private AnchorPane TableViewPane;
     @FXML
@@ -69,25 +91,6 @@ public class ClassesChoosingPageController {
      */
     private String ID;
     private UserType userType;
-    /*
-     * Table Information
-     */
-    private final TableView<ClassesForTable> tableView = new TableView<>();
-    private final TableColumn<ClassesForTable, Void> codeColumn = new TableColumn<>("课堂编号");
-    private final TableColumn<ClassesForTable, String> nameColumn = new TableColumn<>("课堂名称");
-    private final TableColumn<ClassesForTable, String> periodColumn = new TableColumn<>("学时");
-    private final TableColumn<ClassesForTable, String> creditsColumn = new TableColumn<>("学分");
-    private final TableColumn<ClassesForTable, String> timeColumn = new TableColumn<>("上课时间");
-    private final TableColumn<ClassesForTable, String> studentColumn = new TableColumn<>("课堂人数");
-    private final TableColumn<ClassesForTable, String> classTypeColumn = new TableColumn<>("课堂类型");
-    private final TableColumn<ClassesForTable, String> courseTypeColumn = new TableColumn<>("课程种类");
-    private final TableColumn<ClassesForTable, String> schoolColumn = new TableColumn<>("院校");
-    private final TableColumn<ClassesForTable, String> campusColumn = new TableColumn<>("校区");
-    private final TableColumn<ClassesForTable, String> examModeColumn = new TableColumn<>("考试方式");
-    private final TableColumn<ClassesForTable, String> languageColumn = new TableColumn<>("教学语言");
-    private final TableColumn<ClassesForTable, String> educationColumn = new TableColumn<>("教育阶段");
-    private final TableColumn<ClassesForTable, String> teacherColumn = new TableColumn<>("教师名称");
-    private final TableColumn<ClassesForTable, String> fullColumn = new TableColumn<>("是否满人");
     private Pagination pagination;
     /*
      * Classes Main Page
@@ -95,10 +98,6 @@ public class ClassesChoosingPageController {
     private boolean isClassesMainPageExist = false;
     private Stage classesMainPageStage;
     private ClassesMainPageController classesMainPageController;
-    /*
-     * Else
-     */
-    private final Classes searchingClasses = new Classes();//用于搜索的Classes
     private ObservableList<ClassesForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
 
     /*

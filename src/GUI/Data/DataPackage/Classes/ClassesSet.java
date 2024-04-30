@@ -6,11 +6,6 @@ import javafx.collections.ObservableList;
 import java.util.HashSet;
 import java.util.Set;
 
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentScore;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
-import static Sevice.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
-
 public class ClassesSet {
     private final Set<Classes> classesSet = new HashSet<>();
 
@@ -29,6 +24,7 @@ public class ClassesSet {
         }
         return observableList;
     }
+
     public Iterable<Classes> getClassesIterable() {
         return classesSet;
     }
