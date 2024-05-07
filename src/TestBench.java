@@ -32,7 +32,7 @@ public class TestBench {
 //            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
 //        }
 
-        System.out.println(dataBase.AccountOfTeacher("卢建良"));
+        System.out.println(dataBase.accountOfTeacher("卢建良"));
 
         dataBase.close();
     }

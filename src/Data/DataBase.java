@@ -97,7 +97,7 @@ public class DataBase {
             return null;
         }
     }
-    public String AccountOfTeacher(String name) { // 返回对应名字的老师Account
+    public String accountOfTeacher(String name) { // 返回对应名字的老师Account
         sql = "select * from teachers where name = '" + name + "'";
         try {
             resultSet = statement.executeQuery(sql);
