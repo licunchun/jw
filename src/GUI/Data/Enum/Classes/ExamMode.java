@@ -2,9 +2,9 @@ package GUI.Data.Enum.Classes;
 
 public enum ExamMode {
     PE("体育测试"),
-    WrittenOpen("笔试(开卷)"),
-    WrittenHalf("笔试(半开卷)"),
-    WrittenClose("笔试(闭卷)"),
+    WrittenOpen("笔试（开卷）"),
+    WrittenHalf("笔试（半开卷）"),
+    WrittenClose("笔试（闭卷）"),
     Project("大作业"),
     Computer("机考"),
     Oral("口试"),
