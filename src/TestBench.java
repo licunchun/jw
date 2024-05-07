@@ -15,22 +15,24 @@ public class TestBench {
         */
 
         DataBase dataBase = new DataBase();
-        PointSet pointSet;
+//        PointSet pointSet;
+//
+//        dataBase.setPoint("011103.01", "PB23000000", "100");
+//
+//        pointSet = dataBase.points();
+//        pointSet.findCode("011103.01");
+//        for (int i = 0; i < pointSet.length(); i++) {
+//            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
+//        }
+//
+//        dataBase.setPoint("011103.01", "PB23000000", "null");
+//
+//        pointSet = dataBase.points();
+//        for (int i = 0; i < pointSet.length(); i++) {
+//            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
+//        }
 
-        dataBase.setPoint("011103.01", "PB23000000", "100");
-
-        pointSet = dataBase.points();
-        pointSet.findCode("011103.01");
-        for (int i = 0; i < pointSet.length(); i++) {
-            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
-        }
-
-        dataBase.setPoint("011103.01", "PB23000000", "null");
-
-        pointSet = dataBase.points();
-        for (int i = 0; i < pointSet.length(); i++) {
-            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
-        }
+        System.out.println(dataBase.AccountOfTeacher("卢建良"));
 
         dataBase.close();
     }

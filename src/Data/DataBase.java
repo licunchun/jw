@@ -97,7 +97,16 @@ public class DataBase {
             return null;
         }
     }
-
+    public String AccountOfTeacher(String name) { // 返回对应名字的老师Account
+        sql = "select * from teachers where name = '" + name + "'";
+        try {
+            resultSet = statement.executeQuery(sql);
+            resultSet.next();
+            return resultSet.getString("account");
+        } catch (SQLException e) {
+            return null;
+        }
+    }
     public boolean addStudent(String name, String account, String key, String grade, String gender, String major) { // 注册学生
         String sql = "insert into students (name, account, key, grade, gender, major, classes, money) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "', '" + grade + "', '" + gender +
