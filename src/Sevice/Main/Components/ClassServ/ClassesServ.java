@@ -1,9 +1,7 @@
 package Sevice.Main.Components.ClassServ;
 
 import Data.DataBase;
-import Data.Type.ClassInfo;
-import Data.Type.ClassInfoSet;
-import Data.Type.Teacher;
+import Data.Type.*;
 import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
@@ -97,8 +95,15 @@ public class ClassesServ {
     }//TODO
 
     public static IDSet getStudentSet(String classesCode) {
-        return new IDSet();
-    }//TODO
+        DataBase db = new DataBase();
+        PointSet ps = db.points();
+        ps.findCode(classesCode);
+        IDSet idSet = new IDSet();
+        for (Point p:ps.points) {
+            idSet.add(p.account);
+        }
+        return idSet;
+    }
 
     public static int getStudentScore(String classesCode, String ID) {
         return 0;

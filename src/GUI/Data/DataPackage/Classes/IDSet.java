@@ -47,4 +47,10 @@ public class IDSet {
     public Iterable<String> getStudentIDSetIterable() {
         return IDSet;
     }
+
+    public void print()
+    {
+        for (String s:IDSet)
+            System.out.println(s);
+    }
 }
