@@ -25,12 +25,12 @@ public enum Week {
         return index;
     }
 
-    public static Week fromString(String s){
+    public static Week fromString(int n){
         for (int i = 0; i < values().length; i++) {
-            String s_t = values()[i].toString();
-            if(s.compareTo(s_t)==0)
+            int n_t = values()[i].getIndex();
+            if(n==n_t)
                 return values()[i];
         }
-        throw new IllegalArgumentException("Invalid input: " + s);
+        throw new IllegalArgumentException("Invalid input: " + n);
     }
 }
