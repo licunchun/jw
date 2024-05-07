@@ -49,13 +49,17 @@ public class ClassesServ {
     private static Classes ClassInfoSet2Classes(ClassInfoSet cis)
     {
         ClassInfo ci = cis.classInfos.getFirst();
-
+        DataBase db = new DataBase();
         //时间处理
         CourseTimeSet cts = fromClass(ci.time);
         int stdCount = Integer.parseInt(ci.stdCount),limitCount = Integer.parseInt(ci.limitCount);
         Full full = (stdCount < limitCount)?Full.NotFull:Full.Full;
         IDSet idset = new IDSet();
-//        idset.add();
+        for (String name:ci.teachers)
+        {
+            String ID = db.accountOfTeacher(name);
+            idset.add(ID);
+        }
         //位置处理
         String place = "未初始化";
         String pattern = "周 (.*?):";

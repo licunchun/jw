@@ -5,7 +5,7 @@ public enum ExamMode {
     WrittenOpen("笔试（开卷）"),
     WrittenHalf("笔试（半开卷）"),
     WrittenClose("笔试（闭卷）"),
-    Project("大作业"),
+    Project("大作业（论文、报告、项目或作品等）"),
     Computer("机考"),
     Oral("口试"),
     Experiment("实验操作");

@@ -1,5 +1,6 @@
 package GUI.Data.DataPackage.Classes;
 
+import Data.DataBase;
 import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.School;
 
@@ -191,6 +192,7 @@ public class Classes {
     }
 
     public void print(){
+        DataBase db = new DataBase();
         System.out.println("课堂编号\t"+code);
         System.out.println("课堂名称\t"+name);
         System.out.println("学时\t"+period);
@@ -208,6 +210,9 @@ public class Classes {
         System.out.println("教学语言\t"+language);
         System.out.println("本科/研究生\t"+education);
         System.out.println("教师ID\t");
+        for (String s: teacher.getStudentIDSetIterable()) {
+            System.out.println(s+ db.infoOfTeacher(s).name);
+        }
         System.out.println("课堂状况\t"+full);
         System.out.println("教室位置\t"+place);
     }

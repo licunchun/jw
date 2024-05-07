@@ -27,8 +27,8 @@ public enum School {
     EnvironmentalScienceAndEngineering("环境科学与工程系"),
     InnovationAndEntrepreneurship("创新创业学院"),
     LifeScienceAndMedicine("生命科学与医学部"),
-    FutureTechnology("未来技术学院");
-
+    FutureTechnology("未来技术学院"),
+    PhysicsExperimentTeachingCenter("物理实验教学中心");
     private final String name;
 
     School(String name) {
