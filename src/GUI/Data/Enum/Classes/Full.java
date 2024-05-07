@@ -14,4 +14,13 @@ public enum Full {
     public String toString() {
         return this.name;
     }
+
+    public static Full fromString(String s){
+        for (int i = 0; i < values().length; i++) {
+            String s_t = values()[i].toString();
+            if(s.compareTo(s_t)==0)
+                return values()[i];
+        }
+        throw new IllegalArgumentException("Invalid input: " + s);
+    }
 }
