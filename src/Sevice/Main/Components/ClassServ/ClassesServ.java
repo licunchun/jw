@@ -22,8 +22,8 @@ public class ClassesServ {
         DataBase db = new DataBase();
         ClassInfoSet cis = db.check();
         cis.findCode(classesCode);
-        return ClassInfoSet2Classes(cis);
-    }//TODO
+        return ClassInfo2Classes(cis.classInfos.getFirst());
+    }
     private static CourseTimeSet fromClass(String times){
         CourseTimeSet cts = new CourseTimeSet();
         String pattern = "\\d\\(\\d(,\\d+)*\\)";
@@ -47,9 +47,8 @@ public class ClassesServ {
         }
         return cts;
     }
-    private static Classes ClassInfoSet2Classes(ClassInfoSet cis)
+    private static Classes ClassInfo2Classes(ClassInfo ci)
     {
-        ClassInfo ci = cis.classInfos.getFirst();
         DataBase db = new DataBase();
         //时间处理
         CourseTimeSet cts = fromClass(ci.time);
@@ -94,8 +93,33 @@ public class ClassesServ {
                 );
     }
     public static ClassesSet searchClasses(Classes classes) {
-        return new ClassesSet();
-    }//TODO
+        DataBase db = new DataBase();
+        ClassInfoSet cis = db.check();
+        cis.findCode(classes.getCode());
+        cis.findName(classes.getName());
+        cis.findPeriod(String.valueOf(classes.getPeriod()));
+        cis.findCredit(String.valueOf(classes.getCredits()));
+//        cis.findTime
+//        cis.findStdCount
+//        cis.findlimitCount
+        cis.findCourseType(classes.getCourseType().toString());
+        cis.findClassType(classes.getCourseType().toString());
+        cis.findDepartment(classes.getSchool().toString());
+        cis.findCampus(classes.getCampus().toString());
+        cis.findExamMode(classes.getExamMode().toString());
+        cis.findLanguage(classes.getLanguage().toString());
+        cis.findEducation(classes.getEducation().toString());
+//        cis.findTeacher();
+        if(classes.getFull()==Full.NotFull)
+            cis.findNotFull();
+
+        ClassesSet cs = new ClassesSet();
+        for (ClassInfo ci:cis.classInfos){
+            ClassInfo2Classes(ci).print();
+            cs.add(ClassInfo2Classes(ci));
+        }
+        return cs;
+    }
 
     public static IDSet getStudentSet(String classesCode) {
         DataBase db = new DataBase();
@@ -266,7 +290,7 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
         };
         db.addCourse(info);
         return NewClassesError.Success;
-    }//TODO
+    }
 
     private static boolean isCodeValid(String code){
         return true;
