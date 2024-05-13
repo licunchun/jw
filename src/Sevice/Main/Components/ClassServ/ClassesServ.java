@@ -95,6 +95,7 @@ public class ClassesServ {
     public static ClassesSet searchClasses(Classes classes) {
         DataBase db = new DataBase();
         ClassInfoSet cis = db.check();
+
         cis.findCode(classes.getCode());
         cis.findName(classes.getName());
         cis.findPeriod(String.valueOf(classes.getPeriod()));
@@ -115,7 +116,7 @@ public class ClassesServ {
 
         ClassesSet cs = new ClassesSet();
         for (ClassInfo ci:cis.classInfos){
-            ClassInfo2Classes(ci).print();
+//            ClassInfo2Classes(ci).print();
             cs.add(ClassInfo2Classes(ci));
         }
         return cs;
