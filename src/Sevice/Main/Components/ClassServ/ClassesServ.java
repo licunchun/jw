@@ -106,8 +106,16 @@ public class ClassesServ {
     }
 
     public static int getStudentScore(String classesCode, String ID) {
+        DataBase db = new DataBase();
+        PointSet ps = db.points();
+        ps.findCode(classesCode);
+        for (Point p:ps.points) {
+            if(p.account.compareTo(ID)==0){
+                return Integer.parseInt(p.point);
+            }
+        }
         return 0;
-    }//TODO
+    }
 
     public static boolean setStudentScore(String classesCode, String ID, int grade) {
         return true;
