@@ -11,6 +11,8 @@ import GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -118,17 +120,79 @@ public class ClassesServ {
     }
 
     public static boolean setStudentScore(String classesCode, String ID, int grade) {
-        return true;
-    }//TODO
+        DataBase db = new DataBase();
+        return db.setPoint(classesCode,ID,String.valueOf(grade));
+    }
 
     public static double getStudentGPA(String classesCode, String ID) {
-        return 0;
-    }//TODO
+        int grade = getStudentScore(classesCode,ID);
+        if(grade>=95)
+            return 4.3;
+        else if (grade>=90)
+            return 4.0;
+        else if (grade>=85)
+            return 3.7;
+        else if (grade>=82)
+            return 3.3;
+        else if (grade>=78)
+            return 3.0;
+        else if (grade>=75)
+            return 2.7;
+        else if (grade>=72)
+            return 2.3;
+        else if (grade>=68)
+            return 2.0;
+        else if (grade>=65)
+            return 1.7;
+        else if (grade == 64)
+            return 1.5;
+        else if (grade>=61)
+            return 1.3;
+        else if (grade == 60)
+            return 1;
+        else
+            return 0;
+    }
 
     public static String toStringTime(CourseTimeSet courseTimeSet) {
-        return "";
-    }//TODO
+        StringBuilder sb = new StringBuilder();
+        boolean week_flag = true;
+        Week w_t = Week.Monday,w;
+        ArrayList<Integer> sections = new ArrayList<>();
+        for (CourseTime ct:courseTimeSet.getCourseTimeIterable()){
+            if(week_flag){
+                w_t = ct.getWeek();
+                sections.add(ct.getSection());
+                week_flag = false;
+            }
+            else {
+                w = ct.getWeek();
+                if(w_t==w)
+                    sections.add(ct.getSection());
+                else {
+                    splice(w_t,sections,sb);
+                    w_t = w;
+                    sections.add(ct.getSection());
+                }
+            }
+        }
+        splice(w_t,sections,sb);
+        return sb.toString();
+    }
+private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
+    sb.append('(').append(w);
+    int[] arr = new int[list.size()];
+    for (int i = 0; i < list.size(); i++) {
+        arr[i] = list.get(i);
+    }
+    Arrays.sort(arr);
 
+    for (int i:arr){
+        sb.append(',').append(i);
+    }
+    sb.append(')');
+    list.clear();
+}
     public static DeleteClassesError deleteClasses(String classesCode) {
         return DeleteClassesError.Success;
     }//TODO
