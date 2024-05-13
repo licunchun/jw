@@ -14,4 +14,5 @@ public enum NewClassesError {
     TeacherIsEmpty,//教师为空
     TeacherInvalid,//教师不合法，注意可以用逗号隔开
     Success//新建成功
+
 }

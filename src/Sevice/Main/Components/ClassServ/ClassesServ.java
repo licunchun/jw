@@ -11,6 +11,7 @@ import GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
 
+import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Matcher;
@@ -180,7 +181,8 @@ public class ClassesServ {
         return sb.toString();
     }
 private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
-    sb.append('(').append(w);
+    sb.append(Week.formWeek(w)).append('(');
+    boolean first_flag = true;
     int[] arr = new int[list.size()];
     for (int i = 0; i < list.size(); i++) {
         arr[i] = list.get(i);
@@ -188,12 +190,18 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
     Arrays.sort(arr);
 
     for (int i:arr){
-        sb.append(',').append(i);
+        if(first_flag) {
+            sb.append(i);
+            first_flag = false;
+        } else {
+            sb.append(',').append(i);
+        }
     }
     sb.append(')');
     list.clear();
 }
     public static DeleteClassesError deleteClasses(String classesCode) {
+
         return DeleteClassesError.Success;
     }//TODO
 
@@ -213,6 +221,70 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
             Education education,
             String teacher
     ) {
+        if(code.isEmpty()){
+            return NewClassesError.CodeIsEmpty;
+        } else if(!isCodeValid(code)){
+            return NewClassesError.CodeInvalid;
+        } else if (name.isEmpty()) {
+            return NewClassesError.NameIsEmpty;
+        } else if (!isNameValid(name)) {
+            return NewClassesError.NameInvalid;
+        } else if (period.isEmpty()) {
+            return NewClassesError.PeriodIsEmpty;
+        } else if (!isPeriodValid(period)) {
+            return NewClassesError.PeriodInvalid;
+        } else if (credits.isEmpty()) {
+            return NewClassesError.CreditsIsEmpty;
+        } else if (!isCreditsValid(credits)) {
+            return NewClassesError.CreditsInvalid;
+        } else if (maxCount.isEmpty()) {
+            return NewClassesError.MaxCountIsEmpty;
+        } else if (!isMaxCountValid(maxCount)) {
+            return NewClassesError.MaxCountInvalid;
+        } else if (teacher.isEmpty()) {
+            return NewClassesError.TeacherIsEmpty;
+        } else if (!isTeacherValid(teacher)) {
+            return NewClassesError.TeacherInvalid;
+        }
+        DataBase db = new DataBase();
+        String[] info = {
+                code,
+                name,
+                period,
+                credits,
+                toStringTime(time),
+                "0",
+                maxCount,
+                classType.toString(),
+                school.toString(),
+                campus.toString(),
+                examMode.toString(),
+                language.toString(),
+                education.toString(),
+                courseType.toString(),
+                teacher
+        };
+        db.addCourse(info);
         return NewClassesError.Success;
     }//TODO
+
+    private static boolean isCodeValid(String code){
+        return true;
+    }
+    private static boolean isNameValid(String name){
+        return true;
+    }
+    private static boolean isPeriodValid(String period){
+        return true;
+    }
+    private static boolean isCreditsValid(String credits){
+        return true;
+    }
+    private static boolean isMaxCountValid(String maxCount){
+        return true;
+    }
+    private static boolean isTeacherValid(String teacher){
+        return true;
+    }
 }
+
