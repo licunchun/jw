@@ -2,7 +2,9 @@ package Data;
 
 import Data.Type.*;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.sql.*;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -63,6 +65,22 @@ public class DataBase {
         try {
             int rowsAffected = statement.executeUpdate(sql);
             return rowsAffected > 0; // 返回操作是否成功
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean setName(String account, String name, int type) {
+        String table = switch (type) {
+            case STUDENT -> "students";
+            case TEACHER -> "teachers";
+            case MANAGER -> "managers";
+            default -> "";
+        };
+        sql = "update " + table + " set name = '" + name + "' where account = '" + account + "'";
+        try {
+            int rowsAffected = statement.executeUpdate(sql);
+            return rowsAffected == 1;
         } catch (SQLException e) {
             return false;
         }
@@ -176,8 +194,9 @@ public class DataBase {
         }
     }
 
-    public boolean setMoney(String account, int money) { // 设置学生余额
-        String sql = "update students set money = " + money + " where account = '" + account + "'";
+    public boolean setMoney(String account, double money) { // 设置学生余额
+        DecimalFormat decimalFormat = new DecimalFormat("0.00");
+        String sql = "update students set money = " + decimalFormat.format(money) + " where account = '" + account + "'";
         try {
             statement.executeUpdate(sql);
             return true; // 返回操作是否成功
