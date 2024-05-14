@@ -19,6 +19,7 @@ public class UserServ {
      * Editor
      */
     private static DataBase db;
+    private static int dasd;
     private static EditError checkID(String ID) {
         IDUtil idUtil = new IDUtil(ID);
         if (!idUtil.checkValid())
