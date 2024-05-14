@@ -71,8 +71,8 @@ public class DataBase {
 
     public boolean setName(String account, String name, int type) {
         String table = switch (type) {
-            case STUDENT -> "student";
-            case TEACHER -> "teacher";
+            case STUDENT -> "students";
+            case TEACHER -> "teachers";
             case MANAGER -> "managers";
             default -> "";
         };
