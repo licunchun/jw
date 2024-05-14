@@ -2,6 +2,7 @@ package Sevice.Main.Components.UserServ;
 
 import Data.DataBase;
 import Data.Type.Student;
+import Data.Type.StudentSet;
 import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.Enum.Error.Main.Components.UserServ.ChangePasswordError;
 import GUI.Data.Enum.Error.Main.Components.UserServ.EditError;
@@ -18,6 +19,7 @@ public class UserServ {
     /*
      * Editor
      */
+    private static DataBase db;
     private static EditError checkID(String ID) {
         IDUtil idUtil = new IDUtil(ID);
         if (!idUtil.checkValid())
@@ -149,7 +151,11 @@ public class UserServ {
     }//TODO
 
     public static IDSet findStudent(String name) {
-
+        DataBase db = new DataBase();
+        StudentSet ss = db.infoOfStudents();
+        ss.findName(name);
+        IDSet idSet = new IDSet();
+//        idSet.
         return new IDSet();
     }//TODO
 
