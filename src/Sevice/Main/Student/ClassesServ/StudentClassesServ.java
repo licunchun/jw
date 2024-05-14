@@ -1,5 +1,11 @@
 package Sevice.Main.Student.ClassesServ;
 
+import Data.DataBase;
+import Data.Type.ClassInfoSet;
+import Data.Type.Point;
+import Data.Type.PointSet;
+import Data.Type.Student;
+import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseCodeSet;
 import GUI.Data.Enum.Error.Main.Student.ClassesServ.DropClassesError;
@@ -7,6 +13,14 @@ import GUI.Data.Enum.Error.Main.Student.ClassesServ.PickClassesError;
 
 public class StudentClassesServ {
     public static ClassesSet getStudentClassesSet(String ID) {
+        DataBase db = new DataBase();
+        PointSet ps = db.points();
+        ps.findAccount(ID);
+
+//        for(Point p:ps.points){
+//            ClassInfoSet classInfoSet = db.check();
+//            p.code
+//        }
         return new ClassesSet();
     }//TODO
 
@@ -15,15 +29,14 @@ public class StudentClassesServ {
     }//TODO
 
     public static double getStudentTotalCredits(String ID) {
-        //返回总学分by lcc,可以参考，但不能直接用，请对比文档或者全部重写
-//        ClassesSet classesSet = getStudentClassesSet(ID);
-//        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
-//        double totalCredits = 0;
-//        for(Classes studentClass : classesSetIterable) {
-//            totalCredits = totalCredits + studentClass.getCredits();
-//        }
-//        return Math.round(totalCredits * 10) / 10.0;
-        return -1;
+//        返回总学分by lcc,可以参考，但不能直接用，请对比文档或者全部重写
+        ClassesSet classesSet = getStudentClassesSet(ID);
+        Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
+        double totalCredits = 0;
+        for(Classes studentClass : classesSetIterable) {
+            totalCredits = totalCredits + studentClass.getCredits();
+        }
+        return Math.round(totalCredits * 10) / 10.0;
     }//TODO
 
     public static double getStudentReceivedCredits(String ID) {

@@ -15,6 +15,8 @@ import Sevice.Utils.NameUtil;
 import Sevice.Utils.PasswordUtil;
 import Sevice.Utils.UserTypeUtil;
 
+import javax.xml.crypto.Data;
+
 public class UserServ {
     /*
      * Editor
@@ -146,6 +148,10 @@ public class UserServ {
      * Else
      */
     public static ChangePasswordError changePassword(String ID, String originPassword, String newPassword, String newConfirmPassword) {
+        if(!isIDExist(ID))
+            return ChangePasswordError.IDNotFound;
+        DataBase db = new DataBase();
+        PasswordUtil passwordUtil = new PasswordUtil(newPassword);
 
         return ChangePasswordError.Success;
     }//TODO
@@ -155,9 +161,11 @@ public class UserServ {
         StudentSet ss = db.infoOfStudents();
         ss.findName(name);
         IDSet idSet = new IDSet();
-//        idSet.
-        return new IDSet();
-    }//TODO
+        for(Student s:ss.students) {
+            idSet.add(s.account);
+        }
+        return idSet;
+    }
 
     public static IDSet findTeacher(String name) {
 
@@ -165,16 +173,30 @@ public class UserServ {
     }//TODO
 
     public static IDSet findAdmin(String name) {
+
         return new IDSet();
     }//TODO
 
-    public static IDSet findUser(UserType userType, String ID, String Name) {
-        return new IDSet();
-    }//TODO
+    public static IDSet findUser(UserType userType, String ID, String name) {
+        IDSet idSet = new IDSet();
+        if(!ID.isEmpty()){
+            if(isIDExist(ID))
+                idSet.add(ID);
+            return idSet;
+        } else {
+            return switch (userType) {
+                case UserType.Student -> findStudent(name);
+                case UserType.Teacher -> findTeacher(name);
+                case UserType.Admin -> findAdmin(name);
+                default -> idSet;
+            };
+        }
+    }
 
     public static boolean isIDExist(String ID) {
         DataBase db = new DataBase();
-
-        return true;
-    }//TODO
+        IDUtil idUtil = new IDUtil(ID);
+        String s = db.key(ID,idUtil.getType());
+        return !s.isEmpty();
+    }
 }
