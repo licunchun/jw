@@ -17,11 +17,12 @@ public class StudentSet {
     public int length() {
         return students.size();
     }
-    public void findName(String name) {
-        if (name.isEmpty()) return;
+    public StudentSet findName(String name) {
+        if (name.isEmpty()) return this;
 
         for (int i = 0; i < this.length(); i++) {
             if (!this.get(i).name.contains(name)) students.remove(i--);
         }
+        return this;
     }
 }
