@@ -35,6 +35,7 @@ public class UserServ {
 
     public static EditError editName(String ID, String name) {
         NameUtil nameUtil = new NameUtil(name);
+        IDUtil idUtil = new IDUtil(ID);
         if (!nameUtil.checkValid())
             return EditError.Invalid;
 
@@ -42,7 +43,7 @@ public class UserServ {
             return checkID(ID);
 
         DataBase db = new DataBase();
-        //db.changeName(idUtil.getID(),idUtil.getType(),name);
+        db.setName(ID,name,idUtil.getType());
         db.close();
 
         return EditError.Success;
@@ -68,7 +69,7 @@ public class UserServ {
         if (checkID(ID) != EditError.Success)
             return checkID(ID);
         DataBase db = new DataBase();
-        //db.setMoney(ID,money);
+        db.setMoney(ID,money);
         db.close();
         return EditError.Success;
     }
@@ -77,8 +78,9 @@ public class UserServ {
         if (checkID(ID) != EditError.Success)
             return checkID(ID);
         DataBase db = new DataBase();
-        //money = db.getMoney(ID);
-        //db.setMoney(ID,money);
+        Student s = db.infoOfStudent(ID);
+        double money = Double.parseDouble(s.money);
+        db.setMoney(ID,money+addMoney);
         db.close();
         return EditError.Success;
     }
@@ -117,37 +119,42 @@ public class UserServ {
     public static Gender getGender(String ID) {
         DataBase db = new DataBase();
         Student s = db.infoOfStudent(ID);
-//        switch (s.gender){
-//            case
-//        }
-        return Gender.Male;
+        return Gender.fromString(s.gender);
     }
 
     public static School getSchool(String ID) {
-
-        return School.GiftedYoung;
+        DataBase db = new DataBase();
+        Student s = db.infoOfStudent(ID);
+        return School.CyberScienceAndTechnology;
     }
 
     public static Grade getGrade(String ID) {
-        return Grade.Grade1;
-    }//TODO
+        DataBase db = new DataBase();
+        Student s = db.infoOfStudent(ID);
+        return Grade.fromString(s.grade);
+    }
 
     public static Double getMoney(String ID) {
-        return (double) 0;
-    }//TODO
+        DataBase db = new DataBase();
+        Student s = db.infoOfStudent(ID);
+        return Double.valueOf(s.money);
+    }
 
     /*
      * Else
      */
     public static ChangePasswordError changePassword(String ID, String originPassword, String newPassword, String newConfirmPassword) {
+
         return ChangePasswordError.Success;
     }//TODO
 
     public static IDSet findStudent(String name) {
+
         return new IDSet();
     }//TODO
 
     public static IDSet findTeacher(String name) {
+
         return new IDSet();
     }//TODO
 
@@ -160,6 +167,8 @@ public class UserServ {
     }//TODO
 
     public static boolean isIDExist(String ID) {
+        DataBase db = new DataBase();
+
         return true;
     }//TODO
 }
