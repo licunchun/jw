@@ -1,40 +1,50 @@
 import Data.DataBase;
-import Data.Type.PointSet;
+import Data.Type.ClassInfo;
+import Data.Type.ClassInfoSet;
+import GUI.Data.DataPackage.Classes.Classes;
+import GUI.Data.DataPackage.Classes.CourseTimeSet;
+import GUI.Data.DataPackage.Classes.IDSet;
+import GUI.Data.Enum.Classes.*;
+import GUI.Data.Enum.School;
+import Sevice.Main.Components.ClassServ.ClassesServ;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class TestBench {
     public static void main(String[] args) {
-        /* ClassInfoSet.find() 系列函数用法
-        DataBase dataBase = new DataBase();
+        String code = "000";
+        String name = "测试课程";
+        String period = "40";
+        String credits = "3";
+        CourseTimeSet time = new CourseTimeSet();
+        time.add(CourseTime.Section3);
+        time.add(CourseTime.Section4);
+        time.add(CourseTime.Section5);
+        time.add(CourseTime.Section20);
+        time.add(CourseTime.Section21);
+        String maxCount = "100";
+        ClassType classType = ClassType.Theory;
+        CourseType courseType = CourseType.PE;
+        School school = School.ComputerScienceAndTechnology;
+        Campus campus = Campus.East;
+        ExamMode examMode = ExamMode.Computer;
+        Language language = Language.Chinese;
+        Education education = Education.Preparatory;
+        String teacher = "1234";
+        DataBase db = new DataBase();
+        String[] info = {"000","测试课程","40","3","3(1,2,3)","0","100","理论课","体育","计算机科学与技术学院","西区","机考","中文","预科","1234"};
+        if(db.addCourse(info))
+        {
+            System.out.println("yes");
+        }
+        else {
+            System.out.println("no");
+        }
+        Classes c = ClassesServ.getClasses("000");
+        c.print();
+        System.out.println(ClassesServ.toStringTime(c.getTime()));
 
-        ClassInfoSet classInfoSet = dataBase.check();
-        classInfoSet.findName("量子物理");
-
-        System.out.println(classInfoSet.length());
-
-        dataBase.close();
-        */
-
-        DataBase dataBase = new DataBase();
-//        PointSet pointSet;
-//
-//        dataBase.setPoint("011103.01", "PB23000000", "100");
-//
-//        pointSet = dataBase.points();
-//        pointSet.findCode("011103.01");
-//        for (int i = 0; i < pointSet.length(); i++) {
-//            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
-//        }
-//
-//        dataBase.setPoint("011103.01", "PB23000000", "null");
-//
-//        pointSet = dataBase.points();
-//        for (int i = 0; i < pointSet.length(); i++) {
-//            System.out.println("code: " + pointSet.get(i).code + ", account: " + pointSet.get(i).account + ", point: " + pointSet.get(i).point);
-//        }
-
-        System.out.println(dataBase.accountOfTeacher("卢建良"));
-
-        dataBase.close();
     }
-
 }

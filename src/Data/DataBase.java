@@ -2,6 +2,7 @@ package Data;
 
 import Data.Type.*;
 
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,6 +64,22 @@ public class DataBase {
         try {
             int rowsAffected = statement.executeUpdate(sql);
             return rowsAffected > 0; // 返回操作是否成功
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean setName(String account, String name, int type) {
+        String table = switch (type) {
+            case STUDENT -> "student";
+            case TEACHER -> "teacher";
+            case MANAGER -> "managers";
+            default -> "";
+        };
+        sql = "update " + table + " set name = '" + name + "' where account = '" + account + "'";
+        try {
+            int rowsAffected = statement.executeUpdate(sql);
+            return rowsAffected == 1;
         } catch (SQLException e) {
             return false;
         }
