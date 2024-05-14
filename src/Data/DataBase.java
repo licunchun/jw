@@ -100,6 +100,24 @@ public class DataBase {
             return null;
         }
     }
+    public StudentSet infoOfStudents() { // 已返回对应账号的学生信息
+        StudentSet studentSet = new StudentSet();
+        String sql = "select * from students";
+        try {
+            resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                String[] info = new String[8];
+                for (int i = 0; i < 8; i++) {
+                    info[i] = resultSet.getString(i + 1);
+                }
+                Student student = new Student(info);
+                studentSet.students.add(student);
+            }
+            return studentSet;
+        } catch (SQLException e) {
+            return null;
+        }
+    }
 
     public Teacher infoOfTeacher(String account) { // 返回对应账号的老师信息
         String sql = "select * from teachers where account = '" + account + "'";
