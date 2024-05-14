@@ -1,6 +1,7 @@
 import Data.DataBase;
 import Data.Type.ClassInfo;
 import Data.Type.ClassInfoSet;
+import Data.Type.StudentSet;
 import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.DataPackage.Classes.IDSet;
@@ -15,8 +16,10 @@ import java.util.regex.Pattern;
 public class TestBench {
     public static void main(String[] args) {
         DataBase dataBase = new DataBase();
-        dataBase.setName("PB23000000", "crl", DataBase.STUDENT);
-        System.out.println(dataBase.infoOfStudent("PB23000000").name);
+        StudentSet studentSet = dataBase.infoOfStudents();
+        studentSet.findName("crl");
+        System.out.println(studentSet.get(0).account);
+
 
 //        String code = "000";
 //        String name = "测试课程";
