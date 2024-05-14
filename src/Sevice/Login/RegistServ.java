@@ -53,9 +53,8 @@ public class RegistServ {
     public static String store(UserType userType, String name, String password, String password_confirm, Gender gender, School school, Grade grade) {
         DataBase db = new DataBase();
         //转成数据库用户类型
-        int type = UserTypeUtil.EnumToDataBase(userType);
+//        int type = UserTypeUtil.EnumToDataBase(userType);
         String ID = db.availableAccount(grade.toString());
-        db.close();
         if (ID.isEmpty())
             throw new RuntimeException("RegistServ.java(line )");
         switch (userType) {
