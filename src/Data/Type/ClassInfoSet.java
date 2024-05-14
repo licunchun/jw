@@ -119,7 +119,7 @@ public class ClassInfoSet {
     }
 
     public ClassInfoSet findTeacher(String teacher) {
-        if (teacher.isEmpty()) return teacher;
+        if (teacher.isEmpty()) return this;
 
         for (int i = 0; i < this.length(); i++) {
             boolean flag = true;
