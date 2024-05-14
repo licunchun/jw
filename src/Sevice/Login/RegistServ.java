@@ -59,7 +59,14 @@ public class RegistServ {
             throw new RuntimeException("RegistServ.java(line )");
         switch (userType) {
             case UserType.Student ->
-                    db.addStudent(name, ID, password, school.toString(), gender.toString(), grade.toString());
+                    db.addStudent(
+                            name,
+                            ID,
+                            password,
+                            grade.toString(),
+                            gender.toString(),
+                            school.toString()
+                            );
             case UserType.Teacher -> db.addTeacher(name, ID, password);
             case UserType.Admin -> db.addManager(name, ID, password);
             default -> throw new RuntimeException("RegistServ.java(line )");
