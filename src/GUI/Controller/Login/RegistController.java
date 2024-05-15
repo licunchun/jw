@@ -21,7 +21,7 @@ public class RegistController {
     private static final Stage stage = Main.getStage();
     private static boolean isRegist = true;//是否在第一页面
     private static boolean isStudent = true;//是否在学生页面
-    private static String ID = "1";
+    private static String ID;
     /*
      * User Information
      */
@@ -141,7 +141,9 @@ public class RegistController {
     }
 
     public void showIDPage() {
-        changeViews(stage, "/GUI/Window/Login/IDPage.fxml");
+        isRegist = true;
+        isStudent = true;
+        IDPageController idPageController = changeViews(stage, "/GUI/Window/Login/IDPage.fxml");
     }
 
     /*
