@@ -17,15 +17,17 @@ public class PointSet {
         return points.size();
     }
 
-    public void findAccount(String account) {
+    public PointSet findAccount(String account) {
         for (int i = 0; i < this.length(); i++) {
             if (!this.get(i).account.equals(account)) points.remove(i--);
         }
+        return this;
     }
 
-    public void findCode(String code) {
+    public PointSet findCode(String code) {
         for (int i = 0; i < this.length(); i++) {
             if (!this.get(i).code.equals(code)) points.remove(i--);
         }
+        return this;
     }
 }
