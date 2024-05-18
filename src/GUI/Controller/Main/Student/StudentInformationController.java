@@ -48,11 +48,6 @@ public class StudentInformationController {
      * Function
      */
     @FXML
-    private void initialize() {
-        flush();
-    }
-
-    @FXML
     private void doEditGrade() {
         if (!isEditGradePageShow) {
             isEditGradePageShow = true;

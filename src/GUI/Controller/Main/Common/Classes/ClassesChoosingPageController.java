@@ -233,7 +233,7 @@ public class ClassesChoosingPageController {
 //            fullColumn.setCellValueFactory(new PropertyValueFactory<>("是否满人"));
         }//设置自定义格式工厂
 
-        flush();//刷新数据
+        //flush();//刷新数据
         tableView.setItems(data);
 
         tableView.getColumns().addAll(
