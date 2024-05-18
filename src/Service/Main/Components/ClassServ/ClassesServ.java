@@ -15,25 +15,25 @@ import java.util.Arrays;
 
 public class ClassesServ {
     public static String[] fromClasses(Classes classes){
-        String code = classes.getCode();
-        String name = classes.getName();
-        String period = classes.getPeriod().toString();
-        String credits = classes.getCredits().toString();
+        String code = classes.getCode()==null?"":classes.getCode();
+        String name = classes.getName()==null?"":classes.getName();
+        String period = classes.getPeriod()==null?"":classes.getPeriod().toString();
+        String credits = classes.getCredits()==null?"":classes.getCredits().toString();
 //        String time = classes.getTime().toString();
         String time = "";
         String stdCount = String.valueOf(classes.getStdCount());
         String limitCount = String.valueOf(classes.getLimitCount());
-        String classType = classes.getClassType().toString();
-        String courseType = classes.getCourseType().toString();
-        String school = classes.getSchool().toString();
-        String campus = classes.getCampus().toString();
-        String examMode = classes.getExamMode().toString();
-        String language = classes.getLanguage().toString();
-        String education = classes.getEducation().toString();
+        String classType = classes.getClassType()==null?"":classes.getClassType().toString();
+        String courseType = classes.getCourseType()==null?"":classes.getCourseType().toString();
+        String school = classes.getSchool()==null?"":classes.getSchool().toString();
+        String campus = classes.getCampus()==null?"":classes.getCampus().toString();
+        String examMode = classes.getExamMode()==null?"":classes.getExamMode().toString();
+        String language = classes.getLanguage()==null?"":classes.getLanguage().toString();
+        String education = classes.getEducation()==null?"":classes.getEducation().toString();
 //        String teachers = classes.getTeacher().toString();
         String teachers = "";
-        String full = classes.getFull().toString();
-        String place = classes.getPlace();
+        String full = classes.getFull()==null?"":classes.getFull().toString();
+        String place = classes.getPlace()==null?"":classes.getPlace();
         String[] info = {
                 code,
                 name,
