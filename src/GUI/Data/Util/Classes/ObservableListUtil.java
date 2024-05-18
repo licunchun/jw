@@ -4,9 +4,9 @@ import GUI.Data.DataPackage.Classes.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import static Sevice.Main.Components.ClassServ.ClassesServ.*;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
-import static Sevice.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
+import static Service.Main.Components.ClassServ.ClassesServ.*;
+import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
+import static Service.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
 public class ObservableListUtil {
     public static ObservableList<StudentCourseScoreTable> getStudentScoreObservableList(String ID) {

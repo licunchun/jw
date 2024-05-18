@@ -1,16 +1,5 @@
 import Data.DataBase;
-import Data.Type.ClassInfo;
-import Data.Type.ClassInfoSet;
 import Data.Type.StudentSet;
-import GUI.Data.DataPackage.Classes.Classes;
-import GUI.Data.DataPackage.Classes.CourseTimeSet;
-import GUI.Data.DataPackage.Classes.IDSet;
-import GUI.Data.Enum.Classes.*;
-import GUI.Data.Enum.School;
-import Sevice.Main.Components.ClassServ.ClassesServ;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 
 public class TestBench {

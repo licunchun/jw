@@ -20,8 +20,8 @@ import javafx.util.StringConverter;
 import static GUI.Data.Enum.GUI.ObservableList.ClassesChoosingObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Sevice.Main.Components.ClassServ.ClassesServ.searchClasses;
-import static Sevice.Main.Components.UserServ.UserServ.findTeacher;
+import static Service.Main.Components.ClassServ.ClassesServ.searchClasses;
+import static Service.Main.Components.UserServ.UserServ.findTeacher;
 
 public class ClassesChoosingPageController {
     private static final int ROWS_PER_PAGE = 20;//每页最多有多少行

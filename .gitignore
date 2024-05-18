@@ -31,9 +31,9 @@ out/
 /src/GUI/Stage/MainTest.java
 /src/GUI/GUIUtil/SceneUtil.java
 /src/GUI/Stage/MyStage.java
-/src/Sevice/Test.java
+/src/Service/Test.java
 /src/GUI/Controller/Main/test/
-/src/Sevice/Utils/User/Test.java
+/src/Service/Utils/User/Test.java
 
 ### 测试文件
-/src/Sevice/test/
+/src/Service/test/

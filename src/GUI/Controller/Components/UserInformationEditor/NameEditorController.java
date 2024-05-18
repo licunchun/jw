@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static Sevice.Main.Components.UserServ.UserServ.editName;
+import static Service.Main.Components.UserServ.UserServ.editName;
 
 public class NameEditorController {
     @FXML

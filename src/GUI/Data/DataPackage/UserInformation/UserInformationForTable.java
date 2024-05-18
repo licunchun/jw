@@ -14,20 +14,20 @@ public class UserInformationForTable {
 
     public UserInformationForTable(String ID) {
         this.ID = new SimpleStringProperty(ID);
-        this.name = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getName(ID));
+        this.name = new SimpleStringProperty(Service.Main.Components.UserServ.UserServ.getName(ID));
         this.password = new SimpleStringProperty("修改密码");
         //不会真的有人直接传密码吧，不会吧，不会吧！！
-        UserType userType = Sevice.Main.Components.UserServ.UserServ.getUserType(ID);
+        UserType userType = Service.Main.Components.UserServ.UserServ.getUserType(ID);
         switch (userType) {
             case UserType.Student -> {
-                this.grade = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getGrade(ID).toString());
-                this.school = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getSchool(ID).toString());
-                this.gender = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getGender(ID).toString());
-                this.money = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getMoney(ID).toString());
+                this.grade = new SimpleStringProperty(Service.Main.Components.UserServ.UserServ.getGrade(ID).toString());
+                this.school = new SimpleStringProperty(Service.Main.Components.UserServ.UserServ.getSchool(ID).toString());
+                this.gender = new SimpleStringProperty(Service.Main.Components.UserServ.UserServ.getGender(ID).toString());
+                this.money = new SimpleStringProperty(Service.Main.Components.UserServ.UserServ.getMoney(ID).toString());
             }
             case UserType.Teacher -> {
                 this.grade = new SimpleStringProperty("");
-                this.school = new SimpleStringProperty(Sevice.Main.Components.UserServ.UserServ.getSchool(ID).toString());
+                this.school = new SimpleStringProperty(Service.Main.Components.UserServ.UserServ.getSchool(ID).toString());
                 this.gender = new SimpleStringProperty("");
                 this.money = new SimpleStringProperty("");
             }

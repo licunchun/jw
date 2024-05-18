@@ -19,9 +19,9 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
-import static Sevice.Main.Components.UserServ.UserServ.getName;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
-import static Sevice.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
+import static Service.Main.Components.UserServ.UserServ.getName;
+import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
+import static Service.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
 public class ClassesSchedulePageController {//TODO
     @FXML

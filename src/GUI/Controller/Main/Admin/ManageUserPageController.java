@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Sevice.Main.Components.UserServ.UserServ.findUser;
+import static Service.Main.Components.UserServ.UserServ.findUser;
 
 public class ManageUserPageController {
     private static final int ROWS_PER_PAGE = 20;//每页最多有多少行

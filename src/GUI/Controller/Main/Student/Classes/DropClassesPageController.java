@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
+import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 
 public class DropClassesPageController {
     private static final int ROWS_PER_PAGE = 20;//每页最多有多少行

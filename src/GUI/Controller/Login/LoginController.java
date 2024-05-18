@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.MainPageUtil.openMainPage;
 import static GUI.GUIUtil.StageUtil.changeViews;
-import static Sevice.Login.LoginServ.checkIDAndPassword;
+import static Service.Login.LoginServ.checkIDAndPassword;
 
 
 public class LoginController {

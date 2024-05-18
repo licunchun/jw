@@ -6,9 +6,9 @@ import javafx.beans.property.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentGPA;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getStudentScore;
-import static Sevice.Main.Components.UserServ.UserServ.*;
+import static Service.Main.Components.ClassServ.ClassesServ.getStudentGPA;
+import static Service.Main.Components.ClassServ.ClassesServ.getStudentScore;
+import static Service.Main.Components.UserServ.UserServ.*;
 
 public class TeacherScoreSubTable {
     private final SimpleStringProperty studentID;

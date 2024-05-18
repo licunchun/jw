@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import static GUI.Data.Enum.GUI.ObservableList.UserObservableList.GradeList;
-import static Sevice.Main.Components.UserServ.UserServ.editGrade;
+import static Service.Main.Components.UserServ.UserServ.editGrade;
 
 public class GradeEditorController {
     @FXML

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Sevice.Main.Components.UserServ.UserServ.getSchool;
+import static Service.Main.Components.UserServ.UserServ.getSchool;
 
 public class TeacherInformationController {
     @FXML

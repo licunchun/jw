@@ -7,7 +7,7 @@ import javafx.collections.ObservableList;
 import java.util.HashSet;
 import java.util.Set;
 
-import static Sevice.Main.Components.UserServ.UserServ.getName;
+import static Service.Main.Components.UserServ.UserServ.getName;
 
 public class IDSet {
     private final Set<String> IDSet = new HashSet<>();

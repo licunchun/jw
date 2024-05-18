@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import static Sevice.Main.Components.UserServ.UserServ.editAddMoney;
+import static Service.Main.Components.UserServ.UserServ.editAddMoney;
 
 public class RechargerController {
     @FXML

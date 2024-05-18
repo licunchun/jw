@@ -9,7 +9,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getStudentScoreObservableList;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.*;
+import static Service.Main.Student.ClassesServ.StudentClassesServ.*;
 
 public class StudentScoreController {
     @FXML

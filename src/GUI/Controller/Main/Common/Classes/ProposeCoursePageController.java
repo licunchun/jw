@@ -17,8 +17,8 @@ import javafx.util.StringConverter;
 import static GUI.Data.Enum.GUI.ObservableList.ClassesInformationObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Sevice.Main.Components.ClassServ.ClassesServ.newClasses;
-import static Sevice.Main.Components.UserServ.UserServ.getName;
+import static Service.Main.Components.ClassServ.ClassesServ.newClasses;
+import static Service.Main.Components.UserServ.UserServ.getName;
 
 public class ProposeCoursePageController {
     @FXML

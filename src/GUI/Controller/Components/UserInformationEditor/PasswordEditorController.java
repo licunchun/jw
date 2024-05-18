@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-import static Sevice.Main.Components.UserServ.UserServ.editPassword;
+import static Service.Main.Components.UserServ.UserServ.editPassword;
 
 public class PasswordEditorController {
     @FXML

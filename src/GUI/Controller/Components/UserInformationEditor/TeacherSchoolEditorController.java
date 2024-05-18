@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
 import static GUI.Data.Enum.GUI.ObservableList.UserObservableList.SchoolList;
-import static Sevice.Main.Components.UserServ.UserServ.editSchool;
+import static Service.Main.Components.UserServ.UserServ.editSchool;
 
 public class TeacherSchoolEditorController {
     @FXML

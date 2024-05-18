@@ -16,8 +16,8 @@ import javafx.util.Duration;
 import java.util.Objects;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreSubPageObservableList;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getClasses;
-import static Sevice.Main.Components.ClassServ.ClassesServ.setStudentScore;
+import static Service.Main.Components.ClassServ.ClassesServ.getClasses;
+import static Service.Main.Components.ClassServ.ClassesServ.setStudentScore;
 
 public class TeacherScoreSubPageController {
     @FXML

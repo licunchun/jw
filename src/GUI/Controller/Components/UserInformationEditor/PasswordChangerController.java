@@ -7,7 +7,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.stage.Stage;
 
-import static Sevice.Main.Components.UserServ.UserServ.changePassword;
+import static Service.Main.Components.UserServ.UserServ.changePassword;
 
 public class PasswordChangerController {
     @FXML

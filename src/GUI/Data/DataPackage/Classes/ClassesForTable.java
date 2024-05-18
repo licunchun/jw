@@ -2,7 +2,7 @@ package GUI.Data.DataPackage.Classes;
 
 import javafx.beans.property.SimpleStringProperty;
 
-import static Sevice.Main.Components.ClassServ.ClassesServ.toStringTime;
+import static Service.Main.Components.ClassServ.ClassesServ.toStringTime;
 
 public class ClassesForTable {
     private final SimpleStringProperty code;

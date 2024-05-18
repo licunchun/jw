@@ -11,9 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import static Sevice.Main.Components.ClassServ.ClassesServ.deleteClasses;
-import static Sevice.Main.Components.ClassServ.ClassesServ.getClasses;
-import static Sevice.Main.Student.ClassesServ.StudentClassesServ.*;
+import static Service.Main.Components.ClassServ.ClassesServ.deleteClasses;
+import static Service.Main.Components.ClassServ.ClassesServ.getClasses;
+import static Service.Main.Student.ClassesServ.StudentClassesServ.*;
 
 public class ClassesMainPageController {
     @FXML
