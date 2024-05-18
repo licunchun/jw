@@ -148,6 +148,24 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
+    public String[] selectAll(String tableName,String colName){
+        String sql = "SELECT " + colName + " FROM " + tableName;
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            ArrayList<String> arrayList = new ArrayList<>();
+            while (rs.next()){
+                arrayList.add(rs.getString(colName));
+            }
+            rs.close();
+            close();
+            return arrayList.toArray(new String[0]);
+        } catch (SQLException e) {
+            close();
+            System.out.println("Database lookup failure");
+            throw new RuntimeException(e);
+        }
+    }
     //根据所有条件返回所有满足该条件的值
     public String[] selectAll(String tableName,String colName,String[] valueName,String[] value){
         StringBuilder conditions = new StringBuilder();

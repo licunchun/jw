@@ -8,8 +8,10 @@ public enum ExamMode {
     Project("大作业（论文、报告、项目或作品等）"),
     Computer("机考"),
     Oral("口试"),
-    Experiment("实验操作");
+    Experiment("实验操作"),
 
+    //ExamModeExtension
+    Other("其他");
     private final String name;
 
     ExamMode(String name) {

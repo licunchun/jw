@@ -6,7 +6,7 @@ public enum Campus {
     Middle("中区"),
     South("南区"),
     HighTech("高新区"),
-    Else("其他");
+    Else("其他研院");
     private final String name;
 
     Campus(String name) {
