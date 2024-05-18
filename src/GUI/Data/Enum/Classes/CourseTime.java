@@ -1,5 +1,8 @@
 package GUI.Data.Enum.Classes;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public enum CourseTime {
     /*
      * 主体
@@ -122,5 +125,8 @@ public enum CourseTime {
     public String toString() {
         return '(' + this.week.toString() + ',' + this.section + ')';
     }
-    
+
+    public static CourseTime fromInt(int week,int section){
+        return CourseTime.values()[(week-1)*13+(section-1)];
+    }
 }

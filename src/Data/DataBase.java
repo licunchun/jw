@@ -313,7 +313,6 @@ public class DataBase {
         }
         return "";
     }
-
     public String keyOfStudent(String account) {
         return key(account, STUDENT);
     }

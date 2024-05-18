@@ -1,11 +1,14 @@
 package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.DataPackage.UserInformation.UserInformationForTable;
+import Service.Data.DataBase;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static Service.Main.Components.UserServ.UserServ.getName;
 
@@ -48,6 +51,18 @@ public class IDSet {
         return IDSet;
     }
 
+    public static IDSet fromTeacherString(String teachers){
+        IDSet idSet = new IDSet();
+        String pattern = "^[一-龥·]+";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(teachers);
+        while (m.find()) {
+            String name = m.group();
+            String ID = DataBase.getTeacherID(name);
+            idSet.add(ID);
+        }
+        return idSet;
+    }
     public void print()
     {
         for (String s:IDSet)
