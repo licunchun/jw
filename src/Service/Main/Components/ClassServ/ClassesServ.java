@@ -65,7 +65,7 @@ public class ClassesServ {
         String[] codes = DataBase.getClassesCode(condition);
         ClassesSet cs = new ClassesSet();
         for (int i = 0; i < codes.length; i++) {
-            String[] info = Courses.getCourseInfo(codes[i]);
+            String[] info = Courses.geInfo(codes[i]);
             cs.add(Classes.fromArray(info));
         }
         return cs;
@@ -228,7 +228,7 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
                 "未满",
                 "待定"
         };
-        DataBase.insertTable(DataBase.COURSE,info);
+        Courses.addCourseInfo(info);
         return NewClassesError.Success;
     }
 

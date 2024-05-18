@@ -8,6 +8,7 @@ import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Gender;
 import GUI.Data.Enum.User.Grade;
 import GUI.Data.Enum.User.UserType;
+import Service.Data.Database.Students;
 import Service.Utils.*;
 
 
@@ -44,7 +45,7 @@ public class UserServ {
         if(IDManager.getUserType(ID)!=DataBase.STUDENT)
             return EditError.Invalid;
 
-        DataBase.setStudentMoney(ID,money);
+        Students.setMoney(ID,money);
         return EditError.Success;
     }
 
@@ -55,8 +56,8 @@ public class UserServ {
         if(IDManager.getUserType(ID)!=DataBase.STUDENT)
             return EditError.Invalid;
         String[] studentInfo = DataBase.getUserInfo(ID);
-        double money = Double.parseDouble(studentInfo[DataBase.MONEY]);
-        DataBase.setStudentMoney(ID,money+addMoney);
+        double money = Double.parseDouble(studentInfo[Students.money_C]);
+        Students.setMoney(ID,money+addMoney);
         return EditError.Success;
     }
 
@@ -70,7 +71,7 @@ public class UserServ {
         if(grade==null)
             return EditError.Invalid;
 
-        DataBase.setStudentGrade(ID,grade.toString());
+        Students.setGrade(ID,grade.toString());
         return EditError.Success;
     }
 
@@ -84,7 +85,7 @@ public class UserServ {
         if(school==null)
             return EditError.Invalid;
 
-        DataBase.setStudentSchool(ID,school.toString());
+        Students.setSchool(ID,school.toString());
         return EditError.Success;
     }
 
@@ -117,7 +118,7 @@ public class UserServ {
         if(IDManager.getUserType(ID)!=DataBase.STUDENT)
             throw new RuntimeException("UserServ: ID have no School");
         String[] studentInfo = DataBase.getUserInfo(ID);
-        return School.fromString(studentInfo[DataBase.SCHOOL]);
+        return School.fromString(studentInfo[Students.school_C]);
     }
 
     public static Grade getGrade(String ID) {
@@ -135,7 +136,7 @@ public class UserServ {
         if(IDManager.getUserType(ID)!=DataBase.STUDENT)
             throw new RuntimeException("UserServ: ID have no Money");
         String[] studentInfo = DataBase.getUserInfo(ID);
-        return Double.valueOf(studentInfo[DataBase.MONEY]);
+        return Double.valueOf(studentInfo[Students.money_C]);
     }
 
     /*

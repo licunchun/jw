@@ -17,12 +17,10 @@ public class DataBase {
     public static final int POINT = 4;
     public static final int ID_ = 0;
     public static final int NAME = 1;
-    public static final int PASSWORD = 2;
+
     public static final int GRADE = 3;
     public static final int GENDER = 4;
-    public static final int SCHOOL = 5;
-    public static final int CLASSES = 6;
-    public static final int MONEY = 7;
+
 
     public static final String[] TableName = {"students","teachers","managers","courses","points"};
     private static final String[] StudentCol={"ID", "name", "password", "grade", "gender", "school", "classes", "money"};
@@ -45,22 +43,21 @@ public class DataBase {
             {"NOT NULL","NOT NULL"," "}
     };
     //UserServ
+    public static String getUserName(String ID){
+        int userType = IDManager.getUserType(ID);
+        return selectTable(userType,"name","ID",ID);
+    }
     public static void setUserName(String ID, String name){
         int userType = IDManager.getUserType(ID);
         db.update(TableName[userType],"name",name,"ID",ID);
     }
+    public static String getUserPassword(String ID){
+        int userType = IDManager.getUserType(ID);
+        return selectTable(userType,"password","ID",ID);
+    }
     public static void setUserPassword(String ID, String password){
         int userType = IDManager.getUserType(ID);
         db.update(TableName[userType],"password",password,"ID",ID);
-    }
-    public static void setStudentMoney(String ID, double money){
-        db.update("students","money",String.valueOf(money),"ID",ID);
-    }
-    public static void setStudentGrade(String ID,String grade){
-        db.update("students","grade",grade,"ID",ID);
-    }
-    public static void setStudentSchool(String ID,String school){
-        db.update("students","school",school,"ID",ID);
     }
     public static String[] getUserInfo(String ID){
         int userType = IDManager.getUserType(ID);
@@ -96,10 +93,7 @@ public class DataBase {
     }
 
     //LoginServ
-    public static String getUserPassword(String ID){
-        int userType = IDManager.getUserType(ID);
-        return selectTable(userType,"password","ID",ID);
-    }
+
 
     public static String getTeacherID(String name){
         return selectTable(TEACHER,"ID","name",name);

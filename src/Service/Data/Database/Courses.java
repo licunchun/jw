@@ -2,6 +2,9 @@ package Service.Data.Database;
 
 import Service.Data.DataBase;
 import Service.Data.SQLiteJDBC;
+import Service.Utils.NameManager;
+
+import javax.lang.model.element.Name;
 
 public class Courses {
     private static final String tableName = "courses";
@@ -32,19 +35,22 @@ public class Courses {
         return full.compareTo("已满") == 0;
     }
     public static void increaseStdCount(String code){
-        int stdCount = Integer.parseInt(getCourseInfo(code)[stdCount_C]);
+        int stdCount = Integer.parseInt(geInfo(code)[stdCount_C]);
         coursesTable.update(tableName,"stdCount",String.valueOf(stdCount+1),"code",code);
     }
     public static void decreaseStdCount(String code){
-        int stdCount = Integer.parseInt(getCourseInfo(code)[stdCount_C]);
+        int stdCount = Integer.parseInt(geInfo(code)[stdCount_C]);
         coursesTable.update(tableName,"stdCount",String.valueOf(stdCount-1),"code",code);
     }
 
 
-    public static String[] getCourseInfo(String code){
+    public static String[] geInfo(String code){
         return DataBase.selectTable(DataBase.COURSE,"code",code);
     }
-    public static void addCourseInfo(){
-
+    public static void addCourseInfo(String[] info){
+        DataBase.insertTable(DataBase.COURSE,info);
+        for (String ID: NameManager.teachersNameToID(info[Courses.teachers_C])){
+            Teachers.addClasses(info[Courses.code_C],ID);
+        }
     }
 }

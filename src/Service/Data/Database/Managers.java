@@ -1,5 +1,6 @@
 package Service.Data.Database;
 
+import Service.Data.DataBase;
 import Service.Data.SQLiteJDBC;
 
 public class Managers {
@@ -12,4 +13,5 @@ public class Managers {
     public static boolean isIDExist(String ID){
         return managersTable.isColValueExist(tableName,"ID",ID);
     }
+    public static String[] getInfo(String ID){ return DataBase.selectTable(DataBase.MANAGER,"ID",ID); }
 }

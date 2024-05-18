@@ -1,5 +1,6 @@
 package Service.Data.Database;
 
+import Service.Data.DataBase;
 import Service.Data.SQLiteJDBC;
 
 public class Teachers {
@@ -12,5 +13,16 @@ public class Teachers {
 
     public static boolean isIDExist(String ID){
         return teachersTable.isColValueExist(tableName,"ID",ID);
+    }
+    public static String[] getInfo(String ID){ return DataBase.selectTable(DataBase.TEACHER,"ID",ID); }
+    public static String getID(String name){
+        return teachersTable.select(tableName,"ID","name",name);
+    }
+    public static void addClasses(String code,String ID){
+        String classes = getInfo(ID)[classes_C];
+        if(classes.isEmpty())
+            teachersTable.update("teachers","classes",code,"ID",ID);
+        else
+            teachersTable.update("teachers","classes",classes+","+code,"ID",ID);
     }
 }
