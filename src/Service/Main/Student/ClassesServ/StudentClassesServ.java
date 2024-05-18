@@ -45,7 +45,7 @@ public class StudentClassesServ {
         String[] codes = Points.getAllCode(ID);
         for (String code:codes){
             String[] courseInfo = Courses.getCourseInfo(code);
-            double credits = Double.parseDouble(courseInfo[Courses.CREDITS_C]);
+            double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalCredits += credits;
         }
         return totalCredits;
@@ -61,7 +61,7 @@ public class StudentClassesServ {
             if(point.isEmpty())
                 continue;
             String[] courseInfo = Courses.getCourseInfo(code);
-            double credits = Double.parseDouble(courseInfo[Courses.CREDITS_C]);
+            double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             receivedCredits += credits;
         }
         return receivedCredits;
@@ -79,7 +79,7 @@ public class StudentClassesServ {
             if(Double.parseDouble(point)>=60)
                 continue;
             String[] courseInfo = Courses.getCourseInfo(code);
-            double credits = Double.parseDouble(courseInfo[Courses.CREDITS_C]);
+            double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             failedCredits += credits;
         }
         return failedCredits;
@@ -108,7 +108,7 @@ public class StudentClassesServ {
             if(point.isEmpty())
                 continue;
             String[] courseInfo = Courses.getCourseInfo(code);
-            double credits = Double.parseDouble(courseInfo[Courses.CREDITS_C]);
+            double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalScore += Integer.parseInt(point)*credits;
             totalCredits += credits;
         }
@@ -126,7 +126,7 @@ public class StudentClassesServ {
             if(point.isEmpty())
                 continue;
             String[] courseInfo = Courses.getCourseInfo(code);
-            double credits = Double.parseDouble(courseInfo[Courses.CREDITS_C]);
+            double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalGPA += Points.pointToGPA(point)*credits;
             totalCredits += credits;
         }

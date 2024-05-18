@@ -9,6 +9,7 @@ import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
+import Service.Data.Database.Courses;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -64,7 +65,7 @@ public class ClassesServ {
         String[] codes = DataBase.getClassesCode(condition);
         ClassesSet cs = new ClassesSet();
         for (int i = 0; i < codes.length; i++) {
-            String[] info = DataBase.getCourseInfo(codes[i]);
+            String[] info = Courses.getCourseInfo(codes[i]);
             cs.add(Classes.fromArray(info));
         }
         return cs;

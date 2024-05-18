@@ -4,10 +4,11 @@ import Service.Data.SQLiteJDBC;
 
 public class Points {
     private static final String tableName = "points";
-    private static final String CODE_C = "code";
-    private static final String ID_C = "ID";
-    private static final String POINT_C = "point";
     private static final SQLiteJDBC pointsTable = new SQLiteJDBC();
+    public static final int code_C = 0;
+    public static final int ID_C = 1;
+    public static final int point_C = 2;
+
     public static boolean isIDExist(String ID){
         return pointsTable.isColValueExist(tableName,"ID",ID);
     }

@@ -83,9 +83,6 @@ public class DataBase {
         return db.selectAll(tableName,"ID",valueName.toArray(new String[0]),value.toArray(new String[0]));
     };
     //StudentClassesServ
-    public static String[] getAllClasses(String ID){
-        return db.selectAll(TableName[POINT],"code","ID",ID);
-    }
     public static String[] getClassInfo(String code){
         return db.select(TableName[COURSE],TableCol[COURSE],"code",code);
     }
@@ -97,22 +94,12 @@ public class DataBase {
         }
         return true;
     }
-    public static void deletePoints(String code,String ID){
-        db.deletePoints(code,ID);
-    }
-    public static void addPoints(String code,String ID){
-        db.insertPoints(code,ID);
-    }
+
     //LoginServ
     public static String getUserPassword(String ID){
         int userType = IDManager.getUserType(ID);
         return selectTable(userType,"password","ID",ID);
     }
-
-//    public Student infoOfStudent(String ID) { // 已返回对应账号的学生信息
-//        int userType = IDManager.getUserType(ID);
-//        String[] data = selectTable()
-//    }
 
     public static String getTeacherID(String name){
         return selectTable(TEACHER,"ID","name",name);
@@ -148,17 +135,6 @@ public class DataBase {
             return db.isColValueExist(TableName[userType],"ID",ID);
         }
     }
-    public static boolean isCodeExist(String code){
-        return db.isColValueExist(TableName[COURSE],"code",code);
-    }
-    public static boolean isCourseFull(String code){
-        String full = db.select("courses","full","code",code);
-        return full.compareTo("已满") == 0;
-    }
-
-        public static String[] getCourseInfo(String code){
-            return selectTable(COURSE,"code",code);
-        }
 
 
     public static void createTable(int tableIndex,boolean primaryKey){
