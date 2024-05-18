@@ -214,7 +214,7 @@ public class SQLiteJDBC {
 
     //points操作
     public void insertPoints(String classesCode, String ID){
-        String sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','0');";
+        String sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
         execute(sql);
     }
     public void deletePoints(String classesCode, String ID){
