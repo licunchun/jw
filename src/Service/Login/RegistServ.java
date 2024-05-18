@@ -6,10 +6,12 @@ import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Gender;
 import GUI.Data.Enum.User.Grade;
 import GUI.Data.Enum.User.UserType;
+import Service.Data.Database.Teachers;
 import Service.Utils.*;
 
 public class RegistServ {
     public static Regist regist(UserType userType, String name, String password, String password_confirm) {
+
         //名字为null或空
         if(name==null||name.isEmpty())
             return Regist.NameEmpty;
@@ -19,7 +21,8 @@ public class RegistServ {
         //名字字符不合法
         if (!NameManager.checkChar(name))
             return Regist.NameInvalidChar;
-
+        if(userType==UserType.Teacher&& Teachers.isNameExist(name))
+            throw new IllegalArgumentException("同名老师");
         //密码为null或空
         if(password==null||password.isEmpty())
             return Regist.PasswordEmpty;
