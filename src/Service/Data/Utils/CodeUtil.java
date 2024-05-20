@@ -1,4 +1,4 @@
-package Service.Utils;
+package Service.Data.Utils;
 
 public class CodeManager {
 

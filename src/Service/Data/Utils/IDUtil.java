@@ -1,12 +1,15 @@
-package Service.Utils;
+package Service.Data.Utils;
 
 import Service.Data.DataBase;
-import Service.Data.SQLiteJDBC;
 
 public class IDManager {
     final private static int STUDENT_ID_LENGTH = 10;
     final private static int TEACHER_ID_LENGTH = 5;
     final private static int MANAGER_ID_LENGTH = 1;
+    public static final int INVALID = -1;
+    public static final int STUDENT = 0;
+    public static final int TEACHER = 1;
+    public static final int MANAGER = 2;
     public static int getUserType(String ID){
         return switch (ID.length()){
             case (STUDENT_ID_LENGTH)-> DataBase.STUDENT;

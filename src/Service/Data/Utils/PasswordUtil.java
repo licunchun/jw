@@ -1,4 +1,4 @@
-package Service.Utils;
+package Service.Data.Utils;
 
 public class PasswordManager {
     final public static int MAX_NAME_LENGTH = 10;

@@ -1,4 +1,4 @@
-package Service.Utils;
+package Service.Data.Utils;
 
 import Service.Data.Database.Teachers;
 
