@@ -197,15 +197,17 @@ public class ClassesChoosingPageController {
         }//设置表格列与数据对象的属性关联
         {
             codeColumn.setCellFactory(column -> new TableCell<>() {
-                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
+                private final Hyperlink hyperlink = new Hyperlink();
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isClassesMainPageExist = true;
-                        openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
-                        resetLocation(classesMainPageStage);
+                        if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
+                            String code = getTableView().getItems().get(getIndex()).getCode();
+                            openClassesMainPage(code);
+                            resetLocation(classesMainPageStage);
+                        }
                     });
-                }//超链接点击事件
+                }
 
                 @Override
                 protected void updateItem(Void item, boolean empty) {
@@ -213,7 +215,12 @@ public class ClassesChoosingPageController {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(hyperlink);
+                        if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
+                            hyperlink.setText(getTableView().getItems().get(getIndex()).getCode());
+                            setGraphic(hyperlink);
+                        } else {
+                            setGraphic(null);
+                        }
                     }
                 }
             });
@@ -402,6 +409,7 @@ public class ClassesChoosingPageController {
 
     private void openClassesMainPage(String classesCode) {
         if (!isClassesMainPageExist) {
+            isClassesMainPageExist = true;
             classesMainPageStage = new Stage();
 
             classesMainPageController = changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");

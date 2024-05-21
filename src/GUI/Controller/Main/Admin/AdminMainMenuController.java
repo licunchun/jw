@@ -150,101 +150,105 @@ public class AdminMainMenuController {
             mainMenuController = loader.getController();
             mainMenuTabPane = mainMenuController.getTabPane();
 
-            Menu ClasesMenu = new Menu("课程");
-            {
-                MenuItem OpenClassesManagePage = new MenuItem("管理课程");
-                MenuItem OpenProposeCoursePage = new MenuItem("新建课程");
-
-                OpenClassesManagePage.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
-                OpenProposeCoursePage.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
-
-                OpenClassesManagePage.setOnAction(e -> {
-                    if (!isClassesManagePageExist) {
-                        isClassesManagePageExist = true;
-                        mainMenuTabPane.getTabs().add(classesManageTab);
-                        classesManagePageController.flush();
-                    } else {
-                        mainMenuTabPane.getSelectionModel().select(classesManageTab);
-                    }
-                });
-                OpenProposeCoursePage.setOnAction(e -> {
-                    if (!isProposeCoursePageExist) {
-                        isProposeCoursePageExist = true;
-                        proposeCoursePageStage = new Stage();
-                        proposeCoursePageStage.setTitle("新建课程");
-
-                        proposeCoursePageController = changeViews(proposeCoursePageStage, "/GUI/Window/Main/Common/Classes/ProposeCoursePage.fxml");
-                        proposeCoursePageController.setUserType(UserType.Admin);
-                        proposeCoursePageController.setStage(proposeCoursePageStage);
-                        proposeCoursePageController.setID(ID);
-                        proposeCoursePageController.flush();
-
-                        proposeCoursePageStage.setOnHiding(event -> {
-                            proposeCoursePageController.close();
-                            proposeCoursePageStage.close();
-                        });
-
-                        resetLocation(proposeCoursePageStage);
-                    } else {
-                        resetLocation(proposeCoursePageStage);
-                    }
-                });
-
-                ClasesMenu.getItems().addAll(OpenClassesManagePage, OpenProposeCoursePage);
-            }//选课里面的子菜单
-            Menu ClassesTeachingMenu = new Menu("用户");
-            {
-                MenuItem OpenManageStudentPage = new MenuItem("管理学生");
-                MenuItem OpenManageTeacherPage = new MenuItem("管理教师");
-                MenuItem OpenManageAdminPage = new MenuItem("管理管理员");
-
-                OpenManageStudentPage.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
-                OpenManageTeacherPage.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.CONTROL_DOWN));
-                OpenManageAdminPage.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
-
-                OpenManageStudentPage.setOnAction(e -> {
-                    if (!isManageStudentPageExist) {
-                        isManageStudentPageExist = true;
-                        mainMenuTabPane.getTabs().add(manageStudentTab);
-                        manageStudentPageController.flush();
-                    } else {
-                        mainMenuTabPane.getSelectionModel().select(manageStudentTab);
-                    }
-                });
-                OpenManageTeacherPage.setOnAction(e -> {
-                    if (!isManageTeacherPageExist) {
-                        isManageTeacherPageExist = true;
-                        mainMenuTabPane.getTabs().add(manageTeacherTab);
-                        manageTeacherPageController.flush();
-                    } else {
-                        mainMenuTabPane.getSelectionModel().select(manageTeacherTab);
-                    }
-                });
-                OpenManageAdminPage.setOnAction(e -> {
-                    if (!isManageAdminPageExist) {
-                        isManageAdminPageExist = true;
-                        mainMenuTabPane.getTabs().add(manageAdminTab);
-                        manageAdminPageController.flush();
-                    } else {
-                        mainMenuTabPane.getSelectionModel().select(manageAdminTab);
-                    }
-                });
-
-                ClassesTeachingMenu.getItems().addAll(OpenManageStudentPage, OpenManageTeacherPage, OpenManageAdminPage);
-            }//管理人员里面的子菜单
-            Menu PageMenu = new Menu("页面");
-            {
-                MenuItem Reload = new MenuItem("重新加载页面");
-
-                Reload.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
-
-                Reload.setOnAction(e -> reloadPage());
-
-                PageMenu.getItems().addAll(Reload);
-            }//页面里的子菜单
             subPane.getChildren().add(subContent);
             {
                 MenuBar menuBar = mainMenuController.getMenuBar();
+
+                Menu ClasesMenu = new Menu("课程");
+                {
+                    MenuItem OpenClassesManagePage = new MenuItem("管理课程");
+                    MenuItem OpenProposeCoursePage = new MenuItem("新建课程");
+
+                    OpenClassesManagePage.setAccelerator(new KeyCodeCombination(KeyCode.C, KeyCombination.CONTROL_DOWN));
+                    OpenProposeCoursePage.setAccelerator(new KeyCodeCombination(KeyCode.P, KeyCombination.CONTROL_DOWN));
+
+                    OpenClassesManagePage.setOnAction(e -> {
+                        if (!isClassesManagePageExist) {
+                            isClassesManagePageExist = true;
+                            mainMenuTabPane.getTabs().add(classesManageTab);
+                            classesManagePageController.flush();
+                        } else {
+                            mainMenuTabPane.getSelectionModel().select(classesManageTab);
+                        }
+                    });
+                    OpenProposeCoursePage.setOnAction(e -> {
+                        if (!isProposeCoursePageExist) {
+                            isProposeCoursePageExist = true;
+                            proposeCoursePageStage = new Stage();
+                            proposeCoursePageStage.setTitle("新建课程");
+
+                            proposeCoursePageController = changeViews(proposeCoursePageStage, "/GUI/Window/Main/Common/Classes/ProposeCoursePage.fxml");
+                            proposeCoursePageController.setUserType(UserType.Admin);
+                            proposeCoursePageController.setStage(proposeCoursePageStage);
+                            proposeCoursePageController.setID(ID);
+                            proposeCoursePageController.flush();
+
+                            proposeCoursePageStage.setOnHiding(event -> {
+                                proposeCoursePageController.close();
+                                proposeCoursePageStage.close();
+                            });
+
+                            resetLocation(proposeCoursePageStage);
+                        } else {
+                            resetLocation(proposeCoursePageStage);
+                        }
+                    });
+
+                    ClasesMenu.getItems().addAll(OpenClassesManagePage, OpenProposeCoursePage);
+                }//选课里面的子菜单
+
+                Menu ClassesTeachingMenu = new Menu("用户");
+                {
+                    MenuItem OpenManageStudentPage = new MenuItem("管理学生");
+                    MenuItem OpenManageTeacherPage = new MenuItem("管理教师");
+                    MenuItem OpenManageAdminPage = new MenuItem("管理管理员");
+
+                    OpenManageStudentPage.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.CONTROL_DOWN));
+                    OpenManageTeacherPage.setAccelerator(new KeyCodeCombination(KeyCode.T, KeyCombination.CONTROL_DOWN));
+                    OpenManageAdminPage.setAccelerator(new KeyCodeCombination(KeyCode.A, KeyCombination.CONTROL_DOWN));
+
+                    OpenManageStudentPage.setOnAction(e -> {
+                        if (!isManageStudentPageExist) {
+                            isManageStudentPageExist = true;
+                            mainMenuTabPane.getTabs().add(manageStudentTab);
+                            manageStudentPageController.flush();
+                        } else {
+                            mainMenuTabPane.getSelectionModel().select(manageStudentTab);
+                        }
+                    });
+                    OpenManageTeacherPage.setOnAction(e -> {
+                        if (!isManageTeacherPageExist) {
+                            isManageTeacherPageExist = true;
+                            mainMenuTabPane.getTabs().add(manageTeacherTab);
+                            manageTeacherPageController.flush();
+                        } else {
+                            mainMenuTabPane.getSelectionModel().select(manageTeacherTab);
+                        }
+                    });
+                    OpenManageAdminPage.setOnAction(e -> {
+                        if (!isManageAdminPageExist) {
+                            isManageAdminPageExist = true;
+                            mainMenuTabPane.getTabs().add(manageAdminTab);
+                            manageAdminPageController.flush();
+                        } else {
+                            mainMenuTabPane.getSelectionModel().select(manageAdminTab);
+                        }
+                    });
+
+                    ClassesTeachingMenu.getItems().addAll(OpenManageStudentPage, OpenManageTeacherPage, OpenManageAdminPage);
+                }//管理人员里面的子菜单
+
+                Menu PageMenu = new Menu("页面");
+                {
+                    MenuItem Reload = new MenuItem("重新加载页面");
+
+                    Reload.setAccelerator(new KeyCodeCombination(KeyCode.L, KeyCombination.CONTROL_DOWN));
+
+                    Reload.setOnAction(e -> reloadPage());
+
+                    PageMenu.getItems().addAll(Reload);
+                }//页面里的子菜单
+
                 menuBar.getMenus().addAll(ClasesMenu, ClassesTeachingMenu, PageMenu);
             }//MenuBar配置
         } catch (IOException e) {

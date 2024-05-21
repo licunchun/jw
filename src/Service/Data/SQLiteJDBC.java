@@ -176,7 +176,7 @@ public class SQLiteJDBC {
                 conditions.append(" AND ").append(valueName[i]).append(" = '").append(value[i]).append("'");
         }
         conditions.append(";");
-        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + conditions;
+        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE  " + conditions;//TODO
         try {
             connect();
             rs = stmt.executeQuery(sql);

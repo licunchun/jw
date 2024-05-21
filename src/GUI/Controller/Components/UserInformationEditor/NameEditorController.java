@@ -21,6 +21,8 @@ public class NameEditorController {
 
     @FXML
     private void doConfirm() {
+        System.out.println(ID);
+        System.out.println(ChangedName.getText());
         switch (editName(ID, ChangedName.getText())) {
             case EditError.IDNotFound:
                 tips.setText("未找到ID，请重新登录！！");
@@ -30,7 +32,7 @@ public class NameEditorController {
                 tips.setText("用户名不合法，请重新输入");
                 tips.setVisible(true);
                 break;
-            case Success:
+            case EditError.Success:
                 stage.close();
         }
     }

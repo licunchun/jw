@@ -106,7 +106,7 @@ public class UserInformationPageController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
-        stage.setTitle("个人信息");
+        this.stage.setTitle("个人信息");
     }
 
     public void setID(String ID) {
