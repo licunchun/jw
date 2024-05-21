@@ -64,6 +64,7 @@ public class ClassesServ {
         String[] classInfo = Courses.geInfo(classesCode);
         return Classes.fromArray(classInfo);
     }
+
     public static ClassesSet searchClasses(Classes classes) {
         String[] conditions = fromClasses(classes);
         String[] codes = Courses.findCode(conditions);
