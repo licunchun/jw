@@ -1,5 +1,5 @@
 package Service.Data.Utils;
 
-public class CodeManager {
+public class CodeUtil {
 
 }

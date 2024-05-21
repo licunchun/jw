@@ -1,6 +1,5 @@
 package Service.Main.Components.UserServ;
 
-import Service.Data.DataBase;
 import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.Enum.Error.Main.Components.UserServ.ChangePasswordError;
 import GUI.Data.Enum.Error.Main.Components.UserServ.EditError;
@@ -8,8 +7,11 @@ import GUI.Data.Enum.School;
 import GUI.Data.Enum.User.Gender;
 import GUI.Data.Enum.User.Grade;
 import GUI.Data.Enum.User.UserType;
-import Service.Data.Database.Students;
-import Service.Utils.*;
+import Service.Data.Tables.Managers;
+import Service.Data.Tables.Students;
+import Service.Data.Tables.Teachers;
+import Service.Data.Tables.User;
+import Service.Data.Utils.*;
 
 
 public class UserServ {
@@ -17,32 +19,32 @@ public class UserServ {
      * Editor
      */
     public static EditError editName(String ID, String name) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if (!NameManager.check(name))
+        if (!NameUtil.check(name))
             return EditError.Invalid;
 
-        DataBase.setUserName(ID,name);
+        User.setName(ID,name);
         return EditError.Success;
     }
 
     public static EditError editPassword(String ID, String password) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if (!PasswordManager.check(password))
+        if (!PasswordUtil.check(password))
             return EditError.Invalid;
 
-        DataBase.setUserPassword(ID,password);
+        User.setPassword(ID,password);
         return EditError.Success;
     }
 
     public static EditError editMoney(String ID, double money) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             return EditError.Invalid;
 
         Students.setMoney(ID,money);
@@ -50,22 +52,22 @@ public class UserServ {
     }
 
     public static EditError editAddMoney(String ID, double addMoney) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             return EditError.Invalid;
-        String[] studentInfo = DataBase.getUserInfo(ID);
-        double money = Double.parseDouble(studentInfo[Students.money_C]);
+
+        double money = Double.parseDouble(Students.getInfo(ID)[Students.money_C]);
         Students.setMoney(ID,money+addMoney);
         return EditError.Success;
     }
 
     public static EditError editGrade(String ID, Grade grade) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             return EditError.Invalid;
 
         if(grade==null)
@@ -76,10 +78,10 @@ public class UserServ {
     }
 
     public static EditError editSchool(String ID, School school) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             return EditError.Invalid;
 
         if(school==null)
@@ -97,57 +99,54 @@ public class UserServ {
     }
 
     public static String getName(String ID) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return "";
-        String[] studentInfo = DataBase.getUserInfo(ID);
-        return studentInfo[DataBase.NAME];
+        return User.getName(ID);
     }
 
     public static Gender getGender(String ID) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no Gender");
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no Gender");
-        String[] studentInfo = DataBase.getUserInfo(ID);
-        return Gender.fromString(studentInfo[DataBase.GENDER]);
+        return Gender.fromString(Students.getInfo(ID)[Students.gender_C]);
     }
 
     public static School getSchool(String ID) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no School");
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)==User.TEACHER)
+            return School.ChemistryAndMaterialsScience;
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no School");
-        String[] studentInfo = DataBase.getUserInfo(ID);
-        return School.fromString(studentInfo[Students.school_C]);
+        return School.fromString(Students.getInfo(ID)[Students.school_C]);
     }
 
     public static Grade getGrade(String ID) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no Grade");
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no Grade");
-        String[] studentInfo = DataBase.getUserInfo(ID);
-        return Grade.fromString(studentInfo[DataBase.GRADE]);
+        return Grade.fromString(Students.getInfo(ID)[Students.grade_C]);
     }
 
     public static Double getMoney(String ID) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no Money");
-        if(IDManager.getUserType(ID)!=DataBase.STUDENT)
+        if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no Money");
-        String[] studentInfo = DataBase.getUserInfo(ID);
-        return Double.valueOf(studentInfo[Students.money_C]);
+        return Double.valueOf(Students.getInfo(ID)[Students.money_C]);
     }
 
     /*
      * Else
      */
     public static ChangePasswordError changePassword(String ID, String originPassword, String newPassword, String newConfirmPassword) {
-        if(!IDManager.check(ID))
+        if(!IDUtil.check(ID))
             return ChangePasswordError.IDNotFound;
-        if(!PasswordManager.check(originPassword))
+        if(!PasswordUtil.check(originPassword))
             return ChangePasswordError.WrongOriginPassword;
-        String password_get = DataBase.getUserPassword(ID);
+        String password_get = User.getPassword(ID);
         if(originPassword.compareTo(password_get) != 0)
             return ChangePasswordError.WrongOriginPassword;
 
@@ -156,21 +155,20 @@ public class UserServ {
         if(newConfirmPassword==null||newConfirmPassword.isEmpty())
             return ChangePasswordError.EmptyInput;
 
-        if(!PasswordManager.checkLength(newPassword))
+        if(!PasswordUtil.checkLength(newPassword))
             return ChangePasswordError.OverLength;
-        if(!PasswordManager.checkChar(newPassword))
+        if(!PasswordUtil.checkChar(newPassword))
             return ChangePasswordError.InvalidChar;
         if(newPassword.compareTo(newConfirmPassword)!=0)
             return ChangePasswordError.NotMatch;
 
-        DataBase.setUserPassword(ID,newPassword);
+        User.setPassword(ID,newPassword);
         return ChangePasswordError.Success;
     }
 
     public static IDSet findStudent(String name) {
-
         IDSet idSet = new IDSet();
-        String[] sameNameStudentID = DataBase.getSameNameID("students",name);
+        String[] sameNameStudentID = Students.getSameNameID(name);
         for (String ID : sameNameStudentID) {
             idSet.add(ID);
         }
@@ -179,7 +177,7 @@ public class UserServ {
 
     public static IDSet findTeacher(String name) {
         IDSet idSet = new IDSet();
-        String[] sameNameTeacherID = DataBase.getSameNameID("teachers",name);
+        String[] sameNameTeacherID = Teachers.getSameNameID(name);
         for (String ID : sameNameTeacherID) {
             idSet.add(ID);
         }
@@ -188,7 +186,7 @@ public class UserServ {
 
     public static IDSet findAdmin(String name) {
         IDSet idSet = new IDSet();
-        String[] sameNameManagerID = DataBase.getSameNameID("managers",name);
+        String[] sameNameManagerID = Managers.getSameNameID(name);
         for (String ID : sameNameManagerID) {
             idSet.add(ID);
         }
@@ -197,39 +195,46 @@ public class UserServ {
 
     public static IDSet findUser(UserType userType, String ID, String Name) {
         IDSet idSet = new IDSet();
-        String[] sameNameIDStudent = DataBase.getSameNameID("students",ID,Name);
-        String[] sameNameIDTeacher = DataBase.getSameNameID("teachers",ID,Name);
-        String[] sameNameIDManager = DataBase.getSameNameID("managers",ID,Name);
-        if(userType==null){
-            for (String id : sameNameIDStudent) {
-                idSet.add(id);
+        if (ID == null || ID.isEmpty()) {
+            if(User.isIDExist(ID))
+                idSet.add(ID);
+        } else {
+            String[] empty = new String[0];
+            String[] sameNameIDStudent = Students.isNameExist(Name)?Students.getSameNameID(Name):empty;
+            String[] sameNameIDTeacher = Teachers.isNameExist(Name)?Teachers.getSameNameID(Name):empty;
+            String[] sameNameIDManager = Managers.isNameExist(Name)?Managers.getSameNameID(Name):empty;
+            if(userType==UserType.Student){
+                for (String id : sameNameIDStudent) {
+                    idSet.add(id);
+                }
             }
-            for (String id : sameNameIDTeacher) {
-                idSet.add(id);
+            if(userType==UserType.Teacher){
+                for (String id : sameNameIDTeacher) {
+                    idSet.add(id);
+                }
             }
-            for (String id : sameNameIDManager) {
-                idSet.add(id);
+            if(userType==UserType.Admin){
+                for (String id : sameNameIDManager) {
+                    idSet.add(id);
+                }
             }
-        }
-        if(userType==UserType.Student){
-            for (String id : sameNameIDStudent) {
-                idSet.add(id);
+            else {
+                for (String id : sameNameIDStudent) {
+                    idSet.add(id);
+                }
+                for (String id : sameNameIDTeacher) {
+                    idSet.add(id);
+                }
+                for (String id : sameNameIDManager) {
+                    idSet.add(id);
+                }
             }
-        }
-        if(userType==UserType.Teacher){
-            for (String id : sameNameIDTeacher) {
-                idSet.add(id);
-            }
-        }
-        if(userType==UserType.Admin){
-            for (String id : sameNameIDManager) {
-                idSet.add(id);
-            }
+
         }
         return idSet;
     }
 
     public static boolean isIDExist(String ID) {
-        return IDManager.isIDExist(ID);
+        return IDUtil.isIDExist(ID);
     }
 }

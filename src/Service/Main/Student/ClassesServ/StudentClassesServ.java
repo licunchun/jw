@@ -6,9 +6,9 @@ import GUI.Data.DataPackage.Classes.CourseCodeSet;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import GUI.Data.Enum.Error.Main.Student.ClassesServ.DropClassesError;
 import GUI.Data.Enum.Error.Main.Student.ClassesServ.PickClassesError;
-import Service.Data.Database.Courses;
-import Service.Data.Database.Points;
-import Service.Data.Database.Students;
+import Service.Data.Tables.Courses;
+import Service.Data.Tables.Points;
+import Service.Data.Tables.Students;
 
 
 public class StudentClassesServ {
@@ -31,7 +31,7 @@ public class StudentClassesServ {
             Classes classes = Classes.fromArray(classInfo);
             String point = Points.getScore(code,ID);
             int score = Integer.parseInt(point);
-            double GPA = Points.pointToGPA(point);
+            double GPA = Points.getGPA(code,ID);
             StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes,GPA,score);
             courseCodeSet.add(studentCourseScoreTable);
         }
@@ -89,10 +89,14 @@ public class StudentClassesServ {
         if(!Points.isIDExist(ID))
             return -1.0;
         int totalScore = 0;
-        String[] scores = Points.getAllScore(ID);
-        int num = scores.length;
-        for (String score:scores){
+        int num = 0;
+        String[] codes = Points.getAllCode(ID);
+        for (String code:codes){
+            String score = Points.getScore(code,ID);
+            if(score.isEmpty())
+                continue;
             totalScore += Integer.parseInt(score);
+            num += 1;
         }
         return ((double)totalScore)/num;
     }

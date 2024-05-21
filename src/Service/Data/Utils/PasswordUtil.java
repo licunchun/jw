@@ -1,6 +1,6 @@
 package Service.Data.Utils;
 
-public class PasswordManager {
+public class PasswordUtil {
     final public static int MAX_NAME_LENGTH = 10;
     public static boolean check(String password){
         if(password==null||password.isEmpty())

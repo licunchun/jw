@@ -5,10 +5,15 @@ import java.util.ArrayList;
 
 public class SQLiteJDBC {
     private static final String databasePath = "src/Service/Data/database.db";
+    private final String tableName;
     private Connection c;
     private Statement stmt;
     private ResultSet rs;
-    public SQLiteJDBC(){}
+    private String sql;
+
+    public SQLiteJDBC(String tableName){
+        this.tableName = tableName;
+    }
     private void connect(){
         try {
             Class.forName("org.sqlite.JDBC");
@@ -21,13 +26,14 @@ public class SQLiteJDBC {
     }
     public void close() {
         try {
+            sql = null;
             c.close();
             stmt.close();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    private void execute(String sql) {
+    private void execute() {
         connect();
         try {
             stmt.executeUpdate(sql);
@@ -40,37 +46,61 @@ public class SQLiteJDBC {
 
     }
     //
-    public void create(String tableName,String[] colName,String[] dataConstraint,boolean primaryKey){
-        StringBuilder sb = new StringBuilder();
-        sb.append("CREATE TABLE IF NOT EXISTS ").append(tableName).append(" ");
-        sb.append("(");
+    public void create(String[] colName,boolean primaryKey){
+        StringBuilder col = new StringBuilder();
         for (int i = 0; i < colName.length; i++) {
             if(i==0)
-                sb.append(colName[i]).append(" ").append("TEXT").append(" ").append(dataConstraint[i]);
+                col.append(colName[i]).append(" TEXT NOT NULL ");
             else
-                sb.append(",").append(colName[i]).append(" ").append("TEXT").append(" ").append(dataConstraint[i]);
+                col.append(" , ").append(colName[i]).append(" TEXT NOT NULL ");
         }
         if(primaryKey)
-            sb.append(",PRIMARY KEY (").append(colName[0]).append(")");
-        sb.append(");");
-        String sql = sb.toString();
-        execute(sql);
+            col.append(" ,PRIMARY KEY ( ").append(colName[0]).append(" ) ");
+        sql = "CREATE TABLE IF NOT EXISTS " + tableName +
+                " ( " + col + " );";
+        execute();
     }
-    public void insert(String tableName,String[] colName,String[] data){
-        StringBuilder columns = new StringBuilder(colName[0]);
-        StringBuilder values = new StringBuilder("'"+data[0]+"'");
-        for (int i = 1; i < colName.length; i++) {
-            columns.append(",").append(colName[i]);
-            values.append(",").append("'").append(data[i]).append("'");
+    //增
+    public void insert(String[] colName,String[] data){
+        StringBuilder columns = new StringBuilder();
+        StringBuilder values = new StringBuilder();
+        for (int i = 0; i < colName.length; i++) {
+            if(i==0){
+                columns.append(colName[i]);
+                values.append("'").append(data[i]).append("'");
+            } else{
+                columns.append(",").append(colName[i]);
+                values.append(",").append("'").append(data[i]).append("'");
+            }
         }
-        String sql = "INSERT INTO " + tableName +
-                "(" + columns + ")" +
+        sql = "INSERT INTO " + tableName +
+                " ( " + columns + " ) " +
                 " VALUES " +
-                "(" + values + ");";
-        execute(sql);
+                " ( " + values + " );";
+        execute();
     }
-    public boolean isColValueExist(String tableName,String colName,String value){
-        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE "+colName+" = '" + value + "';";
+    //删
+    //根据主键删除
+    public void delete(String valueName,String value){
+        sql = "DELETE " + " FROM " + tableName + " WHERE " + valueName + " = '" + value + "';";
+        execute();
+    }
+    //改
+    //根据主键更新一个值
+    public void update(String colName,String newData,String valueName,String value){
+        sql = "UPDATE " + tableName + " SET " + colName + " = '" + newData +  "' WHERE " + valueName + " = '" + value + "';";
+        execute();
+    }
+    //根据主键更新一些值
+    public void update(String[] colName,String[] newData,String valueName,String value){
+        for (int i = 1; i < colName.length; i++) {
+            sql = "UPDATE " + tableName + " SET " + colName[i] + " = '" + newData[i] +  "' WHERE " + valueName + " = '" + value + "';";
+            execute();
+        }
+    }
+    //查
+    public boolean isColValueExist(String colName,String value){
+        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + colName + " = '" + value + "';";
         try {
             connect();
             rs = stmt.executeQuery(sql);
@@ -85,8 +115,26 @@ public class SQLiteJDBC {
         }
     }
 
-    //根据主键返回一组信息
-    public String[] select(String tableName,String[] colName,String valueName,String value){
+    //根据主键查询数据库单个值
+    public String select(String colName,String valueName,String value){
+        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + valueName + " = '" + value + "';";
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            String res = rs.getString(colName);
+            rs.close();
+            close();
+            return res;
+        } catch (SQLException e) {
+            close();
+            System.out.println("Database lookup failure");
+            throw new RuntimeException(e);
+        }
+    }
+    //根据主键查询数据库一些值
+
+    public String[] select(String[] colName,String valueName,String value){
         StringBuilder colNames = new StringBuilder();
         for (int i = 0; i < colName.length; i++) {
             if(i==0)
@@ -112,25 +160,28 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
-    //根据主键返回所需要的单个信息
-    public String select(String tableName,String colName,String valueName,String value){
-        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + valueName + " = '" + value + "';";
+
+    public String[] selectAll(String colName){
+        String sql = "SELECT " + colName + " FROM " + tableName + ";";
         try {
             connect();
             rs = stmt.executeQuery(sql);
-            rs.next();
-            String res = rs.getString(colName);
+            ArrayList<String> strings = new ArrayList<>();
+            while (rs.next()){
+                strings.add(rs.getString(colName));
+            }
             rs.close();
             close();
-            return res;
+            return strings.toArray(new String[0]);
         } catch (SQLException e) {
             close();
             System.out.println("Database lookup failure");
             throw new RuntimeException(e);
         }
     }
-    //根据条件返回所有满足该条件的值
-    public String[] selectAll(String tableName,String colName,String valueName,String value){
+
+    //根据一个条件返回所有满足该条件的值
+    public String[] selectAll(String colName,String valueName,String value){
         String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + valueName + " = '" + value + "';";
         try {
             connect();
@@ -148,26 +199,8 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
-    public String[] selectAll(String tableName,String colName){
-        String sql = "SELECT " + colName + " FROM " + tableName;
-        try {
-            connect();
-            rs = stmt.executeQuery(sql);
-            ArrayList<String> arrayList = new ArrayList<>();
-            while (rs.next()){
-                arrayList.add(rs.getString(colName));
-            }
-            rs.close();
-            close();
-            return arrayList.toArray(new String[0]);
-        } catch (SQLException e) {
-            close();
-            System.out.println("Database lookup failure");
-            throw new RuntimeException(e);
-        }
-    }
-    //根据所有条件返回所有满足该条件的值
-    public String[] selectAll(String tableName,String colName,String[] valueName,String[] value){
+    //根据一些条件返回所有满足该条件的值
+    public String[] selectAll(String colName,String[] valueName,String[] value){
         StringBuilder conditions = new StringBuilder();
         for (int i = 0; i < valueName.length; i++) {
             if(i==0)
@@ -193,33 +226,21 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
-    //根据主键更新
-    public void update(String tableName,String[] colName,String[] newData,String valueName,String value){
-        for (int i = 1; i < colName.length; i++) {
-            String sql = "UPDATE " + tableName + " SET " + colName[i] + " = '" + newData[i] +  "' WHERE " + valueName + " = '" + value + "';";
-            execute(sql);
-        }
-    }
-    //根据主键更新
-    public void update(String tableName,String colName,String newData,String valueName,String value){
-        String sql = "UPDATE " + tableName + " SET " + colName + " = '" + newData +  "' WHERE " + valueName + " = '" + value + "';";
-        execute(sql);
-    }
-    //根据主键删除
-    public void delete(String tableName,String valueName,String value){
-        String sql = "DELETE " + " FROM " + tableName + " WHERE " + valueName + " = '" + value + "';";
-        execute(sql);
-    }
+
 
 
     //points操作
     public void insertPoints(String classesCode, String ID){
-        String sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
-        execute(sql);
+        sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
+        execute();
     }
     public void deletePoints(String classesCode, String ID){
-        String sql = "DELETE " + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
-        execute(sql);
+        sql = "DELETE " + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
+        execute();
+    }
+    public void updatePoints(String score,String classesCode, String ID){
+        sql = "UPDATE " + "points" + " SET " + "point" + " = '" + score +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
+        execute();
     }
     public  String selectPonits(String classesCode, String ID){
         String sql = "SELECT " + "point" + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '"+ ID +"';";
@@ -237,8 +258,5 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
-    public void updatePoints(String classesCode, String ID,String score){
-        String sql = "UPDATE " + "points" + " SET " + "point" + " = '" + score +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
-        execute(sql);
-    }
+
 }

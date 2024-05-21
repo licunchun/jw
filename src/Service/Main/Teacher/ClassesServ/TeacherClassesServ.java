@@ -4,9 +4,11 @@ import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseCodeSet;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
-import Service.Data.DataBase;
+import Service.Data.Tables.Courses;
+import Service.Data.Tables.Points;
+import Service.Data.Tables.Students;
+import Service.Data.Tables.Teachers;
 import Service.Main.Components.ClassServ.ClassesServ;
-import Service.Utils.IDManager;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -14,12 +16,12 @@ import java.util.regex.Pattern;
 public class TeacherClassesServ {
     public static ClassesSet getTeacherClassesSet(String ID) {
         ClassesSet classesSet = new ClassesSet();
-        String[] codes = DataBase.getUserInfo(ID);
+        String codes = Teachers.getInfo(ID)[Teachers.classes_C];
         Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
-        Matcher m = p.matcher(codes[3]);
+        Matcher m = p.matcher(codes);
         while (m.find()) {
             String code = m.group();
-            String[] classInfo = DataBase.getClassInfo(code);
+            String[] classInfo = Courses.geInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             classesSet.add(classes);
         }
@@ -30,14 +32,14 @@ public class TeacherClassesServ {
 //        if(!IDManager.isIDExist(ID)||ID==null)
 //
         CourseCodeSet courseCodeSet = new CourseCodeSet();
-        String[] codes = DataBase.getUserInfo(ID);
+        String codes = Teachers.getInfo(ID)[Teachers.classes_C];
         Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
-        Matcher m = p.matcher(codes[3]);
+        Matcher m = p.matcher(codes);
         while (m.find()){
             String code = m.group();
-            String[] classInfo = DataBase.getClassInfo(code);
+            String[] classInfo = Courses.geInfo(code);
             Classes classes = Classes.fromArray(classInfo);
-            String[] studentsID = DataBase.getStudentID(code);
+            String[] studentsID = Points.getAllID(code);
             for (String studentID:studentsID){
                 int score = ClassesServ.getStudentScore(code,studentID);
                 double GPA = ClassesServ.getStudentGPA(code,studentID);
