@@ -231,6 +231,10 @@ public class StudentMainMenuController {
 
     public void setID(String ID) {
         this.ID = ID;
+        classesChoosingPageController.setID(ID);
+        classesSchedulePageController.setID(ID);
+        dropClassesPageController.setID(ID);
+        studentScoreController.setID(ID);
         mainMenuController.setID(ID);
     }
 
