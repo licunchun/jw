@@ -65,16 +65,16 @@ public class ClassesServ {
         return Classes.fromArray(classInfo);
     }
 
-    public static ClassesSet searchClasses(Classes classes) {
-        String[] conditions = fromClasses(classes);
-        String[] codes = Courses.findCode(conditions);
-        ClassesSet cs = new ClassesSet();
-        for (String code : codes) {
-            String[] info = Courses.geInfo(code);
-            cs.add(Classes.fromArray(info));
-        }
-        return cs;
-    }
+//    public static ClassesSet searchClasses(Classes classes) {
+//        String[] conditions = fromClasses(classes);
+//        String[] codes = Courses.findCode(conditions);
+//        ClassesSet cs = new ClassesSet();
+//        for (String code : codes) {
+//            String[] info = Courses.geInfo(code);
+//            cs.add(Classes.fromArray(info));
+//        }
+//        return cs;
+//    }
 
     public static IDSet getStudentSet(String classesCode) {
         IDSet idSet = new IDSet();

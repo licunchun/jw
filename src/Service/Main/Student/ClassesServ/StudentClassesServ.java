@@ -148,6 +148,8 @@ public class StudentClassesServ {
         if(Courses.isCourseFull(classesCode))
             return PickClassesError.ClassesIsFull;
         Points.addPoints(classesCode,studentID);
+        Courses.increaseStdCount(classesCode);
+        Students.courseSelection(studentID, classesCode);
         return PickClassesError.Success;
     }
 
@@ -160,6 +162,8 @@ public class StudentClassesServ {
             return DropClassesError.IDNotFind;
 
         Points.deletePoints(classesCode,studentID);
+        Courses.decreaseStdCount(classesCode);
+        Students.courseWithdrawal(studentID, classesCode);
         return DropClassesError.Success;
     }
 

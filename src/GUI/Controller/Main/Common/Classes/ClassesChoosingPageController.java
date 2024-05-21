@@ -6,6 +6,7 @@ import GUI.Data.DataPackage.Classes.ClassesForTable;
 import GUI.Data.Enum.Classes.EnumForClassesSearching.*;
 import GUI.Data.Enum.Classes.Full;
 import GUI.Data.Enum.User.UserType;
+import Service.Main.Components.ClassServ.ClassesSearchingServ;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -20,7 +21,6 @@ import javafx.util.StringConverter;
 import static GUI.Data.Enum.GUI.ObservableList.ClassesChoosingObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
 import static GUI.GUIUtil.StageUtil.resetLocation;
-import static Service.Main.Components.ClassServ.ClassesServ.searchClasses;
 import static Service.Main.Components.UserServ.UserServ.findTeacher;
 
 public class ClassesChoosingPageController {
@@ -99,6 +99,10 @@ public class ClassesChoosingPageController {
     private Stage classesMainPageStage;
     private ClassesMainPageController classesMainPageController;
     private ObservableList<ClassesForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    /*
+     * Classes Searching Serv
+     */
+    private final ClassesSearchingServ classesSearchingServ = new ClassesSearchingServ();
 
     /*
      * Function
@@ -241,7 +245,6 @@ public class ClassesChoosingPageController {
         }//设置自定义格式工厂
 
         //flush();//刷新数据
-        tableView.setItems(data);
 
         tableView.getColumns().addAll(
                 codeColumn,
@@ -262,11 +265,13 @@ public class ClassesChoosingPageController {
         );
 
         {
-            pagination = new Pagination((data.size() - 1) / ROWS_PER_PAGE + 1);
+            pagination = new Pagination((classesSearchingServ.getCount() - 1) / ROWS_PER_PAGE + 1);
             pagination.setPageFactory(pageIndex -> {
                 int fromIndex = pageIndex * ROWS_PER_PAGE;
-                int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
-                tableView.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
+                int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, classesSearchingServ.getCount());
+                data = FXCollections.observableArrayList(classesSearchingServ.getClassesSet(fromIndex, toIndex).
+                        toObservableList());
+                tableView.setItems(data);
                 return new VBox(tableView);
             });
             pagination.setPrefWidth(1280);
@@ -276,8 +281,13 @@ public class ClassesChoosingPageController {
     }
 
     public void flush() {
-        data = searchClasses(searchingClasses).toObservableList();
-        pagination.setPageCount((data.size() - 1) / ROWS_PER_PAGE + 1);
+        int fromIndex = pagination.getCurrentPageIndex() * ROWS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, classesSearchingServ.getCount());
+        data = FXCollections.observableArrayList(classesSearchingServ.getClassesSet(fromIndex, toIndex).
+                toObservableList());
+        tableView.setItems(data);
+        classesSearchingServ.searchClasses(searchingClasses);
+        pagination.setPageCount((classesSearchingServ.getCount() - 1) / ROWS_PER_PAGE + 1);
     }
 
     private void choiceBoxInitialize() {
@@ -424,6 +434,7 @@ public class ClassesChoosingPageController {
             classesMainPageStage.setOnHiding(e -> {
                 isClassesMainPageExist = false;
                 classesMainPageStage.close();
+                flush();
             });
 
             classesMainPageStage.show();
