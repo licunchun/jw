@@ -74,6 +74,8 @@ public class ClassesMainPageController {
         if (userType == UserType.Admin) {
             doDeleteClasses();
         }
+
+        stage.close();
     }
 
     @FXML
