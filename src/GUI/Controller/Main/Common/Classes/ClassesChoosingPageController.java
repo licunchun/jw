@@ -434,7 +434,7 @@ public class ClassesChoosingPageController {
             classesMainPageStage.setOnHiding(e -> {
                 isClassesMainPageExist = false;
                 classesMainPageStage.close();
-                flush();
+                doSearch();
             });
 
             classesMainPageStage.show();
