@@ -204,12 +204,18 @@ public class SQLiteJDBC {
         StringBuilder conditions = new StringBuilder();
         for (int i = 0; i < valueName.length; i++) {
             if(i==0)
+            {
+                conditions.append(" WHERE  ");
                 conditions.append(valueName[i]).append(" = '").append(value[i]).append("'");
+            }
+
             else
                 conditions.append(" AND ").append(valueName[i]).append(" = '").append(value[i]).append("'");
         }
         conditions.append(";");
-        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE  " + conditions;//TODO
+
+
+        String sql = "SELECT " + colName + " FROM " + tableName + conditions;//TODO
         try {
             connect();
             rs = stmt.executeQuery(sql);

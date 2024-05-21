@@ -77,10 +77,13 @@ public class Courses {
         for (int i = 0; i < conditions.length; i++) {
             if(conditions[i].isEmpty())
                 continue;
-            else {
-                valueName.add(CourseCol[i]);
-                value.add(conditions[i]);
-            }
+            else if(i==stdCount_C||i==limitCount_C)
+                continue;
+            else
+                {
+                    valueName.add(CourseCol[i]);
+                    value.add(conditions[i]);
+                }
         }
         return coursesTable.selectAll("code",valueName.toArray(new String[0]),value.toArray(new String[0]));
     }
