@@ -196,9 +196,6 @@ public class UserServ {
     public static IDSet findUser(UserType userType, String ID, String Name) {
         IDSet idSet = new IDSet();
         if (ID == null || ID.isEmpty()) {
-            if(User.isIDExist(ID))
-                idSet.add(ID);
-        } else {
             String[] empty = new String[0];
             String[] sameNameIDStudent = Students.isNameExist(Name)?Students.getSameNameID(Name):empty;
             String[] sameNameIDTeacher = Teachers.isNameExist(Name)?Teachers.getSameNameID(Name):empty;
@@ -229,6 +226,10 @@ public class UserServ {
                     idSet.add(id);
                 }
             }
+
+        } else {
+            if(User.isIDExist(ID))
+                idSet.add(ID);
 
         }
         return idSet;
