@@ -58,6 +58,8 @@ public class TeacherMainMenuController {
      */
     public void setID(String ID) {
         this.ID = ID;
+        mainMenuController.setID(ID);
+        classesSchedulePageController.setID(ID);
     }
 
     @FXML
@@ -167,6 +169,7 @@ public class TeacherMainMenuController {
                                 proposeCoursePageStage.close();
                             });
 
+                            proposeCoursePageStage.show();
                             resetLocation(proposeCoursePageStage);
                         } else {
                             resetLocation(proposeCoursePageStage);

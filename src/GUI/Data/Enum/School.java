@@ -1,7 +1,5 @@
 package GUI.Data.Enum;
 
-import GUI.Data.Enum.Classes.ClassType;
-
 public enum School {
     GiftedYoung("少年班学院"),
     MathematicalSciences("数学科学学院"),
@@ -89,17 +87,17 @@ public enum School {
         this.name = name;
     }
 
-    public String toString() {   //生成中文字符串
-        return this.name;
-    }
-
-    public static School fromString(String s){
+    public static School fromString(String s) {
         for (int i = 0; i < values().length; i++) {
             String s_t = values()[i].toString();
-            if(s.compareTo(s_t)==0)
+            if (s.compareTo(s_t) == 0)
                 return values()[i];
         }
         throw new IllegalArgumentException("Invalid input: " + s);
+    }
+
+    public String toString() {   //生成中文字符串
+        return this.name;
     }
 
 }

@@ -133,9 +133,7 @@ public class StudentInformationController {
     }
 
     public void flush() {
-        if (getMoney(ID) == null) {
-            throw new RuntimeException("StudentInformationController.java:运行过程中账户ID改变，故停止程序运行");
-        }
+        getMoney(ID);
         Money.setText(getMoney(ID).toString());
         if (getGrade(ID) == null) {
             throw new RuntimeException("StudentInformationController.java:运行过程中账户ID改变，故停止程序运行");

@@ -2,7 +2,6 @@ package Data;
 
 import Data.Type.*;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -100,6 +99,7 @@ public class DataBase {
             return null;
         }
     }
+
     public StudentSet infoOfStudents() { // 已返回对应账号的学生信息
         StudentSet studentSet = new StudentSet();
         String sql = "select * from students";
@@ -133,6 +133,7 @@ public class DataBase {
             return null;
         }
     }
+
     public String accountOfTeacher(String name) { // 返回对应名字的老师Account
         sql = "select * from teachers where name = '" + name + "'";
         try {
@@ -143,6 +144,7 @@ public class DataBase {
             return null;
         }
     }
+
     public boolean addStudent(String name, String account, String key, String grade, String gender, String major) { // 注册学生
         String sql = "insert into students (name, account, key, grade, gender, major, classes, money) " +
                 "values ( '" + name + "', '" + account + "', '" + key + "', '" + grade + "', '" + gender +
@@ -313,6 +315,7 @@ public class DataBase {
         }
         return "";
     }
+
     public String keyOfStudent(String account) {
         return key(account, STUDENT);
     }
@@ -360,7 +363,7 @@ public class DataBase {
             }
             return pointSet;
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            e.printStackTrace();
             return null;
         }
     }
@@ -370,7 +373,7 @@ public class DataBase {
         try {
             return statement.executeUpdate(sql) > 0;
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            e.printStackTrace();
             return false;
         }
     }

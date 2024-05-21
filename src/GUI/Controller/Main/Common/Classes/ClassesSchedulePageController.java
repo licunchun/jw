@@ -24,6 +24,7 @@ import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClas
 import static Service.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
 public class ClassesSchedulePageController {//TODO
+    private final ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -48,7 +49,6 @@ public class ClassesSchedulePageController {//TODO
     private TableColumn<TimeTable, String> SaturdayColumn;
     @FXML
     private TableColumn<TimeTable, String> SundayColumn;
-    private ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
     private UserType userType;
     private ClassesSet classesSet;
