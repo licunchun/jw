@@ -1,18 +1,18 @@
-package Service.Utils;
+package Service.Data.Utils;
 
-import Service.Data.DataBase;
-import Service.Data.SQLiteJDBC;
+import Service.Data.Tables.User;
 
-public class IDManager {
+public class IDUtil {
     final private static int STUDENT_ID_LENGTH = 10;
     final private static int TEACHER_ID_LENGTH = 5;
     final private static int MANAGER_ID_LENGTH = 1;
+
     public static int getUserType(String ID){
         return switch (ID.length()){
-            case (STUDENT_ID_LENGTH)-> DataBase.STUDENT;
-            case (TEACHER_ID_LENGTH)->DataBase.TEACHER;
-            case (MANAGER_ID_LENGTH)->DataBase.MANAGER;
-            default -> DataBase.INVALID;
+            case (STUDENT_ID_LENGTH)-> User.STUDENT;
+            case (TEACHER_ID_LENGTH)-> User.TEACHER;
+            case (MANAGER_ID_LENGTH)-> User.MANAGER;
+            default -> User.INVALID;
         };
     }
     public static boolean check(String ID){
@@ -21,7 +21,7 @@ public class IDManager {
         return isIDExist(ID);
     }
     public static boolean isIDExist(String ID){
-        return DataBase.isIDExist(ID);
+        return User.isIDExist(ID);
     }
     public static String getavailableID(String grade){
         String ID = switch (grade) {
@@ -39,14 +39,14 @@ public class IDManager {
     }
     public static String getavailableID(int userType){
         switch (userType){
-            case DataBase.TEACHER -> {
+            case User.TEACHER -> {
                 for (int i = 0; i < 100000; i++) {
                     if(!isIDExist(String.format("%05d", i)))
                         return String.format("%05d", i);
                 }
                 throw new RuntimeException();
             }
-            case DataBase.MANAGER -> {
+            case User.MANAGER -> {
                 for (int i = 0; i < 10; i++) {
                     if(!isIDExist(String.format("%01d", i)))
                         return String.format("%01d", i);

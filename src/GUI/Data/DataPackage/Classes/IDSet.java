@@ -1,7 +1,7 @@
 package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.DataPackage.UserInformation.UserInformationForTable;
-import Service.Data.DataBase;
+import Service.Data.Tables.Teachers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -58,7 +58,7 @@ public class IDSet {
         Matcher m = p.matcher(teachers);
         while (m.find()) {
             String name = m.group();
-            String ID = DataBase.getTeacherID(name);
+            String ID = Teachers.getID(name);
             idSet.add(ID);
         }
         return idSet;

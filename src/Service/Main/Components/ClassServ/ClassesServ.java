@@ -1,6 +1,5 @@
 package Service.Main.Components.ClassServ;
 
-import Service.Data.DataBase;
 import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
@@ -9,10 +8,15 @@ import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
-import Service.Data.Database.Courses;
+import Service.Data.Tables.Courses;
+import Service.Data.Tables.Points;
+import Service.Data.Tables.Students;
+import Service.Data.Tables.Teachers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClassesServ {
     public static String[] fromClasses(Classes classes){
@@ -57,15 +61,15 @@ public class ClassesServ {
         return info;
     }
     public static Classes getClasses(String classesCode) {
-        String[] classInfo = DataBase.selectTable(DataBase.COURSE,"code",classesCode);
+        String[] classInfo = Courses.geInfo(classesCode);
         return Classes.fromArray(classInfo);
     }
     public static ClassesSet searchClasses(Classes classes) {
-        String[] condition = fromClasses(classes);
-        String[] codes = DataBase.getClassesCode(condition);
+        String[] conditions = fromClasses(classes);
+        String[] codes = Courses.findCode(conditions);
         ClassesSet cs = new ClassesSet();
-        for (int i = 0; i < codes.length; i++) {
-            String[] info = Courses.geInfo(codes[i]);
+        for (String code : codes) {
+            String[] info = Courses.geInfo(code);
             cs.add(Classes.fromArray(info));
         }
         return cs;
@@ -73,49 +77,24 @@ public class ClassesServ {
 
     public static IDSet getStudentSet(String classesCode) {
         IDSet idSet = new IDSet();
-        for (String ID:DataBase.getStudentID(classesCode)){
+        for (String ID:Points.getAllID(classesCode)){
             idSet.add(ID);
         }
         return idSet;
     }
 
     public static int getStudentScore(String classesCode, String ID) {
-       String score = DataBase.getStudentScore(classesCode,ID);
+       String score = Points.getScore(classesCode,ID);
        return Integer.parseInt(score);
     }
 
     public static boolean setStudentScore(String classesCode, String ID, int grade) {
-        return DataBase.setStudentScore(classesCode,ID,String.valueOf(grade));
+        Points.setScore(classesCode,ID,String.valueOf(grade));
+        return true;
     }
 
     public static double getStudentGPA(String classesCode, String ID) {
-        int grade = getStudentScore(classesCode,ID);
-        if(grade>=95)
-            return 4.3;
-        else if (grade>=90)
-            return 4.0;
-        else if (grade>=85)
-            return 3.7;
-        else if (grade>=82)
-            return 3.3;
-        else if (grade>=78)
-            return 3.0;
-        else if (grade>=75)
-            return 2.7;
-        else if (grade>=72)
-            return 2.3;
-        else if (grade>=68)
-            return 2.0;
-        else if (grade>=65)
-            return 1.7;
-        else if (grade == 64)
-            return 1.5;
-        else if (grade>=61)
-            return 1.3;
-        else if (grade == 60)
-            return 1.0;
-        else
-            return 0.0;
+        return Points.getGPA(classesCode,ID);
     }
 
     public static String toStringTime(CourseTimeSet courseTimeSet) {
@@ -164,9 +143,27 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
     list.clear();
 }
     public static DeleteClassesError deleteClasses(String classesCode) {
-        DataBase.deleteTable(DataBase.COURSE,"code",classesCode);
+        //将老师开课信息删除
+        String teachers = Courses.geInfo(classesCode)[Courses.teachers_C];
+        String regex = "[一-龥·]+"; // 匹配五个数字的正则表达式
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(teachers);
+        while (matcher.find()) {
+            String teacher = matcher.group();
+            String teacherID = Teachers.getID(teacher);
+            Teachers.deleteClasses(teacherID,classesCode);
+        }
+        //将所有选这门课的学生删除
+        //Points表也对应删除
+        String[] studentsID = Points.getAllID(classesCode);
+        for (String studentID:studentsID){
+            Points.deletePoints(classesCode,studentID);
+            Students.courseWithdrawal(studentID,classesCode);
+        }
+        //将课程信息删除
+        Courses.deleteInfo(classesCode);
         return DeleteClassesError.Success;
-    }
+    }//TODO
 
     public static NewClassesError newClasses(
             String code,
@@ -228,7 +225,7 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
                 "未满",
                 "待定"
         };
-        Courses.addCourseInfo(info);
+        Courses.addInfo(info);
         return NewClassesError.Success;
     }
 

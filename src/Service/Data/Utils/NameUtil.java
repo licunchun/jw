@@ -1,12 +1,12 @@
-package Service.Utils;
+package Service.Data.Utils;
 
-import Service.Data.Database.Teachers;
+import Service.Data.Tables.Teachers;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class NameManager {
+public class NameUtil {
     final public static int MAX_NAME_LENGTH = 10;
     public static boolean check(String name){
         if(name==null||name.isEmpty())
