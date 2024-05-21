@@ -90,13 +90,12 @@ public class AdminMainMenuController {
         {
             FXMLLoader manageStudentPageLoader = loadScene("/GUI/Window/Main/Admin/ManageUserPage.fxml");
             Parent root = newRoot(manageStudentPageLoader);
+            manageStudentPageController = getController(manageStudentPageLoader);
 
             ContextMenu contextMenu = manageStudentPageController.manageUserPageContextMenu();
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
 
             manageStudentPageController.setUserType(UserType.Student);
-
-            manageStudentPageController = getController(manageStudentPageLoader);
             manageStudentTab.setContent(root);
             manageStudentTab.setOnCloseRequest(e -> {
                 manageStudentPageController.close();
@@ -109,13 +108,13 @@ public class AdminMainMenuController {
         {
             FXMLLoader manageTeacherPageLoader = loadScene("/GUI/Window/Main/Admin/ManageUserPage.fxml");
             Parent root = newRoot(manageTeacherPageLoader);
+            manageTeacherPageController = getController(manageTeacherPageLoader);
 
             ContextMenu contextMenu = manageTeacherPageController.manageUserPageContextMenu();
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
 
             manageTeacherPageController.setUserType(UserType.Teacher);
 
-            manageTeacherPageController = getController(manageTeacherPageLoader);
             manageTeacherTab.setContent(root);
             manageTeacherTab.setOnCloseRequest(e -> {
                 manageTeacherPageController.close();
@@ -128,13 +127,13 @@ public class AdminMainMenuController {
         {
             FXMLLoader manageAdminPageLoader = loadScene("/GUI/Window/Main/Admin/ManageUserPage.fxml");
             Parent root = newRoot(manageAdminPageLoader);
+            manageAdminPageController = getController(manageAdminPageLoader);
 
             ContextMenu contextMenu = manageAdminPageController.manageUserPageContextMenu();
             root.setOnContextMenuRequested(e -> contextMenu.show(root, e.getScreenX(), e.getScreenY()));
 
             manageAdminPageController.setUserType(UserType.Admin);
 
-            manageAdminPageController = getController(manageAdminPageLoader);
             manageAdminTab.setContent(root);
             manageAdminTab.setOnCloseRequest(e -> {
                 manageAdminPageController.close();
