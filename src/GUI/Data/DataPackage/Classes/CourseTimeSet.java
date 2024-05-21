@@ -12,6 +12,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CourseTimeSet {
+    private static final Pattern p = Pattern.compile("\\d\\(\\d(,\\d+)*\\)");
     private final Set<CourseTime> courseTimeSet = new HashSet<>();
 
     public CourseTimeSet() {
@@ -32,8 +33,6 @@ public class CourseTimeSet {
 
     public static CourseTimeSet fromString(String times){
         CourseTimeSet cts = new CourseTimeSet();
-        String pattern = "\\d\\(\\d(,\\d+)*\\)";
-        Pattern p = Pattern.compile(pattern);
         Matcher m = p.matcher(times);
         while (m.find()) {
             String time = m.group();

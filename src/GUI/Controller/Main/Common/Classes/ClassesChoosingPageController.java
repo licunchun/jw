@@ -262,7 +262,7 @@ public class ClassesChoosingPageController {
         );
 
         {
-            pagination = new Pagination((tableView.getItems().size() - 1) / ROWS_PER_PAGE + 1);
+            pagination = new Pagination((data.size() - 1) / ROWS_PER_PAGE + 1);
             pagination.setPageFactory(pageIndex -> {
                 int fromIndex = pageIndex * ROWS_PER_PAGE;
                 int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
@@ -277,6 +277,7 @@ public class ClassesChoosingPageController {
 
     public void flush() {
         data = searchClasses(searchingClasses).toObservableList();
+        pagination.setPageCount((data.size() - 1) / ROWS_PER_PAGE + 1);
     }
 
     private void choiceBoxInitialize() {
