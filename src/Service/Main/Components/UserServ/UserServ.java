@@ -276,8 +276,9 @@ public class UserServ {
             if (User.isIDExist(ID))
 >>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
                 idSet.add(ID);
-            return idSet1;
+
         }
+        return idSet;
     }
 
     public static boolean isIDExist(String ID) {

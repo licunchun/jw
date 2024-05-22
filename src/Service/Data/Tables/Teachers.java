@@ -19,9 +19,6 @@ public class Teachers {
     public static boolean isNameExist(String name){
         return teachersTable.isColValueExist("name",name);
     }
-    public static String[] getAllID(){
-        return teachersTable.selectAll("ID");
-    }
     public static String getID(String name){
         return teachersTable.select("ID","name",name);
     }

@@ -16,9 +16,6 @@ public class Managers {
     public static boolean isNameExist(String name){
         return managersTable.isColValueExist("name",name);
     }
-    public static String[] getAllID(){
-        return managersTable.selectAll("ID");
-    }
     public static String[] getInfo(String ID){ return managersTable.select(ManagerCol,"ID",ID); }
     public static void addInfo(String[] info){
         managersTable.insert(ManagerCol,info);

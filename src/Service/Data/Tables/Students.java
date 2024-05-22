@@ -32,9 +32,6 @@ public class Students {
     public static boolean isNameExist(String name){
         return studentsTable.isColValueExist("name",name);
     }
-    public static String[] getAllID(){
-        return studentsTable.selectAll("ID");
-    }
     public static String[] getInfo(String ID){
         return studentsTable.select(StudentCol,"ID",ID);
     }
