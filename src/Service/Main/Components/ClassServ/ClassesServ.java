@@ -1,7 +1,7 @@
 package Service.Main.Components.ClassServ;
 
 import GUI.Data.DataPackage.Classes.Classes;
-
+import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.Enum.Classes.*;
@@ -11,11 +11,12 @@ import GUI.Data.Enum.School;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
 import Service.Data.Tables.Students;
-
+import Service.Data.Tables.Teachers;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClassesServ {
     public static String[] fromClasses(Classes classes) {
