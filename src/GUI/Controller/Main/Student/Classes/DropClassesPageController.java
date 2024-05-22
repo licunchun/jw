@@ -3,6 +3,7 @@ package GUI.Controller.Main.Student.Classes;
 import GUI.Controller.Main.Common.Classes.ClassesMainPageController;
 import GUI.Data.DataPackage.Classes.ClassesForTable;
 import GUI.Data.DataPackage.Classes.ClassesSet;
+import GUI.Data.Enum.GUI.Scene.EditUserPage;
 import GUI.Data.Enum.User.UserType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -97,13 +98,15 @@ public class DropClassesPageController {
         }//设置表格列与数据对象的属性关联
         {
             codeColumn.setCellFactory(column -> new TableCell<>() {
-                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
+                private final Hyperlink hyperlink = new Hyperlink();
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isClassesMainPageExist = true;
-                        openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
-                        resetLocation(classesMainPageStage);
+                        if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
+                            isClassesMainPageExist = true;
+                            openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
+                            resetLocation(classesMainPageStage);
+                        }
                     });
                 }//超链接点击事件
 
@@ -113,7 +116,12 @@ public class DropClassesPageController {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(hyperlink);
+                        if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
+                            hyperlink.setText(getTableView().getItems().get(getIndex()).getName());
+                            setGraphic(hyperlink);
+                        } else {
+                            setGraphic(null);
+                        }
                     }
                 }
             });
