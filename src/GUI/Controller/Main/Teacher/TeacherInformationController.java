@@ -26,10 +26,6 @@ public class TeacherInformationController {
     /*
      * Function
      */
-    @FXML
-    private void initialize() {
-        flush();
-    }
 
     @FXML
     private void doEditSchool() {

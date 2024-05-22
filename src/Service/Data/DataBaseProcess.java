@@ -1,9 +1,5 @@
 package Service.Data;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-
 public class DataBaseProcess {
 //    private static final SQLiteJDBC db = new SQLiteJDBC();
 //    public static String[] getAllCourseSchool(){

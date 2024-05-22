@@ -19,7 +19,7 @@ import static GUI.GUIUtil.StageUtil.resetLocation;
 import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 
 public class DropClassesPageController {
-    private static final int ROWS_PER_PAGE = 20;//每页最多有多少行
+    private static final int ROWS_PER_PAGE = 30;//每页最多有多少行
     /*
      * Table Information
      */
@@ -97,15 +97,17 @@ public class DropClassesPageController {
         }//设置表格列与数据对象的属性关联
         {
             codeColumn.setCellFactory(column -> new TableCell<>() {
-                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getCode());
+                private final Hyperlink hyperlink = new Hyperlink();
 
                 {
                     hyperlink.setOnAction(event -> {
-                        isClassesMainPageExist = true;
-                        openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
-                        resetLocation(classesMainPageStage);
+                        if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
+                            String code = getTableView().getItems().get(getIndex()).getCode();
+                            openClassesMainPage(code);
+                            resetLocation(classesMainPageStage);
+                        }
                     });
-                }//超链接点击事件
+                }
 
                 @Override
                 protected void updateItem(Void item, boolean empty) {
@@ -113,22 +115,15 @@ public class DropClassesPageController {
                     if (empty) {
                         setGraphic(null);
                     } else {
-                        setGraphic(hyperlink);
+                        if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
+                            hyperlink.setText(getTableView().getItems().get(getIndex()).getCode());
+                            setGraphic(hyperlink);
+                        } else {
+                            setGraphic(null);
+                        }
                     }
                 }
             });
-//            nameColumn.setCellValueFactory(new PropertyValueFactory<>("课堂名称"));
-//            periodColumn.setCellValueFactory(new PropertyValueFactory<>("学时"));
-//            creditsColumn.setCellValueFactory(new PropertyValueFactory<>("学分"));
-//            timeColumn.setCellValueFactory(new PropertyValueFactory<>("上课时间"));
-//            classTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课堂类型"));
-//            courseTypeColumn.setCellValueFactory(new PropertyValueFactory<>("课程种类"));
-//            schoolColumn.setCellValueFactory(new PropertyValueFactory<>("院校"));
-//            campusColumn.setCellValueFactory(new PropertyValueFactory<>("校区"));
-//            examModeColumn.setCellValueFactory(new PropertyValueFactory<>("考试方式"));
-//            languageColumn.setCellValueFactory(new PropertyValueFactory<>("教学语言"));
-//            educationColumn.setCellValueFactory(new PropertyValueFactory<>("教育阶段"));
-//            teacherColumn.setCellValueFactory(new PropertyValueFactory<>("教师名称"));
         }//设置自定义格式工厂
 
         tableView.setItems(data);
@@ -149,7 +144,7 @@ public class DropClassesPageController {
         );
 
         {
-            pagination = new Pagination((tableView.getItems().size() - 1) / ROWS_PER_PAGE + 1);
+            pagination = new Pagination((data.size() - 1) / ROWS_PER_PAGE + 1);
             pagination.setPageFactory(pageIndex -> {
                 int fromIndex = pageIndex * ROWS_PER_PAGE;
                 int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
@@ -164,10 +159,11 @@ public class DropClassesPageController {
 
     public void flush() {
         ClassesSet studentClassesSet = getStudentClassesSet(ID);
-        if (studentClassesSet == null) {
-            System.err.println("Error:Get student classes set error!\nPlease try again later!");
-        }
         data = studentClassesSet.toObservableList();
+        pagination.setPageCount((data.size() - 1) / ROWS_PER_PAGE + 1);
+        int fromIndex = pagination.getCurrentPageIndex() * ROWS_PER_PAGE;
+        int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
+        tableView.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
     }
 
     private void openClassesMainPage(String classesCode) {
