@@ -55,4 +55,10 @@ public class Teachers {
     public static String[] getSameNameID(String name){
         return teachersTable.selectAll("ID","name",name);
     }
+    public static String[] getIDWithString(String subString){
+        return teachersTable.selectLike("ID","ID",subString);
+    }
+    public static String[] getIDWithString(String subID,String subName){
+        return teachersTable.selectLike("ID","ID",subID,"name",subName);
+    }
 }

@@ -232,6 +232,46 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
+    public String[] selectLike(String colName,String valueName,String value){
+        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + valueName + " LIKE '%" + value + "%';";
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            ArrayList<String> strings = new ArrayList<>();
+            while (rs.next()){
+                strings.add(rs.getString(colName));
+            }
+            rs.close();
+            close();
+            return strings.toArray(new String[0]);
+        } catch (SQLException e) {
+            close();
+            System.out.println("Database lookup failure");
+            throw new RuntimeException(e);
+        }
+    }
+    public String[] selectLike(String colName,String valueName1,String value1,String valueName2,String value2){
+        String sql =
+                " SELECT " + colName +
+                " FROM " + tableName +
+                " WHERE " + valueName1 + " LIKE '%" + value1 + "%'" +
+                " AND " + valueName2 + " LIKE '%" + value2 + "%'" + ";";
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            ArrayList<String> strings = new ArrayList<>();
+            while (rs.next()){
+                strings.add(rs.getString(colName));
+            }
+            rs.close();
+            close();
+            return strings.toArray(new String[0]);
+        } catch (SQLException e) {
+            close();
+            System.out.println("Database lookup failure");
+            throw new RuntimeException(e);
+        }
+    }
 
 
 

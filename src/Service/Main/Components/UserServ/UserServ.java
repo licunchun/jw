@@ -13,6 +13,8 @@ import Service.Data.Tables.Teachers;
 import Service.Data.Tables.User;
 import Service.Data.Utils.*;
 
+import java.util.ArrayList;
+
 
 public class UserServ {
     /*
@@ -196,16 +198,38 @@ public class UserServ {
     public static IDSet findUser(UserType userType, String ID, String Name) {
         IDSet idSet = new IDSet();
         String[] studentsID,teachersID,managersID;
-        if(Name==null||Name.isEmpty()){
+        if((Name==null||Name.isEmpty())&&(ID==null||ID.isEmpty())){
             studentsID = Students.getAllID();
             teachersID = Teachers.getAllID();
             managersID = Managers.getAllID();
-        } else {
+            packed(userType,idSet,studentsID,teachersID,managersID);
+            return idSet;
+        }
+        if (Name==null||Name.isEmpty()) {
+            studentsID = Students.getIDWithString(ID);
+            teachersID = Teachers.getIDWithString(ID);
+            managersID = Managers.getIDWithString(ID);
+            packed(userType,idSet,studentsID,teachersID,managersID);
+            return idSet;
+        } 
+        if(ID==null||ID.isEmpty()){
             String[] empty = new String[0];
             studentsID = Students.isNameExist(Name) ? Students.getSameNameID(Name) : empty;
             teachersID = Teachers.isNameExist(Name) ? Teachers.getSameNameID(Name) : empty;
             managersID = Managers.isNameExist(Name) ? Managers.getSameNameID(Name) : empty;
+            packed(userType,idSet,studentsID,teachersID,managersID);
+            return idSet;
         }
+        {
+            studentsID = Students.getIDWithString(ID,Name);
+            teachersID = Teachers.getIDWithString(ID,Name);
+            managersID = Managers.getIDWithString(ID,Name);
+            packed(userType,idSet,studentsID,teachersID,managersID);
+            return idSet;
+
+        }
+    }
+    private static void packed(UserType userType,IDSet idSet,String[] studentsID,String[] teachersID,String[] managersID){
         if(userType==null){
             for (String id : studentsID) {
                 idSet.add(id);
@@ -230,14 +254,6 @@ public class UserServ {
             }
         }else{
             throw new RuntimeException("UserServ");
-        }
-        if(ID==null||ID.isEmpty())
-            return idSet;
-        else {
-            IDSet idSet1 = new IDSet();
-            if(User.isIDExist(ID))
-                idSet.add(ID);
-            return idSet1;
         }
     }
 
