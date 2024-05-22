@@ -14,7 +14,7 @@ public enum School {
     InformationScienceAndTechnology("信息科学技术学院"),
     HumanitiesAndSocialScience("人文与社会科学学院"),
     NuclearScienceAndTechnology("核科学技术学院"),
-    ComputerScienceAndTechnology("计算机科学与技术学院"),
+    ComputerScienceAndTechnology("计算机科学技术学院"),
     PublicAffairs("公共事务学院"),
     EnvironmentalScienceAndOptoelectronicTechnology("环境科学与光电技术学院"),
     Microelectronics("微电子学院"),
