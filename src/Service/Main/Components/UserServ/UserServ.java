@@ -195,80 +195,52 @@ public class UserServ {
 
     public static IDSet findUser(UserType userType, String ID, String Name) {
         IDSet idSet = new IDSet();
-        if (ID == null || ID.isEmpty()) {
-            String[] empty = new String[0];
-            String[] sameNameIDStudent = Students.isNameExist(Name)?Students.getSameNameID(Name):empty;
-            String[] sameNameIDTeacher = Teachers.isNameExist(Name)?Teachers.getSameNameID(Name):empty;
-            String[] sameNameIDManager = Managers.isNameExist(Name)?Managers.getSameNameID(Name):empty;
-            if(userType==UserType.Student){
-                for (String id : sameNameIDStudent) {
-                    idSet.add(id);
-                }
-            }
-            if(userType==UserType.Teacher){
-                for (String id : sameNameIDTeacher) {
-                    idSet.add(id);
-                }
-            }
-            if(userType==UserType.Admin){
-                for (String id : sameNameIDManager) {
-                    idSet.add(id);
-                }
-            }
-            else {
-                for (String id : sameNameIDStudent) {
-                    idSet.add(id);
-                }
-                for (String id : sameNameIDTeacher) {
-                    idSet.add(id);
-                }
-                for (String id : sameNameIDManager) {
-                    idSet.add(id);
-                }
-            }
-
+        String[] studentsID,teachersID,managersID;
+        if(Name==null||Name.isEmpty()){
+            studentsID = Students.getAllID();
+            teachersID = Teachers.getAllID();
+            managersID = Managers.getAllID();
         } else {
-            if(User.isIDExist(ID))
-=======
-        if (ID == null || ID.isEmpty()) {
             String[] empty = new String[0];
-            String[] sameNameIDStudent = Students.isNameExist(Name)?Students.getSameNameID(Name):empty;
-            String[] sameNameIDTeacher = Teachers.isNameExist(Name)?Teachers.getSameNameID(Name):empty;
-            String[] sameNameIDManager = Managers.isNameExist(Name)?Managers.getSameNameID(Name):empty;
-            if(userType==UserType.Student){
-                for (String id : sameNameIDStudent) {
-                    idSet.add(id);
-                }
+            studentsID = Students.isNameExist(Name) ? Students.getSameNameID(Name) : empty;
+            teachersID = Teachers.isNameExist(Name) ? Teachers.getSameNameID(Name) : empty;
+            managersID = Managers.isNameExist(Name) ? Managers.getSameNameID(Name) : empty;
+        }
+        if(userType==null){
+            for (String id : studentsID) {
+                idSet.add(id);
             }
-            if(userType==UserType.Teacher){
-                for (String id : sameNameIDTeacher) {
-                    idSet.add(id);
-                }
+            for (String id : teachersID) {
+                idSet.add(id);
             }
-            if(userType==UserType.Admin){
-                for (String id : sameNameIDManager) {
-                    idSet.add(id);
-                }
+            for (String id : managersID) {
+                idSet.add(id);
             }
-            else {
-                for (String id : sameNameIDStudent) {
-                    idSet.add(id);
-                }
-                for (String id : sameNameIDTeacher) {
-                    idSet.add(id);
-                }
-                for (String id : sameNameIDManager) {
-                    idSet.add(id);
-                }
+        } else if(userType==UserType.Student){
+            for (String id : studentsID) {
+                idSet.add(id);
             }
-
-        } else {
+        }else if(userType==UserType.Teacher){
+            for (String id : teachersID) {
+                idSet.add(id);
+            }
+        }else if(userType==UserType.Admin){
+            for (String id : managersID) {
+                idSet.add(id);
+            }
+        }else{
+            throw new RuntimeException("UserServ");
+        }
+        if(ID==null||ID.isEmpty())
+            return idSet;
+        else {
+            IDSet idSet1 = new IDSet();
             if(User.isIDExist(ID))
                 idSet.add(ID);
-
+            return idSet1;
         }
-        return idSet;
     }
+
 
     public static boolean isIDExist(String ID) {
         return IDUtil.isIDExist(ID);

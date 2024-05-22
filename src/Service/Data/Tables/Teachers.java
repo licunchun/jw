@@ -21,6 +21,9 @@ public class Teachers {
     public static String getID(String name){
         return teachersTable.select("ID","name",name);
     }
+    public static String[] getAllID(){
+        return teachersTable.selectAll("ID");
+    }
     public static String[] getInfo(String ID){ return teachersTable.select(TeacherCol,"ID",ID); }
     public static void addInfo(String[] info){
         teachersTable.insert(TeacherCol,info);
