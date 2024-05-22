@@ -17,16 +17,23 @@ public enum Week {
         this.name = name;
     }//内部使用，外部请勿使用!!!
 
-    public static Week fromString(int n) {
+    public String toString() {
+        return this.name;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public static Week fromString(int n){
         for (int i = 0; i < values().length; i++) {
             int n_t = values()[i].getIndex();
-            if (n == n_t)
+            if(n==n_t)
                 return values()[i];
         }
         throw new IllegalArgumentException("Invalid input: " + n);
     }
-
-    public static int formWeek(Week w) {
+    public static int formWeek(Week w){
         return switch (w) {
             case Monday -> 1;
             case Tuesday -> 2;
@@ -36,13 +43,5 @@ public enum Week {
             case Saturday -> 6;
             case Sunday -> 7;
         };
-    }
-
-    public String toString() {
-        return this.name;
-    }
-
-    public int getIndex() {
-        return index;
     }
 }

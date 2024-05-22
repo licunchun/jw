@@ -36,6 +36,8 @@ public void updatePoints(String score,String classesCode, String ID);
 public  String selectPonits(String classesCode, String ID);
 ```
 
+
+
 共有六个私有变量
 
 ```java
@@ -106,6 +108,8 @@ private void execute() {
 数据库数据格式
 
 全部非空
+
+
 
 对数据库的操作
 

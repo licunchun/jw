@@ -15,7 +15,7 @@ public class StudentClassesServ {
     public static ClassesSet getStudentClassesSet(String ID) {
         ClassesSet classesSet = new ClassesSet();
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
+        for (String code:codes){
             String[] classInfo = Courses.geInfo(code);
             Classes c = Classes.fromArray(classInfo);
             classesSet.add(c);
@@ -26,24 +26,24 @@ public class StudentClassesServ {
     public static CourseCodeSet getStudentCourseCodeSet(String ID) {
         CourseCodeSet courseCodeSet = new CourseCodeSet();
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
+        for (String code:codes){
             String[] classInfo = Courses.geInfo(code);
             Classes classes = Classes.fromArray(classInfo);
-            String point = Points.getScore(code, ID);
+            String point = Points.getScore(code,ID);
             int score = Integer.parseInt(point);
-            double GPA = Points.getGPA(code, ID);
-            StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes, GPA, score);
+            double GPA = Points.getGPA(code,ID);
+            StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes,GPA,score);
             courseCodeSet.add(studentCourseScoreTable);
         }
         return courseCodeSet;
     }
 
     public static double getStudentTotalCredits(String ID) {
-        if (!Points.isIDExist(ID))
+        if(!Points.isIDExist(ID))
             return -1.0;
         double totalCredits = 0.0;
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
+        for (String code:codes){
             String[] courseInfo = Courses.geInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalCredits += credits;
@@ -52,13 +52,13 @@ public class StudentClassesServ {
     }
 
     public static double getStudentReceivedCredits(String ID) {
-        if (!Points.isIDExist(ID))
+        if(!Points.isIDExist(ID))
             return -1.0;
         double receivedCredits = 0.0;
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
-            String point = Points.getScore(code, ID);
-            if (point.isEmpty())
+        for (String code:codes){
+            String point = Points.getScore(code,ID);
+            if(point.isEmpty())
                 continue;
             String[] courseInfo = Courses.geInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
@@ -68,15 +68,15 @@ public class StudentClassesServ {
     }
 
     public static double getStudentFailedCredits(String ID) {
-        if (!Points.isIDExist(ID))
+        if(!Points.isIDExist(ID))
             return -1.0;
         double failedCredits = 0.0;
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
-            String point = Points.getScore(code, ID);
-            if (point.isEmpty())
+        for (String code:codes){
+            String point = Points.getScore(code,ID);
+            if(point.isEmpty())
                 continue;
-            if (Double.parseDouble(point) >= 60)
+            if(Double.parseDouble(point)>=60)
                 continue;
             String[] courseInfo = Courses.geInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
@@ -86,89 +86,89 @@ public class StudentClassesServ {
     }
 
     public static double getStudentAverageGrade(String ID) {
-        if (!Points.isIDExist(ID))
+        if(!Points.isIDExist(ID))
             return -1.0;
         int totalScore = 0;
         int num = 0;
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
-            String score = Points.getScore(code, ID);
-            if (score.isEmpty())
+        for (String code:codes){
+            String score = Points.getScore(code,ID);
+            if(score.isEmpty())
                 continue;
             totalScore += Integer.parseInt(score);
             num += 1;
         }
-        return ((double) totalScore) / num;
+        return ((double)totalScore)/num;
     }
 
     public static double getStudentWeightedAverageGrade(String ID) {
-        if (!Points.isIDExist(ID))
+        if(!Points.isIDExist(ID))
             return -1.0;
         double totalScore = 0.0;
         double totalCredits = 0.0;
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
-            String point = Points.getScore(code, ID);
-            if (point.isEmpty())
+        for (String code:codes){
+            String point = Points.getScore(code,ID);
+            if(point.isEmpty())
                 continue;
             String[] courseInfo = Courses.geInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
-            totalScore += Integer.parseInt(point) * credits;
+            totalScore += Integer.parseInt(point)*credits;
             totalCredits += credits;
         }
-        return totalScore / totalCredits;
+        return totalScore/totalCredits;
     }
 
     public static double getStudentGPA(String ID) {
-        if (!Points.isIDExist(ID))
+        if(!Points.isIDExist(ID))
             return -1.0;
         double totalGPA = 0.0;
         double totalCredits = 0.0;
         String[] codes = Points.getAllCode(ID);
-        for (String code : codes) {
-            String point = Points.getScore(code, ID);
-            if (point.isEmpty())
+        for (String code:codes){
+            String point = Points.getScore(code,ID);
+            if(point.isEmpty())
                 continue;
             String[] courseInfo = Courses.geInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
-            totalGPA += Points.pointToGPA(point) * credits;
+            totalGPA += Points.pointToGPA(point)*credits;
             totalCredits += credits;
         }
-        return totalGPA / totalCredits;
+        return totalGPA/totalCredits;
     }
 
 
     public static PickClassesError pickClasses(String studentID, String classesCode) {
-        if (!Students.isIDExist(studentID))
+        if(!Students.isIDExist(studentID))
             return PickClassesError.IDNotFind;
-        if (!Courses.isCodeExist(classesCode))
+        if(!Courses.isCodeExist(classesCode))
             return PickClassesError.ClassesCodeNotFind;
-        if (isPicked(studentID, classesCode) == Boolean.TRUE)
+        if(isPicked(studentID,classesCode)==Boolean.TRUE)
             return PickClassesError.ClassesISChosen;
-        if (Courses.isCourseFull(classesCode))
+        if(Courses.isCourseFull(classesCode))
             return PickClassesError.ClassesIsFull;
-        Points.addPoints(classesCode, studentID);
+        Points.addPoints(classesCode,studentID);
         Courses.increaseStdCount(classesCode);
         Students.courseSelection(studentID, classesCode);
         return PickClassesError.Success;
     }
 
     public static DropClassesError dropClasses(String studentID, String classesCode) {
-        if (!Students.isIDExist(studentID))
+        if(!Students.isIDExist(studentID))
             return DropClassesError.IDNotFind;
-        if (!Courses.isCodeExist(classesCode))
+        if(!Courses.isCodeExist(classesCode))
             return DropClassesError.ClassesCodeNotFind;
-        if (isPicked(studentID, classesCode) == Boolean.FALSE)
+        if(isPicked(studentID,classesCode)==Boolean.FALSE)
             return DropClassesError.IDNotFind;
 
-        Points.deletePoints(classesCode, studentID);
+        Points.deletePoints(classesCode,studentID);
         Courses.decreaseStdCount(classesCode);
         Students.courseWithdrawal(studentID, classesCode);
         return DropClassesError.Success;
     }
 
     public static Boolean isPicked(String studentID, String classesCode) {
-        if (!Points.isCodeIDExist(classesCode, studentID))
+        if(!Points.isCodeIDExist(classesCode,studentID))
             return Boolean.FALSE;
         return Boolean.TRUE;
     }

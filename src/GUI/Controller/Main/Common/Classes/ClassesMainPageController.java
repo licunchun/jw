@@ -126,6 +126,11 @@ public class ClassesMainPageController {
     public void flush() {
         {
             Classes classes = getClasses(classesCode);
+            if (classes == null) {
+                stage.close();
+                System.err.println("ClassesCode not found!\nPlease refresh the page and try again!");
+                return;
+            }
             ClassesForTable classesForTable = new ClassesForTable(classes);
 
             CodeLabel.setText(classesForTable.getCode());

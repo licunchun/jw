@@ -17,16 +17,16 @@ public enum Campus {
         this.name = name;
     }
 
-    public static Campus fromString(String s) {
+    public String toString() {
+        return this.name;
+    }
+
+    public static Campus fromString(String s){
         for (int i = 0; i < values().length; i++) {
             String s_t = values()[i].toString();
-            if (s.compareTo(s_t) == 0)
+            if(s.compareTo(s_t)==0)
                 return values()[i];
         }
         throw new IllegalArgumentException("Invalid input: " + s);
-    }
-
-    public String toString() {
-        return this.name;
     }
 }

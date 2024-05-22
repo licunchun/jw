@@ -19,19 +19,6 @@ public class IDSet {
 
     }
 
-    public static IDSet fromTeacherString(String teachers) {
-        IDSet idSet = new IDSet();
-        String pattern = "^[一-龥·]+";
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(teachers);
-        while (m.find()) {
-            String name = m.group();
-            String ID = Teachers.getID(name);
-            idSet.add(ID);
-        }
-        return idSet;
-    }
-
     public void add(String ID) {
         this.IDSet.add(ID);
     }
@@ -51,6 +38,9 @@ public class IDSet {
 
     public ObservableList<UserInformationForTable> toObservableList() {
         ObservableList<UserInformationForTable> observableList = FXCollections.observableArrayList();
+        if (IDSet == null) {
+            return observableList;
+        }
         for (String ID : IDSet) {
             observableList.add(new UserInformationForTable(ID));
         }
@@ -61,8 +51,21 @@ public class IDSet {
         return IDSet;
     }
 
-    public void print() {
-        for (String s : IDSet)
+    public static IDSet fromTeacherString(String teachers){
+        IDSet idSet = new IDSet();
+        String pattern = "^[一-龥·]+";
+        Pattern p = Pattern.compile(pattern);
+        Matcher m = p.matcher(teachers);
+        while (m.find()) {
+            String name = m.group();
+            String ID = Teachers.getID(name);
+            idSet.add(ID);
+        }
+        return idSet;
+    }
+    public void print()
+    {
+        for (String s:IDSet)
             System.out.println(s);
     }
 }
