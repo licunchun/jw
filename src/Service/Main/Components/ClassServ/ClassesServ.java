@@ -145,34 +145,7 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
 }
     public static DeleteClassesError deleteClasses(String classesCode) {
         //将老师开课信息删除
-<<<<<<< HEAD
-<<<<<<< HEAD
-//        String teachers = Courses.geInfo(classesCode)[Courses.teachers_C];
-//        String regex = "[一-龥·]+"; // 匹配五个数字的正则表达式
-//        Pattern pattern = Pattern.compile(regex);
-//        Matcher matcher = pattern.matcher(teachers);
-//        while (matcher.find()) {
-//            String teacher = matcher.group();
-//            String teacherID = Teachers.getID(teacher);
-//            Teachers.deleteClasses(teacherID,classesCode);
-//        }
-=======
-=======
->>>>>>> parent of 773c90a (findUser)
-        String teachers = Courses.geInfo(classesCode)[Courses.teachers_C];
         String regex = "[一-龥·]+"; // 匹配五个数字的正则表达式
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(teachers);
-        while (matcher.find()) {
-            String teacher = matcher.group();
-            String teacherID = Teachers.getID(teacher);
-            Teachers.deleteClasses(teacherID,classesCode);
-        }
->>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
-=======
-            Teachers.deleteClasses(teacherID,classesCode);
-        }
->>>>>>> parent of 773c90a (findUser)
         //将所有选这门课的学生删除
         //Points表也对应删除
         String[] studentsID = Points.getAllID(classesCode);
