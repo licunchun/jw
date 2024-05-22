@@ -17,7 +17,6 @@ public class StudentSet {
     public int length() {
         return students.size();
     }
-
     public StudentSet findName(String name) {
         if (name.isEmpty()) return this;
 

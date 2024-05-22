@@ -6,6 +6,7 @@ import GUI.Data.DataPackage.Classes.CourseCodeSet;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
+import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
 import Service.Main.Components.ClassServ.ClassesServ;
 
@@ -34,15 +35,15 @@ public class TeacherClassesServ {
         String codes = Teachers.getInfo(ID)[Teachers.classes_C];
         Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
         Matcher m = p.matcher(codes);
-        while (m.find()) {
+        while (m.find()){
             String code = m.group();
             String[] classInfo = Courses.geInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             String[] studentsID = Points.getAllID(code);
-            for (String studentID : studentsID) {
-                int score = ClassesServ.getStudentScore(code, studentID);
-                double GPA = ClassesServ.getStudentGPA(code, studentID);
-                StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes, GPA, score);
+            for (String studentID:studentsID){
+                int score = ClassesServ.getStudentScore(code,studentID);
+                double GPA = ClassesServ.getStudentGPA(code,studentID);
+                StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes,GPA,score);
                 courseCodeSet.add(studentCourseScoreTable);
             }
         }
