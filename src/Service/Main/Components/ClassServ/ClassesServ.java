@@ -1,10 +1,7 @@
 package Service.Main.Components.ClassServ;
 
 import GUI.Data.DataPackage.Classes.Classes;
-<<<<<<< HEAD
 
-=======
->>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.Enum.Classes.*;
