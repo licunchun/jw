@@ -281,13 +281,13 @@ public class ClassesChoosingPageController {
     }
 
     public void flush() {
+        classesSearchingServ.searchClasses(searchingClasses);
+        pagination.setPageCount((classesSearchingServ.getCount() - 1) / ROWS_PER_PAGE + 1);
         int fromIndex = pagination.getCurrentPageIndex() * ROWS_PER_PAGE;
         int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, classesSearchingServ.getCount());
         data = FXCollections.observableArrayList(classesSearchingServ.getClassesSet(fromIndex, toIndex).
                 toObservableList());
         tableView.setItems(data);
-        classesSearchingServ.searchClasses(searchingClasses);
-        pagination.setPageCount((classesSearchingServ.getCount() - 1) / ROWS_PER_PAGE + 1);
     }
 
     private void choiceBoxInitialize() {
