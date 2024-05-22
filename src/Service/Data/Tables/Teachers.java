@@ -12,8 +12,26 @@ public class Teachers {
     private static final SQLiteJDBC teachersTable = new SQLiteJDBC(tableName);
     private static final String[] TeacherCol = {"ID", "name", "password", "classes"};
 
+<<<<<<< HEAD
+    public static boolean isIDExist(String ID){
+        return teachersTable.isColValueExist("ID",ID);
+    }
+    public static boolean isNameExist(String name){
+        return teachersTable.isColValueExist("name",name);
+    }
+    public static String[] getAllID(){
+        return teachersTable.selectAll("ID");
+    }
+    public static String getID(String name){
+        return teachersTable.select("ID","name",name);
+    }
+    public static String[] getInfo(String ID){ return teachersTable.select(TeacherCol,"ID",ID); }
+    public static void addInfo(String[] info){
+        teachersTable.insert(TeacherCol,info);
+=======
     public static boolean isIDExist(String ID) {
         return teachersTable.isColValueExist("ID", ID);
+>>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
     }
 
     public static boolean isNameExist(String name) {

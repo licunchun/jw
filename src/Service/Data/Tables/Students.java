@@ -25,8 +25,25 @@ public class Students {
             "money"
     };
 
+<<<<<<< HEAD
+    public static boolean isIDExist(String ID){
+        return studentsTable.isColValueExist("ID",ID);
+    }
+    public static boolean isNameExist(String name){
+        return studentsTable.isColValueExist("name",name);
+    }
+    public static String[] getAllID(){
+        return studentsTable.selectAll("ID");
+    }
+    public static String[] getInfo(String ID){
+        return studentsTable.select(StudentCol,"ID",ID);
+    }
+    public static void addInfo(String[] info){
+        studentsTable.insert(StudentCol,info);
+=======
     public static boolean isIDExist(String ID) {
         return studentsTable.isColValueExist("ID", ID);
+>>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
     }
 
     public static boolean isNameExist(String name) {

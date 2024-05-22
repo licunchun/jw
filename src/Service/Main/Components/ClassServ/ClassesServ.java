@@ -1,6 +1,10 @@
 package Service.Main.Components.ClassServ;
 
 import GUI.Data.DataPackage.Classes.Classes;
+<<<<<<< HEAD
+
+=======
+>>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.Enum.Classes.*;
@@ -10,12 +14,11 @@ import GUI.Data.Enum.School;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
 import Service.Data.Tables.Students;
-import Service.Data.Tables.Teachers;
+
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class ClassesServ {
     public static String[] fromClasses(Classes classes) {
@@ -134,6 +137,17 @@ public class ClassesServ {
 
     public static DeleteClassesError deleteClasses(String classesCode) {
         //将老师开课信息删除
+<<<<<<< HEAD
+//        String teachers = Courses.geInfo(classesCode)[Courses.teachers_C];
+//        String regex = "[一-龥·]+"; // 匹配五个数字的正则表达式
+//        Pattern pattern = Pattern.compile(regex);
+//        Matcher matcher = pattern.matcher(teachers);
+//        while (matcher.find()) {
+//            String teacher = matcher.group();
+//            String teacherID = Teachers.getID(teacher);
+//            Teachers.deleteClasses(teacherID,classesCode);
+//        }
+=======
         String teachers = Courses.geInfo(classesCode)[Courses.teachers_C];
         String regex = "[一-龥·]+"; // 匹配五个数字的正则表达式
         Pattern pattern = Pattern.compile(regex);
@@ -143,6 +157,7 @@ public class ClassesServ {
             String teacherID = Teachers.getID(teacher);
             Teachers.deleteClasses(teacherID, classesCode);
         }
+>>>>>>> a55caa14a831e51f048c088b9e1ebd00f97bc239
         //将所有选这门课的学生删除
         //Points表也对应删除
         String[] studentsID = Points.getAllID(classesCode);
