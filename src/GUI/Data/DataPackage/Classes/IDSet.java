@@ -5,17 +5,15 @@ import Service.Data.Tables.Teachers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import static Service.Main.Components.UserServ.UserServ.getName;
 
 public class IDSet {
-    private final Set<String> IDSet = new LinkedHashSet<>();
+    private final Set<String> IDSet = new HashSet<>();
+    private List<String> IDList = null;
 
     public IDSet() {
 
@@ -75,8 +73,10 @@ public class IDSet {
     }
 
     public IDSet getSubSet(int fromIndex, int toIndex) {
-        List<String> list = new ArrayList<>(IDSet);
-        return new IDSet(new LinkedHashSet<String>(list.subList(fromIndex, toIndex)));
+        if (IDList == null) {
+            IDList = new ArrayList<>(IDSet);
+        }
+        return new IDSet(new HashSet<String>(IDList.subList(fromIndex, toIndex)));
     }
 
     public void print() {
