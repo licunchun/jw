@@ -1,6 +1,7 @@
 package GUI.Controller.Main.Admin;
 
 import GUI.Controller.Components.UserInformationEditor.*;
+import GUI.Data.DataPackage.Classes.IDSet;
 import GUI.Data.DataPackage.UserInformation.UserInformationForTable;
 import GUI.Data.Enum.GUI.Scene.EditUserPage;
 import GUI.Data.Enum.User.UserType;
@@ -53,7 +54,7 @@ public class ManageUserPageController {
     private StudentSchoolEditorController studentSchoolEditorController;
     private TeacherSchoolEditorController teacherSchoolEditorController;
     private MoneyEditorController moneyEditorController;
-    private ObservableList<UserInformationForTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private IDSet idSet = new IDSet();
     /*
      * Else
      */
@@ -347,11 +348,11 @@ public class ManageUserPageController {
             });
         }//设置自定义格式工厂
         {
-            pagination = new Pagination((data.size() - 1) / ROWS_PER_PAGE + 1);
+            pagination = new Pagination((idSet.size() - 1) / ROWS_PER_PAGE + 1);
             pagination.setPageFactory(pageIndex -> {
                 int fromIndex = pageIndex * ROWS_PER_PAGE;
-                int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
-                tableView.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
+                int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, idSet.size());
+                tableView.setItems(FXCollections.observableArrayList(idSet.getSubSet(fromIndex, toIndex).toObservableList()));
                 return new VBox(tableView);
             });
             pagination.setPrefWidth(1280);
@@ -441,11 +442,11 @@ public class ManageUserPageController {
     }
 
     public void flush() {
-        data = findUser(userType, ID, name).toObservableList();
-        pagination.setPageCount((data.size() - 1) / ROWS_PER_PAGE + 1);
+        idSet = findUser(userType, ID, name);
+        pagination.setPageCount((idSet.size() - 1) / ROWS_PER_PAGE + 1);
         int fromIndex = pagination.getCurrentPageIndex() * ROWS_PER_PAGE;
-        int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, data.size());
-        tableView.setItems(FXCollections.observableArrayList(data.subList(fromIndex, toIndex)));
+        int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, idSet.size());
+        tableView.setItems(FXCollections.observableArrayList(idSet.getSubSet(fromIndex, toIndex).toObservableList()));
     }
 
     public ContextMenu manageUserPageContextMenu() {
