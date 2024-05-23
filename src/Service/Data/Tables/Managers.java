@@ -34,8 +34,11 @@ public class Managers {
     public static String[] getSameNameID(String name){
         return managersTable.selectAll("ID","name",name);
     }
-    public static String[] getIDWithString(String subString){
-        return managersTable.selectLike("ID","ID",subString);
+    public static String[] getIDWithSubID(String subID){
+        return managersTable.selectLike("ID","ID",subID);
+    }
+    public static String[] getIDWithSubName(String subName){
+        return managersTable.selectLike("ID","name",subName);
     }
     public static String[] getIDWithString(String subID,String subName){
         return managersTable.selectLike("ID","ID",subID,"name",subName);

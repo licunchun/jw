@@ -79,8 +79,11 @@ public class Students {
     public static String[] getSameNameID(String name){
         return studentsTable.selectAll("ID","name",name);
     }
-    public static String[] getIDWithString(String subString){
-        return studentsTable.selectLike("ID","ID",subString);
+    public static String[] getIDWithSubID(String subID){
+        return studentsTable.selectLike("ID","ID",subID);
+    }
+    public static String[] getIDWithSubName(String subName){
+        return studentsTable.selectLike("ID","name",subName);
     }
     public static String[] getIDWithString(String subID,String subName){
         return studentsTable.selectLike("ID","ID",subID,"name",subName);

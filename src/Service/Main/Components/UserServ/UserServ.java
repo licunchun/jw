@@ -206,17 +206,16 @@ public class UserServ {
             return idSet;
         }
         if (Name==null||Name.isEmpty()) {
-            studentsID = Students.getIDWithString(ID);
-            teachersID = Teachers.getIDWithString(ID);
-            managersID = Managers.getIDWithString(ID);
+            studentsID = Students.getIDWithSubID(ID);
+            teachersID = Teachers.getIDWithSubID(ID);
+            managersID = Managers.getIDWithSubID(ID);
             packed(userType,idSet,studentsID,teachersID,managersID);
             return idSet;
-        } 
+        }
         if(ID==null||ID.isEmpty()){
-            String[] empty = new String[0];
-            studentsID = Students.isNameExist(Name) ? Students.getSameNameID(Name) : empty;
-            teachersID = Teachers.isNameExist(Name) ? Teachers.getSameNameID(Name) : empty;
-            managersID = Managers.isNameExist(Name) ? Managers.getSameNameID(Name) : empty;
+            studentsID = Students.getIDWithSubName(Name);
+            teachersID = Teachers.getIDWithSubName(Name);
+            managersID = Managers.getIDWithSubName(Name);
             packed(userType,idSet,studentsID,teachersID,managersID);
             return idSet;
         }
