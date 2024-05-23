@@ -360,7 +360,7 @@ public class DataBase {
             }
             return pointSet;
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e);
             return null;
         }
     }
@@ -370,7 +370,7 @@ public class DataBase {
         try {
             return statement.executeUpdate(sql) > 0;
         } catch (SQLException e) {
-            System.out.println(e.toString());
+            System.out.println(e);
             return false;
         }
     }

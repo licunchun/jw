@@ -48,7 +48,7 @@ public class ClassesSchedulePageController {//TODO
     private TableColumn<TimeTable, String> SaturdayColumn;
     @FXML
     private TableColumn<TimeTable, String> SundayColumn;
-    private ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private final ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
     private UserType userType;
     private ClassesSet classesSet;
