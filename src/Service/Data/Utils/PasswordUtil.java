@@ -7,9 +7,7 @@ public class PasswordUtil {
             return false;
         if(!checkLength(password))
             return false;
-        if(!checkChar(password))
-            return false;
-        return true;
+        return checkChar(password);
     }
     public static boolean checkLength(String password) {
         return password.length() <= MAX_NAME_LENGTH;

@@ -13,9 +13,7 @@ public class NameUtil {
             return false;
         if(!checkLength(name))
             return false;
-        if(!checkChar(name))
-            return false;
-        return true;
+        return checkChar(name);
     }
     public static String[] teachersNameToID(String teachers){
         ArrayList<String> ID = new ArrayList<String>();
