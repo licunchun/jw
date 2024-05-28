@@ -1,46 +1,30 @@
 import Data.DataBase;
-import Data.Type.StudentSet;
 
 
 public class TestBench {
-    public static void main(String[] args) {
-        DataBase dataBase = new DataBase();
-        StudentSet studentSet = dataBase.infoOfStudents();
-        studentSet.findName("crl");
-        System.out.println(studentSet.get(0).account);
+    String studentTable = "students";
+    String teacherTable = "teachers";
+    String manageTable = "managers";
+    String sql = "";
+    static DataBase dataBase = new DataBase();
 
-
-//        String code = "000";
-//        String name = "测试课程";
-//        String period = "40";
-//        String credits = "3";
-//        CourseTimeSet time = new CourseTimeSet();
-//        time.add(CourseTime.Section3);
-//        time.add(CourseTime.Section4);
-//        time.add(CourseTime.Section5);
-//        time.add(CourseTime.Section20);
-//        time.add(CourseTime.Section21);
-//        String maxCount = "100";
-//        ClassType classType = ClassType.Theory;
-//        CourseType courseType = CourseType.PE;
-//        School school = School.ComputerScienceAndTechnology;
-//        Campus campus = Campus.East;
-//        ExamMode examMode = ExamMode.Computer;
-//        Language language = Language.Chinese;
-//        Education education = Education.Preparatory;
-//        String teacher = "1234";
-//        DataBase db = new DataBase();
-//        String[] info = {"000","测试课程","40","3","3(1,2,3)","0","100","理论课","体育","计算机科学与技术学院","西区","机考","中文","预科","1234"};
-//        if(db.addCourse(info))
-//        {
-//            System.out.println("yes");
-//        }
-//        else {
-//            System.out.println("no");
-//        }
-//        Classes c = ClassesServ.getClasses("000");
-//        c.print();
-//        System.out.println(ClassesServ.toStringTime(c.getTime()));
-
+    private boolean addStudents100() {
+        String [] gradePool = {"大一", "大二", "大三", "大四"};
+        String availableAccount = "";
+        for (int i = 0; i < 100; i++) {
+            availableAccount = dataBase.availableAccountOfStudent(gradePool[i%4]);
+            dataBase.addStudent("测试", availableAccount, "test", gradePool[i%4], "男", "少年班学院");
+        }
+        return true;
     }
+    private boolean addTeachers100() {
+        String [] ChinesePool = {"零", "一", "二", "三", "四", "五", "六", "七", "八", "九"};
+        String availableAccount = "";
+        for (int i = 0; i < 10; i++) {
+            availableAccount = dataBase.availableAccountOfTeacher();
+            dataBase.addTeacher(ChinesePool[i], availableAccount, "test");
+        }
+        return true;
+    }
+
 }
