@@ -1,0 +1,87 @@
+num类大致如下（就靠你了）
+（实在不想记0，1，2，3；对了如果可以，注释文档写一下需要import什么以及如何调用，或者群里说一下）
+单独开一个enum包放吧
+
+//账户类型
+enum UserType
+{
+	None,Student,Teacher,Admin;
+}
+
+//年级
+enum Grade
+{
+	Grade1=1,
+	Grade2=2,
+	Grade3=3,
+	Grade4=4;
+}
+
+//学生所属学院
+enum StudentSchool
+{
+	GiftedYoung,
+	MathematicalSciences,
+	PhysicalSciences,
+	Management,
+	ChemistryAndMaterialsScience,
+	EarthAndSpaceSciences,
+	EngineeringScience,
+	InformationScienceAndTechnology,
+	HumanitiesAndSocialScience,
+	NuclearScienceAndTechnology,
+	ComputerScienceAndTechnology,
+	Microelectronics,
+	CyberScienceAndTechnology,
+	DataScience,
+	EnvironmentalScienceAndEngineering,
+	LifeScienceAndMedicine,
+	FutureTechnology;
+	
+	public String toString();	//生成中文字符串
+	public School toSchool();	//生成对应的School对象
+}
+
+//教师所属学院
+enum School
+{
+	GiftedYoung,
+	MathematicalSciences,
+	UnderGraduate,
+	PhysicalSciences,
+	Management,
+	ChemistryAndMaterialsScience,
+	EarthAndSpaceSciences,
+	EngineeringScience,
+	InformationScienceAndTechnology,
+	HumanitiesAndSocialScience,
+	NuclearScienceAndTechnology,
+	ComputerScienceAndTechnology,
+	PublicAffairs,
+	EnvironmentalScienceAndOptoelectronicTechnology,
+	Microelectronics,
+	Marxism,
+	CyberScienceAndTechnology,
+	SoftwareEngineering,
+	DataScience,
+	NationalSynchrotronRadiationLaboratory,
+	StateKeyLaboratoryOfFireScience,
+	EnvironmentalScienceAndEngineering,
+	InnovationAndEntrepreneurship,
+	LifeScienceAndMedicine,
+	FutureTechnology;
+
+	public String toString();//生成中文字符串
+}
+注：	为了方便拉数据，上述学院包含了全部学院；
+	请在实现的时候改变排序使得学生所属学院与学院一一对应(同一学院数值相等)
+
+//性别
+enum Gender
+{
+	Male,Female;
+
+	public String toString();	//生成中文字符串
+	public boolean getSign();   //返回标签
+}
+注：以上enum类单独创建属性包放置，在选课时也会调用

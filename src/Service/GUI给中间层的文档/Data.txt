@@ -1,0 +1,126 @@
+UserService-记录用户基本信息
+UserServiceSet
+{
+    Set<UserService> userService;
+}
+————————————————————————————
+Student extends UserService
+//为什么这么写呢，因为在用户里面修改信息（基本信息）也要用到这个函数，
+                                            提高一下复用率
+{
+    CourseSet courseSet;//所选课程
+    double money;//钱（或者用类存储？）
+}
+Teacher extends UserService
+{
+    CourseSet courseSet;//所教授的课程
+}
+Manager extends UserService{}
+————————————————————————————
+StudentSet
+{
+    -Set<Student> studentSet;//为什么不用Set而用List
+}
+————————————————————————————
+Class
+{
+    -String code;               //课堂编号
+    -String name;               //课堂名称
+    -int period;                //学时
+    -double credits;            //学分
+    -CourseTime time;           //时间
+    -int stdCount;              //当前学生人数
+    -int limitCount;            //最大学生人数
+    -ClassType classType;       //理论/实验课
+    -CourseType courseType;     //课程种类
+    -School school;             //所属院系
+    -Campus campus;             //校区
+    -ExamMode examMode;         //考试方式
+    -Language language;         //教学语言
+    -Education education;       //本科/研究生
+    -UserServiceSet teacher;    //教师
+}
+//为什么这么做？--教师要有查询班级学生功能，
+            如果不在班级里面存储则需要遍历所有学生的选课
+//为什么要保留UserService?--不然在班级里面会存储过多的信息导致信息过于冗杂，
+            空间利用重复率高，而且容易嵌套包含
+CourseSet
+{
+    -Set<Course> courseSet;
+}
+————————————————————————————
+CourseTime
+{
+    -String courseTime;
+}
+enum ClassType
+{
+    None(""),
+    Theory("理论课"),
+    Experiment("实验课"),
+    Practice("实践课"),
+    TheoryExperiment("理论实验课"),
+    TheoryPractice("理论实践课");
+}
+CourseType
+{
+    None(""),
+    General("通识"),
+    Else("其他"),
+    BasicPE("基础体育"),
+    PE("体育"),
+    MoocGeneral("慕课通识"),
+    Preparatory("预科"),
+    English("英语"),
+    EnglishExpansion("英语拓展"),
+    Plan("计划"),
+    ScienceAndSociety("科学与社会"),
+    History("四史"),
+    Basic("基础"),
+    Profession("专业"),
+    Politics("政治及其他"),
+    EnglishCourse("英语课"),
+    PublicCourse("公选课");
+}
+Campus
+{
+    None(""),
+    West("东区"),
+    East("西区"),
+    Middle("中区"),
+    South("南区"),
+    HighTech("高新区"),
+    Else("其他");
+}
+ExamMode
+{
+    None(""),
+    PE("体育测试"),
+    WrittenOpen("笔试(开卷)"),
+    WrittenHalf("笔试(半开卷)"),
+    WrittenClose("笔试(闭卷)"),
+    Project("大作业"),
+    Computer("机考"),
+    Oral("口试"),
+    Experiment("实验操作");
+
+}
+Language
+{
+    None(""),
+    Chinese("中文"),
+    English("英文"),
+    Double("双语"),
+    French("法语"),
+    EnglishEdu("外语类英语"),
+    GermanEdu("外语类德语"),
+    FrenchEdu("外语类法语"),
+    Japanese("外语类日语");
+}
+Education
+{
+    None(""),
+    Preparatory("预科"),
+    Undergraduate("本科"),
+    Graduate("研究生");
+}
