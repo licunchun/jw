@@ -183,6 +183,8 @@ public class AdminMainMenuController {
                             proposeCoursePageController.setID(ID);
                             proposeCoursePageController.flush();
 
+                            proposeCoursePageStage.show();
+
                             proposeCoursePageStage.setOnHiding(event -> {
                                 proposeCoursePageController.close();
                                 proposeCoursePageStage.close();
