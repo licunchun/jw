@@ -23,7 +23,7 @@ public class IDUtil {
     public static boolean isIDExist(String ID){
         return User.isIDExist(ID);
     }
-    public static String getavailableID(String grade){
+    public static String getAvailableID(String grade){
         String ID = switch (grade) {
             case "大一" -> "PB23";
             case "大二" -> "PB22";
@@ -37,7 +37,7 @@ public class IDUtil {
         }
         throw new RuntimeException();
     }
-    public static String getavailableID(int userType){
+    public static String getAvailableID(int userType){
         switch (userType){
             case User.TEACHER -> {
                 for (int i = 0; i < 100000; i++) {

@@ -52,9 +52,9 @@ public class RegistServ {
         if(type== User.STUDENT) {
             if(gender==null||school==null||grade==null)
                 throw new RuntimeException("RegistServ:gender/school/grade为null");
-            ID = IDUtil.getavailableID(grade.toString());
+            ID = IDUtil.getAvailableID(grade.toString());
         } else
-            ID = IDUtil.getavailableID(type);
+            ID = IDUtil.getAvailableID(type);
         String[] dataS = {ID,name,password, grade.toString(), gender.toString(),school.toString(),"","0"};
         String[] dataT = {ID,name,password,""};
         String[] dataM = {ID,name,password};
