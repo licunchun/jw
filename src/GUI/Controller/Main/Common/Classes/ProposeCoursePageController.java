@@ -138,7 +138,7 @@ public class ProposeCoursePageController {
                 Tips.setVisible(true);
             }
             case NewClassesError.TeacherInvalid -> {
-                Tips.setText("教师名称不合法，请重新输入");
+                Tips.setText("教师ID不合法，请重新输入");
                 Tips.setVisible(true);
             }
             case NewClassesError.Success -> stage.close();
@@ -176,11 +176,10 @@ public class ProposeCoursePageController {
 
     public void flush() {
         if (userType == UserType.Teacher) {
-            String name = getName(ID);
-            if (name == null) {
+            if (ID == null) {
                 System.err.println("Error:ID not found!\nPlease refresh the page and try again!");
             } else {
-                TeacherTextField.setText(name);
+                TeacherTextField.setText(ID);
                 TeacherTextField.setEditable(false);
             }
         }
