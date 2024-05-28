@@ -186,6 +186,7 @@ public class AdminMainMenuController {
                             proposeCoursePageStage.show();
 
                             proposeCoursePageStage.setOnHiding(event -> {
+                                isProposeCoursePageExist = false;
                                 proposeCoursePageController.close();
                                 proposeCoursePageStage.close();
                             });

@@ -163,10 +163,12 @@ public class TeacherMainMenuController {
                             proposeCoursePageController.setStage(proposeCoursePageStage);
                             proposeCoursePageController.setID(ID);
                             proposeCoursePageController.flush();
+                            proposeCoursePageStage.show();
 
                             proposeCoursePageStage.setOnHiding(event -> {
                                 proposeCoursePageController.close();
                                 proposeCoursePageStage.close();
+                                isProposeCoursePageExist = false;
                             });
 
                             resetLocation(proposeCoursePageStage);
