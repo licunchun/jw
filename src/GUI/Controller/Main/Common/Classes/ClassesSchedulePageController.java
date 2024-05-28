@@ -24,7 +24,7 @@ import static Service.Main.Components.UserServ.UserServ.getName;
 import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 import static Service.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
-public class ClassesSchedulePageController {//TODO
+public class ClassesSchedulePageController {
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -91,6 +91,14 @@ public class ClassesSchedulePageController {//TODO
             userID.setText(ID);
         }
         for(int i = 1; i <= 91; i++) classesScheduleString[i] = null;
+        MondayColumn.setSortable(false);
+        TuesdayColumn.setSortable(false);
+        WednesdayColumn.setSortable(false);
+        ThursdayColumn.setSortable(false);
+        FridayColumn.setSortable(false);
+        SaturdayColumn.setSortable(false);
+        SundayColumn.setSortable(false);
+        numberColumn.setSortable(false);
     }
 
     public void setID(String ID) {
