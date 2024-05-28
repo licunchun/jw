@@ -59,7 +59,13 @@ public class ClassesSchedulePageController {//TODO
 
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
-        flushMenuItem.setOnAction(event -> flush());
+        flushMenuItem.setOnAction(event -> {
+            try {
+                flush();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         contextMenu.getItems().addAll(flushMenuItem);
 
@@ -71,11 +77,14 @@ public class ClassesSchedulePageController {//TODO
         loadClasses();
     }
 
-    public void flush() {
+    public void flush() throws IOException {
         initializeData();
-    }//TODO
+        loadTable();
+        loadClasses();
+    }
 
     private void initializeData() {
+        data.clear();
         for (int i = 1; i <= 13; i++) {
             TimeTable newTimetable = new TimeTable(i);
             data.add(newTimetable);
@@ -128,14 +137,16 @@ public class ClassesSchedulePageController {//TODO
         }
         if (userType.equals(UserType.Teacher)) classesSet = getTeacherClassesSet(ID);
         if (userType.equals(UserType.Student)) classesSet = getStudentClassesSet(ID);
-        classesSet = getTeacherClassesSet(ID);
+     //   classesSet = getTeacherClassesSet(ID);
         Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
-        for (Classes teacherClass : classesSetIterable) {
-            CourseTimeSet courseTimeSet = teacherClass.getTime();
+        for (Classes classes : classesSetIterable) {
+            System.out.println(classes.getCode());
+            CourseTimeSet courseTimeSet = classes.getTime();
             Iterable<CourseTime> courseTimeSetIterable = courseTimeSet.getCourseTimeIterable();
             CourseTime lastCourseTime = null;
             int length = 0;
             for (CourseTime courseTime : courseTimeSetIterable) {
+                System.out.println(courseTime);
                 if (lastCourseTime == null) {
                     lastCourseTime = courseTime;
                     length = 1;
@@ -148,11 +159,11 @@ public class ClassesSchedulePageController {//TODO
                     double LayoutX = findLayoutX(lastCourseTime.getWeek().getIndex());
                     double LayoutY = findLayoutY(lastCourseTime.getSection() - length + 1);
 
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/Window/Main/Common/Classes/Classes.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/Window/Main/Common/Classes/Classes.fxml"));
                     Parent classesView = loader.load();
                     ClassesController classesController = loader.getController();
 
-                    classesController.setClassesController(teacherClass, length);
+                    classesController.setClassesController(classes, length);
 
                     AnchorPane.setLeftAnchor(classesView, LayoutX); // 设置布局X坐标
                     AnchorPane.setTopAnchor(classesView, LayoutY);   // 设置布局Y坐标

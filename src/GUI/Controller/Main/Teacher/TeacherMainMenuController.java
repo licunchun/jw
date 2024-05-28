@@ -59,6 +59,7 @@ public class TeacherMainMenuController {
     public void setID(String ID) {
         this.ID = ID;
         mainMenuController.setID(ID);
+        teacherScoreMainPageController.setID(ID);
         classesSchedulePageController.setID(ID);
     }
 
@@ -147,7 +148,11 @@ public class TeacherMainMenuController {
                         if (!isClassesSchedulePageExist) {
                             isClassesSchedulePageExist = true;
                             mainMenuTabPane.getTabs().add(classesScheduleTab);
-                            classesSchedulePageController.flush();
+                            try {
+                                classesSchedulePageController.flush();
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
                         } else {
                             mainMenuTabPane.getSelectionModel().select(classesScheduleTab);
                         }
