@@ -2,7 +2,6 @@ package Data;
 
 import Data.Type.*;
 
-import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 import java.sql.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -291,7 +290,7 @@ public class DataBase {
         }
     }
 
-    public String availableAccount(String grade) { // 获取可行学生账号
+    public String availableAccountOfStudent(String grade) { // 获取可行学生账号
         String account = switch (grade) {
             case "大一" -> "PB23";
             case "大二" -> "PB22";
@@ -299,13 +298,28 @@ public class DataBase {
             case "大四" -> "PB20";
             default -> "";
         };
-        String sql = "select * from students where account = '";
+        String sql = "select * from students where ID = '";
         try {
             for (int i = 0; i < 1000000; i++) {
                 resultSet = statement.executeQuery(sql + account + String.format("%06d", i) + "'");
                 resultSet.next();
                 if (resultSet.getRow() == 0) {
                     return account + String.format("%06d", i);
+                }
+            }
+        } catch (SQLException e) {
+            return "";
+        }
+        return "";
+    }
+    public String availableAccountOfTeacher() { // 获取可行教师账号
+        String sql = "select * from teachers where ID = '";
+        try {
+            for (int i = 0; i < 100000; i++) {
+                resultSet = statement.executeQuery(sql + String.format("%05d", i) + "'");
+                resultSet.next();
+                if (resultSet.getRow() == 0) {
+                    return String.format("%05d", i);
                 }
             }
         } catch (SQLException e) {
