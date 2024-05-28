@@ -215,7 +215,7 @@ public class SQLiteJDBC {
         conditions.append(";");
 
 
-        String sql = "SELECT " + colName + " FROM " + tableName + conditions;//TODO
+        String sql = "SELECT " + colName + " FROM " + tableName + conditions;
         try {
             connect();
             rs = stmt.executeQuery(sql);
