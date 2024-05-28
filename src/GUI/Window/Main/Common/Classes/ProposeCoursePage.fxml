@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefWidth="600.0" xmlns="http://javafx.com/javafx/21"
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="GUI.Controller.Main.Common.Classes.ProposeCoursePageController">
     <VBox prefWidth="600.0">
         <AnchorPane prefHeight="60.0" prefWidth="600.0">
@@ -20,8 +25,8 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="CodeTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                           prefWidth="100.0" promptText="请输入课程编号"/>
+                <TextField fx:id="CodeTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0" prefWidth="100.0"
+                           promptText="请输入课程编号"/>
             </AnchorPane>
             <AnchorPane layoutX="330.0" layoutY="20.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="课程名称：">
@@ -29,8 +34,8 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="NameTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                           prefWidth="100.0" promptText="请输入课程名称"/>
+                <TextField fx:id="NameTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0" prefWidth="100.0"
+                           promptText="请输入课程名称"/>
             </AnchorPane>
             <AnchorPane layoutX="70.0" layoutY="90.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="课程学时：">
@@ -38,8 +43,8 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="PeriodTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                           prefWidth="100.0" promptText="请输入课程学时"/>
+                <TextField fx:id="PeriodTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0" prefWidth="100.0"
+                           promptText="请输入课程学时"/>
             </AnchorPane>
             <AnchorPane layoutX="330.0" layoutY="90.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="课程学分：">
@@ -47,8 +52,8 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="CreditsTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                           prefWidth="100.0" promptText="请输入课程学分"/>
+                <TextField fx:id="CreditsTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0" prefWidth="100.0"
+                           promptText="请输入课程学分"/>
             </AnchorPane>
             <AnchorPane layoutX="70.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="上课时间：">
@@ -57,7 +62,7 @@
                     </font>
                 </Label>
                 <Button fx:id="TimeTableButton" layoutX="94.0" layoutY="14.0" mnemonicParsing="false"
-                        text="时间选择器" onAction="#openTimePage"/>
+                        onAction="#openTimePage" text="时间选择器"/>
             </AnchorPane>
             <AnchorPane layoutX="330.0" layoutY="160.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="课程人数：">
@@ -65,8 +70,8 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="MaxCountTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                           prefWidth="100.0" promptText="请输入课程人数" onAction="#openTimePage"/>
+                <TextField fx:id="MaxCountTextField" layoutX="94.0" layoutY="14.0" onAction="#openTimePage"
+                           prefHeight="23.0" prefWidth="100.0" promptText="请输入课程人数"/>
             </AnchorPane>
             <AnchorPane layoutX="70.0" layoutY="230.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="课堂类型：">
@@ -74,8 +79,7 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <ChoiceBox fx:id="ClassesTypeChoiceBox" layoutX="94.0" layoutY="14.0"
-                           prefWidth="100.0"/>
+                <ChoiceBox fx:id="ClassesTypeChoiceBox" layoutX="94.0" layoutY="14.0" prefWidth="100.0"/>
             </AnchorPane>
             <AnchorPane layoutX="330.0" layoutY="230.0" prefHeight="50.0" prefWidth="200.0">
                 <Label layoutX="14.0" layoutY="14.0" text="课程种类：">
@@ -131,19 +135,19 @@
                         <Font size="16.0"/>
                     </font>
                 </Label>
-                <TextField fx:id="TeacherTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0"
-                           prefWidth="100.0" promptText="请输入教师名称"/>
+                <TextField fx:id="TeacherTextField" layoutX="94.0" layoutY="14.0" prefHeight="23.0" prefWidth="100.0"
+                           promptText="请输入教师ID"/>
             </AnchorPane>
         </AnchorPane>
         <AnchorPane prefHeight="60.0" prefWidth="600.0">
-            <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false"
-                    onAction="#doClick" prefWidth="80.0" text="创建">
+            <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false" onAction="#doClick"
+                    prefWidth="80.0" text="创建">
                 <font>
                     <Font size="20.0"/>
                 </font>
             </Button>
-            <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false"
-                    onAction="#doBack" prefWidth="80.0" text="返回">
+            <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false" onAction="#doBack"
+                    prefWidth="80.0" text="返回">
                 <font>
                     <Font size="20.0"/>
                 </font>
