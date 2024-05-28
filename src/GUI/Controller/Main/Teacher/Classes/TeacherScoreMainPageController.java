@@ -90,6 +90,13 @@ public class TeacherScoreMainPageController {
 
     public void flush() {
         data = getTeacherScoreMainPageObservableList(ID);
+        System.out.println(data);
+        for (TeacherScoreMainTable item : data) {
+            System.out.println("Code: " + item.getCode());
+            System.out.println("Name: " + item.getName());
+            // 打印其它属性
+        }
+
     }
 
     public ContextMenu teacherCourseMainPageContextMenu() {

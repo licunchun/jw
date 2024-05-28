@@ -32,6 +32,7 @@ public class ObservableListUtil {
         Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
 
         for (Classes teacherClass : classesSetIterable) {
+            System.out.println(teacherClass.getCode());
             TeacherScoreMainTable newData = new TeacherScoreMainTable(teacherClass);
             observableList.add(newData);
         }

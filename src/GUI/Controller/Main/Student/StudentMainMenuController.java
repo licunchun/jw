@@ -180,7 +180,11 @@ public class StudentMainMenuController {
                         if (!isClassesSchedulePageExist) {
                             isClassesSchedulePageExist = true;
                             mainMenuTabPane.getTabs().add(classesScheduleTab);
-                            classesSchedulePageController.flush();
+                            try {
+                                classesSchedulePageController.flush();
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
                         } else {
                             mainMenuTabPane.getSelectionModel().select(classesScheduleTab);
                         }
