@@ -16,7 +16,7 @@ public class StudentClassesServ {
         ClassesSet classesSet = new ClassesSet();
         String[] codes = Points.getAllCode(ID);
         for (String code:codes){
-            String[] classInfo = Courses.geInfo(code);
+            String[] classInfo = Courses.getInfo(code);
             Classes c = Classes.fromArray(classInfo);
             classesSet.add(c);
         }
@@ -27,7 +27,7 @@ public class StudentClassesServ {
         CourseCodeSet courseCodeSet = new CourseCodeSet();
         String[] codes = Points.getAllCode(ID);
         for (String code:codes){
-            String[] classInfo = Courses.geInfo(code);
+            String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             String point = Points.getScore(code,ID);
             int score = Integer.parseInt(point);
@@ -44,7 +44,7 @@ public class StudentClassesServ {
         double totalCredits = 0.0;
         String[] codes = Points.getAllCode(ID);
         for (String code:codes){
-            String[] courseInfo = Courses.geInfo(code);
+            String[] courseInfo = Courses.getInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalCredits += credits;
         }
@@ -60,7 +60,7 @@ public class StudentClassesServ {
             String point = Points.getScore(code,ID);
             if(point.isEmpty())
                 continue;
-            String[] courseInfo = Courses.geInfo(code);
+            String[] courseInfo = Courses.getInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             receivedCredits += credits;
         }
@@ -78,7 +78,7 @@ public class StudentClassesServ {
                 continue;
             if(Double.parseDouble(point)>=60)
                 continue;
-            String[] courseInfo = Courses.geInfo(code);
+            String[] courseInfo = Courses.getInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             failedCredits += credits;
         }
@@ -111,7 +111,7 @@ public class StudentClassesServ {
             String point = Points.getScore(code,ID);
             if(point.isEmpty())
                 continue;
-            String[] courseInfo = Courses.geInfo(code);
+            String[] courseInfo = Courses.getInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalScore += Integer.parseInt(point)*credits;
             totalCredits += credits;
@@ -129,7 +129,7 @@ public class StudentClassesServ {
             String point = Points.getScore(code,ID);
             if(point.isEmpty())
                 continue;
-            String[] courseInfo = Courses.geInfo(code);
+            String[] courseInfo = Courses.getInfo(code);
             double credits = Double.parseDouble(courseInfo[Courses.credits_C]);
             totalGPA += Points.pointToGPA(point)*credits;
             totalCredits += credits;

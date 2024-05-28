@@ -1,7 +1,6 @@
 package Service.Data.Tables;
 
 import Service.Data.SQLiteJDBC;
-import Service.Data.Utils.NameUtil;
 
 import java.util.ArrayList;
 
@@ -52,7 +51,7 @@ public class Courses {
         String full = coursesTable.select("full","code",code);
         return full.compareTo("已满") == 0;
     }
-    public static String[] geInfo(String code){
+    public static String[] getInfo(String code){
         return coursesTable.select(CourseCol,"code",code);
     }
     public static void addInfo(String[] info){
@@ -63,11 +62,11 @@ public class Courses {
     }
 
     public static void increaseStdCount(String code){
-        int stdCount = Integer.parseInt(geInfo(code)[stdCount_C]);
+        int stdCount = Integer.parseInt(getInfo(code)[stdCount_C]);
         coursesTable.update("stdCount",String.valueOf(stdCount+1),"code",code);
     }
     public static void decreaseStdCount(String code){
-        int stdCount = Integer.parseInt(geInfo(code)[stdCount_C]);
+        int stdCount = Integer.parseInt(getInfo(code)[stdCount_C]);
         coursesTable.update("stdCount",String.valueOf(stdCount-1),"code",code);
     }
 

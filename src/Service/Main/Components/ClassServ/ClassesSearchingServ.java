@@ -19,7 +19,7 @@ public class ClassesSearchingServ {
     public ClassesSet getClassesSet(int fromIndex, int toIndex) {
         ClassesSet cs = new ClassesSet();
         for (int i = fromIndex; i < toIndex; i++) {
-            String[] info = Courses.geInfo(codes[i]);
+            String[] info = Courses.getInfo(codes[i]);
             cs.add(Classes.fromArray(info));
         }
         return cs;

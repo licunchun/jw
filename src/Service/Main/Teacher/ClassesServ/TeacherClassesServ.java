@@ -6,7 +6,6 @@ import GUI.Data.DataPackage.Classes.CourseCodeSet;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
-import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
 import Service.Main.Components.ClassServ.ClassesServ;
 
@@ -21,7 +20,7 @@ public class TeacherClassesServ {
         Matcher m = p.matcher(codes);
         while (m.find()) {
             String code = m.group();
-            String[] classInfo = Courses.geInfo(code);
+            String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             classesSet.add(classes);
         }
@@ -37,7 +36,7 @@ public class TeacherClassesServ {
         Matcher m = p.matcher(codes);
         while (m.find()){
             String code = m.group();
-            String[] classInfo = Courses.geInfo(code);
+            String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             String[] studentsID = Points.getAllID(code);
             for (String studentID:studentsID){
