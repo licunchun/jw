@@ -11,8 +11,6 @@ import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -25,6 +23,8 @@ import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClas
 import static Service.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
 public class ClassesSchedulePageController {
+    private final ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private final String[] classesScheduleString = new String[100];
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -49,11 +49,10 @@ public class ClassesSchedulePageController {
     private TableColumn<TimeTable, String> SaturdayColumn;
     @FXML
     private TableColumn<TimeTable, String> SundayColumn;
-    private final ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
     private UserType userType;
     private ClassesSet classesSet;
-    private String[] classesScheduleString = new String[100];
+
     public ContextMenu classesSchedulePageContextMenu() {
         ContextMenu contextMenu = new ContextMenu();
         MenuItem flushMenuItem = new MenuItem("刷新");
@@ -90,7 +89,7 @@ public class ClassesSchedulePageController {
             name.setText(getName(ID));
             userID.setText(ID);
         }
-        for(int i = 1; i <= 91; i++) classesScheduleString[i] = null;
+        for (int i = 1; i <= 91; i++) classesScheduleString[i] = null;
         MondayColumn.setSortable(false);
         TuesdayColumn.setSortable(false);
         WednesdayColumn.setSortable(false);
@@ -124,7 +123,8 @@ public class ClassesSchedulePageController {
         timeTable.setFixedCellSize(40); // 设置每行的高度
         timeTable.prefHeightProperty().bind(Bindings.size(data).multiply(timeTable.getFixedCellSize()).add(40)); // 设置表格的高度
     }
-    private void loadClasses(){
+
+    private void loadClasses() {
         if (ID == null) {
             return;
         }
@@ -142,20 +142,21 @@ public class ClassesSchedulePageController {
                 classesScheduleString[(week - 1) * 13 + section] = classes.getName();
             }
         }
-        for (int i = 1; i <= 13 ; i++) {
+        for (int i = 1; i <= 13; i++) {
             TimeTable timeTable = new TimeTable(i, classesScheduleString[i], classesScheduleString[i + 13], classesScheduleString[i + 26],
                     classesScheduleString[i + 39], classesScheduleString[i + 52], classesScheduleString[i + 65], classesScheduleString[i + 78]);
             data.add(timeTable);
         }
     }
+
     private int translateWeek(Week week) {
-        if(week == Week.Monday) return 1;
-        if(week == Week.Tuesday) return 2;
-        if(week == Week.Wednesday) return 3;
-        if(week == Week.Thursday) return 4;
-        if(week == Week.Friday) return 5;
-        if(week == Week.Saturday) return 6;
-        if(week == Week.Sunday) return 7;
+        if (week == Week.Monday) return 1;
+        if (week == Week.Tuesday) return 2;
+        if (week == Week.Wednesday) return 3;
+        if (week == Week.Thursday) return 4;
+        if (week == Week.Friday) return 5;
+        if (week == Week.Saturday) return 6;
+        if (week == Week.Sunday) return 7;
         return 0;
     }
 }
