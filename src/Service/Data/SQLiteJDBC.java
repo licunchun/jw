@@ -4,20 +4,30 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class SQLiteJDBC {
-    private static final String databasePath = "src/Service/Data/database.db";
-    private final String tableName;
+    private static final String DefaultPath = "src/Service/Data/test.db";//"src/Service/Data/database.db"
+    private String tableName;
+    private String databasePath;
     private Connection c;
     private Statement stmt;
     private ResultSet rs;
     private String sql;
+    public SQLiteJDBC(){
 
+    }
     public SQLiteJDBC(String tableName){
+        this.databasePath = DefaultPath;
         this.tableName = tableName;
+    }
+    public void setTableName(String tableName){
+        this.tableName = tableName;
+    }
+    public void setDatabasePath(String databasePath){
+        this.databasePath = databasePath;
     }
     private void connect(){
         try {
             Class.forName("org.sqlite.JDBC");
-            c = DriverManager.getConnection("jdbc:sqlite:"+databasePath);
+            c = DriverManager.getConnection("jdbc:sqlite:"+ databasePath);
             stmt = c.createStatement();
         } catch ( Exception e ) {
             System.err.println( e.getClass().getName() + ": " + e.getMessage() );
@@ -40,10 +50,9 @@ public class SQLiteJDBC {
             close();
         } catch (SQLException e) {
             close();
-            System.out.println("Database execution failure");
+            System.out.println(sql + "execution failure");
             throw new RuntimeException(e);
         }
-
     }
     //
     public void create(String[] colName,boolean primaryKey){
@@ -276,7 +285,7 @@ public class SQLiteJDBC {
 
 
     //points操作
-    public void insertPoints(String classesCode, String ID){
+    public void insertPoints(String classesCode, String ID,String point){
         sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
         execute();
     }
@@ -284,8 +293,8 @@ public class SQLiteJDBC {
         sql = "DELETE " + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
         execute();
     }
-    public void updatePoints(String score,String classesCode, String ID){
-        sql = "UPDATE " + "points" + " SET " + "point" + " = '" + score +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
+    public void updatePoints(String classesCode, String ID,String point){
+        sql = "UPDATE " + "points" + " SET " + "point" + " = '" + point +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
         execute();
     }
     public  String selectPonits(String classesCode, String ID){

@@ -10,67 +10,22 @@ import GUI.Data.Enum.School;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
 import Service.Data.Tables.Students;
+import Service.Data.Tables.Teachers;
+import Service.Data.Utils.CodeUtil;
+import Service.Data.Utils.TimeUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ClassesServ {
-    public static String[] fromClasses(Classes classes){
-        String code = classes.getCode()==null?"":classes.getCode();
-        String name = classes.getName()==null?"":classes.getName();
-        String period = classes.getPeriod()==null?"":classes.getPeriod().toString();
-        String credits = classes.getCredits()==null?"":classes.getCredits().toString();
-//        String time = classes.getTime().toString();
-        String time = "";
-        String stdCount = String.valueOf(classes.getStdCount());
-        String limitCount = String.valueOf(classes.getLimitCount());
-        String classType = classes.getClassType()==null?"":classes.getClassType().toString();
-        String courseType = classes.getCourseType()==null?"":classes.getCourseType().toString();
-        String school = classes.getSchool()==null?"":classes.getSchool().toString();
-        String campus = classes.getCampus()==null?"":classes.getCampus().toString();
-        String examMode = classes.getExamMode()==null?"":classes.getExamMode().toString();
-        String language = classes.getLanguage()==null?"":classes.getLanguage().toString();
-        String education = classes.getEducation()==null?"":classes.getEducation().toString();
-//        String teachers = classes.getTeacher().toString();
-        String teachers = "";
-        String full = classes.getFull()==null?"":classes.getFull().toString();
-        String place = classes.getPlace()==null?"":classes.getPlace();
-        String[] info = {
-                code,
-                name,
-                period,
-                credits,
-                time,
-                stdCount,
-                limitCount,
-                classType,
-                courseType,
-                school,
-                campus,
-                examMode,
-                language,
-                education,
-                teachers,
-                full,
-                place
-        };
-        return info;
-    }
+    private static final Students student = new Students();
+    private static final Teachers teacher = new Teachers();
+    private static final Courses course = new Courses();
+
     public static Classes getClasses(String classesCode) {
         String[] classInfo = Courses.getInfo(classesCode);
         return Classes.fromArray(classInfo);
     }
-
-//    public static ClassesSet searchClasses(Classes classes) {
-//        String[] conditions = fromClasses(classes);
-//        String[] codes = Courses.findCode(conditions);
-//        ClassesSet cs = new ClassesSet();
-//        for (String code : codes) {
-//            String[] info = Courses.geInfo(code);
-//            cs.add(Classes.fromArray(info));
-//        }
-//        return cs;
-//    }
 
     public static IDSet getStudentSet(String classesCode) {
         IDSet idSet = new IDSet();
@@ -81,8 +36,11 @@ public class ClassesServ {
     }
 
     public static int getStudentScore(String classesCode, String ID) {
-       String score = Points.getScore(classesCode,ID);
-       return Integer.parseInt(score);
+       String point = Points.getScore(classesCode,ID);
+       if(point.isEmpty())
+           return -1;
+       else
+        return Integer.parseInt(point);
     }
 
     public static boolean setStudentScore(String classesCode, String ID, int grade) {
@@ -140,19 +98,41 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
     list.clear();
 }
     public static DeleteClassesError deleteClasses(String classesCode) {
-        //将老师开课信息删除
-        String regex = "[一-龥·]+"; // 匹配五个数字的正则表达式
+        if(!Courses.isCodeExist(classesCode))
+            return DeleteClassesError.ClassesCodeNotFind;
+
         //将所有选这门课的学生删除
-        //Points表也对应删除
         String[] studentsID = Points.getAllID(classesCode);
         for (String studentID:studentsID){
+            //Points表也对应删除
             Points.deletePoints(classesCode,studentID);
-            Students.courseWithdrawal(studentID,classesCode);
+            //
+            String classes = student.getClasses(studentID);
+            CodeUtil.deleteCodeInClasses(classesCode,classes);
+            student.setClasses(studentID,classes);
+            //
+            String studentTimes = student.getTimes(studentID);
+            String courseTimes = course.getTimes(classesCode);
+            String[] studentDays = TimeUtil.getDay(studentTimes);
+            String[] courseDays = TimeUtil.getDay(courseTimes);
+            //学生时间删除
+            for (String day:courseDays){
+                TimeUtil.deleteDayInDays(day,studentDays);
+            }
+            String newTimes = Arrays.toString(studentDays);
+            student.setTimes(studentID,newTimes);
+        }
+        //将所有开这门课的老师数据处理
+        String[] teachersID = Teachers.getIDWithCode(classesCode);
+        for (String teacherID:teachersID){
+            String classes = teacher.getClasses(teacherID);
+            String newClasses = CodeUtil.deleteCodeInClasses(classesCode,classes);
+            teacher.setClasses(teacherID,newClasses);
         }
         //将课程信息删除
         Courses.deleteInfo(classesCode);
         return DeleteClassesError.Success;
-    }//TODO
+    }
 
     public static NewClassesError newClasses(
             String code,
@@ -218,6 +198,7 @@ private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
         return NewClassesError.Success;
     }
 
+    //TODO:
     private static boolean isCodeValid(String code){
         return true;
     }

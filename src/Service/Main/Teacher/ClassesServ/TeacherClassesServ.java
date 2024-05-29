@@ -7,19 +7,19 @@ import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
 import Service.Data.Tables.Teachers;
+import Service.Data.Utils.CodeUtil;
 import Service.Main.Components.ClassServ.ClassesServ;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TeacherClassesServ {
+    private static final Teachers teacher = new Teachers();
     public static ClassesSet getTeacherClassesSet(String ID) {
         ClassesSet classesSet = new ClassesSet();
-        String codes = Teachers.getInfo(ID)[Teachers.classes_C];
-        Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
-        Matcher m = p.matcher(codes);
-        while (m.find()) {
-            String code = m.group();
+        String classes_t = teacher.getClasses(ID);
+        String[] codes = CodeUtil.getCode(classes_t);
+        for (String code:codes){
             String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             classesSet.add(classes);
@@ -28,14 +28,10 @@ public class TeacherClassesServ {
     }
 
     public static CourseCodeSet getTeacherCourseCodeSet(String ID) {
-//        if(!IDManager.isIDExist(ID)||ID==null)
-//
         CourseCodeSet courseCodeSet = new CourseCodeSet();
-        String codes = Teachers.getInfo(ID)[Teachers.classes_C];
-        Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
-        Matcher m = p.matcher(codes);
-        while (m.find()){
-            String code = m.group();
+        String classes_t = teacher.getClasses(ID);
+        String[] codes = CodeUtil.getCode(classes_t);
+        for (String code:codes){
             String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             String[] studentsID = Points.getAllID(code);

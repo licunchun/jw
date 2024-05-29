@@ -13,10 +13,11 @@ import Service.Data.Tables.Teachers;
 import Service.Data.Tables.User;
 import Service.Data.Utils.*;
 
-import java.util.ArrayList;
-
 
 public class UserServ {
+    private static final Students student = new Students();
+    private static final Teachers teacher = new Teachers();
+    private static final Managers manager = new Managers();
     /*
      * Editor
      */
@@ -49,7 +50,7 @@ public class UserServ {
         if(IDUtil.getUserType(ID)!=User.STUDENT)
             return EditError.Invalid;
 
-        Students.setMoney(ID,money);
+        student.setMoney(ID,String.valueOf(money));
         return EditError.Success;
     }
 
@@ -60,8 +61,8 @@ public class UserServ {
         if(IDUtil.getUserType(ID)!=User.STUDENT)
             return EditError.Invalid;
 
-        double money = Double.parseDouble(Students.getInfo(ID)[Students.money_C]);
-        Students.setMoney(ID,money+addMoney);
+        double money = Double.parseDouble(student.getMoney(ID));
+        student.setMoney(ID,String.valueOf(money+addMoney));
         return EditError.Success;
     }
 
@@ -75,7 +76,7 @@ public class UserServ {
         if(grade==null)
             return EditError.Invalid;
 
-        Students.setGrade(ID,grade.toString());
+        student.setGrade(ID,grade.toString());
         return EditError.Success;
     }
 
@@ -89,7 +90,7 @@ public class UserServ {
         if(school==null)
             return EditError.Invalid;
 
-        Students.setSchool(ID,school.toString());
+        student.setSchool(ID,school.toString());
         return EditError.Success;
     }
 
@@ -111,17 +112,17 @@ public class UserServ {
             throw new RuntimeException("UserServ: ID have no Gender");
         if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no Gender");
-        return Gender.fromString(Students.getInfo(ID)[Students.gender_C]);
+        return Gender.fromString(student.getGender(ID));
     }
 
     public static School getSchool(String ID) {
         if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no School");
+        if(IDUtil.getUserType(ID)==User.STUDENT)
+            return School.fromString(student.getSchool(ID));
         if(IDUtil.getUserType(ID)==User.TEACHER)
-            return School.ChemistryAndMaterialsScience;
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
-            throw new RuntimeException("UserServ: ID have no School");
-        return School.fromString(Students.getInfo(ID)[Students.school_C]);
+            return School.fromString(teacher.getSchool(ID));
+        throw new RuntimeException("UserServ: ID have no School");
     }
 
     public static Grade getGrade(String ID) {
@@ -129,7 +130,7 @@ public class UserServ {
             throw new RuntimeException("UserServ: ID have no Grade");
         if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no Grade");
-        return Grade.fromString(Students.getInfo(ID)[Students.grade_C]);
+        return Grade.fromString(student.getGrade(ID));
     }
 
     public static Double getMoney(String ID) {
@@ -137,7 +138,7 @@ public class UserServ {
             throw new RuntimeException("UserServ: ID have no Money");
         if(IDUtil.getUserType(ID)!=User.STUDENT)
             throw new RuntimeException("UserServ: ID have no Money");
-        return Double.valueOf(Students.getInfo(ID)[Students.money_C]);
+        return Double.valueOf(student.getMoney(ID));
     }
 
     /*
