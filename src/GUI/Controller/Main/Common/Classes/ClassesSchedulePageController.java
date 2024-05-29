@@ -5,13 +5,12 @@ import GUI.Data.DataPackage.Classes.ClassesSet;
 import GUI.Data.DataPackage.Classes.CourseTimeSet;
 import GUI.Data.DataPackage.Classes.TimeTable;
 import GUI.Data.Enum.Classes.CourseTime;
+import GUI.Data.Enum.Classes.Week;
 import GUI.Data.Enum.User.UserType;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -23,7 +22,9 @@ import static Service.Main.Components.UserServ.UserServ.getName;
 import static Service.Main.Student.ClassesServ.StudentClassesServ.getStudentClassesSet;
 import static Service.Main.Teacher.ClassesServ.TeacherClassesServ.getTeacherClassesSet;
 
-public class ClassesSchedulePageController {//TODO
+public class ClassesSchedulePageController {
+    private final ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
+    private final String[] classesScheduleString = new String[100];
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -48,7 +49,6 @@ public class ClassesSchedulePageController {//TODO
     private TableColumn<TimeTable, String> SaturdayColumn;
     @FXML
     private TableColumn<TimeTable, String> SundayColumn;
-    private final ObservableList<TimeTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
     private UserType userType;
     private ClassesSet classesSet;
@@ -85,14 +85,19 @@ public class ClassesSchedulePageController {//TODO
 
     private void initializeData() {
         data.clear();
-        for (int i = 1; i <= 13; i++) {
-            TimeTable newTimetable = new TimeTable(i);
-            data.add(newTimetable);
-        }
         if (ID != null) {
             name.setText(getName(ID));
             userID.setText(ID);
         }
+        for (int i = 1; i <= 91; i++) classesScheduleString[i] = null;
+        MondayColumn.setSortable(false);
+        TuesdayColumn.setSortable(false);
+        WednesdayColumn.setSortable(false);
+        ThursdayColumn.setSortable(false);
+        FridayColumn.setSortable(false);
+        SaturdayColumn.setSortable(false);
+        SundayColumn.setSortable(false);
+        numberColumn.setSortable(false);
     }
 
     public void setID(String ID) {
@@ -119,60 +124,39 @@ public class ClassesSchedulePageController {//TODO
         timeTable.prefHeightProperty().bind(Bindings.size(data).multiply(timeTable.getFixedCellSize()).add(40)); // 设置表格的高度
     }
 
-    private double findLayoutX(int columnIndex) {//列
-        // 获取 TableView 在父容器中的布局位置
-        double tableViewLayoutX = timeTable.getLayoutX();
-        return tableViewLayoutX + 90 + 130 * (columnIndex - 1);
-    }
-
-    private double findLayoutY(int rowIndex) {//行
-        // 获取 TableView 在父容器中的布局位置
-        double tableViewLayoutY = timeTable.getLayoutY();
-        return tableViewLayoutY + 40 * (rowIndex - 1);
-    }
-
-    private void loadClasses() throws IOException {
+    private void loadClasses() {
         if (ID == null) {
             return;
         }
         if (userType.equals(UserType.Teacher)) classesSet = getTeacherClassesSet(ID);
         if (userType.equals(UserType.Student)) classesSet = getStudentClassesSet(ID);
-     //   classesSet = getTeacherClassesSet(ID);
         Iterable<Classes> classesSetIterable = classesSet.getClassesIterable();
         for (Classes classes : classesSetIterable) {
-            System.out.println(classes.getCode());
             CourseTimeSet courseTimeSet = classes.getTime();
             Iterable<CourseTime> courseTimeSetIterable = courseTimeSet.getCourseTimeIterable();
-            CourseTime lastCourseTime = null;
-            int length = 0;
             for (CourseTime courseTime : courseTimeSetIterable) {
                 System.out.println(courseTime);
-                if (lastCourseTime == null) {
-                    lastCourseTime = courseTime;
-                    length = 1;
-                    continue;
-                }
-                if (courseTime.getWeek().equals(lastCourseTime.getWeek()) && courseTime.getSection() == lastCourseTime.getSection() + 1) {
-                    lastCourseTime = courseTime;
-                    length++;
-                } else {
-                    double LayoutX = findLayoutX(lastCourseTime.getWeek().getIndex());
-                    double LayoutY = findLayoutY(lastCourseTime.getSection() - length + 1);
-
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/Window/Main/Common/Classes/Classes.fxml"));
-                    Parent classesView = loader.load();
-                    ClassesController classesController = loader.getController();
-
-                    classesController.setClassesController(classes, length);
-
-                    AnchorPane.setLeftAnchor(classesView, LayoutX); // 设置布局X坐标
-                    AnchorPane.setTopAnchor(classesView, LayoutY);   // 设置布局Y坐标
-                    anchorPane.getChildren().add(classesView);
-
-                    lastCourseTime = courseTime;
-                    length = 1;
-                }
+                Week formalWeek = courseTime.getWeek();
+                int section = courseTime.getSection();
+                int week = translateWeek(formalWeek);
+                classesScheduleString[(week - 1) * 13 + section] = classes.getName();
             }
         }
+        for (int i = 1; i <= 13; i++) {
+            TimeTable timeTable = new TimeTable(i, classesScheduleString[i], classesScheduleString[i + 13], classesScheduleString[i + 26],
+                    classesScheduleString[i + 39], classesScheduleString[i + 52], classesScheduleString[i + 65], classesScheduleString[i + 78]);
+            data.add(timeTable);
+        }
+    }
+
+    private int translateWeek(Week week) {
+        if (week == Week.Monday) return 1;
+        if (week == Week.Tuesday) return 2;
+        if (week == Week.Wednesday) return 3;
+        if (week == Week.Thursday) return 4;
+        if (week == Week.Friday) return 5;
+        if (week == Week.Saturday) return 6;
+        if (week == Week.Sunday) return 7;
+        return 0;
     }
 }
