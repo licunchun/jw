@@ -2,6 +2,7 @@ package Service.Data;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SQLiteJDBC {
     private static final String DefaultPath = "src/Service/Data/test.db";//"src/Service/Data/database.db"
@@ -217,7 +218,8 @@ public class SQLiteJDBC {
                 conditions.append(" WHERE  ");
                 conditions.append(valueName[i]).append(" = '").append(value[i]).append("'");
             }
-
+            else if(Objects.equals(valueName[i], "teachers"))
+                conditions.append(" AND ").append(valueName[i]).append(" LIKE '%").append(value[i]).append("%'");
             else
                 conditions.append(" AND ").append(valueName[i]).append(" = '").append(value[i]).append("'");
         }
@@ -285,6 +287,21 @@ public class SQLiteJDBC {
 
 
     //points操作
+    public boolean isStudentSelectCourse(String code,String ID){
+        sql = "SELECT point FROM points WHERE code = '" +code + "' AND ID = '" + ID + "';";
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            String res = rs.getString("point");
+            rs.close();
+            close();
+            return true;
+        } catch (SQLException e) {
+            close();
+            return false;
+        }
+    }
     public void insertPoints(String classesCode, String ID,String point){
         sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
         execute();

@@ -8,7 +8,7 @@ public class ClassesSearchingServ {
     private String[] codes = {};
 
     public void searchClasses(Classes inputClasses) {
-        //查询只限单个老师全名匹配
+        //查询只限单个老师包含匹配
         String[] conditions = fromClasses(inputClasses);
         codes = Courses.findCode(conditions);
 
@@ -43,9 +43,9 @@ public class ClassesSearchingServ {
         String education = classes.getEducation()==null?"":classes.getEducation().toString();
         String teacher = "";
         if (classes.getTeacher() != null) {
-            Iterable<String> teachers = classes.getTeacher().getStudentIDSetIterable();
-            for (String str:teachers){
-                teacher = str;
+            Iterable<String> IDs = classes.getTeacher().getStudentIDSetIterable();
+            for (String ID:IDs){
+                teacher = ID;
                 break;
             }
         }

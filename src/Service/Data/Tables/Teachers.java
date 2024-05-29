@@ -60,9 +60,6 @@ public class Teachers {
 
 
 
-    public static String getID(String name){
-        return teachersTable.select("ID","name",name);
-    }
     public static String[] getSameNameID(String name){
         return teachersTable.selectAll("ID","name",name);
     }

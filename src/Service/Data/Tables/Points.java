@@ -8,14 +8,12 @@ public class Points {
     public static final String[] PointCol = Tables.PointCol;
     private static final SQLiteJDBC pointsTable = new SQLiteJDBC(tableName);
 
+    //用于判断选课
     public static boolean isIDExist(String ID){
         return pointsTable.isColValueExist("ID",ID);
     }
-    public static boolean isCodeExist(String code){
-        return pointsTable.isColValueExist("code",code);
-    }
     public static boolean isCodeIDExist(String code,String ID){
-        return isIDExist(ID)&&isCodeExist(code);
+        return pointsTable.isStudentSelectCourse(code,ID);
     }
     public static void addPoints(String code,String ID,String point){
         pointsTable.insertPoints(code,ID,point);

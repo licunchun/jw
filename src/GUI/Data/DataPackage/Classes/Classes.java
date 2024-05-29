@@ -3,6 +3,7 @@ package GUI.Data.DataPackage.Classes;
 import Data.DataBase;
 import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.School;
+import Service.Data.Utils.IDUtil;
 
 public class Classes {
     private String code;               //课堂编号
@@ -206,7 +207,13 @@ public class Classes {
         ExamMode examMode = ExamMode.fromString(classesInfo[11]);
         Language language = Language.fromString(classesInfo[12]);
         Education education = Education.fromString(classesInfo[13]);
-        IDSet teacher = IDSet.fromTeacherString(classesInfo[14]);
+        String[] IDs = IDUtil.getIDFromTeachers(classesInfo[14]);
+        //
+        IDSet teacher = new IDSet();
+        for (String ID:IDs){
+            teacher.add(ID);
+        }
+        //
         Full full = Full.fromString(classesInfo[15]);
         String place = classesInfo[16];
         return new Classes(

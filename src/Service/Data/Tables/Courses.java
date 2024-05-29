@@ -94,8 +94,6 @@ public class Courses {
         for (int i = 0; i < conditions.length; i++) {
             if(conditions[i].isEmpty())
                 continue;
-            else if(i==4|i==5||i==6|i==16)
-                continue;
             else
                 {
                     valueName.add(CourseCol[i]);

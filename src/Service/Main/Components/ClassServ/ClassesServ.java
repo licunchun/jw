@@ -40,7 +40,7 @@ public class ClassesServ {
        if(point.isEmpty())
            return -1;
        else
-        return Integer.parseInt(point);
+            return Integer.parseInt(point);
     }
 
     public static boolean setStudentScore(String classesCode, String ID, int grade) {
@@ -54,49 +54,20 @@ public class ClassesServ {
 
     public static String toStringTime(CourseTimeSet courseTimeSet) {
         StringBuilder sb = new StringBuilder();
-        boolean week_flag = true;
-        Week w_t = Week.Monday,w;
-        ArrayList<Integer> sections = new ArrayList<>();
+        String[] days = TimeUtil.getTimes();
         for (CourseTime ct:courseTimeSet.getCourseTimeIterable()){
-            if(week_flag){
-                w_t = ct.getWeek();
-                sections.add(ct.getSection());
-                week_flag = false;
-            }
-            else {
-                w = ct.getWeek();
-                if(w_t==w)
-                    sections.add(ct.getSection());
-                else {
-                    splice(w_t,sections,sb);
-                    w_t = w;
-                    sections.add(ct.getSection());
-                }
-            }
+            int[] section = CourseTimeSet.toArray(ct);
+            String day = TimeUtil.getSetDay(section);
+            TimeUtil.addDayInDays(day,days);
         }
-        splice(w_t,sections,sb);
+        for (String day:days){
+            int[] sec = TimeUtil.getSection(day);
+            if(sec.length==1)
+                continue;
+            sb.append(day).append(" ");
+        }
         return sb.toString();
     }
-private static void splice(Week w,ArrayList<Integer> list,StringBuilder sb){
-    sb.append(Week.formWeek(w)).append('(');
-    boolean first_flag = true;
-    int[] arr = new int[list.size()];
-    for (int i = 0; i < list.size(); i++) {
-        arr[i] = list.get(i);
-    }
-    Arrays.sort(arr);
-
-    for (int i:arr){
-        if(first_flag) {
-            sb.append(i);
-            first_flag = false;
-        } else {
-            sb.append(',').append(i);
-        }
-    }
-    sb.append(')');
-    list.clear();
-}
     public static DeleteClassesError deleteClasses(String classesCode) {
         if(!Courses.isCodeExist(classesCode))
             return DeleteClassesError.ClassesCodeNotFind;

@@ -59,18 +59,7 @@ public class IDSet {
         return IDSet;
     }
 
-    public static IDSet fromTeacherString(String teachers){
-        IDSet idSet = new IDSet();
-        String pattern = "^[一-龥·]+";
-        Pattern p = Pattern.compile(pattern);
-        Matcher m = p.matcher(teachers);
-        while (m.find()) {
-            String name = m.group();
-            String ID = Teachers.getID(name);
-            idSet.add(ID);
-        }
-        return idSet;
-    }
+
 
     public IDSet getSubSet(int fromIndex, int toIndex) {
         if (IDList == null) {

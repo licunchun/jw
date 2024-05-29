@@ -1,9 +1,20 @@
 package Service.Data.Tables;
 
+import GUI.Data.Enum.School;
+import GUI.Data.Enum.User.Gender;
+import GUI.Data.Enum.User.Grade;
+import GUI.Data.Enum.User.StudentSchool;
+import GUI.Data.Enum.User.UserType;
 import Service.Data.SQLiteJDBC;
+import Service.Data.Utils.NameUtil;
+import Service.Data.Utils.PasswordUtil;
 import Service.Data.Utils.TimeUtil;
+import Service.Login.RegistServ;
 
+import javax.lang.model.element.Name;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -148,6 +159,25 @@ public class Tables {
             currentDB.insert(CourseCol,newInfo);
         }
     }
+    public void courseDataUpdate(){
+        currentDB.setDatabasePath(currentDatabasePath);
+        currentDB.setTableName(COURSES);
+        String[] codes = currentDB.selectAll("code");
+        for (String code:codes){
+            ArrayList<String> teacher = new ArrayList<>();
+            String teachers = currentDB.select("teachers","code",code);
+            Pattern p = Pattern.compile("[\\u4e00-\\u9fff]+");
+            Matcher m = p.matcher(teachers);
+            while (m.find()){
+                String name = m.group();
+                currentDB.setTableName(TEACHERS);
+                String ID = currentDB.select("ID","name",name);
+                teacher.add(ID);
+            }
+            currentDB.setTableName(COURSES);
+            currentDB.update("teachers", Arrays.toString(teacher.toArray(new String[0])),"code",code);
+        }
+    }
 
     public static final String[] OriginalTeacherCol={
             "name",
@@ -185,14 +215,46 @@ public class Tables {
             currentDB.insert(TeacherCol,newInfo);
         }
     }
+    public void addManager(){
+        String[] zero = {"0","张义","0"};
+        Managers.addInfo(zero);
+        String[] one = {"1","陈润隆","1"};
+        Managers.addInfo(one);
+        String[] two = {"2","崔闰麟","2"};
+        Managers.addInfo(two);
+        String[] three = {"3","李存淳","3"};
+        Managers.addInfo(three);
+    }
     //生成随机学生
     //TODO
+    public void addStudent(int num){
+        UserType[] userTypes = UserType.values();
+        Gender[] genders = Gender.values();
+        StudentSchool[] schools = StudentSchool.values();
+        Grade[] grades = Grade.values();
+        Random random = new Random();
+
+        for (int i = 0; i < num; i++) {
+            UserType userType = UserType.Student;
+            String name = NameUtil.getRandomName();
+            String password = PasswordUtil.getRandomPassword(6);
+            RegistServ.regist(userType,name,password,password);
+            Gender gender = genders[random.nextInt(genders.length)];
+            School school = schools[random.nextInt(schools.length)].toSchool();
+            Grade grade = grades[random.nextInt(grades.length)];
+            RegistServ.store(userType,name,password,password,gender,school,grade);
+        }
+    }
     //挑选随机学生随机选课
     //TODO
+
     public static void main(String[] args) {
         Tables tables = new Tables();
         tables.createTables();
-//        tables.courseDataProcess();
+        tables.courseDataProcess();
         tables.teacherDataProcess();
+        tables.courseDataUpdate();
+        tables.addManager();
+        tables.addStudent(1000);
     }
 }

@@ -2,6 +2,7 @@ package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.Enum.Classes.CourseTime;
 import GUI.Data.Enum.Classes.Week;
+import Service.Data.Tables.Courses;
 import Service.Data.Utils.TimeUtil;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -44,6 +45,14 @@ public class CourseTimeSet {
             }
         }
         return cts;
+    }
+    public static int[] toArray(CourseTime ct){
+        int[] sections = new int[2];
+        Week w = ct.getWeek();
+        int sec = ct.getSection();
+        sections[0] = Week.formWeek(w);
+        sections[1] = sec;
+        return sections;
     }
     @Override
     public String toString(){

@@ -10,7 +10,7 @@ import GUI.Data.Enum.User.UserType;
 import Service.Data.Tables.Managers;
 import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
-import Service.Data.Tables.User;
+import Service.Data.Utils.UserUtil;
 import Service.Data.Utils.*;
 
 
@@ -28,7 +28,7 @@ public class UserServ {
         if (!NameUtil.check(name))
             return EditError.Invalid;
 
-        User.setName(ID,name);
+        UserUtil.setName(ID,name);
         return EditError.Success;
     }
 
@@ -39,7 +39,7 @@ public class UserServ {
         if (!PasswordUtil.check(password))
             return EditError.Invalid;
 
-        User.setPassword(ID,password);
+        UserUtil.setPassword(ID,password);
         return EditError.Success;
     }
 
@@ -47,7 +47,7 @@ public class UserServ {
         if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             return EditError.Invalid;
 
         student.setMoney(ID,String.valueOf(money));
@@ -58,7 +58,7 @@ public class UserServ {
         if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             return EditError.Invalid;
 
         double money = Double.parseDouble(student.getMoney(ID));
@@ -70,7 +70,7 @@ public class UserServ {
         if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             return EditError.Invalid;
 
         if(grade==null)
@@ -84,7 +84,7 @@ public class UserServ {
         if(!IDUtil.check(ID))
             return EditError.IDNotFound;
 
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             return EditError.Invalid;
 
         if(school==null)
@@ -104,13 +104,13 @@ public class UserServ {
     public static String getName(String ID) {
         if(!IDUtil.check(ID))
             return "";
-        return User.getName(ID);
+        return UserUtil.getName(ID);
     }
 
     public static Gender getGender(String ID) {
         if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no Gender");
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             throw new RuntimeException("UserServ: ID have no Gender");
         return Gender.fromString(student.getGender(ID));
     }
@@ -118,9 +118,9 @@ public class UserServ {
     public static School getSchool(String ID) {
         if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no School");
-        if(IDUtil.getUserType(ID)==User.STUDENT)
+        if(IDUtil.getUserType(ID)== UserUtil.STUDENT)
             return School.fromString(student.getSchool(ID));
-        if(IDUtil.getUserType(ID)==User.TEACHER)
+        if(IDUtil.getUserType(ID)== UserUtil.TEACHER)
             return School.fromString(teacher.getSchool(ID));
         throw new RuntimeException("UserServ: ID have no School");
     }
@@ -128,7 +128,7 @@ public class UserServ {
     public static Grade getGrade(String ID) {
         if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no Grade");
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             throw new RuntimeException("UserServ: ID have no Grade");
         return Grade.fromString(student.getGrade(ID));
     }
@@ -136,7 +136,7 @@ public class UserServ {
     public static Double getMoney(String ID) {
         if(!IDUtil.check(ID))
             throw new RuntimeException("UserServ: ID have no Money");
-        if(IDUtil.getUserType(ID)!=User.STUDENT)
+        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
             throw new RuntimeException("UserServ: ID have no Money");
         return Double.valueOf(student.getMoney(ID));
     }
@@ -149,7 +149,7 @@ public class UserServ {
             return ChangePasswordError.IDNotFound;
         if(!PasswordUtil.check(originPassword))
             return ChangePasswordError.WrongOriginPassword;
-        String password_get = User.getPassword(ID);
+        String password_get = UserUtil.getPassword(ID);
         if(originPassword.compareTo(password_get) != 0)
             return ChangePasswordError.WrongOriginPassword;
 
@@ -165,7 +165,7 @@ public class UserServ {
         if(newPassword.compareTo(newConfirmPassword)!=0)
             return ChangePasswordError.NotMatch;
 
-        User.setPassword(ID,newPassword);
+        UserUtil.setPassword(ID,newPassword);
         return ChangePasswordError.Success;
     }
 

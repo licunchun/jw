@@ -1,6 +1,8 @@
 package Service.Data.Utils;
 
-import Service.Data.Tables.User;
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class IDUtil {
     final private static int STUDENT_ID_LENGTH = 10;
@@ -9,10 +11,10 @@ public class IDUtil {
 
     public static int getUserType(String ID){
         return switch (ID.length()){
-            case (STUDENT_ID_LENGTH)-> User.STUDENT;
-            case (TEACHER_ID_LENGTH)-> User.TEACHER;
-            case (MANAGER_ID_LENGTH)-> User.MANAGER;
-            default -> User.INVALID;
+            case (STUDENT_ID_LENGTH)-> UserUtil.STUDENT;
+            case (TEACHER_ID_LENGTH)-> UserUtil.TEACHER;
+            case (MANAGER_ID_LENGTH)-> UserUtil.MANAGER;
+            default -> UserUtil.INVALID;
         };
     }
     public static boolean check(String ID){
@@ -21,7 +23,7 @@ public class IDUtil {
         return isIDExist(ID);
     }
     public static boolean isIDExist(String ID){
-        return User.isIDExist(ID);
+        return UserUtil.isIDExist(ID);
     }
     public static String getAvailableID(String grade){
         String ID = switch (grade) {
@@ -39,14 +41,14 @@ public class IDUtil {
     }
     public static String getAvailableID(int userType){
         switch (userType){
-            case User.TEACHER -> {
+            case UserUtil.TEACHER -> {
                 for (int i = 0; i < 100000; i++) {
                     if(!isIDExist(String.format("%05d", i)))
                         return String.format("%05d", i);
                 }
                 throw new RuntimeException();
             }
-            case User.MANAGER -> {
+            case UserUtil.MANAGER -> {
                 for (int i = 0; i < 10; i++) {
                     if(!isIDExist(String.format("%01d", i)))
                         return String.format("%01d", i);
@@ -55,5 +57,15 @@ public class IDUtil {
             }
             default -> throw new RuntimeException();
         }
+    }
+
+    public static String[] getIDFromTeachers(String teachers){
+        Pattern p = Pattern.compile("\\b\\d{5}\\b");
+        Matcher m = p.matcher(teachers);
+        ArrayList<String> ID = new ArrayList<>();
+        while (m.find()){
+            ID.add(m.group());
+        }
+        return ID.toArray(new String[0]);
     }
 }

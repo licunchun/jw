@@ -1,7 +1,7 @@
 package Service.Login;
 
 import GUI.Data.Enum.Error.Login.Login;
-import Service.Data.Tables.User;
+import Service.Data.Utils.UserUtil;
 import Service.Data.Utils.IDUtil;
 
 public class LoginServ {
@@ -18,7 +18,7 @@ public class LoginServ {
             return Login.PasswordEmpty;
 
         //判断ID密码是否匹配
-        String password_get = User.getPassword(ID);
+        String password_get = UserUtil.getPassword(ID);
         if(password.compareTo(password_get) != 0)
             return Login.NotPass;
 
@@ -28,9 +28,9 @@ public class LoginServ {
         int type = IDUtil.getUserType(ID);
 
         return switch (type) {
-                case User.STUDENT -> Login.Student;
-                case User.TEACHER -> Login.Teacher;
-                case User.MANAGER -> Login.Admin;
+                case UserUtil.STUDENT -> Login.Student;
+                case UserUtil.TEACHER -> Login.Teacher;
+                case UserUtil.MANAGER -> Login.Admin;
                 default -> throw new RuntimeException("UserService.java(line ) StoreUser have no userType");
             };
     }

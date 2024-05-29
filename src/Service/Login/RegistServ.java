@@ -9,7 +9,7 @@ import GUI.Data.Enum.User.UserType;
 import Service.Data.Tables.Managers;
 import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
-import Service.Data.Tables.User;
+import Service.Data.Utils.UserUtil;
 import Service.Data.Utils.*;
 
 import java.util.Arrays;
@@ -51,7 +51,7 @@ public class RegistServ {
         //转成数据库用户类型
         int type = UserTypeTransformer.fromUserType(userType);
         String ID;
-        if(type== User.STUDENT) {
+        if(type== UserUtil.STUDENT) {
             if(gender==null||school==null||grade==null)
                 throw new RuntimeException("RegistServ:gender/school/grade为null");
             ID = IDUtil.getAvailableID(grade.toString());

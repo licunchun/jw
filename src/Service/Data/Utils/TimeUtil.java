@@ -8,7 +8,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class TimeUtil {
-    public static final Pattern dayPattern = Pattern.compile("\\d\\((\\d+,)*\\)");//时间规则
+//    public static final Pattern dayPattern = Pattern.compile("\\d\\((\\d+,)*\\)");//时间规则
+    public static final Pattern dayPattern = Pattern.compile("\\d\\(\\d+(,\\d+)*\\)");//时间规则
     public static final Pattern secPattern = Pattern.compile("\\d+");
     public static Matcher matcher;
     public static String[] getTimes(){
@@ -51,8 +52,12 @@ public class TimeUtil {
     public static String getSetDay(int[] section) {
         StringBuilder sb = new StringBuilder(String.valueOf(section[0]));
         sb.append("(");
-        for (int sec:getSection(section)) {
-            sb.append(sec).append(",");
+        int[] sec = getSection(section);
+        for (int i = 0; i < sec.length; i++) {
+            if(i==sec.length-1)
+                sb.append(sec[i]);
+            else
+                sb.append(sec[i]).append(",");
         }
         sb.append(")");
         return sb.toString();
@@ -99,21 +104,20 @@ public class TimeUtil {
         }
         return getSetDay(newSec);
     }
-    public static String[] addDayInDays(String day,String[] days){
+
+    public static void addDayInDays(String day,String[] days){
         int[] sections = getSection(day);
         if(sections.length==1)
-            return days;
+            return;
         int whichDay = sections[0]-1;
         days[whichDay] = addSecInDay(sections,days[whichDay]);
-        return days;
     }
-    public static String[] deleteDayInDays(String day,String[] days){
+    public static void deleteDayInDays(String day,String[] days){
         int[] sections = getSection(day);
         if(sections.length==1)
-            return days;
+            return;
         int whichDay = sections[0]-1;
         days[whichDay] = deleteSecInDay(sections,days[whichDay]);
-        return days;
     }
 
 

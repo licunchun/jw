@@ -1,9 +1,12 @@
-package Service.Data.Tables;
+package Service.Data.Utils;
 
+import Service.Data.Tables.Managers;
+import Service.Data.Tables.Students;
+import Service.Data.Tables.Teachers;
 import Service.Data.Utils.IDUtil;
 
 
-public class User {
+public class UserUtil {
     private static final Students student = new Students();
     private static final Teachers teacher = new Teachers();
     private static final Managers manager = new Managers();
