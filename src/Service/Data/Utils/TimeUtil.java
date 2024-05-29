@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 
 public class TimeUtil {
 //    public static final Pattern dayPattern = Pattern.compile("\\d\\((\\d+,)*\\)");//时间规则
-    public static final Pattern dayPattern = Pattern.compile("\\d\\(\\d+(,\\d+)*\\)");//时间规则
+    public static final Pattern dayPattern = Pattern.compile("\\d\\((\\d+)?(,\\d+)*\\)");//时间规则
     public static final Pattern secPattern = Pattern.compile("\\d+");
     public static Matcher matcher;
     public static String[] getTimes(){
