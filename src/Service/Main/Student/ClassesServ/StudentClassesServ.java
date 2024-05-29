@@ -173,7 +173,7 @@ public class StudentClassesServ {
         student.setTimes(studentID,newTimes);
         //学生课程添加
         String classes = student.getClasses(studentID);
-        CodeUtil.addCodeInClasses(classesCode,classes);
+        classes = CodeUtil.addCodeInClasses(classesCode,classes);
         student.setClasses(studentID,classes);
         //分数添加
         Points.addPoints(classesCode,studentID,"");
@@ -206,7 +206,7 @@ public class StudentClassesServ {
         student.setTimes(studentID,newTimes);
         //学生课程删除
         String classes = student.getClasses(studentID);
-        CodeUtil.deleteCodeInClasses(classesCode,classes);
+        classes = CodeUtil.deleteCodeInClasses(classesCode,classes);
         student.setClasses(studentID,classes);
         //分数删除
         Points.deletePoints(classesCode,studentID);

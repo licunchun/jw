@@ -92,15 +92,17 @@ public class TimeUtil {
     }
     public static String deleteSecInDay(int[] section,String day) {
         int[] sec = getSection(day);
-        int[] newSec = new int[section.length-sec.length+1];
+        int[] newSec = new int[sec.length-section.length+1];
         int i = 0;
         newSec[i] = sec[0];
+        int j = 0;
         i++;
-        for (int sect:getSection(section)) {
-            if(sec[i]!=sect) {
+        for (int sect:sec) {
+            if(sect!=sec[j]) {
                 newSec[i] = sect;
                 i++;
-            }
+            }else
+                j++;
         }
         return getSetDay(newSec);
     }
