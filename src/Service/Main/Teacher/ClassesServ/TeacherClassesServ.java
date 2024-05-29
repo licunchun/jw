@@ -16,7 +16,8 @@ public class TeacherClassesServ {
     public static ClassesSet getTeacherClassesSet(String ID) {
         ClassesSet classesSet = new ClassesSet();
         String codes = Teachers.getInfo(ID)[Teachers.classes_C];
-        Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
+//        Pattern p = Pattern.compile("\"[\\\\dA-Za-z.]+");
+        Pattern p = Pattern.compile("[a-zA-Z0-9.]+");
         Matcher m = p.matcher(codes);
         while (m.find()) {
             String code = m.group();
