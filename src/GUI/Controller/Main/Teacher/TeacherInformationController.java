@@ -28,7 +28,7 @@ public class TeacherInformationController {
      */
     @FXML
     private void initialize() {
-        flush();
+
     }
 
     @FXML
