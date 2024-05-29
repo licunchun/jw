@@ -29,7 +29,9 @@ public class PointUtil {
             return 1.3;
         else if (grade == 60)
             return 1.0;
-        else
+        else if(grade >= 0)
             return 0.0;
+        else
+            return -1.0;
     }
 }
