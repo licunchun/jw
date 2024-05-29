@@ -2,6 +2,7 @@ package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.Enum.Classes.CourseTime;
 import GUI.Data.Enum.Classes.Week;
+import Service.Data.Utils.TimeUtil;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
@@ -33,22 +34,13 @@ public class CourseTimeSet {
 
     public static CourseTimeSet fromString(String times){
         CourseTimeSet cts = new CourseTimeSet();
-        Matcher m = p.matcher(times);
-        while (m.find()) {
-            String time = m.group();
-            Pattern p_t = Pattern.compile("\\d+");
-            Matcher m_t = p_t.matcher(time);
-            boolean init = true;
-            int week = 0,section;
-            while(m_t.find()){
-                String s = m_t.group();
-                if(init) {
-                    week = Integer.parseInt(s);
-                    init = false;
-                }else{
-                    section = Integer.parseInt(s);
-                    cts.add(CourseTime.fromInt(week,section));
-                }
+        String[] days = TimeUtil.getDay(times);
+        for (String day:days){
+            int[] section = TimeUtil.getSection(day);
+            if(section.length==1)
+                continue;
+            for (int i = 1; i < section.length; i++) {
+                cts.add(CourseTime.fromInt(section[0],section[i]));
             }
         }
         return cts;

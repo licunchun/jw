@@ -12,6 +12,8 @@ import Service.Data.Tables.Teachers;
 import Service.Data.Tables.User;
 import Service.Data.Utils.*;
 
+import java.util.Arrays;
+
 public class RegistServ {
     public static Regist regist(UserType userType, String name, String password, String password_confirm) {
 
@@ -55,8 +57,8 @@ public class RegistServ {
             ID = IDUtil.getAvailableID(grade.toString());
         } else
             ID = IDUtil.getAvailableID(type);
-        String[] dataS = {ID,name,password, grade.toString(), gender.toString(),school.toString(),"","0"};
-        String[] dataT = {ID,name,password,""};
+        String[] dataS = {ID,name,password, grade.toString(), gender.toString(),school.toString(),"[]","0", Arrays.toString(TimeUtil.getTimes())};
+        String[] dataT = {ID,name,password,school.toString(),""};
         String[] dataM = {ID,name,password};
 
         switch (userType) {

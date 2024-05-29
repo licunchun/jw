@@ -4,26 +4,12 @@ package Service.Data.Tables;
 import Service.Data.SQLiteJDBC;
 
 public class Students {
-    private static final String tableName = "students";
+
+    public static final String tableName = Tables.STUDENTS;
+    public static final String[] StudentCol=Tables.StudentCol;
+    public static final String PRIMARY_KEY = "ID";
     private static final SQLiteJDBC studentsTable = new SQLiteJDBC(tableName);
-    public static final int ID_C = 0;
-    public static final int name_C = 1;
-    public static final int password_C = 2;
-    public static final int grade_C = 3;
-    public static final int gender_C = 4;
-    public static final int school_C = 5;
-    public static final int classes_C = 6;
-    public static final int money_C = 7;
-    private static final String[] StudentCol={
-            "ID",
-            "name",
-            "password",
-            "grade",
-            "gender",
-            "school",
-            "classes",
-            "money"
-    };
+
 
     public static boolean isIDExist(String ID){
         return studentsTable.isColValueExist("ID",ID);
@@ -31,51 +17,81 @@ public class Students {
     public static boolean isNameExist(String name){
         return studentsTable.isColValueExist("name",name);
     }
+
+
     public static String[] getAllID(){
         return studentsTable.selectAll("ID");
     }
-    public static String[] getInfo(String ID){
-        return studentsTable.select(StudentCol,"ID",ID);
-    }
+
+
+
     public static void addInfo(String[] info){
         studentsTable.insert(StudentCol,info);
     }
-
-    public static void setName(String ID,String name){
-        studentsTable.update("name",name,"ID",ID);
-    }
-    public static void setPassword(String ID,String password){
-        studentsTable.update("password",password,"ID",ID);
-    }
-    public static void setGrade(String ID,String grade){
-        studentsTable.update("grade",grade,"ID",ID);
-    }
-    public static void setGender(String ID,String gender){
-        studentsTable.update("gender",gender,"ID",ID);
-    }
-    public static void setSchool(String ID,String school){
-        studentsTable.update("school",school,"ID",ID);
-    }
-    public static void setClasses(String ID,String classes){
-        studentsTable.update("classes",classes,"ID",ID);
-    }
-    public static void courseSelection(String ID,String code){
-        String classes = getInfo(ID)[classes_C];
-        if(classes.isEmpty())
-            setClasses(ID,code);
-        else
-            setClasses(ID,classes+","+code);
-    }
-    public static void courseWithdrawal(String ID,String code){
-        String classes = getInfo(ID)[classes_C];
-        String classesProcess = classes.replaceAll(code+"(,)?","");
-        setClasses(ID,classesProcess);
-    }
-    public static void setMoney(String ID, double money){
-        studentsTable.update("money",String.valueOf(money),"ID",ID);
+    public static void deleteInfo(String ID){
+        studentsTable.delete(PRIMARY_KEY,ID);
     }
 
 
+
+    public String[] getInfo(String ID){
+        return studentsTable.select(StudentCol,PRIMARY_KEY,ID);
+    }
+    //所有属性的get方法
+    public String getName(String ID){
+        return studentsTable.select("name",PRIMARY_KEY,ID);
+    }
+    public String getPassword(String ID) {
+        return studentsTable.select("password", PRIMARY_KEY, ID);
+    }
+    public String getGrade(String ID) {
+        return studentsTable.select("grade", PRIMARY_KEY, ID);
+    }
+    public String getGender(String ID) {
+        return studentsTable.select("gender", PRIMARY_KEY, ID);
+    }
+    public String getSchool(String ID) {
+        return studentsTable.select("school", PRIMARY_KEY, ID);
+    }
+    public String getClasses(String ID) {
+        return studentsTable.select("classes", PRIMARY_KEY, ID);
+    }
+    public String getMoney(String ID) {
+        return studentsTable.select("money", PRIMARY_KEY, ID);
+    }
+    public String getTimes(String ID) {
+        return studentsTable.select("times", PRIMARY_KEY, ID);
+    }
+
+
+    //所有属性的set方法
+    public void setName(String ID,String name){
+        studentsTable.update("name",name,PRIMARY_KEY,ID);
+    }
+    public void setPassword(String ID,String password){
+        studentsTable.update("password",password,PRIMARY_KEY,ID);
+    }
+    public void setGrade(String ID,String grade){
+        studentsTable.update("grade",grade,PRIMARY_KEY,ID);
+    }
+    public void setGender(String ID,String gender){
+        studentsTable.update("gender",gender,PRIMARY_KEY,ID);
+    }
+    public void setSchool(String ID,String school){
+        studentsTable.update("school",school,PRIMARY_KEY,ID);
+    }
+    public void setClasses(String ID,String classes){
+        studentsTable.update("classes",classes,PRIMARY_KEY,ID);
+    }
+    public void setMoney(String ID,String money){
+        studentsTable.update("money",money,PRIMARY_KEY,ID);
+    }
+    public void setTimes(String ID,String times){
+        studentsTable.update("times",times,PRIMARY_KEY,ID);
+    }
+
+
+    //一些特殊需求
     public static String[] getSameNameID(String name){
         return studentsTable.selectAll("ID","name",name);
     }
