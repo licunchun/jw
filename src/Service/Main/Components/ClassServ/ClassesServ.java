@@ -12,6 +12,7 @@ import Service.Data.Tables.Points;
 import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
 import Service.Data.Utils.CodeUtil;
+import Service.Data.Utils.IDUtil;
 import Service.Data.Utils.TimeUtil;
 
 import java.util.ArrayList;
@@ -119,7 +120,7 @@ public class ClassesServ {
             ExamMode examMode,
             Language language,
             Education education,
-            String teacher
+            String teachersID
     ) {
         if(code.isEmpty()){
             return NewClassesError.CodeIsEmpty;
@@ -141,9 +142,9 @@ public class ClassesServ {
             return NewClassesError.MaxCountIsEmpty;
         } else if (!isMaxCountValid(maxCount)) {
             return NewClassesError.MaxCountInvalid;
-        } else if (teacher.isEmpty()) {
+        } else if (teachersID.isEmpty()) {
             return NewClassesError.TeacherIsEmpty;
-        } else if (!isTeacherValid(teacher)) {
+        } else if (!isTeacherValid(teachersID)) {
             return NewClassesError.TeacherInvalid;
         }
         String[] info = {
@@ -161,11 +162,18 @@ public class ClassesServ {
                 examMode.toString(),
                 language.toString(),
                 education.toString(),
-                teacher,
+                teachersID,
                 "未满",
                 "待定"
         };
         Courses.addInfo(info);
+        //将所有开这门课的老师数据处理
+        String[] teacherID = IDUtil.getIDFromTeachers(teachersID);
+        for (String ID:teacherID){
+            String classes = teacher.getClasses(ID);
+            String newClasses = CodeUtil.addCodeInClasses(code,classes);
+            teacher.setClasses(ID,newClasses);
+        }
         return NewClassesError.Success;
     }
 
