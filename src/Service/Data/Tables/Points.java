@@ -1,6 +1,7 @@
 package Service.Data.Tables;
 
 import Service.Data.SQLiteJDBC;
+import Service.Data.Utils.PointUtil;
 
 public class Points {
     public static final String tableName = Tables.POINTS;
@@ -36,7 +37,7 @@ public class Points {
         pointsTable.updatePoints(code,ID,point);
     }
     public static double getGPA(String code,String ID){
-        return pointToGPA(getScore(code,ID));
+        return PointUtil.pointToGPA(getScore(code,ID));
     }
     //获得学生某门课的学分和分数
     public static double pointToGPA(String point) {
@@ -65,7 +66,9 @@ public class Points {
             return 1.3;
         else if (grade == 60)
             return 1.0;
-        else
+        else if(grade >= 0)
             return 0.0;
+        else
+            return -1.0;
     }
 }

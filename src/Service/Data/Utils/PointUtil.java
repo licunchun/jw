@@ -2,6 +2,8 @@ package Service.Data.Utils;
 
 public class PointUtil {
     public static double pointToGPA(String point){
+        if(point.isEmpty())
+            return -1.0;
         int grade = Integer.parseInt(point);
         if(grade>=95)
             return 4.3;
