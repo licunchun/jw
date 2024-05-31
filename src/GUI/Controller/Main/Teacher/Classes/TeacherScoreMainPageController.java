@@ -92,8 +92,8 @@ public class TeacherScoreMainPageController {
 
     public void flush() {
         data.clear();
-        teacherCourseTableView.setItems(data);
         data = getTeacherScoreMainPageObservableList(ID);
+        teacherCourseTableView.setItems(data);
         System.out.println(data);
         for (TeacherScoreMainTable item : data) {
             System.out.println("Code: " + item.getCode());
