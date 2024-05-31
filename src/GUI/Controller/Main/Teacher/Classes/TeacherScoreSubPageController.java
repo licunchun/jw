@@ -57,6 +57,10 @@ public class TeacherScoreSubPageController {
         this.ID = ID;
     }
 
+    public void setClassesCode(String classesCode) {
+        this.classesCode = classesCode;
+    }
+
     public void flush() {
         data = getTeacherScoreSubPageObservableList(ID, classes);
     }

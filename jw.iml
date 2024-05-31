@@ -9,8 +9,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" exported="" scope="RUNTIME" name="lib" level="project" />
-    <orderEntry type="library" exported="" name="lib" level="project" />
+    <orderEntry type="library" scope="RUNTIME" name="lib" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="module-library">
       <library name="lib">
         <CLASSES>
@@ -24,7 +24,7 @@
         <jarDirectory url="file://$MODULE_DIR$/lib" recursive="false" type="SOURCES" />
       </library>
     </orderEntry>
-    <orderEntry type="library" exported="" name="KotlinJavaRuntime" level="project" />
+    <orderEntry type="library" name="KotlinJavaRuntime" level="project" />
     <orderEntry type="module-library" exported="" scope="RUNTIME">
       <library>
         <CLASSES>
