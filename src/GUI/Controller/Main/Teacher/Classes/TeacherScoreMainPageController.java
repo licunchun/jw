@@ -76,6 +76,7 @@ public class TeacherScoreMainPageController {
 
             teacherScoreSubPageTab.setContent(root);
         }
+      //  data = getTeacherScoreMainPageObservableList(ID);
     }
 
     private void loadTable() {
@@ -86,9 +87,12 @@ public class TeacherScoreMainPageController {
         buttonColumn.setCellValueFactory(cellData -> cellData.getValue().buttonProperty());
 
         teacherCourseTableView.setItems(data);
+    //    data = getTeacherScoreMainPageObservableList(ID);
     }
 
     public void flush() {
+        data.clear();
+        teacherCourseTableView.setItems(data);
         data = getTeacherScoreMainPageObservableList(ID);
         System.out.println(data);
         for (TeacherScoreMainTable item : data) {
