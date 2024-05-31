@@ -79,6 +79,7 @@ public class StudentScoreController {
 
     public void flush() {
         data = getStudentScoreObservableList(ID);
+        CourseTableView.setItems(data);
         setLabel();
     }
 

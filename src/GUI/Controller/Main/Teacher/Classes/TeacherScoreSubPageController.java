@@ -64,7 +64,6 @@ public class TeacherScoreSubPageController {
     public void flush() {
         data = getTeacherScoreSubPageObservableList(ID, classes);
     }
-
     public void initialize() {
         loadTable();
         ButtonColumn.setCellFactory(column -> new TableCell<>() {
