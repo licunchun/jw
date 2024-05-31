@@ -8,6 +8,7 @@ import javafx.animation.PauseTransition;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -63,37 +64,163 @@ public class TeacherScoreSubPageController {
 
     public void flush() {
         data = getTeacherScoreSubPageObservableList(ID, classes);
+        teacherScoreSubTableView.setItems(data);
     }
     public void initialize() {
         loadTable();
+        // studentIDColumn 列的 cellFactory
+        studentIDColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// studentNameColumn 列的 cellFactory
+        studentNameColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// studentSchoolColumn 列的 cellFactory
+        studentSchoolColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(School item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item.toString());
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// studentGradeColumn 列的 cellFactory
+        studentGradeColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Grade item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item.toString());
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// studentCurrentScoreColumn 列的 cellFactory
+        studentCurrentScoreColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// studentCurrentGPAColumn 列的 cellFactory
+        studentCurrentGPAColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// studentModifiedScoreColumn 列的 cellFactory
+        studentModifiedScoreColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(TextField textField, boolean empty) {
+                super.updateItem(textField, empty);
+                if (empty || textField == null) {
+                    setGraphic(null);
+                    setText(null);
+                } else {
+                    setGraphic(textField);
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
         ButtonColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Button button, boolean empty) {
                 super.updateItem(button, empty);
-                if (button == null | empty) {
+                if (empty || button == null) {
                     setGraphic(null);
+                    setText(null);
                 } else {
-                    TeacherScoreSubTable rowData = getTableRow().getItem();
+                    setGraphic(button);
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
 
-                    if (rowData != null) {
-                        String studentID = rowData.getStudentID();
-                        int newScore = Integer.parseInt(Objects.requireNonNull(findTextField(studentID)).getText());
-                        setStudentScore(classesCode, studentID, newScore);
-                        Objects.requireNonNull(findTextField(studentID)).setText("");
+                    button.setOnAction(event -> {
+                        TeacherScoreSubTable rowData = getTableRow().getItem();
+                        if (rowData != null) {
+                            String studentID = rowData.getStudentID();
+                            TextField textField = findTextField(studentID);
+                            if (textField != null) {
+                                String text = textField.getText();
+                                if (!text.isEmpty()) {
+                                    int newScore = Integer.parseInt(text);
+                                    setStudentScore(classesCode, studentID, newScore);
+                                    textField.setText("");
 
-                        // 创建一个延迟对象，持续 1 秒钟
-                        PauseTransition delay = new PauseTransition(Duration.seconds(0.1));
-                        delay.setOnFinished(event -> {
-                            // 延迟结束后将按钮状态恢复为未点击状态
-                            button.setDisable(false);
-                        });
-                        // 启动延迟
-                        button.setDisable(true);
-                        delay.play();
-                    }
+                                    // 创建一个延迟对象，持续 1 秒钟
+                                    PauseTransition delay = new PauseTransition(Duration.seconds(1));
+                                    delay.setOnFinished(e -> {
+                                        // 延迟结束后将按钮状态恢复为未点击状态
+                                        button.setDisable(false);
+                                    });
+                                    // 启动延迟
+                                    button.setDisable(true);
+                                    delay.play();
+                                } else {
+                                    System.err.println("Unable to find text field for student ID: " + studentID);
+                                    // 处理空文本字段的情况
+                                }
+                            } else {
+                                System.err.println("Unable to find text field for student ID: " + studentID);
+                                // 处理找不到文本字段的情况
+                            }
+                        }
+                    });
                 }
             }
         });
+
         changeAllButton.setOnAction(event -> {
             // 遍历所有行
             for (TeacherScoreSubTable rowData : teacherScoreSubTableView.getItems()) {

@@ -4,6 +4,7 @@ import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -42,6 +43,85 @@ public class StudentScoreController {
 
     public void initialize() {
         loadTable();
+        // nameColumn 列的 cellFactory
+        nameColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// periodColumn 列的 cellFactory
+        periodColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// creditsColumn 列的 cellFactory
+        creditsColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+        GPAColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Double item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else if (item == -1) {
+                    setText("NaN");
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// scoreColumn 是一个 Integer 类型的列
+        scoreColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else if (item == -1) {
+                    setText("NaN");
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
     }
 
     private void setLabel() {

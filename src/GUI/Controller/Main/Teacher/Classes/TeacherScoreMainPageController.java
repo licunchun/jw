@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -49,18 +50,87 @@ public class TeacherScoreMainPageController {
     public void initialize() {
         loadTable();
         buttonColumn.setCellFactory(column -> new TableCell<>() {
+
+        });
+        // codeColumn 列的 cellFactory
+        codeColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// nameColumn 列的 cellFactory
+        nameColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// timeColumn 列的 cellFactory
+        timeColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(CourseTimeSet item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(item.toString());
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// totalStudentColumn 列的 cellFactory
+        totalStudentColumn.setCellFactory(column -> new TableCell<>() {
+            @Override
+            protected void updateItem(Integer item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty || item == null) {
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
+                } else {
+                    setText(String.valueOf(item));
+                    setAlignment(Pos.CENTER); // 居中对齐
+                }
+            }
+        });
+
+// buttonColumn 列的 cellFactory
+        buttonColumn.setCellFactory(column -> new TableCell<>() {
             @Override
             protected void updateItem(Button button, boolean empty) {
                 super.updateItem(button, empty);
-                if (button == null || empty) {
+                if (empty || button == null) {
                     setGraphic(null);
+                    setText(null);
                 } else {
                     // 为按钮添加点击事件处理程序，并传入按钮的特定ID
                     button.setOnAction(event -> teacherMainMenuController.openScoreSubPage(button.getId(), ID));
                     setGraphic(button);
+                    setText(null);
+                    setAlignment(Pos.CENTER); // 居中对齐
                 }
             }
         });
+
+
     }
 
     private void loadTable() {

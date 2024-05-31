@@ -234,6 +234,7 @@ public class TeacherMainMenuController {
 
         teacherScoreSubPageController.setID(ID);
         teacherScoreSubPageController.setClassesCode(classCode);
+        teacherScoreSubPageController.setTeacherScoreSubPageController(classCode);
         teacherScoreSubPageController.flush();
     }
 }
