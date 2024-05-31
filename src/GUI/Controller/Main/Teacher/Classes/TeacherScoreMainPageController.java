@@ -8,9 +8,13 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreMainPageObservableList;
 import static GUI.GUIUtil.StageUtil.*;
@@ -35,6 +39,7 @@ public class TeacherScoreMainPageController {
     private ObservableList<TeacherScoreMainTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
     private TeacherScoreSubPageController teacherScoreSubPageController;
+    private Stage primaryStage;
 
     public void setID(String ID) {
         this.ID = ID;
@@ -42,6 +47,9 @@ public class TeacherScoreMainPageController {
 
     public void setTabPane(TabPane tabPane) {
         this.tabPane = tabPane;
+    }
+    public void setPrimaryStage(Stage primaryStage) {
+        this.primaryStage = primaryStage;
     }
 
     public void setTeacherScoreSubPageController(TeacherMainMenuController teacherMainMenuController) {
@@ -116,40 +124,41 @@ public class TeacherScoreMainPageController {
         return contextMenu;
     }
 
-    //    private void openSubPage(String buttonId) {//TODO
-//        try {
-//            // 加载子页面的FXML文件
-//            FXMLLoader loader = new FXMLLoader(getClass().getResource("GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml"));
-//
-//            // 设置控制器工厂，负责创建Controller对象并传递参数
-//            loader.setControllerFactory(controllerClass -> {
-//                try {
-//                    TeacherScoreSubPageController teacherScoreSubPageController = getController(loader);
-//
-//                    teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
-//                    teacherScoreSubPageController.setID(ID);
-//                    teacherScoreSubPageController.setPrimaryStage(primaryStage);
-//
-//                    return teacherScoreSubPageController;
-//                } catch (Exception e) {
-//                    throw new RuntimeException(e);
-//                }
-//            });
-//
-//            Parent root = loader.load();
-//
-//            // 创建子页面的场景
-//            Scene scene = new Scene(root);
-//
-//            // 将子页面的场景设置为主页面的场景，使其覆盖主页面
-//            primaryStage.setScene(scene);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-    private void openSubPage(String buttonId) {
-        teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
-        teacherMainMenuController.setIsTeacherScoreSubPageExist();
+    private void openSubPage(String buttonId) {//TODO
+        try {
+            // 加载子页面的FXML文件
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI/Window/Main/Teacher/Classes/TeacherScoreSubPage.fxml"));
+
+
+            // 设置控制器工厂，负责创建Controller对象并传递参数
+            loader.setControllerFactory(controllerClass -> {
+                try {
+                    TeacherScoreSubPageController teacherScoreSubPageController = getController(loader);
+
+                    teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
+                    teacherScoreSubPageController.setID(ID);
+                 //   teacherScoreSubPageController.setPrimaryStage(primaryStage);
+
+                    return teacherScoreSubPageController;
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            });
+
+            Parent root = loader.load();
+
+            // 创建子页面的场景
+            Scene scene = new Scene(root);
+
+            // 将子页面的场景设置为主页面的场景，使其覆盖主页面
+            primaryStage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
+//    private void openSubPage(String buttonId) {
+//        teacherScoreSubPageController.setTeacherScoreSubPageController(buttonId);
+//        teacherMainMenuController.setIsTeacherScoreSubPageExist();
+//    }
 
 }

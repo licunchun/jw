@@ -98,7 +98,7 @@ public class TeacherMainMenuController {
             teacherScoreMainPageController.setID(ID);
             teacherScoreMainPageController.setTabPane(mainMenuTabPane);
             teacherScoreMainPageController.setTeacherScoreSubPageController(this);
-            //    teacherScoreMainPageController.setPrimaryStage(stage);
+            teacherScoreMainPageController.setPrimaryStage(stage);
 
             teacherScoreMainPageTab.setContent(root);
             teacherScoreMainPageTab.setOnCloseRequest(e -> {
