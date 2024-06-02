@@ -135,7 +135,6 @@ public class ClassesSchedulePageController {
             CourseTimeSet courseTimeSet = classes.getTime();
             Iterable<CourseTime> courseTimeSetIterable = courseTimeSet.getCourseTimeIterable();
             for (CourseTime courseTime : courseTimeSetIterable) {
-                System.out.println(courseTime);
                 Week formalWeek = courseTime.getWeek();
                 int section = courseTime.getSection();
                 int week = translateWeek(formalWeek);

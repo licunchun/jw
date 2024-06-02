@@ -33,7 +33,6 @@ public class TeacherScoreMainPageController {
     private TableColumn<TeacherScoreMainTable, Button> buttonColumn;
     private ObservableList<TeacherScoreMainTable> data = FXCollections.observableArrayList();//用于表格的展示的ObservableList
     private String ID;
-    private TeacherScoreSubPageController teacherScoreSubPageController;
 
     public void setID(String ID) {
         this.ID = ID;
@@ -141,20 +140,12 @@ public class TeacherScoreMainPageController {
         buttonColumn.setCellValueFactory(cellData -> cellData.getValue().buttonProperty());
 
         teacherCourseTableView.setItems(data);
-    //    data = getTeacherScoreMainPageObservableList(ID);
     }
 
     public void flush() {
         data.clear();
         data = getTeacherScoreMainPageObservableList(ID);
         teacherCourseTableView.setItems(data);
-        System.out.println(data);
-        for (TeacherScoreMainTable item : data) {
-            System.out.println("Code: " + item.getCode());
-            System.out.println("Name: " + item.getName());
-            // 打印其它属性
-        }
-
     }
 
     public ContextMenu teacherCourseMainPageContextMenu() {
