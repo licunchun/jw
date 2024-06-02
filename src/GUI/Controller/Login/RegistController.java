@@ -14,8 +14,8 @@ import javafx.util.StringConverter;
 
 import static GUI.Data.Enum.GUI.ObservableList.UserObservableList.*;
 import static GUI.GUIUtil.StageUtil.changeViews;
-import static Service.Login.RegistServ.regist;
-import static Service.Login.RegistServ.store;
+import static Service.Login.RegisterServ.regist;
+import static Service.Login.RegisterServ.store;
 
 public class RegistController {
     private static final Stage stage = Main.getStage();

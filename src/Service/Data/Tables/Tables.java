@@ -9,9 +9,8 @@ import Service.Data.SQLiteJDBC;
 import Service.Data.Utils.NameUtil;
 import Service.Data.Utils.PasswordUtil;
 import Service.Data.Utils.TimeUtil;
-import Service.Login.RegistServ;
+import Service.Login.RegisterServ;
 
-import javax.lang.model.element.Name;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -79,8 +78,8 @@ public class Tables {
     };
     private static final String originalDatabasePath = "src/原版数据库.db";
     private static final String currentDatabasePath = "src/Service/Data/test.db";
-    private SQLiteJDBC originalDB = new SQLiteJDBC();
-    private SQLiteJDBC currentDB = new SQLiteJDBC();
+    private final SQLiteJDBC originalDB = new SQLiteJDBC();
+    private final SQLiteJDBC currentDB = new SQLiteJDBC();
 
     public void createTables(){
         currentDB.setDatabasePath(currentDatabasePath);
@@ -238,11 +237,11 @@ public class Tables {
             UserType userType = UserType.Student;
             String name = NameUtil.getRandomName();
             String password = PasswordUtil.getRandomPassword(6);
-            RegistServ.regist(userType,name,password,password);
+            RegisterServ.regist(userType,name,password,password);
             Gender gender = genders[random.nextInt(genders.length)];
             School school = schools[random.nextInt(schools.length)].toSchool();
             Grade grade = grades[random.nextInt(grades.length)];
-            RegistServ.store(userType,name,password,password,gender,school,grade);
+            RegisterServ.store(userType,name,password,password,gender,school,grade);
         }
     }
     //挑选随机学生随机选课

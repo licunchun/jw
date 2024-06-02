@@ -29,7 +29,7 @@ public class Points {
         return pointsTable.selectAll("ID","code",code);
     }
     public static String getScore(String code,String ID){
-        return pointsTable.selectPonits(code,ID);
+        return pointsTable.selectPoints(code,ID);
     }
     public static void setScore(String code,String ID,String point){
         pointsTable.updatePoints(code,ID,point);
