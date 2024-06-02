@@ -92,13 +92,10 @@ public class Courses {
         ArrayList<String> valueName = new ArrayList<>();
         ArrayList<String> value = new ArrayList<>();
         for (int i = 0; i < conditions.length; i++) {
-            if(conditions[i].isEmpty())
-                continue;
-            else
-                {
-                    valueName.add(CourseCol[i]);
-                    value.add(conditions[i]);
-                }
+            if (!conditions[i].isEmpty()) {
+                valueName.add(CourseCol[i]);
+                value.add(conditions[i]);
+            }
         }
         return coursesTable.selectAll("code",valueName.toArray(new String[0]),value.toArray(new String[0]));
     }

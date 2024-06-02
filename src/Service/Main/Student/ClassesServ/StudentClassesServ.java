@@ -192,7 +192,7 @@ public class StudentClassesServ {
             return DropClassesError.ClassesCodeNotFind;
         if(isPicked(studentID,classesCode)==Boolean.FALSE)
             return DropClassesError.IDNotFind;
-        //TODO:该课程已选的枚举类型
+        // TODO:该课程已选的枚举类型
 
         String studentTimes = student.getTimes(studentID);
         String courseTimes = course.getTimes(classesCode);

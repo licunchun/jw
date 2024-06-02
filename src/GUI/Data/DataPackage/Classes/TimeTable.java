@@ -3,7 +3,7 @@ package GUI.Data.DataPackage.Classes;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class TimeTable {//TODO
+public class TimeTable {
     private final SimpleIntegerProperty number;
     private final SimpleStringProperty Monday;
     private final SimpleStringProperty Tuesday;

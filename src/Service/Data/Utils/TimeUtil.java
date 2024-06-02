@@ -1,9 +1,6 @@
 package Service.Data.Utils;
 
-import Service.Data.Tables.Students;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -44,9 +41,7 @@ public class TimeUtil {
     }
     private static int[] getSection(int[] section) {
         int[] sec = new int[section.length-1];
-        for (int i = 0; i < sec.length; i++) {
-            sec[i] = section[i+1];
-        }
+        System.arraycopy(section, 1, sec, 0, sec.length);
         return sec;
     }
     public static String getSetDay(int[] section) {
@@ -126,10 +121,9 @@ public class TimeUtil {
     //检测是否时间冲突
     public static boolean isTimeFree(String[] days1,String[] days2){
         for (String day:days1){
-            if(isTimeFree(day,days2))
-                continue;
-            else
+            if (!isTimeFree(day, days2)) {
                 return false;
+            }
         }
         return true;
     }

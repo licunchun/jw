@@ -1,8 +1,5 @@
 package Service.Data.Utils;
 
-import GUI.Data.DataPackage.Classes.Classes;
-import Service.Data.Tables.Courses;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;

@@ -23,14 +23,6 @@ public class TeacherInformationController {
     private Stage editSchoolPageStage = null;
     private TeacherSchoolEditorController teacherSchoolEditorController;
 
-    /*
-     * Function
-     */
-    @FXML
-    private void initialize() {
-
-    }
-
     @FXML
     private void doEditSchool() {
         if (!isEditSchoolPageShow) {

@@ -150,11 +150,7 @@ public class TeacherMainMenuController {
                         if (!isClassesSchedulePageExist) {
                             isClassesSchedulePageExist = true;
                             mainMenuTabPane.getTabs().add(classesScheduleTab);
-                            try {
-                                classesSchedulePageController.flush();
-                            } catch (IOException ex) {
-                                throw new RuntimeException(ex);
-                            }
+                            classesSchedulePageController.flush();
                         } else {
                             mainMenuTabPane.getSelectionModel().select(classesScheduleTab);
                         }
