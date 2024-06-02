@@ -18,7 +18,7 @@ public class IDUtil {
         };
     }
     public static boolean check(String ID){
-        if(ID==null||ID.isEmpty())
+        if(ID == null || ID.isEmpty())
             return false;
         return isIDExist(ID);
     }

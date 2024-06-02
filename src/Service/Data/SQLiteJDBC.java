@@ -314,7 +314,7 @@ public class SQLiteJDBC {
         sql = "UPDATE " + "points" + " SET " + "point" + " = '" + point +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
         execute();
     }
-    public  String selectPonits(String classesCode, String ID){
+    public  String selectPoints(String classesCode, String ID){
         String sql = "SELECT " + "point" + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '"+ ID +"';";
         try {
             connect();
