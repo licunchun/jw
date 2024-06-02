@@ -1,6 +1,5 @@
 package GUI.Data.DataPackage.Classes;
 
-import Data.DataBase;
 import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.School;
 import Service.Data.Utils.IDUtil;
@@ -235,31 +234,5 @@ public class Classes {
                 full,
                 place
         );
-    }
-
-    public void print(){
-        DataBase db = new DataBase();
-        System.out.println("课堂编号\t"+code);
-        System.out.println("课堂名称\t"+name);
-        System.out.println("学时\t"+period);
-        System.out.println("学分\t"+credits);
-        System.out.println("时间\t");
-        for (CourseTime courseTime : time.getCourseTimeIterable()) {
-            System.out.println(courseTime);
-        }
-        System.out.println("当前学生人数\t"+stdCount+'\n'+"最大学生人数\t"+limitCount);
-        System.out.println("课程类型\t"+classType);
-        System.out.println("课程种类\t"+courseType);
-        System.out.println("所属院校\t"+school);
-        System.out.println("校区\t"+campus);
-        System.out.println("考试方式\t"+examMode);
-        System.out.println("教学语言\t"+language);
-        System.out.println("本科/研究生\t"+education);
-        System.out.println("教师ID\t");
-        for (String s: teacher.getStudentIDSetIterable()) {
-            System.out.println(s+ db.infoOfTeacher(s).name);
-        }
-        System.out.println("课堂状况\t"+full);
-        System.out.println("教室位置\t"+place);
     }
 }
