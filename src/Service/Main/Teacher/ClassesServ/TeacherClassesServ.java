@@ -10,9 +10,6 @@ import Service.Data.Tables.Teachers;
 import Service.Data.Utils.CodeUtil;
 import Service.Main.Components.ClassServ.ClassesServ;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class TeacherClassesServ {
     private static final Teachers teacher = new Teachers();
     public static ClassesSet getTeacherClassesSet(String ID) {

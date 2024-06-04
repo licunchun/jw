@@ -1,11 +1,6 @@
 package Service.Data.Utils;
 
-import Service.Data.Tables.Teachers;
-
-import java.util.ArrayList;
 import java.util.Random;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class NameUtil {
     final public static int MAX_NAME_LENGTH = 10;
@@ -35,10 +30,7 @@ public class NameUtil {
         }
         return name.toString();
     }
-//    public static String packName(String[] name){
-//
-//    }
-    public static boolean checkLength(String name) {
+public static boolean checkLength(String name) {
         return name.length() <= MAX_NAME_LENGTH;
     }
     public static boolean checkChar(String name) {

@@ -9,7 +9,6 @@ import GUI.Data.Enum.User.UserType;
 import Service.Data.Tables.Managers;
 import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
-import Service.Data.Utils.UserUtil;
 import Service.Data.Utils.*;
 
 import java.util.Arrays;

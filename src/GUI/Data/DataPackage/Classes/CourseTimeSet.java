@@ -2,15 +2,12 @@ package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.Enum.Classes.CourseTime;
 import GUI.Data.Enum.Classes.Week;
-import Service.Data.Tables.Courses;
 import Service.Data.Utils.TimeUtil;
 import javafx.beans.property.ReadOnlyObjectProperty;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class CourseTimeSet {

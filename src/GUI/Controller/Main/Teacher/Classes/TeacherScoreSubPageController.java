@@ -14,8 +14,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.util.Duration;
 
-import java.util.Objects;
-
 import static GUI.Data.Util.Classes.ObservableListUtil.getTeacherScoreSubPageObservableList;
 import static Service.Main.Components.ClassServ.ClassesServ.getClasses;
 import static Service.Main.Components.ClassServ.ClassesServ.setStudentScore;

@@ -6,7 +6,6 @@ import GUI.Data.DataPackage.UserInformation.UserInformationForTable;
 import GUI.Data.Enum.GUI.Scene.EditUserPage;
 import GUI.Data.Enum.User.UserType;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
@@ -89,119 +88,7 @@ public class ManageUserPageController {
             IDColumn.setCellValueFactory(cellData -> cellData.getValue().IDProperty());
             GenderColumn.setCellValueFactory(cellData -> cellData.getValue().genderProperty());
         }//设置表格列与数据对象的属性关联
-//        {
-////            IDColumn.setCellValueFactory(new PropertyValueFactory<>("ID"));
-//            NameColumn.setCellFactory(column -> new TableCell<>() {
-//                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getName());
-//
-//                {
-//                    hyperlink.setOnAction(event -> {
-//                        isEditPagesExist = true;
-//                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Name);
-//                        resetLocation(editPageStage);
-//                    });
-//                }//超链接点击事件
-//
-//                @Override
-//                protected void updateItem(Void item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        setGraphic(hyperlink);
-//                    }
-//                }
-//            });
-//            PasswordColumn.setCellFactory(column -> new TableCell<>() {
-//                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getPassword());
-//
-//                {
-//                    hyperlink.setOnAction(event -> {
-//                        isEditPagesExist = true;
-//                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Password);
-//                        resetLocation(editPageStage);
-//                    });
-//                }//超链接点击事件
-//
-//                @Override
-//                protected void updateItem(Void item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        setGraphic(hyperlink);
-//                    }
-//                }
-//            });
-//            GradeColumn.setCellFactory(column -> new TableCell<>() {
-//                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getGrade());
-//
-//                {
-//                    hyperlink.setOnAction(event -> {
-//                        isEditPagesExist = true;
-//                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Grade);
-//                        resetLocation(editPageStage);
-//                    });
-//                }//超链接点击事件
-//
-//                @Override
-//                protected void updateItem(Void item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        setGraphic(hyperlink);
-//                    }
-//                }
-//            });
-//            SchoolColumn.setCellFactory(column -> new TableCell<>() {
-//                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getSchool());
-//
-//                {
-//                    hyperlink.setOnAction(event -> {
-//                        isEditPagesExist = true;
-//                        if (userType == UserType.Student) {
-//                            openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.StudentSchool);
-//                        } else {
-//                            openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.TeacherSchool);
-//                        }
-//                        resetLocation(editPageStage);
-//                    });
-//                }//超链接点击事件
-//
-//                @Override
-//                protected void updateItem(Void item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        setGraphic(hyperlink);
-//                    }
-//                }
-//            });
-////            GenderColumn.setCellValueFactory(new PropertyValueFactory<>("性别"));
-//            MoneyColumn.setCellFactory(column -> new TableCell<>() {
-//                private final Hyperlink hyperlink = new Hyperlink(getTableView().getItems().get(getIndex()).getMoney());
-//
-//                {
-//                    hyperlink.setOnAction(event -> {
-//                        isEditPagesExist = true;
-//                        openEditPage(getTableView().getItems().get(getIndex()).getID(), EditUserPage.Money);
-//                        resetLocation(editPageStage);
-//                    });
-//                }//超链接点击事件
-//
-//                @Override
-//                protected void updateItem(Void item, boolean empty) {
-//                    super.updateItem(item, empty);
-//                    if (empty) {
-//                        setGraphic(null);
-//                    } else {
-//                        setGraphic(hyperlink);
-//                    }
-//                }
-//            });
-//        }
+
         {
             NameColumn.setCellFactory(column -> new TableCell<>() {
                 private final Hyperlink hyperlink = new Hyperlink();

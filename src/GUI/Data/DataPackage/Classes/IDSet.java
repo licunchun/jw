@@ -1,13 +1,10 @@
 package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.DataPackage.UserInformation.UserInformationForTable;
-import Service.Data.Tables.Teachers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 import static Service.Main.Components.UserServ.UserServ.getName;
 
@@ -46,9 +43,6 @@ public class IDSet {
 
     public ObservableList<UserInformationForTable> toObservableList() {
         ObservableList<UserInformationForTable> observableList = FXCollections.observableArrayList();
-        if (IDSet == null) {
-            return observableList;
-        }
         for (String ID : IDSet) {
             observableList.add(new UserInformationForTable(ID));
         }
@@ -65,7 +59,7 @@ public class IDSet {
         if (IDList == null) {
             IDList = new ArrayList<>(IDSet);
         }
-        return new IDSet(new HashSet<String>(IDList.subList(fromIndex, toIndex)));
+        return new IDSet(new HashSet<>(IDList.subList(fromIndex, toIndex)));
     }
 
     public void print() {

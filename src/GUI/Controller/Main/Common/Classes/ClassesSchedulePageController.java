@@ -60,11 +60,7 @@ public class ClassesSchedulePageController {
         flushMenuItem.setAccelerator(new KeyCodeCombination(KeyCode.R, KeyCodeCombination.CONTROL_DOWN));
 
         flushMenuItem.setOnAction(event -> {
-            try {
-                flush();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+            flush();
         });
 
         contextMenu.getItems().addAll(flushMenuItem);
@@ -72,12 +68,12 @@ public class ClassesSchedulePageController {
         return contextMenu;
     }
 
-    public void initialize() throws IOException {
+    public void initialize() {
         loadTable();
         loadClasses();
     }
 
-    public void flush() throws IOException {
+    public void flush() {
         initializeData();
         loadTable();
         loadClasses();

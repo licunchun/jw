@@ -121,9 +121,7 @@ public class Tables {
         for (String code : codes) {
             String[] info = originalDB.select(OriginalCourseCol, "code", code);
             String[] newInfo = new String[17];
-            for (int i = 0; i < 4; i++) {
-                newInfo[i] = info[i];
-            }
+            System.arraycopy(info, 0, newInfo, 0, 4);
             //时间
             if(info[4]==null){
                 System.out.println(Arrays.toString(info));
@@ -137,23 +135,19 @@ public class Tables {
                 continue;
             }
             String[] days = TimeUtil.getTimes();
-            for (int i = 0; i < day.length; i++) {
-                TimeUtil.addDayInDays(day[i], days);
+            for (String s : day) {
+                TimeUtil.addDayInDays(s, days);
             }
             newInfo[4] = Arrays.toString(days);
 
-            for (int i = 5; i < 8; i++) {
-                newInfo[i] = info[i];
-            }
+            System.arraycopy(info, 5, newInfo, 5, 3);
             newInfo[8] = info[13];
-            for (int i = 9; i < 14; i++) {
-                newInfo[i] = info[i-1];
-            }
+            System.arraycopy(info, 8, newInfo, 9, 5);
             newInfo[14] = info[14];
             newInfo[15] = "未满";
             Pattern p = Pattern.compile("(?<=周\\s).*?(?=\\s:)");
             Matcher m = p.matcher(info[4]);
-            m.find();
+            if (!m.find()) return;
             newInfo[16] = m.group();
             currentDB.insert(CourseCol,newInfo);
         }
@@ -225,7 +219,6 @@ public class Tables {
         Managers.addInfo(three);
     }
     //生成随机学生
-    //TODO
     public void addStudent(int num){
         UserType[] userTypes = UserType.values();
         Gender[] genders = Gender.values();

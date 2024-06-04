@@ -1,8 +1,5 @@
 package GUI.Data.Enum.Classes;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public enum CourseTime {
     /*
      * 主体
