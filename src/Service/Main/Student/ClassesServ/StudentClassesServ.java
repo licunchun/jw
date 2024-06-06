@@ -8,14 +8,13 @@ import GUI.Data.Enum.Error.Main.Student.ClassesServ.DropClassesError;
 import GUI.Data.Enum.Error.Main.Student.ClassesServ.PickClassesError;
 import Service.Data.Tables.CodeStudent;
 import Service.Data.Tables.Courses;
-import Service.Data.Tables.Points;
+
 import Service.Data.Tables.Students;
-import Service.Data.Utils.CodeUtil;
+
 import Service.Data.Utils.DaysUtil;
 import Service.Data.Utils.PointUtil;
-import Service.Data.Utils.TimeUtil;
 
-import java.util.Arrays;
+
 import java.util.Objects;
 
 
@@ -149,10 +148,7 @@ public class StudentClassesServ {
         if(Objects.equals(courses.full, "已满"))
             return PickClassesError.ClassesIsFull;;
         if(!students.isFree(courses.times))
-            return PickClassesError.ClassesIsFull;
-
-        //TODO:时间冲突的枚举类型
-
+            return PickClassesError.TimeCrash;
         //学生时间添加
         String newDays = DaysUtil.addDaysInDays(courses.times,students.days);
         students.setDays(newDays);

@@ -101,7 +101,7 @@ public class IDUtil {
         throw new RuntimeException("学生数据已满");
     }
     private String getTeacherAvailableID(){
-        for (int i = 0; i < 100000; i++) {
+        for (int i = 2000; i < 100000; i++) {
             Teachers teachers = new Teachers(String.format("%05d", i));
             if(!teachers.IDExist)
                 return String.format("%05d", i);

@@ -29,10 +29,11 @@ public class DaysUtil {
         String[] inDay = getDaysFromDays(inDays);
         for (int i = 0; i < daysNum; i++) {
             String sum = BAND(day[i],inDay[i]).substring(day[i].length()-sectionsNum);
-            int s = Integer.parseInt(sum);
-            if(s==0)
-                continue;
-            return false;
+            for (int j = 2; j < sum.length(); j++) {
+                if(sum.charAt(j)=='0')
+                    continue;
+                return false;
+            }
         }
         return true;
     }
@@ -50,7 +51,7 @@ public class DaysUtil {
 //        return emptyDays;
 //    }
     public static String getEmptyDays(){
-            return pack(emptyDays);
+            return "1.0000000000000"+ "2.0000000000000"+ "3.0000000000000"+ "4.0000000000000"+ "5.0000000000000"+ "6.0000000000000"+ "7.0000000000000";
     }
 
     //
@@ -64,7 +65,15 @@ public class DaysUtil {
     }
     //用于将课程times里的时间转换成数据库时间
     public static String[] getDaysFromTimes(String times){
-        String[] days = emptyDays;
+        String[] days ={
+                "1.0000000000000",
+                "2.0000000000000",
+                "3.0000000000000",
+                "4.0000000000000",
+                "5.0000000000000",
+                "6.0000000000000",
+                "7.0000000000000",
+        };
         String[] timeDays = TimeUtil.getDays(times);
         for (int i = 0; i < timeDays.length; i++) {
             int whichDay = Integer.parseInt(String.valueOf(timeDays[i].charAt(0)));
@@ -96,7 +105,15 @@ public class DaysUtil {
         return new String(day);
     }
     public static String getDaysFromCourseTimeSet(CourseTimeSet courseTimeSet){
-        String[] days = emptyDays;
+        String[] days = {
+                "1.0000000000000",
+                "2.0000000000000",
+                "3.0000000000000",
+                "4.0000000000000",
+                "5.0000000000000",
+                "6.0000000000000",
+                "7.0000000000000",
+        };
         for (CourseTime courseTime:courseTimeSet.getCourseTimeIterable()){
             int whichDay = courseTime.getWeek().getIndex();
             String day = getDayFromCourseTime(courseTime);

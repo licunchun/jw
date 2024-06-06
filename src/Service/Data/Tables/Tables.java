@@ -260,11 +260,8 @@ public class Tables {
         tables.createTables();
         tables.initTeachersTable();
         tables.initCoursesTable();
-//        tables.courseDataProcess();
-//        tables.teacherDataProcess();
-//        tables.initCodeTeacher();
-//        tables.courseDataUpdate();
-//        tables.addManager();
-//        tables.addStudent(100);
+
+        tables.addManager();
+        tables.addStudent(100);
     }
 }
