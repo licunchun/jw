@@ -95,6 +95,7 @@ public class ClassesMainPageController {
             }
             case PickClassesError.ClassesISChosen -> Tips.setText("同类课程已选择，不可重复选课！");
             case PickClassesError.ClassesIsFull -> Tips.setText("课程人数已满！");
+            case PickClassesError.TimeCrash -> Tips.setText("时间冲突");
             case PickClassesError.Success -> flush();
         }
     }

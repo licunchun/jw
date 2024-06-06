@@ -140,6 +140,10 @@ public class ProposeCoursePageController {
                 Tips.setText("教师ID不合法，请重新输入");
                 Tips.setVisible(true);
             }
+            case NewClassesError.TimeCrash -> {
+                Tips.setText("时间冲突");
+                Tips.setVisible(true);
+            }
             case NewClassesError.Success -> stage.close();
         }
     }

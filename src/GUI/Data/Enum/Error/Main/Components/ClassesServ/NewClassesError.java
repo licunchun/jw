@@ -13,6 +13,7 @@ public enum NewClassesError {
     MaxCountInvalid,//最大数值不合法
     TeacherIsEmpty,//教师为空
     TeacherInvalid,//教师不合法，注意可以用逗号隔开
+    TimeCrash,//时间冲突
     Success//新建成功
 
 }

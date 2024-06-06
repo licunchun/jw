@@ -1,0 +1,1929 @@
+@startuml
+class GUI.Data.DataPackage.Classes.IDSet {
+- Set<String> IDSet
+- List<String> IDList
++ int size()
++ void add(String)
++ String getNames()
++ ObservableList<UserInformationForTable> toObservableList()
++ Iterable<String> getStudentIDSetIterable()
++ IDSet getSubSet(int,int)
++ void print()
+}
+
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_CourseType {
++  None
++  General
++  Else
++  BasicPE
++  PE
++  MoocGeneral
++  Preparatory
++  English
++  EnglishExpansion
++  Plan
++  ScienceAndSociety
++  History
++  Basic
++  Profession
++  Politics
++  EnglishCourse
++  PublicCourse
+- String name
++ String toString()
++ CourseType toCourseType()
+}
+
+
+class Service.Data.Tables.Tables {
++ {static} String STUDENTS
++ {static} String TEACHERS
++ {static} String MANAGERS
++ {static} String COURSES
++ {static} String POINTS
++ {static} String[] TableName
++ {static} String[] StudentCol
++ {static} String[] TeacherCol
++ {static} String[] ManagerCol
++ {static} String[] CourseCol
++ {static} String[] PointCol
++ {static} String[][] ColName
+- {static} String originalDatabasePath
+- {static} String currentDatabasePath
+- SQLiteJDBC originalDB
+- SQLiteJDBC currentDB
++ {static} String[] OriginalCourseCol
++ {static} String[] OriginalTeacherCol
++ void createTables()
++ void courseDataProcess()
++ void courseDataUpdate()
++ void teacherDataProcess()
++ void addManager()
++ void addStudent(int)
++ {static} void main(String[])
+}
+
+
+class GUI.Controller.Main.Student.Classes.DropClassesPageController {
+- {static} int ROWS_PER_PAGE
+- TableView<ClassesForTable> tableView
+- TableColumn<ClassesForTable,Void> codeColumn
+- TableColumn<ClassesForTable,String> nameColumn
+- TableColumn<ClassesForTable,String> periodColumn
+- TableColumn<ClassesForTable,String> creditsColumn
+- TableColumn<ClassesForTable,String> timeColumn
+- TableColumn<ClassesForTable,String> classTypeColumn
+- TableColumn<ClassesForTable,String> courseTypeColumn
+- TableColumn<ClassesForTable,String> schoolColumn
+- TableColumn<ClassesForTable,String> campusColumn
+- TableColumn<ClassesForTable,String> examModeColumn
+- TableColumn<ClassesForTable,String> languageColumn
+- TableColumn<ClassesForTable,String> educationColumn
+- TableColumn<ClassesForTable,String> teacherColumn
+- AnchorPane TableViewPane
+- Pagination pagination
+- boolean isClassesMainPageExist
+- Stage classesMainPageStage
+- ClassesMainPageController classesMainPageController
+- ObservableList<ClassesForTable> data
+- String ID
+- void initialize()
++ ContextMenu dropClassesPageContextMenu()
++ void setID(String)
++ void loadTable()
++ void flush()
+- void openClassesMainPage(String)
++ void close()
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.NameEditorController {
+- Label tips
+- TextField ChangedName
+- Button Confirm
+- String ID
+- Stage stage
+- void doConfirm()
++ void setID(String)
++ void setStage(Stage)
+}
+
+
+class MainPackage.Main {
+- {static} Stage stage
++ {static} void main(String[])
++ {static} Stage getStage()
++ void start(Stage)
+}
+
+
+enum GUI.Data.Enum.Error.Login.Regist {
++  NameEmpty
++  NameOverLength
++  NameInvalidChar
++  PasswordEmpty
++  PasswordOverLength
++  PasswordInvalidChar
++  PasswordNotMatch
++  Pass
+}
+
+class Service.Data.Tables.Courses {
++ {static} String tableName
++ {static} String[] CourseCol
++ {static} String PRIMARY_KEY
+- {static} SQLiteJDBC coursesTable
++ {static} boolean isCodeExist(String)
++ {static} boolean isCourseFull(String)
++ {static} String[] getAllCode()
++ {static} void addInfo(String[])
++ {static} void deleteInfo(String)
++ {static} String[] getInfo(String)
++ String getName(String)
++ String getPeriod(String)
++ String getCredits(String)
++ String getTimes(String)
++ String getStdCount(String)
++ String getLimitCount(String)
++ String getClassType(String)
++ String getCourseType(String)
++ String getSchool(String)
++ String getCampus(String)
++ String getExamMode(String)
++ String getLanguage(String)
++ String getEducation(String)
++ String getTeachers(String)
++ String getFull(String)
++ void setStdCount(String,String)
++ void setFull(String,String)
++ {static} String[] findCode(String[])
+}
+
+
+class GUI.Data.DataPackage.Classes.TeacherScoreSubTable {
+- SimpleStringProperty studentID
+- SimpleStringProperty studentName
+- ObjectProperty<School> studentSchool
+- ObjectProperty<Grade> studentGrade
+- SimpleIntegerProperty studentCurrentScore
+- SimpleDoubleProperty studentCurrentGPA
+- ObjectProperty<Button> button
+- ObjectProperty<TextField> studentModifiedScore
++ String getStudentID()
++ SimpleStringProperty studentIDProperty()
++ String getStudentName()
++ SimpleStringProperty studentNameProperty()
++ School getStudentSchool()
++ ObjectProperty<School> studentSchoolProperty()
++ Grade getStudentGrade()
++ ObjectProperty<Grade> studentGradeProperty()
++ int getStudentCurrentScore()
++ SimpleIntegerProperty studentCurrentScoreProperty()
++ double getStudentCurrentGPA()
++ SimpleDoubleProperty studentCurrentGPAProperty()
++ Button getButton()
++ ObjectProperty<Button> buttonProperty()
++ TextField getStudentModifiedScore()
++ ObjectProperty<TextField> studentModifiedScoreProperty()
+}
+
+
+enum GUI.Data.Enum.User.StudentSchool {
++  GiftedYoung
++  MathematicalSciences
++  PhysicalSciences
++  Management
++  ChemistryAndMaterialsScience
++  EarthAndSpaceSciences
++  EngineeringScience
++  InformationScienceAndTechnology
++  HumanitiesAndSocialScience
++  NuclearScienceAndTechnology
++  ComputerScienceAndTechnology
++  Microelectronics
++  CyberScienceAndTechnology
++  DataScience
++  EnvironmentalScienceAndEngineering
++  LifeScienceAndMedicine
++  FutureTechnology
+- String name
++ String toString()
++ School toSchool()
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.RechargerController {
+- Label tips
+- Button MoneyAdd10
+- Button MoneyAdd20
+- Button MoneyAdd50
+- Button MoneyAdd100
+- Button MoneyAdd200
+- Button MoneyAdd500
+- String ID
+- Stage stage
++ void setID(String)
++ void setStage(Stage)
+- void doMoneyAdd10()
+- void doMoneyAdd20()
+- void doMoneyAdd50()
+- void doMoneyAdd100()
+- void doMoneyAdd200()
+- void doMoneyAdd500()
+}
+
+
+class Service.Data.Utils.TimeUtil {
++ {static} Pattern dayPattern
++ {static} Pattern secPattern
++ {static} Matcher matcher
++ {static} String[] getTimes()
++ {static} String[] getDay(String)
++ {static} int[] getSection(String)
+- {static} int[] getSection(int[])
++ {static} String getSetDay(int[])
++ {static} boolean isSecFreeInDay(int,String)
++ {static} String addSecInDay(int[],String)
++ {static} String deleteSecInDay(int[],String)
++ {static} void addDayInDays(String,String[])
++ {static} void deleteDayInDays(String,String[])
++ {static} boolean isTimeFree(String[],String[])
+- {static} boolean isTimeFree(String,String[])
+- {static} boolean isSecFree(int[],String)
+}
+
+
+enum GUI.Data.Enum.User.Gender {
++  Male
++  Female
+- String name
+- boolean sign
++ String toString()
++ {static} Gender fromString(String)
++ boolean getSign()
+}
+
+
+class Service.Data.Tables.Students {
++ {static} String tableName
++ {static} String[] StudentCol
++ {static} String PRIMARY_KEY
+- {static} SQLiteJDBC studentsTable
++ {static} boolean isIDExist(String)
++ {static} boolean isNameExist(String)
++ {static} String[] getAllID()
++ {static} void addInfo(String[])
++ {static} void deleteInfo(String)
++ String[] getInfo(String)
++ String getName(String)
++ String getPassword(String)
++ String getGrade(String)
++ String getGender(String)
++ String getSchool(String)
++ String getClasses(String)
++ String getMoney(String)
++ String getTimes(String)
++ void setName(String,String)
++ void setPassword(String,String)
++ void setGrade(String,String)
++ void setGender(String,String)
++ void setSchool(String,String)
++ void setClasses(String,String)
++ void setMoney(String,String)
++ void setTimes(String,String)
++ {static} String[] getSameNameID(String)
++ {static} String[] getIDWithSubID(String)
++ {static} String[] getIDWithSubName(String)
++ {static} String[] getIDWithString(String,String)
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.PasswordChangerController {
+- Button Confirm
+- Label tips
+- PasswordField ConfirmNewPassword
+- PasswordField NewPassword
+- PasswordField OriginPassword
+- String ID
+- Stage stage
+- void doConfirm()
++ void setID(String)
++ void setStage(Stage)
+}
+
+
+class GUI.Controller.Main.Common.UserInformationPageController {
+- Label ShowName
+- Label ShowID
+- AnchorPane chooseAnchorPane
+- VBox UserInformationBox
+- Hyperlink ChangePassword
+- Hyperlink EditName
+- Stage stage
+- String ID
+- boolean isEditNamePageShow
+- Stage editNamePageStage
+- NameEditorController nameEditorController
+- boolean isChangePasswordPageShow
+- Stage changePasswordPageStage
+- PasswordChangerController passwordChangerController
+- void doChangePassword()
+- void doEditName()
++ AnchorPane getChooseAnchorPane()
++ void closeAllChildren()
++ void setStage(Stage)
++ void setID(String)
++ void flush()
+}
+
+
+class Service.Main.Teacher.ClassesServ.TeacherClassesServ {
+- {static} Teachers teacher
++ {static} ClassesSet getTeacherClassesSet(String)
++ {static} CourseCodeSet getTeacherCourseCodeSet(String)
+}
+
+
+class GUI.Data.DataPackage.Classes.ClassesForTable {
+- SimpleStringProperty code
+- SimpleStringProperty name
+- SimpleStringProperty period
+- SimpleStringProperty credits
+- SimpleStringProperty time
+- SimpleStringProperty student
+- SimpleStringProperty classType
+- SimpleStringProperty courseType
+- SimpleStringProperty school
+- SimpleStringProperty campus
+- SimpleStringProperty examMode
+- SimpleStringProperty language
+- SimpleStringProperty education
+- SimpleStringProperty teacher
+- SimpleStringProperty full
++ String getCode()
++ SimpleStringProperty codeProperty()
++ String getName()
++ SimpleStringProperty nameProperty()
++ String getPeriod()
++ SimpleStringProperty periodProperty()
++ String getCredits()
++ SimpleStringProperty creditsProperty()
++ String getTime()
++ SimpleStringProperty timeProperty()
++ String getStudent()
++ SimpleStringProperty studentProperty()
++ String getClassType()
++ SimpleStringProperty classTypeProperty()
++ String getCourseType()
++ SimpleStringProperty courseTypeProperty()
++ String getSchool()
++ SimpleStringProperty schoolProperty()
++ String getCampus()
++ SimpleStringProperty campusProperty()
++ String getExamMode()
++ SimpleStringProperty examModeProperty()
++ String getLanguage()
++ SimpleStringProperty languageProperty()
++ String getEducation()
++ SimpleStringProperty educationProperty()
++ String getTeacher()
++ SimpleStringProperty teacherProperty()
++ String getFull()
++ SimpleStringProperty fullProperty()
+}
+
+
+class GUI.Data.Util.Classes.ObservableListUtil {
++ {static} ObservableList<StudentCourseScoreTable> getStudentScoreObservableList(String)
++ {static} ObservableList<TeacherScoreMainTable> getTeacherScoreMainPageObservableList(String)
++ {static} ObservableList<TeacherScoreSubTable> getTeacherScoreSubPageObservableList(String,Classes)
+}
+
+enum GUI.Data.Enum.Error.Main.Components.UserServ.ChangePasswordError {
++  Success
++  IDNotFound
++  EmptyInput
++  WrongOriginPassword
++  InvalidChar
++  OverLength
++  NotMatch
+}
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_ClassType {
++  None
++  Theory
++  Experiment
++  Practice
++  TheoryExperiment
++  TheoryPractice
+- String name
++ String toString()
++ ClassType toClassType()
+}
+
+
+class Service.Data.Utils.PasswordUtil {
++ {static} int MAX_NAME_LENGTH
++ {static} boolean check(String)
++ {static} String getRandomPassword(int)
++ {static} boolean checkLength(String)
++ {static} boolean checkChar(String)
+}
+
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_School {
++  None
++  GiftedYoung
++  MathematicalSciences
++  UnderGraduate
++  PhysicalSciences
++  Management
++  ChemistryAndMaterialsScience
++  EarthAndSpaceSciences
++  EngineeringScience
++  InformationScienceAndTechnology
++  HumanitiesAndSocialScience
++  NuclearScienceAndTechnology
++  ComputerScienceAndTechnology
++  PublicAffairs
++  EnvironmentalScienceAndOptoelectronicTechnology
++  Microelectronics
++  Marxism
++  CyberScienceAndTechnology
++  SoftwareEngineering
++  DataScience
++  NationalSynchrotronRadiationLaboratory
++  StateKeyLaboratoryOfFireScience
++  EnvironmentalScienceAndEngineering
++  InnovationAndEntrepreneurship
++  LifeScienceAndMedicine
++  FutureTechnology
+- String name
++ String toString()
++ School toSchool()
+}
+
+
+class Service.Data.Utils.IDUtil {
+- {static} int STUDENT_ID_LENGTH
+- {static} int TEACHER_ID_LENGTH
+- {static} int MANAGER_ID_LENGTH
++ {static} int getUserType(String)
++ {static} boolean check(String)
++ {static} boolean isIDExist(String)
++ {static} String getAvailableID(String)
++ {static} String getAvailableID(int)
++ {static} String[] getIDFromTeachers(String)
+}
+
+
+class GUI.Controller.Components.Time.TimeTableController {
+~ {static} double BUTTON_WIDE
+~ {static} double BUTTON_HEIGHT
+~ {static} double Distance
+~ {static} boolean[][] isChosen
+- Button[][] Table
+- AnchorPane TablePlace
+- Button ConfirmButton
+- Stage stage
+- void initialize()
+- Button newButton()
+- void flush()
+- void doConfirm()
++ void setStage(Stage)
++ CourseTimeSet getTimeSet()
+}
+
+
+class GUI.Controller.Main.Student.Classes.StudentScoreController {
+- TableView<StudentCourseScoreTable> CourseTableView
+- TableColumn<StudentCourseScoreTable,String> nameColumn
+- TableColumn<StudentCourseScoreTable,Integer> periodColumn
+- TableColumn<StudentCourseScoreTable,Double> creditsColumn
+- TableColumn<StudentCourseScoreTable,Double> GPAColumn
+- TableColumn<StudentCourseScoreTable,Integer> scoreColumn
+- Label TotalCredits
+- Label ReceivedCredits
+- Label FailedCredits
+- Label GPA
+- Label WeightAverageScore
+- Label ArithmeticAverageScore
+- ObservableList<StudentCourseScoreTable> data
+- String ID
++ void initialize()
+- void setLabel()
++ void flush()
+- void loadTable()
++ ContextMenu studentScoreContextMenu()
++ void setID(String)
+}
+
+
+class GUI.Controller.Main.Common.Classes.ClassesMainPageController {
+- Label CodeLabel
+- Label NameLabel
+- Label PeriodLabel
+- Label CreditsLabel
+- Label TimeLabel
+- Label NumberLabel
+- Label ClassesTypeLabel
+- Label CourseTypeLabel
+- Label SchoolLabel
+- Label CampusLabel
+- Label ExamModeLabel
+- Label LanguageLabel
+- Label EducationLabel
+- Label TeacherLabel
+- Button ClickButton
+- Button BackButton
+- Label Tips
+- Stage stage
+- String ID
+- UserType userType
+- String classesCode
+- void doClick()
+- void doBack()
+- void doPickClasses()
+- void doDropClasses()
+- void doDeleteClasses()
++ void flush()
++ void setStage(Stage)
++ void setID(String)
++ void setUserType(UserType)
++ String getClassesCode()
++ void setClassesCode(String)
+}
+
+
+enum GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError {
++  CodeIsEmpty
++  CodeInvalid
++  NameIsEmpty
++  NameInvalid
++  PeriodIsEmpty
++  PeriodInvalid
++  CreditsIsEmpty
++  CreditsInvalid
++  MaxCountIsEmpty
++  MaxCountInvalid
++  TeacherIsEmpty
++  TeacherInvalid
++  TimeCrash
++  Success
+}
+
+class GUI.Controller.Main.Common.Classes.ClassesSchedulePageController {
+- ObservableList<TimeTable> data
+- String[] classesScheduleString
+- AnchorPane anchorPane
+- Label name
+- Label userID
+- TableView<TimeTable> timeTable
+- TableColumn<TimeTable,Integer> numberColumn
+- TableColumn<TimeTable,String> MondayColumn
+- TableColumn<TimeTable,String> TuesdayColumn
+- TableColumn<TimeTable,String> WednesdayColumn
+- TableColumn<TimeTable,String> ThursdayColumn
+- TableColumn<TimeTable,String> FridayColumn
+- TableColumn<TimeTable,String> SaturdayColumn
+- TableColumn<TimeTable,String> SundayColumn
+- String ID
+- UserType userType
+- ClassesSet classesSet
++ ContextMenu classesSchedulePageContextMenu()
++ void initialize()
++ void flush()
+- void initializeData()
++ void setID(String)
++ void setUserType(UserType)
+- void loadTable()
+- void loadClasses()
+- int translateWeek(Week)
+}
+
+
+class GUI.Controller.Main.Admin.AdminMainMenuController {
+- {static} Stage stage
+- MainMenuController mainMenuController
+- TabPane mainMenuTabPane
+- AnchorPane subPane
+- String ID
+- boolean isProposeCoursePageExist
+- ProposeCoursePageController proposeCoursePageController
+- Stage proposeCoursePageStage
+- boolean isManageStudentPageExist
+- ManageUserPageController manageStudentPageController
+- Tab manageStudentTab
+- boolean isManageTeacherPageExist
+- ManageUserPageController manageTeacherPageController
+- Tab manageTeacherTab
+- boolean isManageAdminPageExist
+- ManageUserPageController manageAdminPageController
+- Tab manageAdminTab
+- boolean isClassesManagePageExist
+- ClassesChoosingPageController classesManagePageController
+- Tab classesManageTab
++ void setID(String)
++ void initialize()
+- void reloadPage()
+}
+
+
+class GUI.Controller.Main.Teacher.Classes.TeacherScoreMainPageController {
++ TabPane tabPane
+~ TeacherMainMenuController teacherMainMenuController
+- TableView<TeacherScoreMainTable> teacherCourseTableView
+- TableColumn<TeacherScoreMainTable,String> codeColumn
+- TableColumn<TeacherScoreMainTable,String> nameColumn
+- TableColumn<TeacherScoreMainTable,CourseTimeSet> timeColumn
+- TableColumn<TeacherScoreMainTable,Integer> totalStudentColumn
+- TableColumn<TeacherScoreMainTable,Button> buttonColumn
+- ObservableList<TeacherScoreMainTable> data
+- String ID
++ void setID(String)
++ void setTabPane(TabPane)
++ void setTeacherScoreSubPageController(TeacherMainMenuController)
++ void initialize()
+- void loadTable()
++ void flush()
++ ContextMenu teacherCourseMainPageContextMenu()
+}
+
+
+enum GUI.Data.Enum.Classes.Education {
++  Preparatory
++  Undergraduate
++  Graduate
+- String name
++ String toString()
++ {static} Education fromString(String)
+}
+
+
+enum GUI.Data.Enum.Classes.ExamMode {
++  PE
++  WrittenOpen
++  Open
++  WrittenHalf
++  WrittenClose
++  Close
++  Project
++  Computer
++  Oral
++  Experiment
++  Other
+- String name
++ String toString()
++ {static} ExamMode fromString(String)
+}
+
+
+class Service.Data.Utils.NameUtil {
++ {static} int MAX_NAME_LENGTH
+- {static} String COMMON_CHINESE_CHARACTERS
+- {static} String theBookOfFamilyNames
++ {static} boolean check(String)
++ {static} String getRandomName()
++ {static} boolean checkLength(String)
++ {static} boolean checkChar(String)
+}
+
+
+class GUI.Controller.Main.Teacher.Classes.TeacherScoreSubPageController {
+- Label classesName
+- TableView<TeacherScoreSubTable> teacherScoreSubTableView
+- TableColumn<TeacherScoreSubTable,String> studentIDColumn
+- TableColumn<TeacherScoreSubTable,String> studentNameColumn
+- TableColumn<TeacherScoreSubTable,School> studentSchoolColumn
+- TableColumn<TeacherScoreSubTable,Grade> studentGradeColumn
+- TableColumn<TeacherScoreSubTable,Integer> studentCurrentScoreColumn
+- TableColumn<TeacherScoreSubTable,Double> studentCurrentGPAColumn
+- TableColumn<TeacherScoreSubTable,Button> ButtonColumn
+- TableColumn<TeacherScoreSubTable,TextField> studentModifiedScoreColumn
+- Button changeAllButton
+- String classesCode
+- Classes classes
+- String ID
+- ObservableList<TeacherScoreSubTable> data
++ void setTeacherScoreSubPageController(String)
++ void setID(String)
++ void setClassesCode(String)
++ void flush()
++ void initialize()
+- TextField findTextField(String)
+- void loadTable()
++ ContextMenu teacherCourseSubPageContextMenu()
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.GradeEditorController {
+- Label tips
+- ChoiceBox<Grade> GradeChooser
+- Button Confirm
+- String ID
+- Stage stage
++ void initialize()
+- void doConfirm()
++ void setID(String)
++ void setStage(Stage)
+}
+
+
+class Service.Data.Tables.Teachers {
++ {static} String tableName
++ {static} String[] TeacherCol
++ {static} String PRIMARY_KEY
+- {static} SQLiteJDBC teachersTable
++ {static} boolean isIDExist(String)
++ {static} boolean isNameExist(String)
++ {static} String[] getAllID()
++ {static} void addInfo(String[])
++ {static} void deleteInfo(String)
++ {static} String[] getInfo(String)
++ String getName(String)
++ String getPassword(String)
++ String getSchool(String)
++ String getClasses(String)
++ void setName(String,String)
++ void setPassword(String,String)
++ void setSchool(String,String)
++ void setClasses(String,String)
++ {static} String[] getSameNameID(String)
++ {static} String[] getIDWithSubID(String)
++ {static} String[] getIDWithSubName(String)
++ {static} String[] getIDWithString(String,String)
++ {static} String[] getIDWithCode(String)
+}
+
+
+class GUI.Controller.Main.Admin.ManageUserPageController {
+- {static} int ROWS_PER_PAGE
+- TableView<UserInformationForTable> tableView
+- TableColumn<UserInformationForTable,String> IDColumn
+- TableColumn<UserInformationForTable,Void> NameColumn
+- TableColumn<UserInformationForTable,Void> PasswordColumn
+- TableColumn<UserInformationForTable,Void> GradeColumn
+- TableColumn<UserInformationForTable,Void> SchoolColumn
+- TableColumn<UserInformationForTable,String> GenderColumn
+- TableColumn<UserInformationForTable,Void> MoneyColumn
+- TextField IDField
+- TextField NameField
+- Button SearchButton
+- AnchorPane TablePane
+- UserType userType
+- Pagination pagination
+- boolean isEditPagesExist
+- EditUserPage existPage
+- Stage editPageStage
+- NameEditorController nameEditorController
+- PasswordEditorController passwordEditorController
+- GradeEditorController gradeEditorController
+- StudentSchoolEditorController studentSchoolEditorController
+- TeacherSchoolEditorController teacherSchoolEditorController
+- MoneyEditorController moneyEditorController
+- IDSet idSet
+- String name
+- String ID
+- void initialize()
+- void doSearch()
++ void setUserType(UserType)
+- void loadTable()
+- void loadColumn()
+- void openEditPage(String,EditUserPage)
+- void doOpen(String,EditUserPage)
++ void flush()
++ ContextMenu manageUserPageContextMenu()
++ void close()
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.MoneyEditorController {
++ TextField ChangedMoney
++ Label Tips
++ Button Confirm
+- Stage stage
+- String ID
+- void doConfirm()
++ void setStage(Stage)
++ void setID(String)
+}
+
+
+class GUI.Data.DataPackage.Classes.TeacherScoreMainTable {
+- SimpleStringProperty code
+- SimpleStringProperty name
+- ObjectProperty<CourseTimeSet> time
+- SimpleIntegerProperty totalStudent
+- ObjectProperty<Button> button
++ String getCode()
++ SimpleStringProperty codeProperty()
++ String getName()
++ SimpleStringProperty nameProperty()
++ CourseTimeSet getTime()
++ ObjectProperty<CourseTimeSet> timeProperty()
++ int getTotalStudent()
++ SimpleIntegerProperty totalStudentProperty()
++ ObjectProperty<Button> buttonProperty()
++ Button getButton()
+}
+
+
+class GUI.Controller.Login.RegistController {
+- {static} Stage stage
+- {static} boolean isRegist
+- {static} boolean isStudent
+- {static} String ID
+- {static} UserType userType
+- {static} String name
+- {static} String password
+- {static} String confirmPassword
+- Button Confirm
+- TextField UserName
+- PasswordField Password
+- PasswordField ConfirmPassword
+- ChoiceBox<UserType> AccountType
+- Label Tips
+- ChoiceBox<Grade> StudentGradeChooser
+- ChoiceBox<StudentSchool> StudentSchoolChooser
+- ChoiceBox<Gender> StudentGenderChooser
+- Button StudentConfirmButton
+- ChoiceBox<School> TeacherSchoolChooser
+- Button TeacherConfirmButton
++ {static} String getID()
++ void doRegistConfirm()
++ void doStudentConfirm()
++ void doTeacherConfirm()
++ void showIDPage()
++ void initialize()
+- void registInitialize()
+- void studentInitialize()
+- void teacherInitialize()
+}
+
+
+class Service.Data.Utils.PointUtil {
++ {static} double pointToGPA(String)
+}
+
+class GUI.Data.DataPackage.Classes.Classes {
+- String code
+- String name
+- Integer period
+- Double credits
+- CourseTimeSet time
+- int stdCount
+- int limitCount
+- ClassType classType
+- CourseType courseType
+- School school
+- Campus campus
+- ExamMode examMode
+- Language language
+- Education education
+- IDSet teacher
+- Full full
+- String place
++ String getPlace()
++ void setPlace(String)
++ String getCode()
++ void setCode(String)
++ String getName()
++ void setName(String)
++ Integer getPeriod()
++ void setPeriod(Integer)
++ Double getCredits()
++ void setCredits(Double)
++ CourseTimeSet getTime()
++ void setTime(CourseTimeSet)
++ int getStdCount()
++ int getLimitCount()
++ ClassType getClassType()
++ void setClassType(ClassType)
++ CourseType getCourseType()
++ void setCourseType(CourseType)
++ School getSchool()
++ void setSchool(School)
++ Campus getCampus()
++ void setCampus(Campus)
++ ExamMode getExamMode()
++ void setExamMode(ExamMode)
++ Language getLanguage()
++ void setLanguage(Language)
++ Education getEducation()
++ void setEducation(Education)
++ IDSet getTeacher()
++ void setTeacher(IDSet)
++ Full getFull()
++ void setFull(Full)
++ {static} Classes fromArray(String[])
+}
+
+
+enum GUI.Data.Enum.Classes.Campus {
++  West
++  East
++  Middle
++  South
++  HighTech
++  Else
++  SuLab
++  NationalFinancial
++  Cross
++  Hospitable
+- String name
++ String toString()
++ {static} Campus fromString(String)
+}
+
+
+class GUI.Data.DataPackage.Classes.CourseCodeSet {
+- Set<StudentCourseScoreTable> courseCodeSet
++ void add(StudentCourseScoreTable)
+}
+
+
+class GUI.Controller.Main.Student.StudentMainMenuController {
+- {static} Stage stage
+- MainMenuController mainMenuController
+- TabPane mainMenuTabPane
+- AnchorPane subPane
+- String ID
+- boolean isClassesChoosingPageExist
+- ClassesChoosingPageController classesChoosingPageController
+- Tab classesChoosingTab
+- boolean isClassesSchedulePageExist
+- ClassesSchedulePageController classesSchedulePageController
+- Tab classesScheduleTab
+- boolean isDropClassesPageExist
+- DropClassesPageController dropClassesPageController
+- Tab dropClassesTab
+- boolean isCheckGradePageExist
+- StudentScoreController studentScoreController
+- Tab checkGradeTab
++ void initialize()
++ void setID(String)
+- void reloadPage()
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.StudentSchoolEditorController {
+- Label tips
+- ChoiceBox<StudentSchool> StudentSchoolChooser
+- Button Confirm
+- String ID
+- Stage stage
++ void initialize()
+- void doConfirm()
++ void setID(String)
++ void setStage(Stage)
+}
+
+
+class GUI.Data.DataPackage.UserInformation.UserInformationForTable {
+- SimpleStringProperty ID
+- SimpleStringProperty name
+- SimpleStringProperty password
+- SimpleStringProperty grade
+- SimpleStringProperty school
+- SimpleStringProperty gender
+- SimpleStringProperty money
++ String getID()
++ SimpleStringProperty IDProperty()
++ String getName()
++ SimpleStringProperty nameProperty()
++ String getPassword()
++ SimpleStringProperty passwordProperty()
++ String getGrade()
++ SimpleStringProperty gradeProperty()
++ String getSchool()
++ SimpleStringProperty schoolProperty()
++ String getGender()
++ SimpleStringProperty genderProperty()
++ String getMoney()
++ SimpleStringProperty moneyProperty()
+}
+
+
+enum GUI.Data.Enum.Classes.CourseType {
++  General
++  Else
++  BasicPE
++  PE
++  MoocGeneral
++  Preparatory
++  English
++  EnglishExpansion
++  Plan
++  ScienceAndSociety
++  History
++  Basic
++  Profession
++  Politics
++  EnglishCourse
++  PublicCourse
+- String name
++ String toString()
++ {static} CourseType fromString(String)
+}
+
+
+class Service.Main.Components.ClassServ.ClassesSearchingServ {
+- String[] codes
++ void searchClasses(Classes)
++ int getCount()
++ ClassesSet getClassesSet(int,int)
+- {static} String[] fromClasses(Classes)
+}
+
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_ExamMode {
++  None
++  PE
++  WrittenOpen
++  WrittenHalf
++  WrittenClose
++  Project
++  Computer
++  Oral
++  Experiment
+- String name
++ String toString()
++ ExamMode toExamMode()
+}
+
+
+enum GUI.Data.Enum.Classes.Full {
++  Full
++  NotFull
+- String name
++ String toString()
++ {static} Full fromString(String)
+}
+
+
+class Service.Main.Student.ClassesServ.StudentClassesServ {
+- {static} Students student
+- {static} Courses course
++ {static} ClassesSet getStudentClassesSet(String)
++ {static} CourseCodeSet getStudentCourseCodeSet(String)
++ {static} double getStudentTotalCredits(String)
++ {static} double getStudentReceivedCredits(String)
++ {static} double getStudentFailedCredits(String)
++ {static} double getStudentAverageGrade(String)
++ {static} double getStudentWeightedAverageGrade(String)
++ {static} double getStudentGPA(String)
++ {static} PickClassesError pickClasses(String,String)
++ {static} DropClassesError dropClasses(String,String)
++ {static} Boolean isPicked(String,String)
+}
+
+
+class GUI.Data.DataPackage.Classes.CourseTimeSet {
+- {static} Pattern p
+- Set<CourseTime> courseTimeSet
++ void add(CourseTime)
++ ReadOnlyObjectProperty<CourseTimeSet> timeProperty()
++ Iterable<CourseTime> getCourseTimeIterable()
++ {static} CourseTimeSet fromString(String)
++ {static} int[] toArray(CourseTime)
++ String toString()
+}
+
+
+class GUI.Data.Enum.Classes.Util {
++ {static} Week getWeek(int)
++ {static} CourseTime getTime(int,int)
+}
+
+class Service.Login.LoginServ {
++ {static} Login checkIDAndPassword(String,String)
+}
+
+enum GUI.Data.Enum.User.UserType {
++  None
++  Student
++  Teacher
++  Admin
+- String name
++ String toString()
+}
+
+
+class Service.Data.Utils.CodeUtil {
++ {static} Pattern pattern
++ {static} Matcher matcher
++ {static} String[] getCode(String)
++ {static} String addCodeInClasses(String,String)
++ {static} String deleteCodeInClasses(String,String)
+}
+
+
+class Service.Data.Tables.Managers {
++ {static} String tableName
++ {static} String[] ManagerCol
++ {static} String PRIMARY_KEY
+- {static} SQLiteJDBC managersTable
++ {static} boolean isIDExist(String)
++ {static} boolean isNameExist(String)
++ {static} String[] getAllID()
++ {static} void addInfo(String[])
++ {static} void deleteInfo(String)
++ {static} String[] getInfo(String)
++ String getName(String)
++ String getPassword(String)
++ void setName(String,String)
++ void setPassword(String,String)
++ {static} String[] getSameNameID(String)
++ {static} String[] getIDWithSubID(String)
++ {static} String[] getIDWithSubName(String)
++ {static} String[] getIDWithString(String,String)
+}
+
+
+class GUI.Controller.Main.Teacher.TeacherInformationController {
+- Label School
+- Hyperlink EditSchool
+- String ID
+- boolean isEditSchoolPageShow
+- Stage editSchoolPageStage
+- TeacherSchoolEditorController teacherSchoolEditorController
+- void doEditSchool()
++ void closeAllChildren()
++ void setID(String)
++ void flush()
+}
+
+
+class GUI.GUIUtil.MainPageUtil {
++ {static} void openMainPage(Stage,UserType,String)
+}
+
+class GUI.Controller.Main.Common.Classes.ProposeCoursePageController {
++ TextField CodeTextField
++ TextField NameTextField
++ TextField PeriodTextField
++ TextField CreditsTextField
++ Button TimeTableButton
++ TextField MaxCountTextField
++ ChoiceBox<ClassType> ClassesTypeChoiceBox
++ ChoiceBox<CourseType> CourseTypeChoiceBox
++ ChoiceBox<School> SchoolChoiceBox
++ ChoiceBox<Campus> CampusChoiceBox
++ ChoiceBox<ExamMode> ExamModeChoiceBox
++ ChoiceBox<Language> LanguageChoiceBox
++ ChoiceBox<Education> EducationChoiceBox
++ TextField TeacherTextField
++ Button ClickButton
++ Button BackButton
++ Label Tips
+- Stage stage
+- UserType userType
+- String ID
+- boolean isTimePageExist
+- Stage TimePageStage
+- TimeTableController timePageController
+- CourseTimeSet courseTimeSet
+- void initialize()
+- void doClick()
+- void doBack()
+- void openTimePage()
++ void flush()
+- void choiceBoxInitialize()
++ void setStage(Stage)
++ void setUserType(UserType)
++ void setID(String)
++ void close()
+}
+
+
+enum GUI.Data.Enum.Classes.ClassType {
++  Theory
++  Experiment
++  Practice
++  TheoryExperiment
++  TheoryPractice
+- String name
++ String toString()
++ {static} ClassType fromString(String)
+}
+
+
+class GUI.Data.Enum.GUI.ObservableList.ClassesChoosingObservableList {
++ {static} ObservableList<C_ClassType> C_ClassTypeList
++ {static} ObservableList<C_CourseType> C_CourseTypeList
++ {static} ObservableList<C_Campus> C_CampusList
++ {static} ObservableList<C_Education> C_EducationList
++ {static} ObservableList<C_ExamMode> C_ExamModeList
++ {static} ObservableList<C_Language> C_LanguageList
++ {static} ObservableList<C_School> C_SchoolList
+}
+
+class GUI.GUIUtil.StageUtil {
++ {static} void setCenter(Stage)
++ {static} void resetLocation(Stage)
++ {static} void setScene(Stage,Parent)
++ {static} T changeViews(Stage,String)
++ {static} FXMLLoader loadScene(String)
++ {static} Parent newRoot(FXMLLoader)
++ {static} T getController(FXMLLoader)
+}
+
+enum GUI.Data.Enum.Classes.Language {
++  Chinese
++  English
++  Double
++  French
++  EnglishEdu
++  GermanEdu
++  FrenchEdu
++  Japanese
+- String name
++ String toString()
++ {static} Language fromString(String)
+}
+
+
+class Service.Login.RegisterServ {
++ {static} Regist regist(UserType,String,String,String)
++ {static} String store(UserType,String,String,String,Gender,School,Grade)
+}
+
+class GUI.Data.DataPackage.Classes.ClassesSet {
+- Set<Classes> classesSet
++ void add(Classes)
++ ObservableList<ClassesForTable> toObservableList()
++ Iterable<Classes> getClassesIterable()
+}
+
+
+class GUI.Controller.Login.IDPageController {
++ {static} Stage stage
++ Label IDShowLabel
++ Button ConfirmButton
+- void initialize()
++ void doClick()
+}
+
+
+class GUI.Controller.Main.Common.MainMenuController {
+- Stage stage
+- MenuBar MainMenuBar
+- Button personalInformation
+- javafx.scene.control.TabPane TabPane
+- UserType userType
+- String ID
+- boolean isInformationPageShow
+- UserInformationPageController userInformationPageController
+- Stage informationPageStage
+- StudentInformationController studentInformationController
+- TeacherInformationController teacherInformationController
++ void setUserType(UserType)
++ void setID(String)
+- void showInformationPage()
+- ContextMenu initInformationPageContextMenu()
+- void flushUserInformationPage()
++ MenuBar getMenuBar()
++ javafx.scene.control.TabPane getTabPane()
++ void closeInformationPage()
+}
+
+
+enum GUI.Data.Enum.Error.Login.Login {
++  IDEmpty
++  PasswordEmpty
++  NotPass
++  Student
++  Teacher
++  Admin
+}
+
+class GUI.Data.Enum.GUI.ObservableList.UserObservableList {
++ {static} ObservableList<UserType> UserTypeList
++ {static} ObservableList<Grade> GradeList
++ {static} ObservableList<StudentSchool> StudentSchoolList
++ {static} ObservableList<School> SchoolList
++ {static} ObservableList<Gender> GenderList
+}
+
+class GUI.Controller.Components.UserInformationEditor.PasswordEditorController {
+- TextField ChangedPassword
+- Label Tips
+- Button Confirm
+- Stage stage
+- String ID
+- void doConfirm()
++ void setStage(Stage)
++ void setID(String)
+}
+
+
+class GUI.Controller.Main.Teacher.TeacherMainMenuController {
+- {static} Stage stage
+- MainMenuController mainMenuController
+- TabPane mainMenuTabPane
+- AnchorPane subPane
+- String ID
+- boolean isProposeCoursePageExist
+- ProposeCoursePageController proposeCoursePageController
+- Stage proposeCoursePageStage
+- boolean isClassesSchedulePageExist
+- ClassesSchedulePageController classesSchedulePageController
+- Tab classesScheduleTab
+- boolean isTeacherScoreMainPageExist
+- TeacherScoreMainPageController teacherScoreMainPageController
+- Tab teacherScoreMainPageTab
+- boolean isTeacherScoreSubPageExist
+- TeacherScoreSubPageController teacherScoreSubPageController
+- Tab teacherScoreSubPageTab
++ void setID(String)
++ void initialize()
++ void setIsTeacherScoreSubPageExist()
+- void reloadPage()
++ void openScoreSubPage(String,String)
+}
+
+
+enum GUI.Data.Enum.Error.Main.Components.UserServ.EditError {
++  Success
++  IDNotFound
++  Invalid
+}
+
+class Service.Main.Components.UserServ.UserServ {
+- {static} Students student
+- {static} Teachers teacher
+- {static} Managers manager
++ {static} EditError editName(String,String)
++ {static} EditError editPassword(String,String)
++ {static} EditError editMoney(String,double)
++ {static} EditError editAddMoney(String,double)
++ {static} EditError editGrade(String,Grade)
++ {static} EditError editSchool(String,School)
++ {static} UserType getUserType(String)
++ {static} String getName(String)
++ {static} Gender getGender(String)
++ {static} School getSchool(String)
++ {static} Grade getGrade(String)
++ {static} Double getMoney(String)
++ {static} ChangePasswordError changePassword(String,String,String,String)
++ {static} IDSet findStudent(String)
++ {static} IDSet findTeacher(String)
++ {static} IDSet findAdmin(String)
++ {static} IDSet findUser(UserType,String,String)
+- {static} void packed(UserType,IDSet,String[],String[],String[])
++ {static} boolean isIDExist(String)
+}
+
+
+enum GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError {
++  ClassesCodeNotFind
++  Success
+}
+
+enum GUI.Data.Enum.Classes.Week {
++  Monday
++  Tuesday
++  Wednesday
++  Thursday
++  Friday
++  Saturday
++  Sunday
+- int index
+- String name
++ String toString()
++ int getIndex()
++ {static} Week fromString(int)
++ {static} int formWeek(Week)
+}
+
+
+class Service.Main.Components.ClassServ.ClassesServ {
+- {static} Students student
+- {static} Teachers teacher
+- {static} Courses course
++ {static} Classes getClasses(String)
++ {static} IDSet getStudentSet(String)
++ {static} int getStudentScore(String,String)
++ {static} boolean setStudentScore(String,String,int)
++ {static} double getStudentGPA(String,String)
++ {static} String toStringTime(CourseTimeSet)
++ {static} DeleteClassesError deleteClasses(String)
++ {static} NewClassesError newClasses(String,String,String,String,CourseTimeSet,String,ClassType,CourseType,School,Campus,ExamMode,Language,Education,String)
+- {static} boolean isCodeValid(String)
+- {static} boolean isNameValid(String)
+- {static} boolean isPeriodValid(String)
+- {static} boolean isCreditsValid(String)
+- {static} boolean isMaxCountValid(String)
+- {static} boolean isTeacherValid(String)
+}
+
+
+class Service.Data.SQLiteJDBC {
+- {static} String DefaultPath
+- String tableName
+- String databasePath
+- Connection c
+- Statement stmt
+- ResultSet rs
+- String sql
++ void setTableName(String)
++ void setDatabasePath(String)
+- void connect()
++ void close()
+- void execute()
++ void create(String[],boolean)
++ void insert(String[],String[])
++ void delete(String,String)
++ void update(String,String,String,String)
++ void update(String[],String[],String,String)
++ boolean isColValueExist(String,String)
++ String select(String,String,String)
++ String[] select(String[],String,String)
++ String[] selectAll(String)
++ String[] selectAll(String,String,String)
++ String[] selectAll(String,String[],String[])
++ String[] selectLike(String,String,String)
++ String[] selectLike(String,String,String,String,String)
++ boolean isStudentSelectCourse(String,String)
++ void insertPoints(String,String,String)
++ void deletePoints(String,String)
++ void updatePoints(String,String,String)
++ String selectPoints(String,String)
+}
+
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_Language {
++  None
++  Chinese
++  English
++  Double
++  French
++  EnglishEdu
++  GermanEdu
++  FrenchEdu
++  Japanese
+- String name
++ String toString()
++ Language toLanguage()
+}
+
+
+enum GUI.Data.Enum.Error.Main.Student.ClassesServ.PickClassesError {
++  IDNotFind
++  ClassesCodeNotFind
++  ClassesIsFull
++  ClassesISChosen
++  TimeCrash
++  Success
+}
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_Campus {
++  None
++  West
++  East
++  Middle
++  South
++  HighTech
++  Else
+- String name
++ String toString()
++ Campus toCampus()
+}
+
+
+class GUI.Controller.Main.Common.Classes.ClassesChoosingPageController {
+- {static} int ROWS_PER_PAGE
+- TableView<ClassesForTable> tableView
+- TableColumn<ClassesForTable,Void> codeColumn
+- TableColumn<ClassesForTable,String> nameColumn
+- TableColumn<ClassesForTable,String> periodColumn
+- TableColumn<ClassesForTable,String> creditsColumn
+- TableColumn<ClassesForTable,String> timeColumn
+- TableColumn<ClassesForTable,String> studentColumn
+- TableColumn<ClassesForTable,String> classTypeColumn
+- TableColumn<ClassesForTable,String> courseTypeColumn
+- TableColumn<ClassesForTable,String> schoolColumn
+- TableColumn<ClassesForTable,String> campusColumn
+- TableColumn<ClassesForTable,String> examModeColumn
+- TableColumn<ClassesForTable,String> languageColumn
+- TableColumn<ClassesForTable,String> educationColumn
+- TableColumn<ClassesForTable,String> teacherColumn
+- TableColumn<ClassesForTable,String> fullColumn
+- Classes searchingClasses
+- AnchorPane TableViewPane
+- TextField ClassesCodeField
+- TextField ClassesNameField
+- TextField ClassesPeriodField
+- TextField ClassesCreditField
+- TextField TeacherNameField
+- ChoiceBox<C_ClassType> ClassTypeChoiceBox
+- ChoiceBox<C_CourseType> CourseTypeChoiceBox
+- ChoiceBox<C_School> SchoolChoiceBox
+- ChoiceBox<C_Campus> CampusChoiceBox
+- ChoiceBox<C_ExamMode> ExamModeChoiceBox
+- ChoiceBox<C_Language> LanguageChoiceBox
+- ChoiceBox<C_Education> EducationChoiceBox
+- CheckBox FullCheckBox
+- Button TimeButton
+- Button SearchButton
+- boolean isTimePageExist
+- Stage TimePageStage
+- TimeTableController timePageController
+- String ID
+- UserType userType
+- Pagination pagination
+- boolean isClassesMainPageExist
+- Stage classesMainPageStage
+- ClassesMainPageController classesMainPageController
+- ObservableList<ClassesForTable> data
+- ClassesSearchingServ classesSearchingServ
+- void initialize()
+- void doSearch()
+- void openTimePage()
++ void setID(String)
++ void setUserType(UserType)
+- void loadTable()
++ void flush()
+- void choiceBoxInitialize()
++ ContextMenu classesChoosingPageContextMenu()
+- void openClassesMainPage(String)
++ void close()
+}
+
+
+class Service.Data.Utils.UserTypeTransformer {
++ {static} int fromUserType(UserType)
++ {static} UserType fromString(String)
+}
+
+enum GUI.Data.Enum.GUI.Scene.EditUserPage {
++  Name
++  Password
++  Grade
++  StudentSchool
++  TeacherSchool
++  Money
+}
+
+enum GUI.Data.Enum.User.Grade {
++  Grade1
++  Grade2
++  Grade3
++  Grade4
+- String name
+- int index
++ String toString()
++ {static} Grade fromString(String)
+}
+
+
+class GUI.Data.Enum.GUI.ObservableList.ClassesInformationObservableList {
++ {static} ObservableList<ClassType> ClassTypeList
++ {static} ObservableList<CourseType> CourseTypeList
++ {static} ObservableList<School> SchoolList
++ {static} ObservableList<Campus> CampusList
++ {static} ObservableList<ExamMode> ExamModeList
++ {static} ObservableList<Language> LanguageList
++ {static} ObservableList<Education> EducationList
+}
+
+enum GUI.Data.Enum.Error.Main.Student.ClassesServ.DropClassesError {
++  IDNotFind
++  ClassesCodeNotFind
++  Success
+}
+
+class GUI.Data.DataPackage.Classes.StudentCourseScoreTable {
+- SimpleStringProperty name
+- SimpleIntegerProperty period
+- SimpleDoubleProperty credits
+- SimpleDoubleProperty GPA
+- SimpleIntegerProperty score
++ int getPeriod()
++ SimpleIntegerProperty periodProperty()
++ double getCredits()
++ SimpleDoubleProperty creditsProperty()
++ double getGPA()
++ SimpleDoubleProperty GPAProperty()
++ int getScore()
++ SimpleIntegerProperty scoreProperty()
++ String getName()
++ SimpleStringProperty nameProperty()
+}
+
+
+class GUI.Controller.Components.UserInformationEditor.TeacherSchoolEditorController {
+- Label tips
+- ChoiceBox<School> TeacherSchoolChooser
+- Button Confirm
+- String ID
+- Stage stage
++ void initialize()
+- void doConfirm()
++ void setID(String)
++ void setStage(Stage)
+}
+
+
+enum GUI.Data.Enum.Classes.CourseTime {
++  Section1
++  Section2
++  Section3
++  Section4
++  Section5
++  Section6
++  Section7
++  Section8
++  Section9
++  Section10
++  Section11
++  Section12
++  Section13
++  Section14
++  Section15
++  Section16
++  Section17
++  Section18
++  Section19
++  Section20
++  Section21
++  Section22
++  Section23
++  Section24
++  Section25
++  Section26
++  Section27
++  Section28
++  Section29
++  Section30
++  Section31
++  Section32
++  Section33
++  Section34
++  Section35
++  Section36
++  Section37
++  Section38
++  Section39
++  Section40
++  Section41
++  Section42
++  Section43
++  Section44
++  Section45
++  Section46
++  Section47
++  Section48
++  Section49
++  Section50
++  Section51
++  Section52
++  Section53
++  Section54
++  Section55
++  Section56
++  Section57
++  Section58
++  Section59
++  Section60
++  Section61
++  Section62
++  Section63
++  Section64
++  Section65
++  Section66
++  Section67
++  Section68
++  Section69
++  Section70
++  Section71
++  Section72
++  Section73
++  Section74
++  Section75
++  Section76
++  Section77
++  Section78
++  Section79
++  Section80
++  Section81
++  Section82
++  Section83
++  Section84
++  Section85
++  Section86
++  Section87
++  Section88
++  Section89
++  Section90
++  Section91
+- Week week
+- int section
++ Week getWeek()
++ int getSection()
++ String toString()
++ {static} CourseTime fromInt(int,int)
+}
+
+
+class Service.Data.Utils.UserUtil {
+- {static} Students student
+- {static} Teachers teacher
+- {static} Managers manager
++ {static} int INVALID
++ {static} int STUDENT
++ {static} int TEACHER
++ {static} int MANAGER
++ {static} boolean isIDExist(String)
++ {static} String getPassword(String)
++ {static} void setPassword(String,String)
++ {static} String getName(String)
++ {static} void setName(String,String)
++ {static} String getSchool(String)
+}
+
+
+class GUI.Data.DataPackage.Classes.TimeTable {
+- SimpleIntegerProperty number
+- SimpleStringProperty Monday
+- SimpleStringProperty Tuesday
+- SimpleStringProperty Wednesday
+- SimpleStringProperty Thursday
+- SimpleStringProperty Friday
+- SimpleStringProperty Saturday
+- SimpleStringProperty Sunday
++ int getNumber()
++ SimpleIntegerProperty numberProperty()
++ String getMonday()
++ SimpleStringProperty mondayProperty()
++ String getTuesday()
++ SimpleStringProperty tuesdayProperty()
++ String getWednesday()
++ SimpleStringProperty wednesdayProperty()
++ String getThursday()
++ SimpleStringProperty thursdayProperty()
++ String getFriday()
++ SimpleStringProperty fridayProperty()
++ String getSaturday()
++ SimpleStringProperty saturdayProperty()
++ String getSunday()
++ SimpleStringProperty sundayProperty()
+}
+
+
+class GUI.Controller.Main.Student.StudentInformationController {
+- Label Money
+- Label Grade
+- Label Gender
+- Label School
+- Hyperlink EditGrade
+- Hyperlink EditSchool
+- Hyperlink Recharge
+- String ID
+- boolean isEditGradePageShow
+- Stage editGradePageStage
+- GradeEditorController gradeEditorController
+- boolean isEditSchoolPageShow
+- Stage editSchoolPageStage
+- StudentSchoolEditorController studentSchoolEditorController
+- boolean isRechargePageShow
+- Stage rechargePageStage
+- RechargerController rechargerController
+- void doEditGrade()
+- void doEditSchool()
+- void doRecharge()
++ void closeAllChildren()
++ void setID(String)
++ void flush()
+}
+
+
+class GUI.Controller.Login.LoginController {
+- {static} Stage stage
+- Button ButtonRegist
+- Button ButtonLogin
+- Label Tips
+- TextField UserID
+- PasswordField UserPassword
++ void initialize()
++ void doLogin()
++ void doRegist()
+}
+
+
+enum GUI.Data.Enum.School {
++  GiftedYoung
++  MathematicalSciences
++  UnderGraduate
++  PhysicalSciences
++  DepartmentOfPhysics
++  Management
++  ChemistryAndMaterialsScience
++  EarthAndSpaceSciences
++  EngineeringScience
++  InformationScienceAndTechnology
++  HumanitiesAndSocialScience
++  NuclearScienceAndTechnology
++  ComputerScienceAndTechnology
++  PublicAffairs
++  EnvironmentalScienceAndOptoelectronicTechnology
++  Microelectronics
++  Marxism
++  CyberScienceAndTechnology
++  SoftwareEngineering
++  DataScience
++  NationalSynchrotronRadiationLaboratory
++  StateKeyLaboratoryOfFireScience
++  EnvironmentalScienceAndEngineering
++  InnovationAndEntrepreneurship
++  LifeScienceAndMedicine
++  FutureTechnology
++  PhysicsExperimentTeachingCenter
++  InstituteOfMetals
++  DepartmentOfPrecisionMachineryAndPrecisionInstruments
++  CenterForArtEducation
++  AdvancedTechnologyResearchInstitute
++  DepartmentOfAstronomy
++  PurpleMountainObservatory
++  DepartmentOfChemistry
++  DepartmentOfBusinessAdministration
++  MPACenter1
++  SchoolOfBiomedicalEngineering
++  DepartmentOfPsychology
++  MFCenter
++  CenterForPhysicalEducation
++  HeFeiInstitutesOfPhysicalScience
++  DepartmentOfElectronicEngineeringAndInformationScience
++  SchoolOfLifeSciences
++  DepartmentOfSafetyScienceAndEngineering
++  DepartmentOfManagementScience
++  Library
++  DepartmentOfComputerScienceAndTechnology
++  DepartmentOfPhilosophyOfScienceAndTechnology
++  DepartmentOfModernPhysics
++  CenterForCrossDisciplinaryStudiesInLinguistics
++  DepartmentOfModernMechanics
++  NanoScienceAndTechnologyInstitute
++  InstituteOfRareEarths
++  DepartmentOfAppliedChemistry
++  DepartmentOfScienceCommunication
++  SchoolOfSoftwareSuzhou
++  HeFeiNationalLaboratoryForMicroScaleSciences
++  MasterOfLawsEducationCenter
++  MBACenter
++  DepartmentOfThermalScienceAndEnergyEngineering
++  DepartmentOfStatisticsAndFinance
++  DepartmentOfHistoryAndArchaeologyOfScienceAndTechnology
++  CenterForForeignLanguageTeaching
++  GeneralEducationCenter
++  AcademicAffairsOffice
++  ProjectManagementEducationCenter
++  DepartmentOfMaterialsScienceAndEngineering
++  DepartmentOfInternationalCooperationAndExchange
++  DepartmentOfElectronicScienceAndTechnology
++  DepartmentOfPolymerScienceAndEngineering
++  SchoolOfSoftwareHeFei
++  DepartmentOfEngineeringAndAppliedPhysics
++  DepartmentOfChemicalPhysics
++  DepartmentOfEnvironmentalScienceAndEngineering
++  DepartmentOfOpticsAndOpticalEngineering
++  DepartmentOfAutomation
++  InstituteOfAppliedChemistry
+- String name
++ String toString()
++ {static} School fromString(String)
+}
+
+
+enum GUI.Data.Enum.Classes.EnumForClassesSearching.C_Education {
++  None
++  Preparatory
++  Undergraduate
++  Graduate
+- String name
++ String toString()
++ Education toEducation()
+}
+
+
+class Service.Data.Tables.Points {
++ {static} String tableName
++ {static} String[] PointCol
+- {static} SQLiteJDBC pointsTable
++ {static} boolean isIDExist(String)
++ {static} boolean isCodeIDExist(String,String)
++ {static} void addPoints(String,String,String)
++ {static} void deletePoints(String,String)
++ {static} String[] getAllCode(String)
++ {static} String[] getAllID(String)
++ {static} String getScore(String,String)
++ {static} void setScore(String,String,String)
++ {static} double getGPA(String,String)
+}
+
+
+
+
+javafx.application.Application <|-- MainPackage.Main
+@enduml
