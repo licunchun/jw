@@ -6,17 +6,19 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.scene.control.Button;
 
+import static Service.Main.Components.ClassServ.ClassesServ.toStringTime;
+
 public class TeacherScoreMainTable {
     private final SimpleStringProperty code;
     private final SimpleStringProperty name;
-    private final ObjectProperty<CourseTimeSet> time;
+    private final SimpleStringProperty time;
     private final SimpleIntegerProperty totalStudent;
     private final ObjectProperty<Button> button;
 
     public TeacherScoreMainTable(Classes classes) {
         this.code = new SimpleStringProperty(classes.getCode());
         this.name = new SimpleStringProperty(classes.getName());
-        this.time = new SimpleObjectProperty<>(classes.getTime());
+        this.time = new SimpleStringProperty(toStringTime(classes.getTime()));
         this.totalStudent = new SimpleIntegerProperty(classes.getStdCount());
         this.button = new SimpleObjectProperty<>(new Button("更改"));
         this.button.get().setId(getCode());
@@ -38,11 +40,11 @@ public class TeacherScoreMainTable {
         return name;
     }
 
-    public CourseTimeSet getTime() {
+    public String getTime() {
         return time.get();
     }
 
-    public ObjectProperty<CourseTimeSet> timeProperty() {
+    public SimpleStringProperty timeProperty() {
         return time;
     }
 

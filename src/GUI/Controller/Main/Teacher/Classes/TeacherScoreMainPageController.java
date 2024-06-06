@@ -23,7 +23,7 @@ public class TeacherScoreMainPageController {
     @FXML
     private TableColumn<TeacherScoreMainTable, String> nameColumn;
     @FXML
-    private TableColumn<TeacherScoreMainTable, CourseTimeSet> timeColumn;
+    private TableColumn<TeacherScoreMainTable, String> timeColumn;
     @FXML
     private TableColumn<TeacherScoreMainTable, Integer> totalStudentColumn;
     @FXML
@@ -81,13 +81,13 @@ public class TeacherScoreMainPageController {
 // timeColumn 列的 cellFactory
         timeColumn.setCellFactory(column -> new TableCell<>() {
             @Override
-            protected void updateItem(CourseTimeSet item, boolean empty) {
+            protected void updateItem(String item, boolean empty) {
                 super.updateItem(item, empty);
                 if (empty || item == null) {
                     setText(null);
                     setAlignment(Pos.CENTER); // 居中对齐
                 } else {
-                    setText(item.toString());
+                    setText(item);
                     setAlignment(Pos.CENTER); // 居中对齐
                 }
             }
