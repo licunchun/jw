@@ -90,15 +90,24 @@ public class SQLiteJDBC {
         execute();
     }
     //删
-    //根据主键删除
+    //根据单值相等删除数据
     public void delete(String valueName,String value){
         sql = "DELETE " + " FROM " + tableName + " WHERE " + valueName + " = '" + value + "';";
+        execute();
+    }
+    //根据双值相等删除数据
+    public void delete(String valueName1,String value1,String valueName2,String value2){
+        sql = "DELETE " + " FROM " + tableName + " WHERE " + valueName1 + " = '" + value1 + "' AND " + valueName2 + " = '" + value2 + "';";
         execute();
     }
     //改
     //根据主键更新一个值
     public void update(String colName,String newData,String valueName,String value){
         sql = "UPDATE " + tableName + " SET " + colName + " = '" + newData +  "' WHERE " + valueName + " = '" + value + "';";
+        execute();
+    }
+    public void update(String colName,String newData,String valueName1,String value1,String valueName2,String value2){
+        sql = "UPDATE " + tableName + " SET " + colName + " = '" + newData +  "' WHERE " + valueName1 + " = '" + value1 + "' AND " + valueName2 + " = '" + value2 + "';";
         execute();
     }
     //根据主键更新一些值
@@ -108,6 +117,7 @@ public class SQLiteJDBC {
             execute();
         }
     }
+
     //查
     public boolean isColValueExist(String colName,String value){
         String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + colName + " = '" + value + "';";
@@ -142,6 +152,24 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
+    ////根据双值相等查询数据库单个值
+    public  String select(String colName,String valueName1,String value1,String valueName2,String value2){
+        String sql = "SELECT " + colName + " FROM " + tableName + " WHERE " + valueName1 + " = '" + value1 + "' AND " + valueName2 + " = '" + value2 + "';";
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            rs.next();
+            String res = rs.getString("point");
+            rs.close();
+            close();
+            return res;
+        } catch (SQLException e) {
+            close();
+            System.out.println("Database lookup failure");
+            throw new RuntimeException(e);
+        }
+    }
+
     //根据主键查询数据库一些值
 
     public String[] select(String[] colName,String valueName,String value){
@@ -283,52 +311,104 @@ public class SQLiteJDBC {
             throw new RuntimeException(e);
         }
     }
-
-
-
-    //points操作
-    public boolean isStudentSelectCourse(String code,String ID){
-        sql = "SELECT point FROM points WHERE code = '" +code + "' AND ID = '" + ID + "';";
-        try {
-            connect();
-            rs = stmt.executeQuery(sql);
-            rs.next();
-            String res = rs.getString("point");
-            rs.close();
-            close();
-            return true;
-        } catch (SQLException e) {
-            close();
-            return false;
+    public String[] selectLike(String colName,String[] valueName,String[] value){
+        StringBuilder conditions = new StringBuilder();
+        for (int i = 0; i < valueName.length; i++) {
+            if(i==0)
+            {
+                conditions.append(" WHERE  ");
+                conditions.append(valueName[i]).append(" LIKE '%").append(value[i]).append("%'");
+            }
+            else
+                conditions.append(" AND ").append(valueName[i]).append(" LIKE '%").append(value[i]).append("%'");
         }
-    }
-    public void insertPoints(String classesCode, String ID,String point){
-        sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
-        execute();
-    }
-    public void deletePoints(String classesCode, String ID){
-        sql = "DELETE " + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
-        execute();
-    }
-    public void updatePoints(String classesCode, String ID,String point){
-        sql = "UPDATE " + "points" + " SET " + "point" + " = '" + point +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
-        execute();
-    }
-    public  String selectPoints(String classesCode, String ID){
-        String sql = "SELECT " + "point" + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '"+ ID +"';";
+        conditions.append(";");
+
+
+        String sql = "SELECT " + colName + " FROM " + tableName + conditions;
         try {
             connect();
             rs = stmt.executeQuery(sql);
-            rs.next();
-            String res = rs.getString("point");
+            ArrayList<String> arrayList = new ArrayList<>();
+            while (rs.next()){
+                arrayList.add(rs.getString(colName));
+            }
             rs.close();
             close();
-            return res;
+            return arrayList.toArray(new String[0]);
         } catch (SQLException e) {
             close();
             System.out.println("Database lookup failure");
             throw new RuntimeException(e);
         }
     }
+
+    public boolean isTimeFree(String ID,String days){
+        sql = "SELECT ID FROM " + tableName + " WHERE ID = '" +ID + "' AND days LIKE '" + days + "';";
+        try {
+            connect();
+            rs = stmt.executeQuery(sql);
+            if(rs.next()) {
+                rs.close();
+                close();
+                return false;
+            } else {
+                rs.close();
+                close();
+                return true;
+            }
+        } catch (SQLException e) {
+            close();
+            throw new RuntimeException(e);
+        }
+    }
+
+
+//    //points操作
+//    public boolean isStudentSelectCourse(String code,String ID){
+//        sql = "SELECT point FROM points WHERE code = '" +code + "' AND ID = '" + ID + "';";
+//        try {
+//            connect();
+//            rs = stmt.executeQuery(sql);
+//            rs.next();
+//            String res = rs.getString("point");
+//            rs.close();
+//            close();
+//            return true;
+//        } catch (SQLException e) {
+//            close();
+//            return false;
+//        }
+//    }
+//    public void insertPoints(String classesCode, String ID,String point){
+//        sql = "INSERT INTO points (code,ID,point) VALUES ('" + classesCode+"','"+ID+"','');";
+//        execute();
+//    }
+//    public void deletePoints(String classesCode, String ID){
+//        sql = "DELETE " + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
+//        execute();
+//    }
+//    public void updatePoints(String classesCode, String ID,String point){
+//        sql = "UPDATE " + "points" + " SET " + "point" + " = '" + point +  "' WHERE code = '" + classesCode + "' AND ID = '" + ID + "';";
+//        execute();
+//    }
+//    public  String selectPoints(String classesCode, String ID){
+//        String sql = "SELECT " + "point" + " FROM " + "points" + " WHERE code = '" + classesCode + "' AND ID = '"+ ID +"';";
+//        try {
+//            connect();
+//            rs = stmt.executeQuery(sql);
+//            rs.next();
+//            String res = rs.getString("point");
+//            rs.close();
+//            close();
+//            return res;
+//        } catch (SQLException e) {
+//            close();
+//            System.out.println("Database lookup failure");
+//            throw new RuntimeException(e);
+//        }
+//    }
+
+
 
 }

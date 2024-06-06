@@ -3,6 +3,8 @@ package Service.Main.Components.ClassServ;
 import GUI.Data.DataPackage.Classes.Classes;
 import GUI.Data.DataPackage.Classes.ClassesSet;
 import Service.Data.Tables.Courses;
+import Service.Data.Utils.DaysUtil;
+import Service.Data.Utils.TimeUtil;
 
 public class ClassesSearchingServ {
     private String[] codes = {};
@@ -11,8 +13,7 @@ public class ClassesSearchingServ {
         //查询只限单个老师包含匹配
         String[] conditions = fromClasses(inputClasses);
         codes = Courses.findCode(conditions);
-
-    }//TODO:时间查询未处理
+    }
 
     public int getCount() {
         return codes.length;
@@ -31,7 +32,13 @@ public class ClassesSearchingServ {
         String name = classes.getName()==null?"":classes.getName();
         String period = classes.getPeriod()==null?"":classes.getPeriod().toString();
         String credits = classes.getCredits()==null?"":classes.getCredits().toString();
-        String times = "";
+        String times;
+        if(classes.getTime()==null)
+            times = "";
+        else {
+            String days = DaysUtil.getDaysFromCourseTimeSet(classes.getTime());
+            times = DaysUtil.getLikeDays(days);
+        }
         String stdCount = "";
         String limitCount = "";
         String classType = classes.getClassType()==null?"":classes.getClassType().toString();
@@ -49,8 +56,6 @@ public class ClassesSearchingServ {
                 break;
             }
         }
-
-
         String full = classes.getFull()==null?"":classes.getFull().toString();
         String place = "";
 

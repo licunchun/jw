@@ -12,8 +12,8 @@ public class UserTypeTransformer {
         };
     }
     public static UserType fromString(String ID) {
-        int userType = IDUtil.getUserType(ID);
-        return switch (userType) {
+        IDUtil idUtil = new IDUtil(ID);
+        return switch (idUtil.IDType) {
             case UserUtil.STUDENT -> UserType.Student;
             case UserUtil.TEACHER -> UserType.Teacher;
             case UserUtil.MANAGER -> UserType.Admin;

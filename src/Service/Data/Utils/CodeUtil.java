@@ -1,5 +1,7 @@
 package Service.Data.Utils;
 
+import Service.Data.Tables.Courses;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
@@ -18,6 +20,10 @@ public class CodeUtil {
             code.add(matcher.group());
         }
         return code.toArray(new String[0]);
+    }
+    public static boolean isCodeExist(String code){
+        Courses courses = new Courses(code);
+        return courses.codeExist;
     }
 
 

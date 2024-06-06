@@ -9,16 +9,73 @@ public class Courses {
     public static final String[] CourseCol = Tables.CourseCol;
     public static final String PRIMARY_KEY = "code";
     private static final SQLiteJDBC coursesTable = new SQLiteJDBC(tableName);
+    public boolean codeExist;
+    private String code;
+
+    public String name;
+    public String period;
+    public String credits;
+    public String times;
+    public String stdCount;
+    public String limitCount;
+    public String classType;
+    public String courseType;
+    public String school;
+    public String campus;
+    public String examMode;
+    public String language;
+    public String education;
+    public String teachers;
+    public String full;
+    public String place;
+    public String[] teacherIDs;
+    public String[] studentIDs;
+
+    public Courses(String code) {
+        this.code = code;
+        codeExist = isCodeExist();
+        if(!codeExist)
+            return;
+        String[] info = getInfo();
+        name = info[1];
+        period = info[2];
+        credits = info[3];
+        times = info[4];
+        stdCount = info[5];
+        limitCount = info[6];
+        classType = info[7];
+        courseType = info[8];
+        school = info[9];
+        campus = info[10];
+        examMode = info[11];
+        language = info[12];
+        education = info[13];
+        teachers = info[14];
+        full = info[15];
+        place = info[16];
+        teacherIDs = CodeTeacher.getTeachersID(code);
+        studentIDs = CodeStudent.getStudentsID(code);
+    }
 
 
-
-    public static boolean isCodeExist(String code){
+    private boolean isCodeExist(){
         return coursesTable.isColValueExist("code",code);
     }
-    public static boolean isCourseFull(String code){
-        String full = coursesTable.select("full","code",code);
-        return full.compareTo("已满") == 0;
+    private String[] getInfo(){
+        return coursesTable.select(CourseCol,"code",code);
     }
+    //部分属性的set方法
+    public void setStdCount(String stdCount){
+        coursesTable.update("stdCount",stdCount,PRIMARY_KEY,code);
+    }
+    public void setFull(String full){
+        coursesTable.update("full",full,PRIMARY_KEY,code);
+    }
+
+    public static String[] getInfo(String code){
+        return coursesTable.select(CourseCol,"code",code);
+    }
+    //
     public static String[] getAllCode(){
         return coursesTable.selectAll("code");
     }
@@ -29,65 +86,6 @@ public class Courses {
         coursesTable.delete(PRIMARY_KEY,code);
     }
 
-
-    public static String[] getInfo(String code){
-        return coursesTable.select(CourseCol,"code",code);
-    }
-    //所有属性的get方法
-    public String getName(String code) {
-        return coursesTable.select("name", PRIMARY_KEY, code);
-    }
-    public String getPeriod(String code) {
-        return coursesTable.select("period", PRIMARY_KEY, code);
-    }
-    public String getCredits(String code) {
-        return coursesTable.select("credits", PRIMARY_KEY, code);
-    }
-    public String getTimes(String code) {
-        return coursesTable.select("times", PRIMARY_KEY, code);
-    }
-    public String getStdCount(String code) {
-        return coursesTable.select("stdCount", PRIMARY_KEY, code);
-    }
-    public String getLimitCount(String code) {
-        return coursesTable.select("limitCount", PRIMARY_KEY, code);
-    }
-    public String getClassType(String code) {
-        return coursesTable.select("classType", PRIMARY_KEY, code);
-    }
-    public String getCourseType(String code) {
-        return coursesTable.select("courseType", PRIMARY_KEY, code);
-    }
-    public String getSchool(String code) {
-        return coursesTable.select("school", PRIMARY_KEY, code);
-    }
-    public String getCampus(String code) {
-        return coursesTable.select("campus", PRIMARY_KEY, code);
-    }
-    public String getExamMode(String code) {
-        return coursesTable.select("examMode", PRIMARY_KEY, code);
-    }
-    public String getLanguage(String code) {
-        return coursesTable.select("language", PRIMARY_KEY, code);
-    }
-    public String getEducation(String code) {
-        return coursesTable.select("education", PRIMARY_KEY, code);
-    }
-    public String getTeachers(String code) {
-        return coursesTable.select("teachers", PRIMARY_KEY, code);
-    }
-    public String getFull(String code) {
-        return coursesTable.select("full", PRIMARY_KEY, code);
-    }
-    //部分属性的set方法
-    public void setStdCount(String code,String stdCount){
-        coursesTable.update("stdCount",stdCount,PRIMARY_KEY,code);
-    }
-    public void setFull(String code,String full){
-        coursesTable.update("full",full,PRIMARY_KEY,code);
-    }
-
-
     public static String[] findCode(String[] conditions){
         ArrayList<String> valueName = new ArrayList<>();
         ArrayList<String> value = new ArrayList<>();
@@ -97,6 +95,6 @@ public class Courses {
                 value.add(conditions[i]);
             }
         }
-        return coursesTable.selectAll("code",valueName.toArray(new String[0]),value.toArray(new String[0]));
+        return coursesTable.selectLike("code",valueName.toArray(new String[0]),value.toArray(new String[0]));
     }
 }

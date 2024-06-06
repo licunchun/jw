@@ -12,84 +12,84 @@ import Service.Data.Tables.Students;
 import Service.Data.Tables.Teachers;
 import Service.Data.Utils.*;
 
+import java.util.Objects;
 
 public class UserServ {
-    private static final Students student = new Students();
-    private static final Teachers teacher = new Teachers();
-    private static final Managers manager = new Managers();
+    private static UserUtil userUtil;
+    private static Students students;
+    private static NameUtil nameUtil;
+    private static PasswordUtil passwordUtil;
+
     /*
      * Editor
      */
     public static EditError editName(String ID, String name) {
-        if(!IDUtil.check(ID))
+        userUtil = new UserUtil(ID);
+        if(userUtil.userType==UserUtil.INVALID)
             return EditError.IDNotFound;
 
-        if (!NameUtil.check(name))
+        nameUtil = new NameUtil(name);
+        if (nameUtil.nameOverLength)
             return EditError.Invalid;
 
-        UserUtil.setName(ID,name);
+        userUtil.setName(name);
         return EditError.Success;
     }
 
     public static EditError editPassword(String ID, String password) {
-        if(!IDUtil.check(ID))
+        userUtil = new UserUtil(ID);
+        if(userUtil.userType==UserUtil.INVALID)
             return EditError.IDNotFound;
 
-        if (!PasswordUtil.check(password))
+        passwordUtil = new PasswordUtil(password);
+        if (passwordUtil.passwordOverLength)
             return EditError.Invalid;
 
-        UserUtil.setPassword(ID,password);
+        userUtil.setPassword(password);
         return EditError.Success;
     }
 
     public static EditError editMoney(String ID, double money) {
-        if(!IDUtil.check(ID))
+        students = new Students(ID);
+        if(!students.IDExist)
             return EditError.IDNotFound;
 
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            return EditError.Invalid;
-
-        student.setMoney(ID,String.valueOf(money));
+        students.setMoney(String.valueOf(money));
         return EditError.Success;
     }
 
     public static EditError editAddMoney(String ID, double addMoney) {
-        if(!IDUtil.check(ID))
+        students = new Students(ID);
+        if(!students.IDExist)
             return EditError.IDNotFound;
 
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            return EditError.Invalid;
 
-        double money = Double.parseDouble(student.getMoney(ID));
-        student.setMoney(ID,String.valueOf(money+addMoney));
+        double money = Double.parseDouble(students.money);
+        students.setMoney(String.valueOf(money+addMoney));
         return EditError.Success;
     }
 
     public static EditError editGrade(String ID, Grade grade) {
-        if(!IDUtil.check(ID))
+        students = new Students(ID);
+        if(!students.IDExist)
             return EditError.IDNotFound;
-
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            return EditError.Invalid;
 
         if(grade==null)
             return EditError.Invalid;
 
-        student.setGrade(ID,grade.toString());
+        students.setGrade(grade.toString());
         return EditError.Success;
     }
 
     public static EditError editSchool(String ID, School school) {
-        if(!IDUtil.check(ID))
+        userUtil = new UserUtil(ID);
+        if(userUtil.userType==UserUtil.INVALID||userUtil.userType==UserUtil.MANAGER)
             return EditError.IDNotFound;
-
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            return EditError.Invalid;
 
         if(school==null)
             return EditError.Invalid;
 
-        student.setSchool(ID,school.toString());
+        userUtil.setSchool(school.toString());
         return EditError.Success;
     }
 
@@ -101,70 +101,59 @@ public class UserServ {
     }
 
     public static String getName(String ID) {
-        if(!IDUtil.check(ID))
-            return "";
-        return UserUtil.getName(ID);
+        userUtil = new UserUtil(ID);
+        return userUtil.name;
     }
 
     public static Gender getGender(String ID) {
-        if(!IDUtil.check(ID))
+        students = new Students(ID);
+        if(!students.IDExist)
             throw new RuntimeException("UserServ: ID have no Gender");
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            throw new RuntimeException("UserServ: ID have no Gender");
-        return Gender.fromString(student.getGender(ID));
+        return Gender.fromString(students.gender);
     }
 
     public static School getSchool(String ID) {
-        if(!IDUtil.check(ID))
-            throw new RuntimeException("UserServ: ID have no School");
-        if(IDUtil.getUserType(ID)== UserUtil.STUDENT)
-            return School.fromString(student.getSchool(ID));
-        if(IDUtil.getUserType(ID)== UserUtil.TEACHER)
-            return School.fromString(teacher.getSchool(ID));
-        throw new RuntimeException("UserServ: ID have no School");
+        userUtil = new UserUtil(ID);
+            return School.fromString(userUtil.school);
     }
 
     public static Grade getGrade(String ID) {
-        if(!IDUtil.check(ID))
+        students = new Students(ID);
+        if(!students.IDExist)
             throw new RuntimeException("UserServ: ID have no Grade");
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            throw new RuntimeException("UserServ: ID have no Grade");
-        return Grade.fromString(student.getGrade(ID));
+        return Grade.fromString(students.grade);
     }
 
     public static Double getMoney(String ID) {
-        if(!IDUtil.check(ID))
+        students = new Students(ID);
+        if(!students.IDExist)
             throw new RuntimeException("UserServ: ID have no Money");
-        if(IDUtil.getUserType(ID)!= UserUtil.STUDENT)
-            throw new RuntimeException("UserServ: ID have no Money");
-        return Double.valueOf(student.getMoney(ID));
+        return Double.valueOf(students.money);
     }
 
     /*
      * Else
      */
     public static ChangePasswordError changePassword(String ID, String originPassword, String newPassword, String newConfirmPassword) {
-        if(!IDUtil.check(ID))
+        userUtil = new UserUtil(ID);
+        if(userUtil.userType==UserUtil.INVALID)
             return ChangePasswordError.IDNotFound;
-        if(!PasswordUtil.check(originPassword))
-            return ChangePasswordError.WrongOriginPassword;
-        String password_get = UserUtil.getPassword(ID);
-        if(originPassword.compareTo(password_get) != 0)
+        if(Objects.equals(userUtil.password, originPassword))
             return ChangePasswordError.WrongOriginPassword;
 
-        if(newPassword==null||newPassword.isEmpty())
-            return ChangePasswordError.EmptyInput;
-        if(newConfirmPassword==null||newConfirmPassword.isEmpty())
+        passwordUtil = new PasswordUtil(newPassword);
+        if(passwordUtil.passwordEmpty)
             return ChangePasswordError.EmptyInput;
 
-        if(!PasswordUtil.checkLength(newPassword))
-            return ChangePasswordError.OverLength;
-        if(!PasswordUtil.checkChar(newPassword))
+
+        if(passwordUtil.passwordCharValid)
             return ChangePasswordError.InvalidChar;
+        if(passwordUtil.passwordOverLength)
+            return ChangePasswordError.OverLength;
         if(newPassword.compareTo(newConfirmPassword)!=0)
             return ChangePasswordError.NotMatch;
 
-        UserUtil.setPassword(ID,newPassword);
+        userUtil.setPassword(newPassword);
         return ChangePasswordError.Success;
     }
 
