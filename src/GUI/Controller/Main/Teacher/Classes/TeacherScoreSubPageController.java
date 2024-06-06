@@ -165,6 +165,16 @@ public class TeacherScoreSubPageController {
                     setGraphic(null);
                     setText(null);
                 } else {
+                    textField.textProperty().addListener((observable, oldValue, newValue) -> {
+                        if (!newValue.matches("\\d*")) { // 确保输入的是数字
+                            textField.setText(newValue.replaceAll("[^\\d]", ""));
+                        } else if (!newValue.isEmpty()) {
+                            int value = Integer.parseInt(newValue);
+                            if (value < 0 || value > 100) {
+                                textField.setText(oldValue); // 如果值不在0-100范围内，恢复旧值
+                            }
+                        }
+                    });
                     setGraphic(textField);
                     setText(null);
                     setAlignment(Pos.CENTER); // 居中对齐
