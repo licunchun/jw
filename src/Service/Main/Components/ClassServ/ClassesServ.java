@@ -7,22 +7,13 @@ import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.DeleteClassesError;
 import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
-import Service.Data.Tables.Courses;
-import Service.Data.Tables.Points;
-import Service.Data.Tables.Students;
-import Service.Data.Tables.Teachers;
-import Service.Data.Utils.CodeUtil;
-import Service.Data.Utils.IDUtil;
-import Service.Data.Utils.TimeUtil;
+import Service.Data.Tables.*;
+import Service.Data.Utils.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class ClassesServ {
-    private static final Students student = new Students();
-    private static final Teachers teacher = new Teachers();
-    private static final Courses course = new Courses();
-
     public static Classes getClasses(String classesCode) {
         String[] classInfo = Courses.getInfo(classesCode);
         return Classes.fromArray(classInfo);
@@ -30,14 +21,15 @@ public class ClassesServ {
 
     public static IDSet getStudentSet(String classesCode) {
         IDSet idSet = new IDSet();
-        for (String ID:Points.getAllID(classesCode)){
+        String[] IDs = CodeStudent.getStudentsID(classesCode);
+        for (String ID:IDs){
             idSet.add(ID);
         }
         return idSet;
     }
 
     public static int getStudentScore(String classesCode, String ID) {
-       String point = Points.getScore(classesCode,ID);
+       String point = CodeStudent.getPoint(classesCode,ID);
        if(point.isEmpty())
            return -1;
        else
@@ -45,14 +37,17 @@ public class ClassesServ {
     }
 
     public static boolean setStudentScore(String classesCode, String ID, int grade) {
-        Points.setScore(classesCode,ID,String.valueOf(grade));
+        CodeStudent.setPoint(classesCode,ID,String.valueOf(grade));
         return true;
     }
 
     public static double getStudentGPA(String classesCode, String ID) {
-        return Points.getGPA(classesCode,ID);
+        String point = CodeStudent.getPoint(classesCode,ID);
+        return PointUtil.pointToGPA(point);
     }
 
+
+    //保留
     public static String toStringTime(CourseTimeSet courseTimeSet) {
         StringBuilder sb = new StringBuilder();
         String[] days = TimeUtil.getTimes();
@@ -70,38 +65,21 @@ public class ClassesServ {
         return sb.toString();
     }
     public static DeleteClassesError deleteClasses(String classesCode) {
-        if(!Courses.isCodeExist(classesCode))
+        Courses courses = new Courses(classesCode);
+        if(!courses.codeExist)
             return DeleteClassesError.ClassesCodeNotFind;
-
-        //将所有选这门课的学生删除
-        String[] studentsID = Points.getAllID(classesCode);
-        for (String studentID:studentsID){
-            //Points表也对应删除
-            Points.deletePoints(classesCode,studentID);
-            //
-            String classes = student.getClasses(studentID);
-            CodeUtil.deleteCodeInClasses(classesCode,classes);
-            student.setClasses(studentID,classes);
-            //
-            String studentTimes = student.getTimes(studentID);
-            String courseTimes = course.getTimes(classesCode);
-            String[] studentDays = TimeUtil.getDay(studentTimes);
-            String[] courseDays = TimeUtil.getDay(courseTimes);
-            //学生时间删除
-            for (String day:courseDays){
-                TimeUtil.deleteDayInDays(day,studentDays);
-            }
-            String newTimes = Arrays.toString(studentDays);
-            student.setTimes(studentID,newTimes);
+        //
+        CodeStudent.deleteInfo(classesCode);
+        CodeTeacher.deleteInfo(classesCode);
+        //在学生表中把该课所占用的时间删除
+        String courseDays = courses.times;
+        for (String ID:courses.studentIDs){
+            Students students = new Students(ID);
+            String studentDays = students.days;
+            String newStudentDays = DaysUtil.deleteDaysInDays(courseDays,studentDays);
+            students.setDays(newStudentDays);
         }
-        //将所有开这门课的老师数据处理
-        String[] teachersID = Teachers.getIDWithCode(classesCode);
-        for (String teacherID:teachersID){
-            String classes = teacher.getClasses(teacherID);
-            String newClasses = CodeUtil.deleteCodeInClasses(classesCode,classes);
-            teacher.setClasses(teacherID,newClasses);
-        }
-        //将课程信息删除
+        //
         Courses.deleteInfo(classesCode);
         return DeleteClassesError.Success;
     }
@@ -122,37 +100,49 @@ public class ClassesServ {
             Education education,
             String teachersID
     ) {
-        if(code.isEmpty()){
+        if(code.isEmpty())
             return NewClassesError.CodeIsEmpty;
-        } else if(!isCodeValid(code)){
+        if(!isCodeValid(code))
             return NewClassesError.CodeInvalid;
-        } else if (name.isEmpty()) {
+
+        if (name.isEmpty())
             return NewClassesError.NameIsEmpty;
-        } else if (!isNameValid(name)) {
+        if (!isNameValid(name))
             return NewClassesError.NameInvalid;
-        } else if (period.isEmpty()) {
+
+        if (period.isEmpty())
             return NewClassesError.PeriodIsEmpty;
-        } else if (!isPeriodValid(period)) {
+        if (!isPeriodValid(period))
             return NewClassesError.PeriodInvalid;
-        } else if (credits.isEmpty()) {
+
+        if (credits.isEmpty())
             return NewClassesError.CreditsIsEmpty;
-        } else if (!isCreditsValid(credits)) {
+        if (!isCreditsValid(credits))
             return NewClassesError.CreditsInvalid;
-        } else if (maxCount.isEmpty()) {
+
+        if (maxCount.isEmpty())
             return NewClassesError.MaxCountIsEmpty;
-        } else if (!isMaxCountValid(maxCount)) {
+        if (!isMaxCountValid(maxCount))
             return NewClassesError.MaxCountInvalid;
-        } else if (teachersID.isEmpty()) {
+
+
+        String[] IDs = IDUtil.getTeacherIDFromIDs(teachersID);
+        if (teachersID.isEmpty()||IDs.length==0)
             return NewClassesError.TeacherIsEmpty;
-        } else if (!isTeacherValid(teachersID)) {
-            return NewClassesError.TeacherInvalid;
+        ArrayList<String> names = new ArrayList<>();
+        for (String ID:IDs){
+            UserUtil userUtil = new UserUtil(ID);
+            if(userUtil.userType!=UserUtil.TEACHER)
+                return NewClassesError.TeacherInvalid;
+            names.add(userUtil.name);
         }
+        String teacher = names.toString();
         String[] info = {
                 code,
                 name,
                 period,
                 credits,
-                toStringTime(time),
+                DaysUtil.getDaysFromCourseTimeSet(time),
                 "0",
                 maxCount,
                 classType.toString(),
@@ -162,17 +152,15 @@ public class ClassesServ {
                 examMode.toString(),
                 language.toString(),
                 education.toString(),
-                teachersID,
+                teacher,
                 "未满",
                 "待定"
         };
         Courses.addInfo(info);
         //将所有开这门课的老师数据处理
-        String[] teacherID = IDUtil.getIDFromTeachers(teachersID);
-        for (String ID:teacherID){
-            String classes = teacher.getClasses(ID);
-            String newClasses = CodeUtil.addCodeInClasses(code,classes);
-            teacher.setClasses(ID,newClasses);
+        for (String ID:IDs){
+            String[] data = {code,ID};
+            CodeTeacher.addInfo(data);
         }
         return NewClassesError.Success;
     }
@@ -191,9 +179,6 @@ public class ClassesServ {
         return true;
     }
     private static boolean isMaxCountValid(String maxCount){
-        return true;
-    }
-    private static boolean isTeacherValid(String teacher){
         return true;
     }
 }

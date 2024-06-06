@@ -17,7 +17,7 @@ public class TimeUtil {
         return days;
     }
     //将一天的安排从times检索出
-    public static String[] getDay(String times){
+    public static String[] getDays(String times){
         matcher = dayPattern.matcher(times);
         ArrayList<String> day = new ArrayList<>();
         while (matcher.find()) {

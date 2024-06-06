@@ -32,7 +32,7 @@ public class CourseTimeSet {
 
     public static CourseTimeSet fromString(String times){
         CourseTimeSet cts = new CourseTimeSet();
-        String[] days = TimeUtil.getDay(times);
+        String[] days = TimeUtil.getDays(times);
         for (String day:days){
             int[] section = TimeUtil.getSection(day);
             if(section.length==1)

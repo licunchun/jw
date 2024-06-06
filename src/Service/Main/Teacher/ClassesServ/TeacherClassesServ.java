@@ -11,12 +11,12 @@ import Service.Data.Utils.CodeUtil;
 import Service.Main.Components.ClassServ.ClassesServ;
 
 public class TeacherClassesServ {
-    private static final Teachers teacher = new Teachers();
+    private static Teachers teacher;
     public static ClassesSet getTeacherClassesSet(String ID) {
+        teacher = new Teachers(ID);
         ClassesSet classesSet = new ClassesSet();
-        String classes_t = teacher.getClasses(ID);
-        String[] codes = CodeUtil.getCode(classes_t);
-        for (String code:codes){
+
+        for (String code: teacher.codes){
             String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             classesSet.add(classes);
@@ -25,14 +25,13 @@ public class TeacherClassesServ {
     }
 
     public static CourseCodeSet getTeacherCourseCodeSet(String ID) {
+        teacher = new Teachers(ID);
         CourseCodeSet courseCodeSet = new CourseCodeSet();
-        String classes_t = teacher.getClasses(ID);
-        String[] codes = CodeUtil.getCode(classes_t);
-        for (String code:codes){
+        for (String code: teacher.codes){
             String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
-            String[] studentsID = Points.getAllID(code);
-            for (String studentID:studentsID){
+            Courses courses = new Courses(code);
+            for (String studentID:courses.studentIDs){
                 int score = ClassesServ.getStudentScore(code,studentID);
                 double GPA = ClassesServ.getStudentGPA(code,studentID);
                 StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes,GPA,score);

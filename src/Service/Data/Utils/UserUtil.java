@@ -7,66 +7,88 @@ import Service.Data.Utils.IDUtil;
 
 
 public class UserUtil {
-    private static final Students student = new Students();
-    private static final Teachers teacher = new Teachers();
-    private static final Managers manager = new Managers();
+    public int userType;
+    public String name;
+    public String password;
+    public String school;
+    private final Students student;
+    private final Teachers teacher;
+    private final Managers manager;
     public static final int INVALID = -1;
     public static final int STUDENT = 0;
     public static final int TEACHER = 1;
     public static final int MANAGER = 2;
-    public static boolean isIDExist(String ID){
-        int userType = IDUtil.getUserType(ID);
-        return switch (userType){
-            case STUDENT -> Students.isIDExist(ID);
-            case TEACHER -> Teachers.isIDExist(ID);
-            case MANAGER -> Managers.isIDExist(ID);
-            default -> false;
-        };
-    }
 
-    public static String getPassword(String ID){
-        int userType = IDUtil.getUserType(ID);
+
+    public UserUtil(String ID) {
+        //处理三类用户的共有属性
+        student = new Students(ID);
+        teacher = new Teachers(ID);
+        manager = new Managers(ID);
+        userType = initUserType();
+        if(userType==INVALID)
+            return;
+        name = initName();
+        password = initPassword();
+        school = initSchool();
+    }
+    private int initUserType(){
+        if(student.IDExist)
+            return STUDENT;
+        if(teacher.IDExist)
+            return TEACHER;
+        if(manager.IDExist)
+            return MANAGER;
+        return INVALID;
+    }
+    private String initName(){
         return switch (userType){
-            case STUDENT -> student.getPassword(ID);
-            case TEACHER -> teacher.getPassword(ID);
-            case MANAGER -> manager.getPassword(ID);
+            case STUDENT -> student.name;
+            case TEACHER -> teacher.name;
+            case MANAGER -> manager.name;
             default -> throw new RuntimeException();
         };
     }
-    public static void setPassword(String ID, String password){
-        int userType = IDUtil.getUserType(ID);
-        switch (userType) {
-            case STUDENT -> student.setPassword(ID,password);
-            case TEACHER -> teacher.setPassword(ID,password);
-            case MANAGER -> manager.setPassword(ID,password);
-            default -> throw new RuntimeException();
-        }
-    }
-    public static String getName(String ID){
-        int userType = IDUtil.getUserType(ID);
+    private String initPassword(){
         return switch (userType){
-            case STUDENT -> student.getName(ID);
-            case TEACHER -> teacher.getName(ID);
-            case MANAGER -> manager.getName(ID);
+            case STUDENT -> student.password;
+            case TEACHER -> teacher.password;
+            case MANAGER -> manager.password;
             default -> throw new RuntimeException();
         };
     }
-    public static void setName(String ID, String name){
-        int userType = IDUtil.getUserType(ID);
-        switch (userType) {
-            case STUDENT -> student.setName(ID,name);
-            case TEACHER -> teacher.setName(ID,name);
-            case MANAGER -> manager.setName(ID,name);
-            default -> throw new RuntimeException();
-        }
-    }
-    public static String getSchool(String ID){
-        int userType = IDUtil.getUserType(ID);
+    private String initSchool(){
         return switch (userType) {
-            case STUDENT -> student.getSchool(ID);
-            case TEACHER -> teacher.getSchool(ID);
+            case STUDENT -> student.school;
+            case TEACHER -> teacher.school;
             case MANAGER -> "";
             default -> throw new RuntimeException();
         };
+    }
+    //set方法
+    public void setName(String name){
+        switch (userType) {
+            case STUDENT -> student.setName(name);
+            case TEACHER -> teacher.setName(name);
+            case MANAGER -> manager.setName(name);
+            default -> throw new RuntimeException();
+        }
+    }
+    public void setPassword(String password){
+        switch (userType) {
+            case STUDENT -> student.setPassword(password);
+            case TEACHER -> teacher.setPassword(password);
+            case MANAGER -> manager.setPassword(password);
+            default -> throw new RuntimeException();
+        }
+    }
+
+
+    public void setSchool(String school) {
+        switch (userType) {
+            case STUDENT -> student.setSchool(school);
+            case TEACHER -> teacher.setSchool(school);
+            default -> throw new RuntimeException();
+        }
     }
 }

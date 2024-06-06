@@ -6,14 +6,13 @@ import GUI.Data.Enum.User.Grade;
 import GUI.Data.Enum.User.StudentSchool;
 import GUI.Data.Enum.User.UserType;
 import Service.Data.SQLiteJDBC;
+import Service.Data.Utils.DaysUtil;
 import Service.Data.Utils.NameUtil;
 import Service.Data.Utils.PasswordUtil;
 import Service.Data.Utils.TimeUtil;
 import Service.Login.RegisterServ;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,27 +21,29 @@ public class Tables {
     public static final String TEACHERS = "teachers";
     public static final String MANAGERS = "managers";
     public static final String COURSES = "courses";
-    public static final String POINTS = "points";
+    public static final String CODE_TEACHER = "codeTeacher";
+    public static final String CODE_STUDENT = "codeStudent";
     public static final String[] TableName = {
-        STUDENTS,TEACHERS,MANAGERS,COURSES,POINTS
+        STUDENTS,TEACHERS,MANAGERS,COURSES,CODE_STUDENT,CODE_TEACHER
     } ;
     public static final String[] StudentCol={
             "ID",
             "name",
             "password",
+
             "grade",
             "gender",
             "school",
-            "classes",
             "money",
-            "times",
+
+            "days",
     };
     public static final String[] TeacherCol={
             "ID",
             "name",
             "password",
+
             "school",
-            "classes",
     };
     public static final String[] ManagerCol={
             "ID",
@@ -68,13 +69,22 @@ public class Tables {
             "full",
             "place"
     };
+    public static final String[] CodeStudentCol = {
+            "code",
+            "studentID",
+            "point",
+    };
+    public static final String[] CodeTeacherCol = {
+            "code",
+            "teacherID",
+    };
     public static final String[] PointCol = {
             "code",
             "ID",
             "point",
     };
     public static final String[][] ColName = {
-            StudentCol,TeacherCol,ManagerCol,CourseCol,PointCol
+            StudentCol,TeacherCol,ManagerCol,CourseCol,CodeStudentCol,CodeTeacherCol
     };
     private static final String originalDatabasePath = "src/原版数据库.db";
     private static final String currentDatabasePath = "src/Service/Data/test.db";
@@ -91,8 +101,45 @@ public class Tables {
         currentDB.create(ManagerCol,true);
         currentDB.setTableName(COURSES);
         currentDB.create(CourseCol,true);
-        currentDB.setTableName(POINTS);
-        currentDB.create(PointCol,false);
+        currentDB.setTableName(CODE_STUDENT);
+        currentDB.create(CodeStudentCol,false);
+        currentDB.setTableName(CODE_TEACHER);
+        currentDB.create(CodeTeacherCol,false);
+    }
+    public static final String[] OriginalTeacherCol={
+            "name",
+            "account",
+            "key",
+            "classes",
+    };
+    public void initTeachersTable(){
+        originalDB.setDatabasePath(originalDatabasePath);
+        originalDB.setTableName(TEACHERS);
+        currentDB.setDatabasePath(currentDatabasePath);
+        currentDB.setTableName(TEACHERS);
+
+        String[] IDs = originalDB.selectAll("account");
+        for (String ID:IDs){
+            originalDB.setTableName(TEACHERS);
+            String[] info = originalDB.select(OriginalTeacherCol, "account", ID);
+            String[] newInfo = new String[4];
+            newInfo[0] = info[1];
+            newInfo[1] = info[0];
+            newInfo[2] = info[2];
+
+            originalDB.setTableName(COURSES);
+            String[] temp = originalDB.selectLike("department","teachers",newInfo[1]);
+            //开课被删除的老师学院为教务处
+            if(temp.length==0) {
+                newInfo[3] = "教务处";
+                System.out.println(Arrays.toString(newInfo));
+            } else {
+                //选第一门课的开课单位作为该老师的院系
+                newInfo[3] = temp[0];
+            }
+            currentDB.setTableName(TEACHERS);
+            currentDB.insert(TeacherCol,newInfo);
+        }
     }
     public static final String[] OriginalCourseCol={
             "code",
@@ -112,7 +159,8 @@ public class Tables {
             "classType",
             "teachers",
     };
-    public void courseDataProcess(){
+
+    public void initCoursesTable(){
         originalDB.setDatabasePath(originalDatabasePath);
         originalDB.setTableName(COURSES);
         currentDB.setDatabasePath(currentDatabasePath);
@@ -121,91 +169,58 @@ public class Tables {
         for (String code : codes) {
             String[] info = originalDB.select(OriginalCourseCol, "code", code);
             String[] newInfo = new String[17];
-            System.arraycopy(info, 0, newInfo, 0, 4);
-            //时间
+            //code、name、period、credits
+            System.arraycopy(info, 0, newInfo, 0, 3);
+            newInfo[3] = String.valueOf(Double.valueOf(info[3]));
+            //times
             if(info[4]==null){
                 System.out.println(Arrays.toString(info));
                 continue;
             }
-            String[] day = TimeUtil.getDay(info[4]);
+            String[] day = TimeUtil.getDays(info[4]);
             //去除没有固定时间的课程
             if(day.length==0)
             {
-                System.out.println(Arrays.toString(info));
+//                System.out.println(Arrays.toString(info));
                 continue;
             }
-            String[] days = TimeUtil.getTimes();
-            for (String s : day) {
-                TimeUtil.addDayInDays(s, days);
-            }
-            newInfo[4] = Arrays.toString(days);
+            day = DaysUtil.getDaysFromTimes(info[4]);
 
+
+
+            newInfo[4] = DaysUtil.pack(day);
+            //stdCount,limitCount,classType
             System.arraycopy(info, 5, newInfo, 5, 3);
+            //courseType
             newInfo[8] = info[13];
+            //school,campus,examMode,language,education
             System.arraycopy(info, 8, newInfo, 9, 5);
+            //teachers
             newInfo[14] = info[14];
+            //full
             newInfo[15] = "未满";
+            //place
             Pattern p = Pattern.compile("(?<=周\\s).*?(?=\\s:)");
             Matcher m = p.matcher(info[4]);
-            if (!m.find()) return;
-            newInfo[16] = m.group();
-            currentDB.insert(CourseCol,newInfo);
-        }
-    }
-    public void courseDataUpdate(){
-        currentDB.setDatabasePath(currentDatabasePath);
-        currentDB.setTableName(COURSES);
-        String[] codes = currentDB.selectAll("code");
-        for (String code:codes){
-            ArrayList<String> teacher = new ArrayList<>();
-            String teachers = currentDB.select("teachers","code",code);
-            Pattern p = Pattern.compile("[\\u4e00-\\u9fff]+");
-            Matcher m = p.matcher(teachers);
-            while (m.find()){
-                String name = m.group();
-                currentDB.setTableName(TEACHERS);
-                String ID = currentDB.select("ID","name",name);
-                teacher.add(ID);
-            }
-            currentDB.setTableName(COURSES);
-            currentDB.update("teachers", Arrays.toString(teacher.toArray(new String[0])),"code",code);
-        }
-    }
-
-    public static final String[] OriginalTeacherCol={
-            "name",
-            "account",
-            "key",
-            "classes",
-    };
-    public void teacherDataProcess(){
-        originalDB.setDatabasePath(originalDatabasePath);
-        originalDB.setTableName(TEACHERS);
-        currentDB.setDatabasePath(currentDatabasePath);
-        currentDB.setTableName(TEACHERS);
-
-        String[] IDs = originalDB.selectAll("account");
-        for (String ID:IDs){
-            String[] info = originalDB.select(OriginalTeacherCol, "account", ID);
-            String[] newInfo = new String[5];
-            newInfo[0] = info[1];
-            newInfo[1] = info[0];
-            newInfo[2] = info[2];
-
-            currentDB.setTableName(COURSES);
-            String[] temp = currentDB.selectLike("school","teachers",newInfo[1]);
-            //开课被删除的老师学院为教务处
-            if(temp.length==0) {
-                newInfo[3] = "教务处";
-                newInfo[4] = "[]";
+            if (m.find()){
+                newInfo[16] = m.group();
             } else {
-                //选第一门课的开课单位作为该老师的院系
-                newInfo[3] = temp[0];
-                String[] codes = currentDB.selectLike("code","teachers",newInfo[1]);
-                newInfo[4] = Arrays.toString(codes);
+                throw new RuntimeException();
             }
-            currentDB.setTableName(TEACHERS);
-            currentDB.insert(TeacherCol,newInfo);
+            currentDB.insert(CourseCol,newInfo);
+
+            //initCodeTeacher
+            String[] names = NameUtil.getNames(info[14]);
+            for (int i = 0; i < names.length; i++) {
+                String[] teachersID = Teachers.getSameNameID(names[i]);
+                String teacherID;
+                if(teachersID.length==1)
+                    teacherID = teachersID[0];
+                else
+                    throw new RuntimeException();
+                String[] data = {newInfo[0],teacherID};
+                CodeTeacher.addInfo(data);
+            }
         }
     }
     public void addManager(){
@@ -243,10 +258,13 @@ public class Tables {
     public static void main(String[] args) {
         Tables tables = new Tables();
         tables.createTables();
-        tables.courseDataProcess();
-        tables.teacherDataProcess();
-        tables.courseDataUpdate();
-        tables.addManager();
-        tables.addStudent(1000);
+        tables.initTeachersTable();
+        tables.initCoursesTable();
+//        tables.courseDataProcess();
+//        tables.teacherDataProcess();
+//        tables.initCodeTeacher();
+//        tables.courseDataUpdate();
+//        tables.addManager();
+//        tables.addStudent(100);
     }
 }

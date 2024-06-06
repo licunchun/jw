@@ -2,6 +2,8 @@ package GUI.Data.DataPackage.Classes;
 
 import GUI.Data.Enum.Classes.*;
 import GUI.Data.Enum.School;
+import Service.Data.Tables.CodeTeacher;
+import Service.Data.Utils.DaysUtil;
 import Service.Data.Utils.IDUtil;
 
 public class Classes {
@@ -196,7 +198,7 @@ public class Classes {
         String name = classesInfo[1];
         Integer period = Integer.valueOf(classesInfo[2]);
         Double credits = Double.valueOf(classesInfo[3]);
-        CourseTimeSet time = CourseTimeSet.fromString(classesInfo[4]);
+        CourseTimeSet time = DaysUtil.getCourseTimeSetFromDays(classesInfo[4]);
         int stdCount = Integer.parseInt(classesInfo[5]);
         int limitCount = Integer.parseInt(classesInfo[6]);
         ClassType classType = ClassType.fromString(classesInfo[7]);
@@ -206,8 +208,8 @@ public class Classes {
         ExamMode examMode = ExamMode.fromString(classesInfo[11]);
         Language language = Language.fromString(classesInfo[12]);
         Education education = Education.fromString(classesInfo[13]);
-        String[] IDs = IDUtil.getIDFromTeachers(classesInfo[14]);
         //
+        String[] IDs = CodeTeacher.getTeachersID(code);
         IDSet teacher = new IDSet();
         for (String ID:IDs){
             teacher.add(ID);

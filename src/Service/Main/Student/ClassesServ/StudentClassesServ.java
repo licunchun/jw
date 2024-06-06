@@ -6,23 +6,24 @@ import GUI.Data.DataPackage.Classes.CourseCodeSet;
 import GUI.Data.DataPackage.Classes.StudentCourseScoreTable;
 import GUI.Data.Enum.Error.Main.Student.ClassesServ.DropClassesError;
 import GUI.Data.Enum.Error.Main.Student.ClassesServ.PickClassesError;
+import Service.Data.Tables.CodeStudent;
 import Service.Data.Tables.Courses;
 import Service.Data.Tables.Points;
 import Service.Data.Tables.Students;
 import Service.Data.Utils.CodeUtil;
+import Service.Data.Utils.DaysUtil;
 import Service.Data.Utils.PointUtil;
 import Service.Data.Utils.TimeUtil;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 
 public class StudentClassesServ {
-    private static final Students student = new Students();
-    private static final Courses course = new Courses();
     public static ClassesSet getStudentClassesSet(String ID) {
+        Students students = new Students(ID);
         ClassesSet classesSet = new ClassesSet();
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
+        for (String code: students.codes){
             String[] classInfo = Courses.getInfo(code);
             Classes c = Classes.fromArray(classInfo);
             classesSet.add(c);
@@ -31,14 +32,14 @@ public class StudentClassesServ {
     }
 
     public static CourseCodeSet getStudentCourseCodeSet(String ID) {
+        Students students = new Students(ID);
         CourseCodeSet courseCodeSet = new CourseCodeSet();
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
+        for (String code: students.codes){
             //获得课程信息
             String[] classInfo = Courses.getInfo(code);
             Classes classes = Classes.fromArray(classInfo);
             //获得学生分数
-            String point = Points.getScore(code,ID);
+            String point = CodeStudent.getPoint(code,ID);
             int score = Integer.parseInt(point);
             double GPA = PointUtil.pointToGPA(point);
             StudentCourseScoreTable studentCourseScoreTable = new StudentCourseScoreTable(classes,GPA,score);
@@ -48,93 +49,87 @@ public class StudentClassesServ {
     }
 
     public static double getStudentTotalCredits(String ID) {
-        if(!Points.isIDExist(ID))
-            return -1.0;
+        Students students = new Students(ID);
         double totalCredits = 0.0;
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
-            double credits = Double.parseDouble(course.getCredits(code));
+        for (String code: students.codes){
+            Courses courses = new Courses(code);
+            double credits = Double.parseDouble(courses.credits);
             totalCredits += credits;
         }
         return totalCredits;
     }
 
     public static double getStudentReceivedCredits(String ID) {
-        if(!Points.isIDExist(ID))
-            return -1.0;
+        Students students = new Students(ID);
         double receivedCredits = 0.0;
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
-            String point = Points.getScore(code,ID);
+        for (String code: students.codes){
+            String point = CodeStudent.getPoint(code,ID);
             if(point.isEmpty())
                 continue;
-            double credits = Double.parseDouble(course.getCredits(code));
+            Courses courses = new Courses(code);
+            double credits = Double.parseDouble(courses.credits);
             receivedCredits += credits;
         }
         return receivedCredits;
     }
 
     public static double getStudentFailedCredits(String ID) {
-        if(!Points.isIDExist(ID))
-            return -1.0;
+        Students students = new Students(ID);
         double failedCredits = 0.0;
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
-            String point = Points.getScore(code,ID);
+        for (String code:students.codes){
+            String point = CodeStudent.getPoint(code,ID);
             if(point.isEmpty())
                 continue;
             if(Double.parseDouble(point)>=60)
                 continue;
-            double credits = Double.parseDouble(course.getCredits(code));
+            Courses courses = new Courses(code);
+            double credits = Double.parseDouble(courses.credits);
             failedCredits += credits;
         }
         return failedCredits;
     }
 
     public static double getStudentAverageGrade(String ID) {
-        if(!Points.isIDExist(ID))
-            return -1.0;
+        Students students = new Students(ID);
         int totalScore = 0;
         int num = 0;
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
-            String point = Points.getScore(code,ID);
+        for (String code: students.codes){
+            String point = CodeStudent.getPoint(code,ID);
             if(point.isEmpty())
                 continue;
             totalScore += Integer.parseInt(point);
             num += 1;
         }
-        return ((double)totalScore)/num;
+
+        return num==0?0:((double)totalScore)/num;
     }
 
     public static double getStudentWeightedAverageGrade(String ID) {
-        if(!Points.isIDExist(ID))
-            return -1.0;
+        Students students = new Students(ID);
         double totalScore = 0.0;
         double totalCredits = 0.0;
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
-            String point = Points.getScore(code,ID);
+        for (String code: students.codes){
+            String point = CodeStudent.getPoint(code,ID);
             if(point.isEmpty())
                 continue;
-            double credits = Double.parseDouble(course.getCredits(code));
+            Courses courses = new Courses(code);
+            double credits = Double.parseDouble(courses.credits);
             totalScore += Integer.parseInt(point)*credits;
             totalCredits += credits;
         }
-        return totalScore/totalCredits;
+        return totalCredits==0.0?0:(totalScore/totalCredits);
     }
 
     public static double getStudentGPA(String ID) {
-        if(!Points.isIDExist(ID))
-            return -1.0;
+        Students students = new Students(ID);
         double totalGPA = 0.0;
         double totalCredits = 0.0;
-        String[] codes = Points.getAllCode(ID);
-        for (String code:codes){
-            String point = Points.getScore(code,ID);
+        for (String code: students.codes){
+            String point = CodeStudent.getPoint(code,ID);
             if(point.isEmpty())
                 continue;
-            double credits = Double.parseDouble(course.getCredits(code));
+            Courses courses = new Courses(code);
+            double credits = Double.parseDouble(courses.credits);
             totalGPA += PointUtil.pointToGPA(point)*credits;
             totalCredits += credits;
         }
@@ -143,83 +138,62 @@ public class StudentClassesServ {
 
 
     public static PickClassesError pickClasses(String studentID, String classesCode) {
-        if(!Students.isIDExist(studentID))
+        Students students = new Students(studentID);
+        if(!students.IDExist)
             return PickClassesError.IDNotFind;
-        if(!Courses.isCodeExist(classesCode))
+        Courses courses = new Courses(classesCode);
+        if(!courses.codeExist)
             return PickClassesError.ClassesCodeNotFind;
         if(isPicked(studentID,classesCode)==Boolean.TRUE)
             return PickClassesError.ClassesISChosen;
-        if(Courses.isCourseFull(classesCode))
+        if(Objects.equals(courses.full, "已满"))
+            return PickClassesError.ClassesIsFull;;
+        if(!students.isFree(courses.times))
             return PickClassesError.ClassesIsFull;
-        //时间处理
-        String studentTimes = student.getTimes(studentID);
-        String courseTimes = course.getTimes(classesCode);
-        String[] studentDays = TimeUtil.getDay(studentTimes);
-        String[] courseDays = TimeUtil.getDay(courseTimes);
-        if(!TimeUtil.isTimeFree(studentDays,courseDays))
-        {
-            System.out.println(TimeUtil.isTimeFree(studentDays,courseDays));
-            return PickClassesError.ClassesIsFull;
-
-        }
 
         //TODO:时间冲突的枚举类型
 
         //学生时间添加
-        for (String day:courseDays){
-            TimeUtil.addDayInDays(day,studentDays);
-        }
-        String newTimes = Arrays.toString(studentDays);
-        student.setTimes(studentID,newTimes);
+        String newDays = DaysUtil.addDaysInDays(courses.times,students.days);
+        students.setDays(newDays);
         //学生课程添加
-        String classes = student.getClasses(studentID);
-        classes = CodeUtil.addCodeInClasses(classesCode,classes);
-        student.setClasses(studentID,classes);
-        //分数添加
-        Points.addPoints(classesCode,studentID,"");
+        String[] data = {classesCode,studentID,""};
+        CodeStudent.addInfo(data);
         //课程人数增加
-        int stdCount = Integer.parseInt(course.getStdCount(classesCode));
-        int limitCount = Integer.parseInt(course.getLimitCount(classesCode));
-        course.setStdCount(classesCode,String.valueOf(stdCount+1));
-        course.setFull(classesCode,limitCount==(stdCount+1)?"已满":"未满");
+        int stdCount = Integer.parseInt(courses.stdCount);
+        int limitCount = Integer.parseInt(courses.limitCount);
+        courses.setStdCount(String.valueOf(stdCount+1));
+        courses.setFull(limitCount==(stdCount+1)?"已满":"未满");
         return PickClassesError.Success;
     }
 
     public static DropClassesError dropClasses(String studentID, String classesCode) {
-        if(!Students.isIDExist(studentID))
+        Students students = new Students(studentID);
+        if(!students.IDExist)
             return DropClassesError.IDNotFind;
-        if(!Courses.isCodeExist(classesCode))
+        Courses courses = new Courses(classesCode);
+        if(!courses.codeExist)
             return DropClassesError.ClassesCodeNotFind;
         if(isPicked(studentID,classesCode)==Boolean.FALSE)
             return DropClassesError.IDNotFind;
         // TODO:该课程已选的枚举类型
 
-        String studentTimes = student.getTimes(studentID);
-        String courseTimes = course.getTimes(classesCode);
-        String[] studentDays = TimeUtil.getDay(studentTimes);
-        String[] courseDays = TimeUtil.getDay(courseTimes);
         //学生时间删除
-        for (String day:courseDays){
-            TimeUtil.deleteDayInDays(day,studentDays);
-        }
-        String newTimes = Arrays.toString(studentDays);
-        student.setTimes(studentID,newTimes);
+        String newDays = DaysUtil.deleteDaysInDays(courses.times,students.days);
+        students.setDays(newDays);
         //学生课程删除
-        String classes = student.getClasses(studentID);
-        classes = CodeUtil.deleteCodeInClasses(classesCode,classes);
-        student.setClasses(studentID,classes);
-        //分数删除
-        Points.deletePoints(classesCode,studentID);
+        CodeStudent.deleteInfo(classesCode,studentID);
         //课程人数减少
-        int stdCount = Integer.parseInt(course.getStdCount(classesCode));
-        course.setStdCount(classesCode,String.valueOf(stdCount-1));
-        course.setFull(classesCode,"未满");
+        int stdCount = Integer.parseInt(courses.stdCount);
+        courses.setStdCount(String.valueOf(stdCount-1));
+        courses.setFull("未满");
         return DropClassesError.Success;
     }
 
     public static Boolean isPicked(String studentID, String classesCode) {
-        if(!Points.isCodeIDExist(classesCode,studentID))
+        if(CodeStudent.isStudentPickedCode(studentID,classesCode))
+            return Boolean.TRUE;
+        else
             return Boolean.FALSE;
-        return Boolean.TRUE;
     }
 }
