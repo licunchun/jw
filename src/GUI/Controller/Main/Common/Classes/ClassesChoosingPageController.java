@@ -130,7 +130,7 @@ public class ClassesChoosingPageController {
             } catch (NumberFormatException e) {
                 searchingClasses.setCredits(null);
             }
-            searchingClasses.setTeacher(findTeacher(ClassesCodeField.getText()));
+            searchingClasses.setTeacher(findTeacher(TeacherNameField.getText()));
             searchingClasses.setClassType(ClassTypeChoiceBox.getValue().toClassType());
             searchingClasses.setCourseType(CourseTypeChoiceBox.getValue().toCourseType());
             searchingClasses.setSchool(SchoolChoiceBox.getValue().toSchool());
