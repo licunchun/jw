@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="250.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/21"
+            fx:controller="GUI.Controller.Login.RegistController">
+    <ImageView fitHeight="250.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+        <Image url="@../../Resources/background250x300.png"/>
+    </ImageView>
+    <VBox>
+        <AnchorPane>
+            <Label layoutX="78.0" text="注册页面">
+                <font>
+                    <Font size="36.0"/>
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane>
+            <Label layoutX="14.0" layoutY="4.0" text="姓名">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <TextField fx:id="UserName" layoutX="105.0" layoutY="4.0" opacity="0.8"
+                       promptText="请输入姓名"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Label layoutX="14.0" layoutY="4.0" text="密码">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <PasswordField fx:id="Password" layoutX="105.0" layoutY="4.0" opacity="0.8"
+                           promptText="请输入密码"/>
+        </AnchorPane>
+        <AnchorPane prefWidth="290.0">
+            <Label layoutX="14.0" layoutY="4.0" text="确认密码">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <PasswordField fx:id="ConfirmPassword" layoutX="105.0" layoutY="4.0" opacity="0.8"
+                           promptText="请确认密码"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Label layoutX="14.0" layoutY="4.0" text="账户类型">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Label>
+            <ChoiceBox fx:id="AccountType" layoutX="108.0" layoutY="6.0" opacity="0.8" prefWidth="150.0"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Label fx:id="Tips" layoutY="5.0" prefHeight="18.0" prefWidth="300.0" textAlignment="CENTER"
+                   textFill="RED" visible="false"/>
+        </AnchorPane>
+        <AnchorPane>
+            <Button fx:id="Confirm" layoutX="122.0" mnemonicParsing="false" onAction="#doRegistConfirm"
+                    opacity="0.8" text="确认">
+                <font>
+                    <Font size="20.0"/>
+                </font>
+            </Button>
+        </AnchorPane>
+    </VBox>
+</AnchorPane>

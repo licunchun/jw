@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.Controller.Main.Common.Classes.ClassesMainPageController">
+    <VBox prefWidth="600.0">
+        <AnchorPane prefHeight="60.0" prefWidth="600.0">
+            <Label layoutX="236.0" layoutY="9.0" text="课程主页">
+                <font>
+                    <Font size="32.0" />
+                </font>
+            </Label>
+        </AnchorPane>
+        <AnchorPane prefHeight="510.0" prefWidth="200.0">
+            <AnchorPane layoutX="70.0" layoutY="20.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程编号：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="CodeLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="20.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程名称：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="NameLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="90.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程学时：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="PeriodLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="90.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程学分：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="CreditsLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="160.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="上课时间：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="TimeLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="160.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程人数：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="NumberLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="230.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课堂类型：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="ClassesTypeLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="230.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="课程种类：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="CourseTypeLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="300.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="开课院校：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="SchoolLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="300.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="上课校区：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="CampusLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="370.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="考试方式：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="ExamModeLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="370.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="教学语言：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="LanguageLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="70.0" layoutY="440.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="教育阶段：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="EducationLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+            <AnchorPane layoutX="330.0" layoutY="440.0" maxWidth="200.0" prefHeight="50.0" prefWidth="200.0">
+                <Label layoutX="14.0" layoutY="14.0" text="授课教师：">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+                <Label fx:id="TeacherLabel" layoutX="94.0" layoutY="14.0">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Label>
+            </AnchorPane>
+        </AnchorPane>
+        <AnchorPane prefHeight="60.0" prefWidth="600.0">
+            <Button fx:id="ClickButton" layoutX="200.0" layoutY="10.0" mnemonicParsing="false" onAction="#doClick" prefWidth="80.0" text="点我">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Button>
+            <Button fx:id="BackButton" layoutX="320.0" layoutY="10.0" mnemonicParsing="false" onAction="#doBack" prefWidth="80.0" text="返回">
+                <font>
+                    <Font size="20.0" />
+                </font>
+            </Button>
+            <Label fx:id="Tips" layoutX="37.0" layoutY="23.0" textFill="RED" />
+        </AnchorPane>
+    </VBox>
+</AnchorPane>
