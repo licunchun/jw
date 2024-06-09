@@ -1,6 +1,6 @@
 package GUI.Data.Enum.Classes;
 
-public class Util {
+public class TimeUtil {
     public static Week getWeek(int i) {
         return switch (i) {
             case 1 -> Week.Monday;
