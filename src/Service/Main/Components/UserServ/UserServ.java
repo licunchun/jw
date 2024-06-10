@@ -168,7 +168,7 @@ public class UserServ {
 
     public static IDSet findTeacher(String name) {
         IDSet idSet = new IDSet();
-        String[] sameNameTeacherID = Teachers.getSameNameID(name);
+        String[] sameNameTeacherID = Teachers.getIDWithSubName(name);
         for (String ID : sameNameTeacherID) {
             idSet.add(ID);
         }
