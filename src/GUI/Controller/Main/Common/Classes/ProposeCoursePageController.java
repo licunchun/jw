@@ -62,8 +62,10 @@ public class ProposeCoursePageController {
      * Time Table
      */
     private boolean isTimePageExist = false;
-    private Stage TimePageStage;
-    private TimeTableController timePageController;
+    private Stage TimePageStage = new Stage();
+    private TimeTableController timePageController = changeViews(TimePageStage, "/GUI/Window/Components/Time" +
+            "/TimeTable.fxml");
+    ;
     private CourseTimeSet courseTimeSet = new CourseTimeSet();
 
     /*
@@ -157,16 +159,13 @@ public class ProposeCoursePageController {
     private void openTimePage() {
         if (!isTimePageExist) {
             isTimePageExist = true;
-            TimePageStage = new Stage();
-
-            timePageController = changeViews(TimePageStage, "/GUI/Window/Components/Time/TimeTable.fxml");
 
             timePageController.setStage(TimePageStage);
             timePageController.flush();
 
             TimePageStage.setOnHiding(e -> {
                 courseTimeSet = timePageController.getTimeSet();
-                TimePageStage.close();
+                TimePageStage.hide();
                 isTimePageExist = false;
             });
 
