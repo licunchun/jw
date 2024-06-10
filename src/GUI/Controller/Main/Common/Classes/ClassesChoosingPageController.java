@@ -156,6 +156,7 @@ public class ClassesChoosingPageController {
             timePageController = changeViews(TimePageStage, "/GUI/Window/Components/Time/TimeTable.fxml");
 
             timePageController.setStage(TimePageStage);
+            timePageController.flush();
 
             TimePageStage.setOnHiding(e -> {
                 searchingClasses.setTime(timePageController.getTimeSet());

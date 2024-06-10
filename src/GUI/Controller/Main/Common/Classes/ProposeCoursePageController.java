@@ -162,6 +162,7 @@ public class ProposeCoursePageController {
             timePageController = changeViews(TimePageStage, "/GUI/Window/Components/Time/TimeTable.fxml");
 
             timePageController.setStage(TimePageStage);
+            timePageController.flush();
 
             TimePageStage.setOnHiding(e -> {
                 courseTimeSet = timePageController.getTimeSet();
