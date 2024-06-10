@@ -102,7 +102,6 @@ public class DropClassesPageController {
                 {
                     hyperlink.setOnAction(event -> {
                         if (getTableView() != null && getIndex() < getTableView().getItems().size()) {
-                            isClassesMainPageExist = true;
                             openClassesMainPage(getTableView().getItems().get(getIndex()).getCode());
                             resetLocation(classesMainPageStage);
                         }
@@ -164,6 +163,7 @@ public class DropClassesPageController {
 
     private void openClassesMainPage(String classesCode) {
         if (!isClassesMainPageExist) {
+            isClassesMainPageExist = true;
             classesMainPageStage = new Stage();
 
             classesMainPageController = changeViews(classesMainPageStage, "/GUI/Window/Main/Common/Classes/ClassesMainPage.fxml");
