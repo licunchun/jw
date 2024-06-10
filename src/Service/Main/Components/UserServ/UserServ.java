@@ -17,7 +17,6 @@ import java.util.Objects;
 public class UserServ {
     private static UserUtil userUtil;
     private static Students students;
-    private static NameUtil nameUtil;
     private static PasswordUtil passwordUtil;
 
     /*
@@ -28,7 +27,7 @@ public class UserServ {
         if(userUtil.userType==UserUtil.INVALID)
             return EditError.IDNotFound;
 
-        nameUtil = new NameUtil(name);
+        NameUtil nameUtil = new NameUtil(name);
         if (nameUtil.nameOverLength)
             return EditError.Invalid;
 
