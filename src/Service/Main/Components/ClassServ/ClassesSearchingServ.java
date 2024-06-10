@@ -49,13 +49,6 @@ public class ClassesSearchingServ {
         String language = classes.getLanguage()==null?"":classes.getLanguage().toString();
         String education = classes.getEducation()==null?"":classes.getEducation().toString();
         String teacher = "";
-        if (classes.getTeacher() != null) {
-            Iterable<String> IDs = classes.getTeacher().getStudentIDSetIterable();
-            for (String ID:IDs){
-                teacher = ID;
-                break;
-            }
-        }
         String full = classes.getFull()==null?"":classes.getFull().toString();
         String place = "";
 
