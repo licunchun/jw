@@ -9,9 +9,9 @@ import GUI.Data.Enum.Error.Main.Components.ClassesServ.NewClassesError;
 import GUI.Data.Enum.School;
 import Service.Data.Tables.*;
 import Service.Data.Utils.*;
+import Service.Data.Utils.TimeUtil;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ClassesServ {
     public static Classes getClasses(String classesCode) {
