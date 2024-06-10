@@ -37,9 +37,7 @@ public class NameUtil {
     }
     private boolean isNameOverLength(){
         matcher = pattern.matcher(name);
-        if(matcher.matches())
-            return false;
-        return true;
+        return !matcher.matches();
     }
     public static String[] getNames(String names){
         matcher = pattern.matcher(names);

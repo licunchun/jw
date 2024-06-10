@@ -24,7 +24,7 @@ public class RegisterServ {
         if (!nameUtil.nameCharValid)
             return Regist.NameInvalidChar;
         //名字超长
-        if(!nameUtil.nameOverLength)
+        if(nameUtil.nameOverLength)
             return Regist.NameOverLength;
 
         PasswordUtil passwordUtil = new PasswordUtil(password);
@@ -35,7 +35,7 @@ public class RegisterServ {
         if (!passwordUtil.passwordCharValid)
             return Regist.PasswordInvalidChar;
         //密码超长
-        if (!passwordUtil.passwordOverLength)
+        if (passwordUtil.passwordOverLength)
             return Regist.PasswordOverLength;
 
 
