@@ -104,7 +104,7 @@ public class TimeTableController {
         return button;
     }
 
-    private void flush() {
+    public void flush() {
         for (int i = 1; i <= 7; ++i) {
             boolean Flag = true;
             for (int j = 1; j <= 13; j++) {
