@@ -10,9 +10,8 @@ public class ClassesSearchingServ {
     private String[] codes = {};
 
     public void searchClasses(Classes inputClasses, String teacher) {
-        //查询只限单个老师包含匹配
         String[] conditions = fromClasses(inputClasses);
-        conditions[14] = teacher;
+        conditions[14] = teacher==null?"":teacher;
         codes = Courses.findCode(conditions);
     }
 

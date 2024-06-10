@@ -12,6 +12,8 @@ import Service.Data.Utils.*;
 import Service.Data.Utils.TimeUtil;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClassesServ {
     public static Classes getClasses(String classesCode) {
@@ -165,21 +167,38 @@ public class ClassesServ {
         return NewClassesError.Success;
     }
 
-    //TODO:
     private static boolean isCodeValid(String code){
-        return true;
+        Pattern pattern = Pattern.compile("[0-9A-Z.]{1,20}");
+        Matcher managers = pattern.matcher(code);
+        return managers.matches();
     }
     private static boolean isNameValid(String name){
+
         return true;
     }
     private static boolean isPeriodValid(String period){
-        return true;
+        try {
+            int peri = Integer.parseInt(period);
+            return peri > 0 && peri <= 200;
+        } catch (NumberFormatException numberFormatException){
+            return false;
+        }
     }
     private static boolean isCreditsValid(String credits){
-        return true;
+        try {
+            double cre = Double.parseDouble(credits);
+            return cre > 0.0 && cre <= 6.0;
+        } catch (NumberFormatException numberFormatException){
+            return false;
+        }
     }
     private static boolean isMaxCountValid(String maxCount){
-        return true;
+        try {
+            int max = Integer.parseInt(maxCount);
+            return max > 0 && max <= 500;
+        } catch (NumberFormatException numberFormatException){
+            return false;
+        }
     }
 }
 
