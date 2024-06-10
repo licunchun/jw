@@ -35,8 +35,11 @@ out/
 /src/GUI/Controller/Main/test/
 /src/Sevice/Utils/User/Test.java
 
-### 测试文件
+### 测试文件 ###
 /src/Sevice/test/
 /src/test/
 /src/Service/Test/
 /target/
+
+### 大文件 ###
+/report/videos/实机演示.mp4
