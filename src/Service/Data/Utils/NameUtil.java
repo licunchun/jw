@@ -38,18 +38,9 @@ public class NameUtil {
     private boolean isNameOverLength(){
         matcher = pattern.matcher(name);
         if(matcher.matches())
-            return true;
-        return false;
+            return false;
+        return true;
     }
-//    final public static int MAX_NAME_LENGTH = 10;
-//    public static boolean check(String name){
-//        if(name==null||name.isEmpty())
-//            return false;
-//        if(!checkLength(name))
-//            return false;
-//        return checkChar(name);
-//    }
-
     public static String[] getNames(String names){
         matcher = pattern.matcher(names);
         ArrayList<String> name = new ArrayList<>();
@@ -75,10 +66,4 @@ public class NameUtil {
         }
         return name.toString();
     }
-//public static boolean checkLength(String name) {
-//        return name.length() <= MAX_NAME_LENGTH;
-//    }
-//    public static boolean checkChar(String name) {
-//        return name.matches("^[一-龥·]+$");
-//    }
 }

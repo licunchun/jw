@@ -40,8 +40,8 @@ public class PasswordUtil {
     private boolean isPasswordOverLength(){
         matcher = pattern.matcher(password);
         if(matcher.matches())
-            return true;
-        return false;
+            return false;
+        return true;
     }
 
 //    public static boolean check(String password){

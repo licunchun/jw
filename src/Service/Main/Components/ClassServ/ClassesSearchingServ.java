@@ -10,9 +10,8 @@ public class ClassesSearchingServ {
     private String[] codes = {};
 
     public void searchClasses(Classes inputClasses, String teacher) {
-        //查询只限单个老师包含匹配
         String[] conditions = fromClasses(inputClasses);
-        conditions[14] = teacher;
+        conditions[14] = teacher==null?"":teacher;
         codes = Courses.findCode(conditions);
     }
 
@@ -50,13 +49,6 @@ public class ClassesSearchingServ {
         String language = classes.getLanguage()==null?"":classes.getLanguage().toString();
         String education = classes.getEducation()==null?"":classes.getEducation().toString();
         String teacher = "";
-        if (classes.getTeacher() != null) {
-            Iterable<String> IDs = classes.getTeacher().getStudentIDSetIterable();
-            for (String ID:IDs){
-                teacher = ID;
-                break;
-            }
-        }
         String full = classes.getFull()==null?"":classes.getFull().toString();
         String place = "";
 
