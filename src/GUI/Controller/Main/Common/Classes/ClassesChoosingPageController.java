@@ -93,6 +93,7 @@ public class ClassesChoosingPageController {
     private String ID;
     private UserType userType;
     private Pagination pagination;
+    private String teacher = null;
     /*
      * Classes Main Page
      */
@@ -131,7 +132,7 @@ public class ClassesChoosingPageController {
             } catch (NumberFormatException e) {
                 searchingClasses.setCredits(null);
             }
-            searchingClasses.setTeacher(findTeacher(TeacherNameField.getText()));
+            teacher = TeacherNameField.getText();
             searchingClasses.setClassType(ClassTypeChoiceBox.getValue().toClassType());
             searchingClasses.setCourseType(CourseTypeChoiceBox.getValue().toCourseType());
             searchingClasses.setSchool(SchoolChoiceBox.getValue().toSchool());
@@ -264,7 +265,7 @@ public class ClassesChoosingPageController {
     }
 
     public void flush() {
-        classesSearchingServ.searchClasses(searchingClasses);
+        classesSearchingServ.searchClasses(searchingClasses, teacher);
         pagination.setPageCount((classesSearchingServ.getCount() - 1) / ROWS_PER_PAGE + 1);
         int fromIndex = pagination.getCurrentPageIndex() * ROWS_PER_PAGE;
         int toIndex = Math.min(fromIndex + ROWS_PER_PAGE, classesSearchingServ.getCount());

@@ -90,7 +90,7 @@ public class Courses {
         ArrayList<String> valueName = new ArrayList<>();
         ArrayList<String> value = new ArrayList<>();
         for (int i = 0; i < conditions.length; i++) {
-            if (!conditions[i].isEmpty()) {
+            if (conditions[i] != null || !conditions[i].isEmpty()) {
                 valueName.add(CourseCol[i]);
                 value.add(conditions[i]);
             }
