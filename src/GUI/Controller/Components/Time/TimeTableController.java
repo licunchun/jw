@@ -6,7 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-import static GUI.Data.Enum.Classes.Util.getTime;
+import static GUI.Data.Enum.Classes.TimeUtil.getTime;
 
 public class TimeTableController {
     static final double BUTTON_WIDE = 45.0;
